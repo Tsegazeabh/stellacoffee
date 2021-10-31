@@ -15,7 +15,7 @@
 
         <!-- Scripts -->
         @routes()
-        <script src="{{ mix('js/app.min.js') }}" defer></script>
+        <script src="{{ asset('js/app.min.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         @inertia

@@ -1,33 +1,32 @@
 <template>
-    <Head title="Dashboard" />
+    <!--    <template #header>-->
+    <!--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">-->
+    <!--            Dashboard-->
+    <!--        </h2>-->
+    <!--    </template>-->
 
-    <BreezeAuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        You're logged in!
-                    </div>
-                </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <welcome/>
             </div>
         </div>
-    </BreezeAuthenticatedLayout>
+    </div>
 </template>
 
 <script>
-import BreezeAuthenticatedLayout from '@layouts/Authenticated.vue'
-import { Head } from '@inertiajs/inertia-vue3';
+import {defineComponent} from 'vue';
+import AppLayout from '@layouts/AppLayout.vue';
+import Layout from '@layouts/Layout.vue';
+import Welcome from '@jetstream/Welcome.vue';
 
-export default {
+// export {default as layout} from '@layouts/AppLayout.vue'
+
+export default defineComponent({
+    layout: (h, page) => h(Layout, [page, h('h2', { slot: 'header' }, 'Dashboard')]),
     components: {
-        BreezeAuthenticatedLayout,
-        Head,
+        AppLayout,
+        Welcome,
     },
-}
+})
 </script>

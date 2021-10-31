@@ -14,17 +14,27 @@ module.exports = {
         ]
     },
     sourceMap: false,
-    theme:
-        {
-            extend: {
-                fontFamily: {
-                    sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-                }
-                ,
+    theme: {
+        extend: {
+            colors: {
+                stella: {
+                    DEFAULT: '#277975',
+                },
+                roast: {
+                    dark: '#1E1618',
+                    light: '#331813',
+                    lightest: '#773714',
+                },
+            },
+            fontFamily: {
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                mono: ["robot", ...defaultTheme.fontFamily.mono],
+            },
+            fontSize: {
+                '4xl': '42px',
             }
-            ,
-        }
-    ,
+        },
+    },
 
     variants: {
         extend: {
@@ -35,10 +45,8 @@ module.exports = {
                 ['active'],
             textColor:
                 ['active', 'focus', 'hover'],
-        }
-        ,
-    }
-    ,
+        },
+    },
 
     plugins: [
         require('@tailwindcss/forms'),

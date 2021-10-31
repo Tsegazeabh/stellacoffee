@@ -1,65 +1,73 @@
 <template>
     <Head title="Forgot Password" />
 
-    <div class="mb-4 text-sm text-gray-600">
-        Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
-    </div>
+    <jet-authentication-card>
+        <template #logo>
+            <jet-authentication-card-logo />
+        </template>
 
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-        {{ status }}
-    </div>
-
-    <BreezeValidationErrors class="mb-4" />
-
-    <form @submit.prevent="submit">
-        <div>
-            <BreezeLabel for="email" value="Email" />
-            <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
+        <div class="mb-4 text-sm text-gray-600">
+            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Email Password Reset Link
-            </BreezeButton>
+        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+            {{ status }}
         </div>
-    </form>
+
+        <jet-validation-errors class="mb-4" />
+
+        <form @submit.prevent="submit">
+            <div>
+                <jet-label for="email" value="Email" />
+                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Email Password Reset Link
+                </jet-button>
+            </div>
+        </form>
+    </jet-authentication-card>
 </template>
 
 <script>
-import BreezeButton from '@components/Button.vue'
-import BreezeGuestLayout from '@layouts/Guest.vue'
-import BreezeInput from '@components/Input.vue'
-import BreezeLabel from '@components/Label.vue'
-import BreezeValidationErrors from '@components/ValidationErrors.vue'
-import { Head } from '@inertiajs/inertia-vue3';
+    import { defineComponent } from 'vue'
+    import { Head } from '@inertiajs/inertia-vue3';
+    import JetAuthenticationCard from '@jetstream/AuthenticationCard.vue'
+    import JetAuthenticationCardLogo from '@jetstream/AuthenticationCardLogo.vue'
+    import JetButton from '@jetstream/Button.vue'
+    import JetInput from '@jetstream/Input.vue'
+    import JetLabel from '@jetstream/Label.vue'
+    import JetValidationErrors from '@jetstream/ValidationErrors.vue'
 
-export default {
-    layout: BreezeGuestLayout,
+    export default defineComponent({
+        components: {
+            Head,
+            JetAuthenticationCard,
+            JetAuthenticationCardLogo,
+            JetButton,
+            JetInput,
+            JetLabel,
+            JetValidationErrors
+        },
 
-    components: {
-        BreezeButton,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-        Head,
-    },
+        props: {
+            status: String
+        },
 
-    props: {
-        status: String,
-    },
+        data() {
+            return {
+                form: this.$inertia.form({
+                    email: ''
+                })
+            }
+        },
 
-    data() {
-        return {
-            form: this.$inertia.form({
-                email: ''
-            })
+        methods: {
+            submit() {
+                this.form.post(this.route('password.email'))
+            }
         }
-    },
-
-    methods: {
-        submit() {
-            this.form.post(this.route('password.email'))
-        }
-    }
-}
+    })
 </script>

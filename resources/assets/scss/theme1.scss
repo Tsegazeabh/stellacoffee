@@ -1,0 +1,153 @@
+@import "variables";
+
+body {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.61429;
+    font-weight: 400;
+    color: #878787;
+    background-color: #fff;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* main nav bar */
+nav.main-navbar {
+    @apply flex flex-wrap justify-between items-center bg-transparent;
+    opacity: 0.9;
+
+    .brand {
+        @apply flex flex-grow-0 w-max;
+    }
+
+    ul.menu {
+        @apply flex flex-grow text-white font-semibold my-3;
+        font-size: $menu_font_size;
+
+        > li.dropdown {
+            > ul {
+                @apply absolute top-24;
+                display: none;
+            }
+        }
+
+        > li.dropdown:hover {
+            > ul {
+                @apply absolute text-roast-lightest bg-white block z-20 w-max px-6 py-3 justify-start rounded-b-md rounded-tr-sm;
+                box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
+
+                li {
+                    @apply my-3;
+                }
+            }
+        }
+
+        li:hover {
+            @apply text-stella;
+        }
+
+        > li:hover {
+            @apply bg-white px-0 rounded-t-sm;
+            box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
+
+            a {
+                @apply px-4;
+            }
+        }
+    }
+}
+
+nav.main-navbar:hover {
+    opacity: 1;
+
+    > ul {
+        @apply text-white;
+    }
+}
+
+/* main slider */
+#main-slider {
+    @apply w-full p-0 m-0 h-screen flex flex-wrap;
+
+    .slider-card {
+        @apply w-full p-0 m-0 h-screen flex flex-wrap;
+        /*TODO: Apply light gray filter to the image*/
+
+        .card-image {
+            @apply w-full flex flex-wrap justify-center items-center;
+        }
+
+        .card-text {
+            @apply absolute top-1/3 left-32 text-white w-2/5 z-20;
+            font-family: "Roboto Mono", Monaco, Consolas, "Courier New", monospace;
+            font-size: 20px;
+
+            .title {
+                @apply font-black border-b mb-5 text-roast-dark;
+                font-size: 42px;
+            }
+
+            button {
+                @apply text-white px-5 py-3 mt-4 bg-stella;
+            }
+        }
+    }
+}
+
+#story {
+    @apply p-3 md:px-16 md:py-12;
+    img {
+        @apply object-contain h-full;
+    }
+
+    .leading-header {
+        @apply text-stella font-black text-xl;
+    }
+
+    .main-header {
+        @apply text-roast-lightest text-4xl font-black md:underline;
+    }
+
+    p {
+        @apply font-mono text-xl text-roast-dark;
+    }
+
+    button {
+        @apply relative bottom-0 text-white px-5 py-3 mt-4 bg-stella items-baseline mt-5 rounded-full;
+    }
+}
+
+#testimonial-slider {
+    @apply p-20;
+    .testimonial-card {
+        @apply flex flex-col items-stretch justify-start bg-white p-5;
+
+        .testimonial-info {
+            @apply flex flex-wrap justify-start items-center;
+            @apply flex flex-wrap justify-start items-center;
+            .testimonial-picture {
+                @apply w-24 h-24 rounded-full border mr-5;
+            }
+
+            .testimonial-profile {
+                @apply flex flex-col justify-start;
+
+                .testimonial-name {
+                    @apply font-black text-xl;
+                }
+
+                .testimonial-position {
+                    @apply text-base mt-4;
+                }
+            }
+        }
+
+        .testimonial-quote {
+            @apply flex flex-col w-full border rounded shadow-sm my-4 p-8;
+        }
+
+        .testimonial-quote .fa-angle-up {
+            @apply -mt-10;
+        }
+    }
+}

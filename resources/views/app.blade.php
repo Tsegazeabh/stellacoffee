@@ -13,12 +13,9 @@
         <link rel="stylesheet" href="{{ asset('css/theme1.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/cms.min.css') }}">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         <!-- Scripts -->
-        @routes(getNonce())
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @routes()
+        <script src="{{ mix('js/app.min.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         @inertia

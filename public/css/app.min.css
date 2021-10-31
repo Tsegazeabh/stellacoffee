@@ -7504,6 +7504,10 @@ select {
   width: auto;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .w-3\/4 {
   width: 75%;
 }

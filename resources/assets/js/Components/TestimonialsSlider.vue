@@ -4,11 +4,12 @@
         <div class="swiper">
             <swiper
                 :modules="modules"
-                :slides-per-view="3"
                 :space-between="50"
                 autoplay
+                :breakpoints="swiperOptions.breakpoints"
+                :pagination="{ clickable: true }"
                 :parallax="true"
-                :pagination="{ clickable: true }">
+                :navigation="false">
                 <swiper-slide v-for="testimonial in testimonials">
                     <testimonial-card :testimonial="testimonial">
                     </testimonial-card>
@@ -20,7 +21,7 @@
 
 <script>
 import {Swiper, SwiperSlide} from 'swiper/vue';
-import {Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards} from 'swiper';
+import {Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards} from 'swiper';
 import TestimonialCard from "@components/TestimonialCard";
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -33,8 +34,20 @@ export default {
     components: {TestimonialCard, Swiper, SwiperSlide},
     setup() {
         return {
-            modules: [Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
+            modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
             parallaxSwiperWidth: 0,
+            swiperOptions: {
+                breakpoints: {
+                    799: {
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    },
+                    800: {
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    }
+                }
+            },
             testimonials: [
                 {
                     testimonial_name: 'Kate Anderson',
@@ -58,5 +71,15 @@ export default {
 </script>
 
 <style scoped>
+.swiper-pagination {
+    position: absolute;
+    text-align: center;
+    transition: 300ms opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+}
+swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
 
+    bottom: -105px !important;
+}
 </style>

@@ -165,7 +165,55 @@ nav.main-navbar:hover > ul {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
+.index-header {
+  margin-bottom: 3rem;
+  width: 100%;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(39, 121, 117, var(--tw-text-opacity));
+  font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;
+}
+
+.index-header:after {
+  position: relative;
+  display: block;
+  border-bottom-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgba(39, 121, 117, var(--tw-border-opacity));
+  text-align: center;
+  left: 45%;
+  bottom: 0;
+  content: "";
+  width: 10%;
+}
+
+.index-header.h1 {
+  font-size: 40px;
+}
+
+.index-header.h2 {
+  font-size: 35px;
+}
+
+.index-header.h3 {
+  font-size: 30px;
+}
+
+.index-header.h4 {
+  font-size: 25px;
+}
+
+.index-header.h5 {
+  font-size: 20px;
+}
+
+.index-header.h6 {
+  font-size: 15px;
+}
+
 #story {
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
   padding: 0.75rem;
 }
 

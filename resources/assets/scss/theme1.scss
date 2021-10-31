@@ -94,8 +94,40 @@ nav.main-navbar:hover {
     }
 }
 
+.index-header {
+    @apply font-bold w-full mb-12 text-stella;
+    font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;;
+}
+
+.index-header:after{
+    @apply  block relative text-center border-b-2 border-stella;
+    left: 45%;
+    bottom: 0;
+    content: '';
+    width: 10%;
+}
+
+.index-header.h1 {
+    font-size: 40px;
+}
+.index-header.h2 {
+    font-size: 35px;
+}
+.index-header.h3 {
+    font-size: 30px;
+}
+.index-header.h4 {
+    font-size: 25px;
+}
+.index-header.h5 {
+    font-size: 20px;
+}
+.index-header.h6 {
+    font-size: 15px;
+}
+
 #story {
-    @apply p-3 md:px-16 md:py-12;
+    @apply p-3 md:px-16 md:py-12 bg-gray-200;
     img {
         @apply object-contain h-full;
     }

@@ -32,10 +32,19 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@tailwindcss/typography": "^0.4.1",
+        "@vueform/multiselect": "^2.2.0",
+        "ag-grid-community": "^26.1.0",
+        "ag-grid-vue3": "^26.1.2",
+        "inversify": "^6.0.1",
+        "moment": "^2.29.1",
         "postcss-import": "^14.0.2",
         "resolve-url-loader": "^4.0.0",
         "sass-loader": "^12.3.0",
         "swiper": "^7.2.0",
-        "vuex": "^4.0.2"
+        "v-calendar": "^2.3.4",
+        "vue-class-component": "^8.0.0-rc.1",
+        "vue-share-buttons": "^1.1.0",
+        "vuex": "^4.0.2",
+        "youtube-vue3": "^0.1.10"
     }
 }

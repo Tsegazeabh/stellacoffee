@@ -13,6 +13,11 @@
         </ul>
         <ul class="right">
             <li>
+                <inertia-link class="nav-link" type="button" :href="route('login')">
+                    {{_trans('menu.Login')}}
+                </inertia-link>
+            </li>
+            <li>
                 <a href="#"><span class="fab fa-facebook-f" aria-hidden="true"></span></a>
             </li>
             <li>

@@ -17,7 +17,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    const HOME = 'news-management-page';
+    const UNAUTHORIZED_EXCEPTION_PAGE_ROUTE = 'error_403';
 
     /**
      * The controller namespace for the application.

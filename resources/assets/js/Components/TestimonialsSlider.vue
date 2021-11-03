@@ -1,7 +1,7 @@
 <template>
     <div id="testimonial-slider">
         <h2 class="index-header h1 justify-center text-center">Testimonials</h2>
-        <div class="swiper">
+        <div class="swiper-container">
             <swiper
                 :modules="modules"
                 :space-between="50"
@@ -70,16 +70,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.swiper-container {
+    overflow: visible;
+    padding-bottom: 15px;
+}
+
 .swiper-pagination {
     position: absolute;
-    text-align: center;
+    bottom: -7px !important;
+    padding-left: 20px;
+    text-align: left;
     transition: 300ms opacity;
     transform: translate3d(0, 0, 0);
     z-index: 10;
 }
-swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
 
-    bottom: -105px !important;
-}
 </style>

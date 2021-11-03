@@ -11,6 +11,92 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
+header {
+  display: flex;
+  height: 6rem;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  --tw-bg-opacity: 1;
+  background-color: rgba(39, 121, 117, var(--tw-bg-opacity));
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
+header ul.left {
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  align-items: center;
+  font-size: 16px;
+}
+
+header ul.left li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+header ul.left li a {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+header ul.left li span {
+  margin-right: 1rem;
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  font-size: 20px;
+}
+
+header ul.right {
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  align-items: center;
+  font-size: 20px;
+}
+
+header ul.right li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+header ul.right li a {
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+header ul.right li span {
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  font-size: 20px;
+}
+
 /* main nav bar */
 
 nav.main-navbar {
@@ -344,6 +430,170 @@ nav.main-navbar:hover > ul {
 
 #testimonial-slider .testimonial-card .testimonial-quote .fa-angle-up {
   margin-top: -2.5rem;
+}
+
+#roasting-tabs {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+#roasting-tabs .menu {
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  flex-grow: 0;
+  flex-direction: column;
+  --tw-border-opacity: 1;
+  border-color: rgba(39, 121, 117, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(39, 121, 117, var(--tw-bg-opacity));
+}
+
+#roasting-tabs .menu li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(75, 85, 99, var(--tw-border-opacity));
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+#roasting-tabs .menu li a {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+}
+
+#roasting-tabs .menu li:last-child {
+  border-width: 0px;
+}
+
+#roasting-tabs .menu li.active a {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-weight: 900;
+  --tw-text-opacity: 1;
+  color: rgba(39, 121, 117, var(--tw-text-opacity));
+}
+
+#roasting-tabs .tab-container {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  --tw-bg-opacity: 1;
+  background-color: rgba(39, 121, 117, var(--tw-bg-opacity));
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+footer ul.left {
+  display: flex;
+  width: 24rem;
+  flex-grow: 0;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+footer ul.left li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+footer nav {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  flex-grow: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  font-size: 16px;
+}
+
+footer nav .nav-container {
+  grid-column: span 1 / span 1;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+footer nav .nav-container ul {
+  width: 100%;
+}
+
+footer .header {
+  margin-bottom: 1.25rem;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+footer address {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 24rem;
+  flex-grow: 0;
+  font-style: normal;
+  font-size: 16px;
+}
+
+footer address ul.address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+footer address ul.address li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+footer address ul.social-media-icons-list {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+footer address ul.social-media-icons-list > li {
+  margin-right: 1.25rem;
 }
 
 /* purgecss end ignore */

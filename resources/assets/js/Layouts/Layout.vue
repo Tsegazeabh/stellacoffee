@@ -11,10 +11,12 @@
 import {defineComponent} from "vue";
 import HeaderNav from "@components/HeaderNav.vue";
 import SiteFooter from "../Components/SiteFooter";
+import TopHeader from "../Components/TopHeader";
 
 export default defineComponent({
     name: "Layout",
     components: {
+        TopHeader,
         SiteFooter,
         'header-nav': HeaderNav
     }

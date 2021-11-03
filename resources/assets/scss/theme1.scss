@@ -11,6 +11,44 @@ body {
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
+header {
+    @apply h-24 w-full flex flex-wrap justify-between items-center px-10 bg-stella text-gray-300;
+    ul.left {
+        @apply w-max flex items-center;
+        font-size: 16px;
+
+        li {
+            @apply p-3 flex justify-center items-center;
+            a {
+                @apply mr-4  flex justify-center items-center text-center;
+            }
+
+            span {
+                @apply rounded-full border w-10 h-10 flex justify-center items-center mr-4;
+                font-size: 20px;
+            }
+        }
+    }
+
+    ul.right {
+        @apply w-max flex items-center;
+        font-size: 20px;
+
+        li {
+            @apply p-3 flex justify-center items-center;
+
+            a {
+                @apply mr-2 flex justify-center items-center text-center;
+            }
+
+            span {
+                @apply rounded-full border w-10 h-10 flex justify-center items-center;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
 /* main nav bar */
 nav.main-navbar {
     @apply flex flex-wrap justify-between items-center bg-transparent;
@@ -99,8 +137,8 @@ nav.main-navbar:hover {
     font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;;
 }
 
-.index-header:after{
-    @apply  block relative text-center border-b-2 border-stella;
+.index-header:after {
+    @apply block relative text-center border-b-2 border-stella;
     left: 45%;
     bottom: 0;
     content: '';
@@ -110,18 +148,23 @@ nav.main-navbar:hover {
 .index-header.h1 {
     font-size: 40px;
 }
+
 .index-header.h2 {
     font-size: 35px;
 }
+
 .index-header.h3 {
     font-size: 30px;
 }
+
 .index-header.h4 {
     font-size: 25px;
 }
+
 .index-header.h5 {
     font-size: 20px;
 }
+
 .index-header.h6 {
     font-size: 15px;
 }
@@ -180,6 +223,85 @@ nav.main-navbar:hover {
 
         .testimonial-quote .fa-angle-up {
             @apply -mt-10;
+        }
+    }
+}
+
+#roasting-tabs {
+
+    @apply flex flex-row w-full flex-wrap bg-white py-6 my-10;
+
+    .menu {
+        @apply flex flex-col w-max flex-grow-0 border-stella bg-stella;
+
+        li {
+            @apply flex flex-wrap justify-start items-center text-base border-b border-gray-600 text-base text-white;
+            a {
+                @apply p-5 flex flex-wrap w-full h-full;
+            }
+        }
+
+        li:last-child {
+            @apply border-0;
+        }
+
+        li.active a {
+            @apply bg-white text-stella font-black px-5;
+        }
+    }
+
+    .tab-container {
+        @apply flex flex-col flex-grow  bg-white my-5;
+    }
+}
+
+footer {
+    @apply w-full flex flex-wrap px-20 py-10 justify-between items-start bg-stella text-white;
+
+    ul.left {
+        @apply w-96 flex flex-col flex-grow-0;
+        font-size: 16px;
+
+        li {
+            @apply my-2;
+        }
+    }
+
+    nav {
+        @apply grid grid-cols-2 flex-grow px-14 my-4;
+        font-size: 16px;
+
+        .nav-container {
+            @apply my-2 col-span-1;
+            ul {
+                @apply w-full;
+            }
+        }
+    }
+
+    .header {
+        @apply font-black mb-5;
+        font-size: 20px;
+    }
+
+    address {
+        @apply w-96 flex-grow-0 my-4;
+        font-style: normal;
+        font-size: 16px;
+
+        ul.address {
+            @apply flex flex-col justify-start items-center;
+            li {
+                @apply w-full my-2;
+            }
+
+        }
+
+        ul.social-media-icons-list {
+            @apply flex flex-row flex-wrap items-center mt-3;
+            > li {
+                @apply mr-5;
+            }
         }
     }
 }

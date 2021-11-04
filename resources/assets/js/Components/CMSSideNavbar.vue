@@ -63,117 +63,58 @@
                         ]
                     },
                     {
-                        label: 'Company', route: route("home"),
+                        label: 'About Us', route: route("home"),
                         collapsed: true,
                         submenus: [
-                            {label: 'About Us', route: route('about-us-management-page')},
-                            {
-                                label: 'Organizational Structure',
-                                route: route('organizational-structure-management-page')
-                            },
-                            {label: 'Profile', route: route('profile-management-page')},
-                            {label: 'History', route: route('history-management-page')},
-                            {label: 'Service Charter', route: route('service-charter-management-page')},
-                            {label: 'Innovation', route: route('innovation-management-page')},
-                            {label: 'CEO Message', route: route('ceo-message-management-page')},
-                            {
-                                label: 'Contact Us Requests',
-                                route: route('contact-us-request-management-page')
-                            },
-                            {label: 'Contact Offices', route: route('contact-details-management-page')},
+                            {label: "History", url: "", active: false},
+                            {label: "Success Stories", url: "", active: false},
+                            {label: "Certifications", url: "", active: false},
+                            {label: "Stella Coffee Origins", url: "", active: false},
+                            {label: "Contact Us", url: "", active: false},
                         ]
                     },
                     {
-                        label: 'Customer Service', route: route("home"),
+                        label: 'Roasting', route: route("home"),
                         collapsed: true,
                         submenus: [
-                            {label: 'Post Paid', route: route('postpaid-management-page')},
-                            {label: 'Pre Paid', route: route('prepaid-management-page')},
-                            {label: 'Bill Information', route: route('bill-information-management-page')},
-                            {label: 'Bill Complaint', route: route('bill-complaint-management-page')},
-                            {
-                                label: 'Customer Service Centers',
-                                route: route('customer-service-center-management-page')
-                            },
-                            {label: 'Payments', route: route('payment-option-management-page')},
-                            {label: 'Billings', route: route('billing-management-page')},
-                            {
-                                label: 'Getting Electricity',
-                                route: route('getting-electricity-management-page')
-                            },
+                            {label: "Roasting Process", url: "", active: false},
+                            {label: "Quality Control Process", url: "", active: false},
+                            {label: "Our Roasting Machine ", url: "", active: false},
+                            {label: "Roasting Guides", url: "", active: false},
+                            {label: "Roasting Services", url: "", active: false}
                         ]
                     },
                     {
-                        label: 'Public Information', route: route("home"),
+                        label: 'Products', route: route("home"),
                         collapsed: true,
                         submenus: [
-                            {label: 'Tariffs', route: route('electricity-tariff-management-page')},
-                            {
-                                label: 'Power Interruptions',
-                                route: route('power-interruption-management-page')
-                            },
-                            {
-                                label: 'Customer Rights/Duties',
-                                route: route('customer-right-and-duty-management-page')
-                            },
-                            {
-                                label: 'Complaint Handling',
-                                route: route('complaint-handling-management-page')
-                            },
-                            {label: 'Electrical Tips', route: route('electrical-tip-management-page')},
-                            {label: 'Ease of Doing Business', route: route('ease-of-doing-business-management-page')},
-                            {label: 'Projects/Programs', route: route('project-and-program-management-page')},
-                            {
-                                label: 'Corporate Social Responsibility',
-                                route: route('social-responsibility-management-page')
-                            },
-                            {
-                                label: 'Citizen Engagements',
-                                route: route('citizen-engagement-management-page')
-                            },
+                            {label: "Packages", url: "", active: false},
+                            {label: "Blends", url: "", active: false},
+                        ]
+                    },
+                    {
+                        label: 'Find Us', route: route("home"),
+                        collapsed: true,
+                        submenus: [
+                            {label: "Export Destinations", url: "", active: false},
+                            {label: "Locations", url: "", active: false},
+                            {label: "Duty Free Locations ", url: "", active: false},
+                            {label: "Shops", url: "", active: false},
+                            {label: "Factory Location", url: "", active: false},
+                            {label: "Export Processes", url: "", active: false},
+                        ]
+                    },
+                    {
+                        label: 'Cupping', route: route("home"),
+                        collapsed: true,
+                        submenus: [
+                            {label: "Cupping Procedures", url: "", active: false},
+                            {label: "Cupping Events", url: "", active: false}
+                        ]
+                    },
+                    {
+                        label: 'News and Events', route: route("news-and-events-management-page"),
 
-                        ]
-                    },
-                    {
-                        label: 'Announcements', route: route("home"),
-                        collapsed: true,
-                        submenus: [
-                            {label: 'Vacancies', route: route('vacancy-management-page')},
-                            {label: 'Tenders', route: route('tender-management-page')},
-                            {
-                                label: 'Customer Announcements',
-                                route: route('customer-announcement-management-page')
-                            },
-                            {
-                                label: 'Staff Announcements',
-                                route: route('staff-announcement-management-page')
-                            }
-                        ]
-                    },
-                    {
-                        label: 'Media Center', route: route("home"),
-                        collapsed: true,
-                        submenus: [
-                            {label: 'News', route: route('news-management-page')},
-                            {label: 'Events', route: route('events-management-page')},
-                            {label: 'Press Releases', route: route('press-release-management-page')},
-                            {label: 'Speeches', route: route('speech-management-page')},
-                            {label: 'Photo Gallery', route: route('manage-photo-gallery')},
-                        ]
-                    },
-                    {
-                        label: 'Documents', route: route("home"),
-                        collapsed: true,
-                        submenus: [
-                            {label: 'Documents', route: route('document-management-page')},
-                        ]
-                    },
-                    {
-                        label: 'Publications', route: route("home"),
-                        collapsed: true,
-                        submenus: [
-                            {label: 'Publications', route: route('publication-management-page')},
-                        ]
                     },
 
                     {
@@ -183,14 +124,6 @@
                             {label: 'Partners', route: route('partner-management-page')},
                             {label: 'FAQs', route: route('faq-management-page')},
                             {label: 'Main Sliders', route: route('main-slider-management-page')},
-                            {label: 'Important Links', route: route('important-link-management-page')},
-                            {label: 'Popup Contents', route: route('popup-content-management-page')},
-                        ]
-                    },
-                    {
-                        label: 'Policy and Terms', route: route("home"),
-                        collapsed: true,
-                        submenus: [
                             {label: 'Privacy Policy', route: route('privacy-policy-management-page')},
                             {label: 'Terms and Conditions', route: route('term-and-condition-management-page')},
                         ]
@@ -200,14 +133,9 @@
                         label: 'Settings', route: route("home"),
                         collapsed: true,
                         submenus: [
-                            {label: 'Document Types', route: route('document-type-management-page')},
-                            {label: 'Publication Types', route: route('publication-type-management-page')},
-                            {label: 'Payment Types', route: route('payment-type-management-page')},
-                            {label: 'Service Types', route: route('service-type-management-page')},
                             {label: 'FAQ Groups', route: route('faq-group-management-page')},
                             {label: 'Country', route: route('country-management-page')},
                             {label: 'Region', route: route('region-management-page')},
-                            {label: 'Zone', route: route('zone-management-page')},
                             {label: 'City', route: route('city-management-page')},
                             {label: 'Subcity', route: route('subcity-management-page')},
                             {label: 'Woreda', route: route('woreda-management-page')},

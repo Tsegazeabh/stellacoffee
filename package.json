@@ -45,6 +45,7 @@
         "vue-class-component": "^8.0.0-rc.1",
         "vue-share-buttons": "^1.1.0",
         "vuex": "^4.0.2",
-        "youtube-vue3": "^0.1.10"
+        "youtube-vue3": "^0.1.10",
+        "ziggy-js": "^1.4.2"
     }
 }

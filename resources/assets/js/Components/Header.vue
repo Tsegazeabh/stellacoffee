@@ -176,7 +176,7 @@
     import logo from "../../images/logo.jpg"
     import {useForm} from '@inertiajs/inertia-vue3'
 
-    import {getMenus, getPublicationMenus, getDocumentMenus} from "@shared/Menus"
+    import {getMenus} from "@shared/Menu"
 
     export default {
         name: "nav-header",

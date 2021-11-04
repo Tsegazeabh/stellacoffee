@@ -1,21 +1,21 @@
 <?php
 
-use App\Http\CMS\Controllers\CertificationController;
-use App\Http\CMS\Controllers\ContactUsRequestController;
-use App\Http\CMS\Controllers\ContentController;
-use App\Http\CMS\Controllers\HistoryController;
-use App\Models\ProductBlend;
-use App\Models\ProductPackage;
-use App\Models\QualityControlProcess;
-use App\Models\RoastingGuide;
-use App\Models\RoastingMachine;
-use App\Models\RoastingProcess;
-use App\Models\RoastingService;
-use App\Models\StellaCoffeeOrigin;
-use App\Models\SuccessStory;
+use App\Http\Controllers\CMS\CertificationController;
+use App\Http\Controllers\CMS\ContactUsRequestController;
+use App\Http\Controllers\CMS\ContentController;
+use App\Http\Controllers\CMS\HistoryController;
+use App\Http\Controllers\CMS\ProductBlendController;
+use App\Http\Controllers\CMS\ProductPackageController;
+use App\Http\Controllers\CMS\QualityControlProcessController;
+use App\Http\Controllers\CMS\RoastingGuideController;
+use App\Http\Controllers\CMS\RoastingMachineController;
+use App\Http\Controllers\CMS\RoastingProcessController;
+use App\Http\Controllers\CMS\RoastingServiceController;
+use App\Http\Controllers\CMS\StellaCoffeeOriginController;
+use App\Http\Controllers\CMS\SuccessStoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.changed'])->group(function () {
+Route::prefix(getSecureURL('cms'))->group(function () {
     Route::prefix('certification')->group(function () {
         Route::get(getSecureURL(1), [CertificationController::class, 'createGet'])->name('certification-creation-page');
         Route::post(getSecureURL(2), [CertificationController::class, 'createPost'])->name('post-certification');
@@ -30,7 +30,7 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
     Route::prefix('history')->group(function () {
         Route::get(getSecureURL(1), [HistoryController::class, 'createGet'])->name('history-creation-page');
         Route::post(getSecureURL(2), [HistoryController::class, 'createPost'])->name('post-history');
-        Route::get(getSecureURL(4), [HistoryController::class, 'manageHistory'])->name('history-management-page');
+        Route::get('manage', [HistoryController::class, 'manageHistory'])->name('history-management-page');
         Route::post('fetch-history', [HistoryController::class, 'fetchHistory'])->name('fetch-history');
         Route::post(getSecureURL(4), [HistoryController::class, 'manageHistory'])->name('search-history');
         Route::get(getSecureURL(6).'/{id}', [HistoryController::class, 'editGet'])->name('history-editor-page');
@@ -51,94 +51,94 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::delete(getSecureURL(8).'/{id}', [ContactUsRequestController::class, 'delete'])->name('delete-request');
     });
     Route::prefix('product-blend')->group(function () {
-        Route::get(getSecureURL(1), [ProductBlend::class, 'createGet'])->name('product-blend-creation-page');
-        Route::post(getSecureURL(2), [ProductBlend::class, 'createPost'])->name('post-product-blend');
-        Route::get(getSecureURL(4), [ProductBlend::class, 'manageProductBlend'])->name('product-blend-management-page');
-        Route::post('fetch-product-blend', [ProductBlend::class, 'fetchProductBlend'])->name('fetch-product-blend');
-        Route::post(getSecureURL(4), [ProductBlend::class, 'manageProductBlend'])->name('search-product-blend');
-        Route::get(getSecureURL(6).'/{id}', [ProductBlend::class, 'editGet'])->name('product-blend-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [ProductBlend::class, 'editPost'])->name('edit-product-blend');
-        Route::get('preview/{id}', [ProductBlend::class, 'preview'])->name('preview-product-blend');
+        Route::get(getSecureURL(1), [ProductBlendController::class, 'createGet'])->name('product-blend-creation-page');
+        Route::post(getSecureURL(2), [ProductBlendController::class, 'createPost'])->name('post-product-blend');
+        Route::get(getSecureURL(4), [ProductBlendController::class, 'manageProductBlend'])->name('product-blend-management-page');
+        Route::post('fetch-product-blend', [ProductBlendController::class, 'fetchProductBlend'])->name('fetch-product-blend');
+        Route::post(getSecureURL(4), [ProductBlendController::class, 'manageProductBlend'])->name('search-product-blend');
+        Route::get(getSecureURL(6).'/{id}', [ProductBlendController::class, 'editGet'])->name('product-blend-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [ProductBlendController::class, 'editPost'])->name('edit-product-blend');
+        Route::get('preview/{id}', [ProductBlendController::class, 'preview'])->name('preview-product-blend');
     });
     Route::prefix('product-package')->group(function () {
-        Route::get(getSecureURL(1), [ProductPackage::class, 'createGet'])->name('product-package-creation-page');
-        Route::post(getSecureURL(2), [ProductPackage::class, 'createPost'])->name('post-product-package');
-        Route::get(getSecureURL(4), [ProductPackage::class, 'manageProductPackage'])->name('product-package-management-page');
-        Route::post('fetch-product-package', [ProductPackage::class, 'fetchProductPackage'])->name('fetch-product-package');
-        Route::post(getSecureURL(4), [ProductPackage::class, 'manageProductPackage'])->name('search-product-package');
-        Route::get(getSecureURL(6).'/{id}', [ProductPackage::class, 'editGet'])->name('product-package-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [ProductPackage::class, 'editPost'])->name('edit-product-package');
-        Route::get('preview/{id}', [ProductPackage::class, 'preview'])->name('preview-product-package');
+        Route::get(getSecureURL(1), [ProductPackageController::class, 'createGet'])->name('product-package-creation-page');
+        Route::post(getSecureURL(2), [ProductPackageController::class, 'createPost'])->name('post-product-package');
+        Route::get(getSecureURL(4), [ProductPackageController::class, 'manageProductPackage'])->name('product-package-management-page');
+        Route::post('fetch-product-package', [ProductPackageController::class, 'fetchProductPackage'])->name('fetch-product-package');
+        Route::post(getSecureURL(4), [ProductPackageController::class, 'manageProductPackage'])->name('search-product-package');
+        Route::get(getSecureURL(6).'/{id}', [ProductPackageController::class, 'editGet'])->name('product-package-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [ProductPackageController::class, 'editPost'])->name('edit-product-package');
+        Route::get('preview/{id}', [ProductPackageController::class, 'preview'])->name('preview-product-package');
     });
     Route::prefix('quality-control-process')->group(function () {
-        Route::get(getSecureURL(1), [QualityControlProcess::class, 'createGet'])->name('quality-control-process-creation-page');
-        Route::post(getSecureURL(2), [QualityControlProcess::class, 'createPost'])->name('post-quality-control-process');
-        Route::get(getSecureURL(4), [QualityControlProcess::class, 'manageQualityControlProcess'])->name('quality-control-process-management-page');
-        Route::post('fetch-quality-control-process', [QualityControlProcess::class, 'fetchQualityControlProcess'])->name('fetch-quality-control-process');
-        Route::post(getSecureURL(4), [QualityControlProcess::class, 'manageQualityControlProcess'])->name('search-quality-control-process');
-        Route::get(getSecureURL(6).'/{id}', [QualityControlProcess::class, 'editGet'])->name('quality-control-process-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [QualityControlProcess::class, 'editPost'])->name('edit-quality-control-process');
-        Route::get('preview/{id}', [QualityControlProcess::class, 'preview'])->name('preview-quality-control-process');
+        Route::get(getSecureURL(1), [QualityControlProcessController::class, 'createGet'])->name('quality-control-process-creation-page');
+        Route::post(getSecureURL(2), [QualityControlProcessController::class, 'createPost'])->name('post-quality-control-process');
+        Route::get(getSecureURL(4), [QualityControlProcessController::class, 'manageQualityControlProcess'])->name('quality-control-process-management-page');
+        Route::post('fetch-quality-control-process', [QualityControlProcessController::class, 'fetchQualityControlProcess'])->name('fetch-quality-control-process');
+        Route::post(getSecureURL(4), [QualityControlProcessController::class, 'manageQualityControlProcess'])->name('search-quality-control-process');
+        Route::get(getSecureURL(6).'/{id}', [QualityControlProcessController::class, 'editGet'])->name('quality-control-process-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [QualityControlProcessController::class, 'editPost'])->name('edit-quality-control-process');
+        Route::get('preview/{id}', [QualityControlProcessController::class, 'preview'])->name('preview-quality-control-process');
     });
     Route::prefix('roasting-guide')->group(function () {
-        Route::get(getSecureURL(1), [RoastingGuide::class, 'createGet'])->name('roasting-guide-creation-page');
-        Route::post(getSecureURL(2), [RoastingGuide::class, 'createPost'])->name('post-roasting-guide');
-        Route::get(getSecureURL(4), [RoastingGuide::class, 'manageRoastingGuide'])->name('roasting-guide-management-page');
-        Route::post('fetch-roasting-guide', [RoastingGuide::class, 'fetchRoastingGuide'])->name('fetch-roasting-guide');
-        Route::post(getSecureURL(4), [RoastingGuide::class, 'manageRoastingGuide'])->name('search-roasting-guide');
-        Route::get(getSecureURL(6).'/{id}', [RoastingGuide::class, 'editGet'])->name('roasting-guide-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [RoastingGuide::class, 'editPost'])->name('edit-roasting-guide');
-        Route::get('preview/{id}', [RoastingGuide::class, 'preview'])->name('preview-roasting-guide');
+        Route::get(getSecureURL(1), [RoastingGuideController::class, 'createGet'])->name('roasting-guide-creation-page');
+        Route::post(getSecureURL(2), [RoastingGuideController::class, 'createPost'])->name('post-roasting-guide');
+        Route::get(getSecureURL(4), [RoastingGuideController::class, 'manageRoastingGuide'])->name('roasting-guide-management-page');
+        Route::post('fetch-roasting-guide', [RoastingGuideController::class, 'fetchRoastingGuide'])->name('fetch-roasting-guide');
+        Route::post(getSecureURL(4), [RoastingGuideController::class, 'manageRoastingGuide'])->name('search-roasting-guide');
+        Route::get(getSecureURL(6).'/{id}', [RoastingGuideController::class, 'editGet'])->name('roasting-guide-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [RoastingGuideController::class, 'editPost'])->name('edit-roasting-guide');
+        Route::get('preview/{id}', [RoastingGuideController::class, 'preview'])->name('preview-roasting-guide');
     });
     Route::prefix('roasting-machine')->group(function () {
-        Route::get(getSecureURL(1), [RoastingMachine::class, 'createGet'])->name('roasting-machine-creation-page');
-        Route::post(getSecureURL(2), [RoastingMachine::class, 'createPost'])->name('post-roasting-machine');
-        Route::get(getSecureURL(4), [RoastingMachine::class, 'manageRoastingMachine'])->name('roasting-machine-management-page');
-        Route::post('fetch-roasting-machine', [RoastingMachine::class, 'fetchRoastingMachine'])->name('fetch-roasting-machine');
-        Route::post(getSecureURL(4), [RoastingMachine::class, 'manageRoastingMachine'])->name('search-roasting-machine');
-        Route::get(getSecureURL(6).'/{id}', [RoastingMachine::class, 'editGet'])->name('roasting-machine-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [RoastingMachine::class, 'editPost'])->name('edit-roasting-machine');
-        Route::get('preview/{id}', [RoastingMachine::class, 'preview'])->name('preview-roasting-machine');
+        Route::get(getSecureURL(1), [RoastingMachineController::class, 'createGet'])->name('roasting-machine-creation-page');
+        Route::post(getSecureURL(2), [RoastingMachineController::class, 'createPost'])->name('post-roasting-machine');
+        Route::get(getSecureURL(4), [RoastingMachineController::class, 'manageRoastingMachine'])->name('roasting-machine-management-page');
+        Route::post('fetch-roasting-machine', [RoastingMachineController::class, 'fetchRoastingMachine'])->name('fetch-roasting-machine');
+        Route::post(getSecureURL(4), [RoastingMachineController::class, 'manageRoastingMachine'])->name('search-roasting-machine');
+        Route::get(getSecureURL(6).'/{id}', [RoastingMachineController::class, 'editGet'])->name('roasting-machine-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [RoastingMachineController::class, 'editPost'])->name('edit-roasting-machine');
+        Route::get('preview/{id}', [RoastingMachineController::class, 'preview'])->name('preview-roasting-machine');
     });
     Route::prefix('roasting-process')->group(function () {
-        Route::get(getSecureURL(1), [RoastingProcess::class, 'createGet'])->name('roasting-process-creation-page');
-        Route::post(getSecureURL(2), [RoastingProcess::class, 'createPost'])->name('post-roasting-process');
-        Route::get(getSecureURL(4), [RoastingProcess::class, 'manageRoastingProcess'])->name('roasting-process-management-page');
-        Route::post('fetch-roasting-process', [RoastingProcess::class, 'fetchRoastingProcess'])->name('fetch-roasting-process');
-        Route::post(getSecureURL(4), [RoastingProcess::class, 'manageRoastingProcess'])->name('search-roasting-process');
-        Route::get(getSecureURL(6).'/{id}', [RoastingProcess::class, 'editGet'])->name('roasting-process-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [RoastingProcess::class, 'editPost'])->name('edit-roasting-process');
-        Route::get('preview/{id}', [RoastingProcess::class, 'preview'])->name('preview-roasting-process');
+        Route::get(getSecureURL(1), [RoastingProcessController::class, 'createGet'])->name('roasting-process-creation-page');
+        Route::post(getSecureURL(2), [RoastingProcessController::class, 'createPost'])->name('post-roasting-process');
+        Route::get(getSecureURL(4), [RoastingProcessController::class, 'manageRoastingProcess'])->name('roasting-process-management-page');
+        Route::post('fetch-roasting-process', [RoastingProcessController::class, 'fetchRoastingProcess'])->name('fetch-roasting-process');
+        Route::post(getSecureURL(4), [RoastingProcessController::class, 'manageRoastingProcess'])->name('search-roasting-process');
+        Route::get(getSecureURL(6).'/{id}', [RoastingProcessController::class, 'editGet'])->name('roasting-process-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [RoastingProcessController::class, 'editPost'])->name('edit-roasting-process');
+        Route::get('preview/{id}', [RoastingProcessController::class, 'preview'])->name('preview-roasting-process');
     });
     Route::prefix('roasting-service')->group(function () {
-        Route::get(getSecureURL(1), [RoastingService::class, 'createGet'])->name('roasting-service-creation-page');
-        Route::post(getSecureURL(2), [RoastingService::class, 'createPost'])->name('post-roasting-service');
-        Route::get(getSecureURL(4), [RoastingService::class, 'manageRoastingService'])->name('roasting-service-management-page');
-        Route::post('fetch-roasting-service', [RoastingService::class, 'fetchRoastingService'])->name('fetch-roasting-service');
-        Route::post(getSecureURL(4), [RoastingService::class, 'manageRoastingService'])->name('search-roasting-service');
-        Route::get(getSecureURL(6).'/{id}', [RoastingService::class, 'editGet'])->name('roasting-service-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [RoastingService::class, 'editPost'])->name('edit-roasting-service');
-        Route::get('preview/{id}', [RoastingService::class, 'preview'])->name('preview-roasting-service');
+        Route::get(getSecureURL(1), [RoastingServiceController::class, 'createGet'])->name('roasting-service-creation-page');
+        Route::post(getSecureURL(2), [RoastingServiceController::class, 'createPost'])->name('post-roasting-service');
+        Route::get(getSecureURL(4), [RoastingServiceController::class, 'manageRoastingService'])->name('roasting-service-management-page');
+        Route::post('fetch-roasting-service', [RoastingServiceController::class, 'fetchRoastingService'])->name('fetch-roasting-service');
+        Route::post(getSecureURL(4), [RoastingServiceController::class, 'manageRoastingService'])->name('search-roasting-service');
+        Route::get(getSecureURL(6).'/{id}', [RoastingServiceController::class, 'editGet'])->name('roasting-service-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [RoastingServiceController::class, 'editPost'])->name('edit-roasting-service');
+        Route::get('preview/{id}', [RoastingServiceController::class, 'preview'])->name('preview-roasting-service');
     });
     Route::prefix('stella-coffee-origin')->group(function () {
-        Route::get(getSecureURL(1), [StellaCoffeeOrigin::class, 'createGet'])->name('stella-coffee-origin-creation-page');
-        Route::post(getSecureURL(2), [StellaCoffeeOrigin::class, 'createPost'])->name('post-stella-coffee-origin');
-        Route::get(getSecureURL(4), [StellaCoffeeOrigin::class, 'manageStellaCoffeeOrigin'])->name('stella-coffee-origin-management-page');
-        Route::post('fetch-stella-coffee-origin', [StellaCoffeeOrigin::class, 'fetchStellaCoffeeOrigin'])->name('fetch-stella-coffee-origin');
-        Route::post(getSecureURL(4), [StellaCoffeeOrigin::class, 'manageStellaCoffeeOrigin'])->name('search-stella-coffee-origin');
-        Route::get(getSecureURL(6).'/{id}', [StellaCoffeeOrigin::class, 'editGet'])->name('stella-coffee-origin-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [StellaCoffeeOrigin::class, 'editPost'])->name('edit-stella-coffee-origin');
-        Route::get('preview/{id}', [StellaCoffeeOrigin::class, 'preview'])->name('preview-stella-coffee-origin');
+        Route::get(getSecureURL(1), [StellaCoffeeOriginController::class, 'createGet'])->name('stella-coffee-origin-creation-page');
+        Route::post(getSecureURL(2), [StellaCoffeeOriginController::class, 'createPost'])->name('post-stella-coffee-origin');
+        Route::get(getSecureURL(4), [StellaCoffeeOriginController::class, 'manageStellaCoffeeOrigin'])->name('stella-coffee-origin-management-page');
+        Route::post('fetch-stella-coffee-origin', [StellaCoffeeOriginController::class, 'fetchStellaCoffeeOrigin'])->name('fetch-stella-coffee-origin');
+        Route::post(getSecureURL(4), [StellaCoffeeOriginController::class, 'manageStellaCoffeeOrigin'])->name('search-stella-coffee-origin');
+        Route::get(getSecureURL(6).'/{id}', [StellaCoffeeOriginController::class, 'editGet'])->name('stella-coffee-origin-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [StellaCoffeeOriginController::class, 'editPost'])->name('edit-stella-coffee-origin');
+        Route::get('preview/{id}', [StellaCoffeeOriginController::class, 'preview'])->name('preview-stella-coffee-origin');
     });
     Route::prefix('success-story')->group(function () {
-        Route::get(getSecureURL(1), [SuccessStory::class, 'createGet'])->name('success-story-creation-page');
-        Route::post(getSecureURL(2), [SuccessStory::class, 'createPost'])->name('post-success-story');
-        Route::get(getSecureURL(4), [SuccessStory::class, 'manageSuccessStory'])->name('success-story-management-page');
-        Route::post('fetch-success-story', [SuccessStory::class, 'fetchSuccessStory'])->name('fetch-success-story');
-        Route::post(getSecureURL(4), [SuccessStory::class, 'manageSuccessStory'])->name('search-success-story');
-        Route::get(getSecureURL(6).'/{id}', [SuccessStory::class, 'editGet'])->name('success-story-editor-page');
-        Route::put(getSecureURL(7).'/{id}', [SuccessStory::class, 'editPost'])->name('edit-success-story');
-        Route::get('preview/{id}', [SuccessStory::class, 'preview'])->name('preview-success-story');
+        Route::get(getSecureURL(1), [SuccessStoryController::class, 'createGet'])->name('success-story-creation-page');
+        Route::post(getSecureURL(2), [SuccessStoryController::class, 'createPost'])->name('post-success-story');
+        Route::get(getSecureURL(4), [SuccessStoryController::class, 'manageSuccessStory'])->name('success-story-management-page');
+        Route::post('fetch-success-story', [SuccessStoryController::class, 'fetchSuccessStory'])->name('fetch-success-story');
+        Route::post(getSecureURL(4), [SuccessStoryController::class, 'manageSuccessStory'])->name('search-success-story');
+        Route::get(getSecureURL(6).'/{id}', [SuccessStoryController::class, 'editGet'])->name('success-story-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [SuccessStoryController::class, 'editPost'])->name('edit-success-story');
+        Route::get('preview/{id}', [SuccessStoryController::class, 'preview'])->name('preview-success-story');
     });
 //
 //    Route::prefix('country')->group(function () {

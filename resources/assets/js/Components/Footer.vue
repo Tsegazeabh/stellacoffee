@@ -78,7 +78,7 @@
 <script>
     import logo from '../../images/logo.jpg'
     import Button from "@components/Button"
-    import {getMenus, getPublicationMenus, getDocumentMenus} from "@shared/Menus"
+    import {getMenus} from "@shared/Menu"
 
     export default {
         name: "footer",

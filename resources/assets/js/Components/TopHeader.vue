@@ -13,8 +13,8 @@
         </ul>
         <ul class="right">
             <li>
-                <inertia-link class="nav-link" type="button" :href="route('login')">
-                    {{_trans('menu.Login')}}
+                <inertia-link class="nav-link" type="button" :href="route('history-management-page')">
+                    Login
                 </inertia-link>
             </li>
             <li>
@@ -37,8 +37,10 @@
 </template>
 
 <script>
+    import Button from "@components/Button";
 export default {
-    name: "top-header"
+    name: "top-header",
+    components: {Button},
 }
 </script>
 

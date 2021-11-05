@@ -1,37 +1,51 @@
 <template>
-    <div id="partners-slider">
+    <div id="certificates-slider">
         <div class="slider-header">
             <index-header class="h2 justify-center text-center" title="Certificates"></index-header>
         </div>
         <div class="grid grid-cols-5 gap-10">
-            <div class="col-span-2">
-                <div class="swiper-container">
-                    <swiper @swiper="setControlledSwiper"
-                            :modules="modules"
-                            :slides-per-view="1">
+            <div class="col-span-4">
+                <div class="flex flex-wrap w-full">
+                    <!--                    :controller="{ control: controlledSwiper }"-->
+                    <swiper
+                        :parallax="true"
+                        :modules="modules"
+                        :navigation="true"
+                        autoplay
+                        :slides-per-view="1">
                         <swiper-slide v-for="(certificate,index) in certificates" :key="index" class="header-slider">
-                            <span class="slider-header-text">{{ certificate.title }}</span>
-                            <div class="w-full flex flex-col">
-                                <img :src="certificate.image" class="w-full object-fill">
+                            <div class="grid grid-cols-3 gap-10">
+                                <img :src="certificate.image" class="col-span-1 object-fill">
+                                <div class="col-span-2 flex flex-col">
+                                    <h3 class="text-xl text-stella font-black my-3">{{ certificate.name }}</h3>
+                                    <p class="my-2">{{ certificate.description }}</p>
+                                    <div class="py-4 pr-20 flex flex-wrap justify-between items-center text-roast-dark font-semibold">
+                                        <span>Provided by: {{ certificate.provider }}</span>
+                                        <span>Date: {{ certificate.date }} </span>
+                                    </div>
+                                    <div class="py-4">
+                                        <button class="border font-bold rounded p-3 bg-stella text-white">Download</button>
+                                    </div>
+                                </div>
                             </div>
                         </swiper-slide>
                     </swiper>
                 </div>
             </div>
-            <div class="col-span-3">
-                <div class="swiper-container">
-                    <swiper
-                        :modules="[Controller]"
-                        :controller="{ control: controlledSwiper }"
-                        :space-between="100"
-                        :slides-per-view="3"
-                        autoplay
-                        :parallax="true"
-                        :navigation="true">
-                        <swiper-slide v-for="certificate in certificates">
-                            <img :src="certificate.image" class="w-full object-fill">
-                        </swiper-slide>
-                    </swiper>
+
+            <!--                        @swiper="setControlledSwiper"-->
+            <!--                        :modules="[Controller]"-->
+            <div class="col-span-1">
+                <div class="flex flex-col items-center">
+                    <!--                    <swiper-->
+                    <!--                        :direction="'vertical'"-->
+                    <!--                        :freeMode="true"-->
+                    <!--                        :space-between="30"-->
+                    <!--                        :slides-per-view="3">-->
+                    <!--                        <swiper-slide v-for="certificate in certificates">-->
+                    <!--                            <img :src="certificate.image" class="w-full object-fill">-->
+                    <!--                        </swiper-slide>-->
+                    <!--                    </swiper>-->
                 </div>
             </div>
         </div>
@@ -49,10 +63,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
+import "swiper/css/free-mode"
+import IndexHeader from "./IndexHeader";
 
 export default defineComponent({
     name: "certifications",
-    components: {Swiper, SwiperSlide},
+    components: {IndexHeader, Swiper, SwiperSlide},
     setup() {
         const controlledSwiper = ref(null);
         const setControlledSwiper = (swiper) => {
@@ -65,44 +81,44 @@ export default defineComponent({
                 {
                     image: "images/stella_coffee_logo.jpg",
                     name: "Fair Trade",
-                    description: "Certificate 1",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia",
                     provider: "Fair Trade America",
-                    date: ""
+                    date: "Aug 02, 2016"
                 },
                 {
                     image: "images/stella_coffee_logo.jpg",
                     name: "Bird Friendly",
-                    description: "Certificate 1",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia",
                     provider: "Rainforest Alliance",
-                    date: ""
+                    date: "Aug 02, 2017"
                 },
                 {
                     image: "images/stella_coffee_logo.jpg",
                     name: "Rainforest Alliance",
-                    description: "Certificate 1",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia",
                     provider: "Ethiopia Coffee Quality Control",
-                    date: ""
+                    date: "Aug 02, 2018"
                 },
                 {
                     image: "images/stella_coffee_logo.jpg",
                     name: "Carbon Neutral",
-                    description: "Certificate 1",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia",
                     provider: "Ethiopia Coffee Quality Control",
-                    date: ""
+                    date: "Aug 02, 2019"
                 },
                 {
                     image: "images/stella_coffee_logo.jpg",
                     name: "Organic",
-                    description: "Certificate 1",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia",
                     provider: "Ethiopia Coffee Quality Control",
-                    date: ""
+                    date: "Aug 02, 2020"
                 },
                 {
                     image: "images/stella_coffee_logo.jpg",
                     name: "Direct Trade",
-                    description: "Certificate 1",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed tempora corrupti officia",
                     provider: "Ethiopia Coffee Quality Control",
-                    date: ""
+                    date: "Aug 02, 2021"
                 },
             ],
             setControlledSwiper,

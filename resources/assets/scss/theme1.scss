@@ -359,6 +359,12 @@ footer {
     @apply flex flex-col items-center;
 }
 
+#certificates-slider {
+    @apply p-20 bg-white;
+    .slider-header {
+        @apply flex flex-col flex-wrap justify-center items-center;
+    }
+}
 
 #partners-slider {
     @apply p-20 bg-gray-100;

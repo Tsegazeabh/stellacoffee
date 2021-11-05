@@ -30,12 +30,26 @@
         "sass": "^1.43.4"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-decoupled-document": "^31.0.0",
+        "@ckeditor/ckeditor5-source-editing": "^31.0.0",
+        "@ckeditor/ckeditor5-vue": "^2.0.1",
         "@fortawesome/fontawesome-free": "^5.15.4",
+        "@suadelabs/vue3-multiselect": "^1.0.2",
         "@tailwindcss/typography": "^0.4.1",
+        "@vueform/multiselect": "^2.2.0",
+        "ag-grid-community": "^26.1.0",
+        "ag-grid-vue3": "^26.1.2",
+        "inversify": "^6.0.1",
+        "moment": "^2.29.1",
         "postcss-import": "^14.0.2",
         "resolve-url-loader": "^4.0.0",
         "sass-loader": "^12.3.0",
         "swiper": "^7.2.0",
-        "vuex": "^4.0.2"
+        "v-calendar": "^2.3.4",
+        "vue-class-component": "^8.0.0-rc.1",
+        "vue-share-buttons": "^1.1.0",
+        "vuex": "^4.0.2",
+        "youtube-vue3": "^0.1.10",
+        "ziggy-js": "^1.4.2"
     }
 }

@@ -32,23 +32,23 @@ function translations($jsonTranslationFile)
 
     $translations= json_decode(file_get_contents($jsonTranslationFile), true);
 
-    if(!empty($translations)) {
-        if (getSessionLanguageShortCode() == 'en') {
-            $documentTypes = DocumentType::get()->pluck('name', 'name')->toArray();
-        } else {
-            $documentTypes = DocumentType::get()->pluck('name_alt', 'name')->toArray();
-        }
-
-        if (getSessionLanguageShortCode() == 'en') {
-            $publicationTypes = PublicationType::get()->pluck('name', 'name')->toArray();
-        } else {
-            $publicationTypes = PublicationType::get()->pluck('name_alt', 'name')->toArray();
-        }
-
-        $documentTypes = array_merge($documentTypes, $publicationTypes);
-
-        $translations = array_merge_recursive($translations, array("menu" => $documentTypes));
-        return $translations;
-    }
+//    if(!empty($translations)) {
+//        if (getSessionLanguageShortCode() == 'en') {
+//            $documentTypes = DocumentType::get()->pluck('name', 'name')->toArray();
+//        } else {
+//            $documentTypes = DocumentType::get()->pluck('name_alt', 'name')->toArray();
+//        }
+//
+//        if (getSessionLanguageShortCode() == 'en') {
+//            $publicationTypes = PublicationType::get()->pluck('name', 'name')->toArray();
+//        } else {
+//            $publicationTypes = PublicationType::get()->pluck('name_alt', 'name')->toArray();
+//        }
+//
+//        $documentTypes = array_merge($documentTypes, $publicationTypes);
+//
+//        $translations = array_merge_recursive($translations, array("menu" => $documentTypes));
+//        return $translations;
+//    }
     return [];
 }

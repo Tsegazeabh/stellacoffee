@@ -5,6 +5,7 @@ use App\Http\Controllers\CMS\ServiceCharterController;
 use App\Models\BillComplaint;
 use App\Models\BillInformation;
 use App\Models\Billing;
+use App\Models\Certification;
 use App\Models\CitizenEngagement;
 use App\Models\City;
 use App\Models\ComplaintHandling;
@@ -37,10 +38,17 @@ use App\Models\PowerInterruption;
 use App\Models\Prepaid;
 use App\Models\PressRelease;
 use App\Models\PrivacyPolicy;
+use App\Models\ProductBlend;
+use App\Models\ProductPackage;
 use App\Models\ProjectAndProgram;
 use App\Models\Publication;
 use App\Models\PublicationType;
+use App\Models\QualityControlProcess;
 use App\Models\Region;
+use App\Models\RoastingGuide;
+use App\Models\RoastingMachine;
+use App\Models\RoastingProcess;
+use App\Models\RoastingService;
 use App\Models\ServiceCharter;
 use App\Models\ServiceType;
 use App\Models\SocialResponsibility;
@@ -51,7 +59,9 @@ use App\Models\History;
 use App\Models\CeoMessage;
 use App\Models\Innovation;
 use App\Models\StaffAnnouncement;
+use App\Models\StellaCoffeeOrigin;
 use App\Models\Subcity;
+use App\Models\SuccessStory;
 use App\Models\Tender;
 use App\Models\TermAndCondition;
 use App\Models\Vacancy;
@@ -106,33 +116,8 @@ function getDefaultSortingColumn()
 function getContentDetailUrl($content_type, $content_id, $langCode='en')
 {
     switch ($content_type) {
-        case News::class:
-            return route('news-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Events::class:
-            return route('event-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case PressRelease::class:
-            return route('press-release-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Speech::class:
-            return route('speech-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case AboutUs::class:
-            return route('about-us-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Profile::class:
-            return route('profile-detail', [
+        case Certification::class:
+            return route('certification-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
@@ -141,173 +126,48 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case CeoMessage::class:
-            return route('ceo-message-detail', [
+        case ProductBlend::class:
+            return route('product-blend-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case Innovation::class:
-            return route('innovation-detail', [
+        case ProductPackage::class:
+            return route('product-package-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case OrganizationalStructure::class:
-            return route('organizational-structure-detail', [
+        case QualityControlProcess::class:
+            return route('quality-control-process-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case ServiceCharter::class:
-            return route('service-charter-detail', [
+        case RoastingGuide::class:
+            return route('roasting-guide-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case Postpaid::class:
-            return route('postpaid-detail', [
+        case RoastingMachine::class:
+            return route('roasting-machine-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case Prepaid::class:
-            return route('prepaid-detail', [
+        case RoastingProcess::class:
+            return route('roasting-process-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case BillInformation::class:
-            return route('bill-information-detail', [
+        case RoastingService::class:
+            return route('roasting-service-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case BillComplaint::class:
-            return route('bill-complaint-detail', [
+        case StellaCoffeeOrigin::class:
+            return route('stella-coffee-origin-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
-        case ContactDetails::class:
-            return route('contact-details-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case CustomerServiceCenter::class:
-            return route('customer-service-center-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case GettingElectricity::class:
-            return route('getting-electricity-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case PaymentOption::class:
-            return route('payment-option-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Billing::class:
-            return route('billing-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case PowerInterruption::class:
-            return route('power-interruption-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case ElectricityTariff::class:
-            return route('electricity-tariff-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case ComplaintHandling::class:
-            return route('complaint-handling-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case CustomerRightAndDuty::class:
-            return route('customer-right-and-duty-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case ElectricalTip::class:
-            return route('electrical-tip-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case EaseOfDoingBusiness::class:
-            return route('ease-of-doing-business-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case ProjectAndProgram::class:
-            return route('project-and-program-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case SocialResponsibility::class:
-            return route('social-responsibility-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Document::class:
-            return route('document-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Publication::class:
-            return route('publication-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case CitizenEngagement::class:
-            return route('citizen-engagement-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case CustomerAnnouncement::class:
-            return route('customer-announcement-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case StaffAnnouncement::class:
-            return route('staff-announcement-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Vacancy::class:
-            return route('vacancy-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Tender::class:
-            return route('tender-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case Faq::class:
-            return route('faq-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case MainSlider::class:
-            return route('main-slider-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case PrivacyPolicy::class:
-            return route('privacy-policy-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case TermAndCondition::class:
-            return route('term-and-condition-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case ImportantLink::class:
-            return route('important-link-detail', [
-                'contentId' => $content_id,
-                'lang' => $langCode
-            ]);
-        case PopupContent::class:
-            return route('popup-content-detail', [
+        case SuccessStory::class:
+            return route('success-story-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
@@ -319,141 +179,34 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
 function getModelName($content_type)
 {
     switch (strtolower($content_type)) {  //TODO This requires slug operation in addition to lower case
-        case 'events':
-            return Events::class;
-        case 'press-release':
-        case 'pressrelease':
-            return PressRelease::class;
-        case 'speeches':
-            return Speech::class;
-        case 'about-us':
-        case 'aboutus':
-            return AboutUs::class;
+        case 'certification':
+            return Certification::class;
         case 'history':
             return History::class;
-        case 'profile':
-            return Profile::class;
-        case 'ceo-message':
-        case 'ceomessage':
-            return CeoMessage::class;
-        case 'innovation':
-            return Innovation::class;
-        case 'organizational-structure':
-        case 'organizationalstructure':
-            return OrganizationalStructure::class;
-        case 'service-charter':
-        case 'servicecharter':
-            return ServiceCharter::class;
-        case 'postpaid':
-            return Postpaid::class;
-        case 'prepaid':
-            return Prepaid::class;
-        case 'bill-information':
-        case 'billinformation':
-            return BillInformation::class;
-        case 'bill-complaint':
-        case 'billcomplaint':
-            return BillComplaint::class;
-        case 'contact-details':
-        case 'contactdetails':
-            return ContactDetails::class;
-        case 'contactusrequest':
-        case 'contact-us-request':
-            return ContactUsRequest::class;
-        case 'payment-type':
-        case 'paymenttype':
-            return PaymentType::class;
-        case 'service-type':
-        case 'servicetype':
-            return ServiceType::class;
-        case 'country':
-            return Country::class;
-        case 'region':
-            return Region::class;
-        case 'woreda':
-            return Woreda::class;
-        case 'zone':
-            return Zone::class;
-        case 'city':
-            return City::class;
-        case 'subcity':
-            return Subcity::class;
-        case 'customer-service-center':
-        case 'customerservicecenter':
-            return CustomerServiceCenter::class;
-        case 'getting-electricity':
-        case 'gettingelectricity':
-            return GettingElectricity::class;
-        case 'payment-option':
-        case 'paymentoption':
-            return PaymentOption::class;
-        case 'billing':
-            return Billing::class;
-        case 'power-interruption':
-        case 'powerinterruption':
-            return PowerInterruption::class;
-        case 'electricity-tariff':
-        case 'electricitytariff':
-            return ElectricityTariff::class;
-        case 'complaint-handling':
-        case 'complainthandling':
-            return ComplaintHandling::class;
-        case 'customer-right-and-duty':
-        case 'customerrightandduty':
-            return CustomerRightAndDuty::class;
-        case 'electrical-tip':
-        case 'electricaltip':
-            return ElectricalTip::class;
-        case 'ease-of-doing-business':
-        case 'easeofdoingbusiness':
-            return EaseOfDoingBusiness::class;
-        case 'project-and-program':
-        case 'projectandprogram':
-            return ProjectAndProgram::class;
-        case 'social-responsibility':
-        case 'socialresponsibility':
-            return SocialResponsibility::class;
-        case 'document':
-            return Document::class;
-        case 'publication':
-            return Publication::class;
-        case 'citizenengagement':
-        case 'citizen-engagement':
-            return CitizenEngagement::class;
-        case 'publication-type':
-        case 'publicationtype':
-            return PublicationType::class;
-        case 'document-type':
-        case 'documenttype':
-            return DocumentType::class;
-        case 'customer-announcement':
-        case 'customerannouncement':
-            return CustomerAnnouncement::class;
-        case 'staff-announcement':
-        case 'staffannouncement':
-            return StaffAnnouncement::class;
-        case 'vacancy':
-            return Vacancy::class;
-        case 'tender':
-            return Tender::class;
-        case 'faq':
-            return Faq::class;
-        case 'faq-group':
-        case 'faqgroup':
-            return FaqGroup::class;
-        case 'partner':
-            return Partner::class;
-        case 'main-slider':
-        case 'mainslider':
-            return MainSlider::class;
-        case 'privacy-policy':
-            return PrivacyPolicy::class;
-        case 'term-and-condition':
-            return TermAndCondition::class;
-        case 'important-link':
-            return ImportantLink::class;
-        case 'popup-content':
-            return PopupContent::class;
+        case 'product-blend':
+        case 'productblend':
+            return ProductBlend::class;
+        case 'product-package':
+        case 'productpackage':
+            return ProductPackage::class;
+        case 'quality-control-process':
+        case 'qualitycontrolprocess':
+            return QualityControlProcess::class;
+        case 'roasting-guide':
+        case 'roastingguide':
+            return RoastingGuide::class;
+        case 'roasting-machine':
+        case 'roastingmachine':
+            return RoastingMachine::class;
+        case 'roasting-process':
+        case 'roastingprocess':
+            return RoastingProcess::class;
+        case 'stella-coffee-origin':
+        case 'stellacoffeeorigin':
+            return StellaCoffeeOrigin::class;
+        case 'success-story':
+        case 'successstory':
+            return SuccessStory::class;
         default:
             return News::class;
     }

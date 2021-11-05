@@ -13,7 +13,10 @@
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
+        "owen-it/laravel-auditing": "^12.0",
         "spatie/laravel-csp": "^2.6",
+        "spatie/laravel-feed": "^4.0",
+        "spatie/laravel-medialibrary": "^9.0.0",
         "tightenco/ziggy": "^1.4"
     },
     "require-dev": {
@@ -29,7 +32,16 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/URLHelper.php",
+            "app/Helpers/LocaleHelper.php",
+            "app/Helpers/MessagesHelper.php",
+            "app/Helpers/ContentHelper.php",
+            "app/Helpers/ValidationHelper.php",
+            "app/Helpers/AuthorizationHelper.php",
+            "app/Helpers/YoutubeHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

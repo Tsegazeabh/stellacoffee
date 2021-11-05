@@ -1,0 +1,7 @@
+const ASCENDING = "ASC";
+const DESCENDING = "DESC";
+
+export default {
+    ASCENDING: ASCENDING,
+    DESCENDING: DESCENDING
+}

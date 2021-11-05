@@ -115,7 +115,7 @@
                     <div class="flex flex-wrap justify-between">
                         <div class="flex flex-col justify-start items-center flex-none w-max">
                             <h1 class="org-name">
-                                <a :href="route('home')">Ethiopian Electric Utility</a>
+                                <a :href="route('home')">Stella Coffee</a>
                             </h1>
                         </div>
                     </div>

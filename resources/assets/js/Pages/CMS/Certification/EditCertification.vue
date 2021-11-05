@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import CMSLayout from "@layouts/CMSLayout";
+    import AdminLayout from "@layouts/CMSLayout";
     import CertificationForm from "@components/CertificationForm";
 
     export default {

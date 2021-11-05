@@ -31,8 +31,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import IndexHeader from "./IndexHeader";
+import {defineComponent} from 'vue'
 
-export default {
+export default defineComponent({
     name: "testimonials-slider",
     components: {IndexHeader, TestimonialCard, Swiper, SwiperSlide},
     setup() {
@@ -70,7 +71,7 @@ export default {
             ]
         }
     }
-}
+})
 </script>
 
 <style>

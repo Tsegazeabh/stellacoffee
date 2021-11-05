@@ -27,8 +27,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
+import {defineComponent} from 'vue'
 
-export default {
+export default defineComponent({
     name: "MainSlider",
     components: {SliderCard, Swiper, SwiperSlide},
     setup() {
@@ -39,20 +40,20 @@ export default {
                 {
                     title: 'Stella Coffee Brands',
                     lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image:'http://127.0.0.1:8000/images/bg-image-3.jpg'
-                },
-                {
-                    title: 'Get the Most Out of Your Favorite Roasted Coffee',
-                    lead_paragraph: 'AWDA Pvt. Ltd. Co. was established in 1997 G.C with the objective of procurement, processing and export of best Ethiopian Arabica coffees to the entire world.  It is the continuation of the shareholders effort, in the coffee sector where he has been investing and expanding the realm of the company.',
-                    image:'http://127.0.0.1:8000/images/bg-image-4.jpg'
+                    image: 'http://127.0.0.1:8000/images/bg-image-3.jpg'
                 },
                 {
                     title: 'Get the Most Out of Your Favorite Coffee',
                     lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image:'http://127.0.0.1:8000/images/Ampersand-38.jpg'
+                    image: 'http://127.0.0.1:8000/images/bg-image-4.jpg'
+                },
+                {
+                    title: 'Get the Most Out of Your Favorite Coffee',
+                    lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
+                    image: 'http://127.0.0.1:8000/images/Ampersand-38.jpg'
                 },
             ],
         };
     },
-}
+})
 </script>

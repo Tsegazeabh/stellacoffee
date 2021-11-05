@@ -3,19 +3,24 @@
         <div class="menu">
             <ul>
                 <li class="active">
-                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-process'"><strong>Roasting Process</strong></a>
+                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-process'"><strong>Roasting
+                        Process</strong></a>
                 </li>
                 <li>
-                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='qc-process'"><strong>Quality Control Process</strong></a>
+                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='qc-process'"><strong>Quality Control
+                        Process</strong></a>
                 </li>
                 <li>
-                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-machines'"><strong>Our Roasting Machine</strong></a>
+                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-machines'"><strong>Our
+                        Roasting Machine</strong></a>
                 </li>
                 <li>
-                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-guides'"><strong>Roasting Guides</strong></a>
+                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-guides'"><strong>Roasting
+                        Guides</strong></a>
                 </li>
                 <li>
-                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-service'"><strong>Roasting Services</strong></a>
+                    <a href="#roasting-tabs-cont" @click.prevent.stop="currentTab='roasting-service'"><strong>Roasting
+                        Services</strong></a>
                 </li>
             </ul>
 
@@ -37,8 +42,9 @@
 <script>
 
 import IndexHeader from "./IndexHeader";
+import {defineComponent} from 'vue'
 
-export default {
+export default defineComponent({
     name: "RoastingTabs",
     components: {IndexHeader},
     data() {
@@ -47,11 +53,11 @@ export default {
         }
     },
     computed: {
-        currentTabComponent(){
+        currentTabComponent() {
             return this.currentTab + '-tab';
         }
     }
-}
+})
 </script>
 
 <style scoped>

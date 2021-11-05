@@ -12,7 +12,9 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
     name: "slider-card",
     props: {
         content: {
@@ -20,5 +22,5 @@ export default {
             required: true
         }
     }
-}
+})
 </script>

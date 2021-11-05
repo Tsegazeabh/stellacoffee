@@ -23,12 +23,13 @@
 </template>
 
 <script>
-    import CMSLayout from "@layouts/CMSLayout";
+    import AdminLayout from "@layouts/AdminLayout";
     import RoastingProcessForm from "@components/RoastingProcessForm";
+    import { defineComponent } from 'vue'
 
-    export default {
+    export default defineComponent({
         name: "edit-roasting-process",
-        layout: (h, page) => h(CMSLayout, [page]), // if you want to use different persistence layout,
+        layout: (h, page) => h(AdminLayout, [page]), // if you want to use different persistence layout,
         components: {
             RoastingProcessForm
         },
@@ -56,5 +57,5 @@
                 default: ''
             }
         }
-    }
+    })
 </script>

@@ -6,9 +6,11 @@
 </template>
 
 <script>
-    export default {
-        name: "ag-grid-detail-icon"
-    }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "ag-grid-detail-icon"
+})
 </script>
 
 

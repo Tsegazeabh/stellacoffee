@@ -5,7 +5,7 @@
                 <a :href="route('home')">
                     <img :src="logo" class="h-11" alt="EEU"/>
                 </a>
-                <h1 class="app-name">{{_trans('titles.EEU CMS')}}</h1>
+                <h1 class="app-name">{{ _trans('titles.EEU CMS') }}</h1>
             </div>
             <div class="navbar-container">
                 <ul class="navbar">
@@ -18,12 +18,12 @@
                             <li class="nav-item dropdown-item py-0 w-full" v-if="!$page.props.auth.user.is_admin">
                                 <inertia-link class="nav-link w-full"
                                               :href="route('password-modification-page', $page.props.auth.user.id)">
-                                    {{_trans('action.Change Password')}}
+                                    {{ _trans('action.Change Password') }}
                                 </inertia-link>
                             </li>
                             <li class="nav-item dropdown-item py-0 w-full">
                                 <inertia-link class="nav-link w-full" method="post" :href="route('logout')">
-                                    {{_trans('action.Logout')}}
+                                    {{ _trans('action.Logout') }}
                                 </inertia-link>
                             </li>
                         </ul>
@@ -35,7 +35,7 @@
                             title="Language">
                             <span>
 <!--                                <i class="fa fa-language"></i> -->
-                                {{_trans('locale.'+$page.props.locale)}}
+                                {{ _trans('locale.' + $page.props.locale) }}
                             </span>
                             <i class="fa fa-angle-down ml-1"></i>
                         </button>
@@ -70,50 +70,51 @@
 </template>
 
 <script>
-    import logo from "../../images/logo.jpg"
-    import BreezeDropdown from '@components/Dropdown'
-    import BreezeDropdownLink from '@components/DropdownLink'
-    import Button from "@components/Button";
+import logo from "../../images/logo.jpg"
+import BreezeDropdown from '@components/Dropdown'
+import BreezeDropdownLink from '@components/DropdownLink'
+import Button from "@components/Button";
+import {defineComponent} from 'vue'
 
-    export default {
-        name: "cms-header",
-        emits: ['toggleCollapse'],
-        components: {
-            Button,
-            BreezeDropdown,
-            BreezeDropdownLink,
+export default defineComponent({
+    name: "cms-header",
+    emits: ['toggleCollapse'],
+    components: {
+        Button,
+        BreezeDropdown,
+        BreezeDropdownLink,
+    },
+    props: {
+        collapse: {
+            type: Boolean,
+            default: false
         },
-        props: {
-            collapse: {
-                type: Boolean,
-                default: false
-            },
-            breakpoint: {
-                type: Object,
-                required: true
+        breakpoint: {
+            type: Object,
+            required: true
+        }
+    },
+    computed: {
+        lang() {
+            return this.$page.props.locale;
+        }
+    },
+    methods: {
+        toggleCollapse() {
+            if (window.innerWidth < this.breakpoint.md) {
+                this.collapsed = !this.collapsed
+            } else {
+                this.collapsed = true;
             }
-        },
-        computed: {
-            lang() {
-                return this.$page.props.locale;
-            }
-        },
-        methods: {
-            toggleCollapse() {
-                if (window.innerWidth < this.breakpoint.md) {
-                    this.collapsed = !this.collapsed
-                } else {
-                    this.collapsed = true;
-                }
 
-                this.$emit('toggleCollapse', !this.collapse)
-            },
+            this.$emit('toggleCollapse', !this.collapse)
         },
-        data() {
-            return {
-                logo: logo,
-                collapsed: this.collapse
-            }
-        },
-    }
+    },
+    data() {
+        return {
+            logo: logo,
+            collapsed: this.collapse
+        }
+    },
+})
 </script>

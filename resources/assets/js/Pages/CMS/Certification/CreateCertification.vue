@@ -10,7 +10,7 @@
             <li>
                 <inertia-link :href="route('certification-management-page')">{{_trans('label.shared.Certification')}}</inertia-link>
             </li>
-            <li>{{_trans('action.create')}}</li>
+            <li>{{ _trans('action.create') }}</li>
         </ul>
     </div>
     <CertificationForm :certification="certification"
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-    import CMSLayout from "@layouts/CMSLayout"
+    import AdminLayout from "@layouts/CMSLayout"
     import CertificationForm from "@components/CertificationForm"
-
-    export default {
+    import {defineComponent} from 'vue'
+    export default defineComponent({
         name: "CreateCertification",
         components: {CertificationForm},
         layout: (h, page) => h(CMSLayout, [page]), // if you want to use different persistence layout,
@@ -44,5 +44,5 @@
             errorMessage: {type: String, default: ''},
             successMessage: {type: String, default: ''}
         },
-    }
+    })
 </script>

@@ -16,17 +16,19 @@
 </template>
 
 <script>
-    export default {
-        name: "json-result-paginator",
-        props: {
-            links: Array,
-        },
-        emits:['pageChanged'],
-        methods:{
-            changePage(url){
-                let page = url.split('page=')[1];
-                this.$emit('pageChanged', page)
-            }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "json-result-paginator",
+    props: {
+        links: Array,
+    },
+    emits: ['pageChanged'],
+    methods: {
+        changePage(url) {
+            let page = url.split('page=')[1];
+            this.$emit('pageChanged', page)
         }
     }
+})
 </script>

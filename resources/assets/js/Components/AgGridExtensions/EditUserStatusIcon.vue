@@ -1,5 +1,6 @@
 <template>
-    <button v-if="params.active" type="button" class="p-3.5 text-red-500 flex justify-center items-center" title="Lock User" @click="changeStatus">
+    <button v-if="params.active" type="button" class="p-3.5 text-red-500 flex justify-center items-center"
+            title="Lock User" @click="changeStatus">
         <i class="fa fa-lock"></i>
     </button>
 
@@ -10,15 +11,17 @@
 </template>
 
 <script>
-    export default {
-        name: "edit-user-status-icon",
+import {defineComponent} from 'vue'
 
-        methods: {
-            changeStatus() {
-                if(confirm("Are you sure you want to change the status of the user?")) {
-                    this.params.context.componentParent.updateUserStatus(this.params.value)
-                }
+export default defineComponent({
+    name: "edit-user-status-icon",
+
+    methods: {
+        changeStatus() {
+            if (confirm("Are you sure you want to change the status of the user?")) {
+                this.params.context.componentParent.updateUserStatus(this.params.value)
             }
         }
     }
+})
 </script>

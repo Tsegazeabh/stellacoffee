@@ -1,24 +1,30 @@
 <template>
-    <button class="p-3.5 text-red-500 flex justify-center items-center" title="Re-send Email Activation Link" @click="resendUserActivationMail">
+    <button class="p-3.5 text-red-500 flex justify-center items-center" title="Re-send Email Activation Link"
+            @click="resendUserActivationMail">
         <i class="fa fa-envelope"></i>
     </button>
 </template>
 
 <script>
-    import Button from "@components/Button";
-    export default {
-        name: "send-user-activation-mail-icon",
-        components: {Button},
-        data() { return {} },
+import Button from "@components/Button";
+import {defineComponent} from 'vue'
 
-        mounted() { },
+export default defineComponent({
+    name: "send-user-activation-mail-icon",
+    components: {Button},
+    data() {
+        return {}
+    },
 
-        methods: {
-            resendUserActivationMail() {
-                this.params.context.componentParent.resendEmailVerfication(this.params.value)
-            }
+    mounted() {
+    },
+
+    methods: {
+        resendUserActivationMail() {
+            this.params.context.componentParent.resendEmailVerfication(this.params.value)
         }
     }
+})
 </script>
 
 

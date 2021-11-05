@@ -6,15 +6,17 @@
 </template>
 
 <script>
-    import Button from "@components/Button";
-    export default {
-        name: "ag-grid-audit-detail-icon",
-        components: {Button},
-        methods: {
-            viewDetail() {
-                this.params.context.componentParent.viewDetail(this.params.value)
-            }
+import Button from "@components/Button";
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "ag-grid-audit-detail-icon",
+    components: {Button},
+    methods: {
+        viewDetail() {
+            this.params.context.componentParent.viewDetail(this.params.value)
         }
     }
+})
 </script>
 

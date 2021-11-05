@@ -8,9 +8,11 @@
 </template>
 
 <script>
-    export default {
-        name: "QueryException.vue"
-    }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "QueryException.vue"
+})
 </script>
 
 

@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.webpackConfig(require('./webpack.config'))
-//.copyDirectory('resources/ckeditor5_custom_build/build', 'node_modules/@ckeditor/ckeditor5-build-decoupled-document/build')
+    //.copyDirectory('resources/ckeditor5_custom_build/build', 'node_modules/@ckeditor/ckeditor5-build-decoupled-document/build')
     .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
     .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
     .js('resources/assets/js/app.js', 'public/js/app.min.js')

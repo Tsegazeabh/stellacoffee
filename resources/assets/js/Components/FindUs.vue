@@ -6,10 +6,12 @@
 
 <script>
 import IndexHeader from "./IndexHeader";
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
     name: "find-us",
     components: {IndexHeader}
-}
+})
 </script>
 
 <style scoped>

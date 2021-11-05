@@ -188,7 +188,7 @@ nav.main-navbar:hover {
     }
 }
 
-#testimonial-slider {
+#testimonial-slider, #partners-slider {
     @apply p-20;
     .slider-header {
         @apply flex flex-col flex-wrap justify-center items-center;
@@ -319,14 +319,15 @@ footer {
 }
 
 .products-container {
-    @apply grid grid-cols-4 gap-5;
+    @apply grid grid-cols-3 gap-5;
 }
 
 .tab-headers-cont {
     .index-header:not(.active) > span:last-child {
         display: none;
     }
-    .index-header.active{
+
+    .index-header.active {
         @apply text-roast-light;
     }
 }
@@ -358,10 +359,20 @@ footer {
     @apply flex flex-col items-center;
 }
 
-
-#partners-slider {
-    @apply p-20;
+#certificates-slider {
+    @apply p-20 bg-white;
     .slider-header {
         @apply flex flex-col flex-wrap justify-center items-center;
+    }
+}
+
+#partners-slider {
+    @apply p-20 bg-gray-100;
+    .slider-header {
+        @apply flex flex-col flex-wrap justify-center items-center;
+    }
+
+    .partner-card {
+        @apply border shadow-lg;
     }
 }

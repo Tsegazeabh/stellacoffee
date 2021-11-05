@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Head :title="title" />
+        <inertia-head :title="title" />
 
         <jet-banner />
 
@@ -12,9 +12,9 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <inertia-link :href="route('dashboard')">
                                     <jet-application-mark class="block h-9 w-auto" />
-                                </Link>
+                                </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
@@ -239,22 +239,20 @@
     import JetDropdownLink from '@jetstream/DropdownLink.vue'
     import JetNavLink from '@jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@jetstream/ResponsiveNavLink.vue'
-    import { Head, Link } from '@inertiajs/inertia-vue3';
 
     export default defineComponent({
+        name: "app-layout",
         props: {
             title: String,
         },
 
         components: {
-            Head,
             JetApplicationMark,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
-            Link,
         },
 
         data() {

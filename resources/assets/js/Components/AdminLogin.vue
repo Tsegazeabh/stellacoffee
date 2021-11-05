@@ -43,12 +43,13 @@
 
 <script>
     import EmptyLayout from "@layouts/EmptyLayout";
+    import { defineComponent } from 'vue'
 
-    export default {
+    export default defineComponent({
         name: "admin-login",
         layout: EmptyLayout,
 
-    }
+    })
 </script>
 
 <style scoped>

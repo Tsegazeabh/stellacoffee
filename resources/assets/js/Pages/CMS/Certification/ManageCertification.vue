@@ -52,31 +52,32 @@
 </template>
 
 <script>
-    import moment from 'moment'
-    import CMSLayout from "@layouts/CMSLayout"
-    import {AgGridVue} from "ag-grid-vue3"
-    import Button from "@components/Button"
-    import {publish, unpublish, archive, restore, forceDelete} from "../../../shared/ContentServices"
-    import SearchModel from "@models/SearchModel";
-    import SORTING_DIRECTION from "@models/CONSTANTS";
-    import AgGridEditIcon from "@components/AgGridExtensions/AgGridEditIcon";
-    import AgGridArchiveIcon from "@components/AgGridExtensions/AgGridArchiveIcon";
-    import AgGridPublishIcon from "@components/AgGridExtensions/AgGridPublishIcon";
-    import AgGridUnPublishIcon from "@components/AgGridExtensions/AgGridUnPublishIcon";
-    import AgGridDeleteIcon from "@components/AgGridExtensions/AgGridDeleteIcon";
-    import AgGridContentStatus from "@components/AgGridExtensions/AgGridContentStatus";
-    import AgGridPreviewIcon from "@components/AgGridExtensions/AgGridPreviewIcon";
-    import axios from 'axios'
-    import AgGridEmptyCol from "@components/AgGridExtensions/AgGridEmptyCol";
-    import AgGridRetoreIcon from "@components/AgGridExtensions/AgGridRetoreIcon";
+import moment from 'moment'
+import AdminLayout from "@layouts/AdminLayout"
+import {AgGridVue} from "ag-grid-vue3"
+import Button from "@components/Button"
+import {publish, unpublish, archive, restore, forceDelete} from "../../../shared/ContentServices"
+import SearchModel from "@models/SearchModel";
+import SORTING_DIRECTION from "@models/CONSTANTS";
+import AgGridEditIcon from "@components/AgGridExtensions/AgGridEditIcon";
+import AgGridArchiveIcon from "@components/AgGridExtensions/AgGridArchiveIcon";
+import AgGridPublishIcon from "@components/AgGridExtensions/AgGridPublishIcon";
+import AgGridUnPublishIcon from "@components/AgGridExtensions/AgGridUnPublishIcon";
+import AgGridDeleteIcon from "@components/AgGridExtensions/AgGridDeleteIcon";
+import AgGridContentStatus from "@components/AgGridExtensions/AgGridContentStatus";
+import AgGridPreviewIcon from "@components/AgGridExtensions/AgGridPreviewIcon";
+import axios from 'axios'
+import AgGridEmptyCol from "@components/AgGridExtensions/AgGridEmptyCol";
+import AgGridRetoreIcon from "@components/AgGridExtensions/AgGridRetoreIcon";
+import {defineComponent} from 'vue'
 
-    export default {
-        name: "manage-certification",
-        components: {
-            Button,
-            'ag-grid-vue': AgGridVue
-        },
-        layout: (h, page) => h(CMSLayout, [page]), // if you want to use different persistence layout,
+export default defineComponent({
+    name: "manage-history",
+    components: {
+        Button,
+        'ag-grid-vue': AgGridVue
+    },
+    layout: (h, page) => h(AdminLayout, [page]), // if you want to use different persistence layout,
 
         props: {
             pagingSize: {
@@ -452,8 +453,8 @@
                 });
 
             },
-        }
     }
+})
 </script>
 
 <style src="ag-grid-community/dist/styles/ag-grid.css"></style>

@@ -1,5 +1,6 @@
 <template>
-    <div id="story" class="w-full sm:flex sm:flex-col sm:flex-wrap md:grid md:grid-cols-5 items-stretch justify-items-stretch">
+    <div id="story"
+         class="w-full sm:flex sm:flex-col sm:flex-wrap md:grid md:grid-cols-5 items-stretch justify-items-stretch">
         <div class="md:col-span-2 px-0 md:px-3">
             <img src="http://127.0.0.1:8000/images/Ampersand-38.jpg" class="object-contain w-full"/>
         </div>
@@ -16,7 +17,9 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
     name: "story"
-}
+})
 </script>

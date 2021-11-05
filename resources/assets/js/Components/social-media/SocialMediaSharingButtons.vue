@@ -6,7 +6,7 @@
             :modalWidth="modal.width"
             :modalHeight="modal.height"
             :isBlank="false"
-            :appID="fb_app_id" />
+            :appID="fb_app_id"/>
         <twitter-button
             :url="url"
             :description="description"
@@ -46,31 +46,40 @@
 </template>
 
 <script>
-    import Button from "@components/Button";
-    import TwitterButton from "vue-share-buttons/src/components/TwitterButton";
-    import FacebookButton from "vue-share-buttons/src/components/FacebookButton";
-    import TelegramButton from "vue-share-buttons/src/components/TelegramButton";
-    import PinterestButton from "vue-share-buttons/src/components/PinterestButton";
-    import LinkedInButton from "vue-share-buttons/src/components/LinkedInButton";
-    import WhatsAppButton from "vue-share-buttons/src/components/WhatsAppButton";
+import Button from "@components/Button";
+import TwitterButton from "vue-share-buttons/src/components/TwitterButton";
+import FacebookButton from "vue-share-buttons/src/components/FacebookButton";
+import TelegramButton from "vue-share-buttons/src/components/TelegramButton";
+import PinterestButton from "vue-share-buttons/src/components/PinterestButton";
+import LinkedInButton from "vue-share-buttons/src/components/LinkedInButton";
+import WhatsAppButton from "vue-share-buttons/src/components/WhatsAppButton";
+import {defineComponent} from 'vue'
 
-    export default {
-        name: "social-media-sharing-buttons",
-        components: {Button, TwitterButton, FacebookButton, TelegramButton, PinterestButton, LinkedInButton, WhatsAppButton},
+export default defineComponent({
+    name: "social-media-sharing-buttons",
+    components: {
+        Button,
+        TwitterButton,
+        FacebookButton,
+        TelegramButton,
+        PinterestButton,
+        LinkedInButton,
+        WhatsAppButton
+    },
 
-        data() {
-            return {
-                modal:{
-                  width:500,
-                  height:500
-                },
-                fb_app_id:'584951052526538',
-                url: document.querySelector('meta[property="og\\:url"]') ? document.querySelector('meta[property="og\\:url"]').content:location.href,
-                title: document.querySelector('meta[property="og\\:title"]') ? document.querySelector('meta[property="og\\:title"]').content : '',
-                description: document.querySelector('meta[property="og\\:description"]') ? document.querySelector('meta[property="og\\:description"]').content: ''
-            }
+    data() {
+        return {
+            modal: {
+                width: 500,
+                height: 500
+            },
+            fb_app_id: '584951052526538',
+            url: document.querySelector('meta[property="og\\:url"]') ? document.querySelector('meta[property="og\\:url"]').content : location.href,
+            title: document.querySelector('meta[property="og\\:title"]') ? document.querySelector('meta[property="og\\:title"]').content : '',
+            description: document.querySelector('meta[property="og\\:description"]') ? document.querySelector('meta[property="og\\:description"]').content : ''
         }
     }
+})
 </script>
 
 <style>
@@ -91,9 +100,10 @@
     color: #3b5897 !important;
 }
 
-.share-button.share-button--facebook .share-button__icon path{
+.share-button.share-button--facebook .share-button__icon path {
     fill: #3b5897 !important;
 }
+
 .share-button.share-button--twitter {
     border-color: #1ca0f2 !important;
 }
@@ -102,7 +112,7 @@
     color: #1ca0f2 !important;
 }
 
-.share-button.share-button--twitter .share-button__icon path{
+.share-button.share-button--twitter .share-button__icon path {
     fill: #1ca0f2 !important;
 }
 
@@ -114,7 +124,7 @@
     color: #2ea5e0 !important;
 }
 
-.share-button.share-button--telegram .share-button__icon path{
+.share-button.share-button--telegram .share-button__icon path {
     fill: #2ea5e0 !important;
 }
 
@@ -126,7 +136,7 @@
     color: #bf081d !important;
 }
 
-.share-button.share-button--pinterest .share-button__icon path{
+.share-button.share-button--pinterest .share-button__icon path {
     fill: #bf081d !important;
 }
 
@@ -138,7 +148,7 @@
     color: #0074b3 !important;
 }
 
-.share-button.share-button--linkedIn .share-button__icon path{
+.share-button.share-button--linkedIn .share-button__icon path {
     fill: #0074b3 !important;
 }
 
@@ -151,7 +161,7 @@
     color: #25d466 !important;
 }
 
-.share-button.share-button--whatsApp .share-button__icon path{
+.share-button.share-button--whatsApp .share-button__icon path {
     fill: #25d466 !important;
 }
 

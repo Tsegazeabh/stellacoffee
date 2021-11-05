@@ -6,20 +6,25 @@
 </template>
 
 <script>
-    import Button from "@components/Button";
-    export default {
-        name: "ag-grid-unlock-icon",
-        components: {Button},
-        data() { return {} },
+import Button from "@components/Button";
+import {defineComponent} from 'vue'
 
-        mounted() { },
+export default defineComponent({
+    name: "ag-grid-unlock-icon",
+    components: {Button},
+    data() {
+        return {}
+    },
 
-        methods: {
-            openRow() {
-                this.params.context.componentParent.openRow(this.params.value, this.$toast)
-            }
+    mounted() {
+    },
+
+    methods: {
+        openRow() {
+            this.params.context.componentParent.openRow(this.params.value, this.$toast)
         }
     }
+})
 </script>
 
 

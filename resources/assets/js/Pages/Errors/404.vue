@@ -8,9 +8,11 @@
 </template>
 
 <script>
-    export default {
-        name: "http-not-found"
-    }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "http-not-found"
+})
 </script>
 
 

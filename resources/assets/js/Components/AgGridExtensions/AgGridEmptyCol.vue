@@ -3,7 +3,9 @@
 </template>
 
 <script>
-    export default {
-        name: "ag-grid-empty-col"
-    }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "ag-grid-empty-col"
+})
 </script>

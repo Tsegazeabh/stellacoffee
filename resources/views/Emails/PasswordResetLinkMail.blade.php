@@ -52,9 +52,10 @@
 </html>
 <script>
     import Button from "@components/Button";
+    import {defineComponent} from 'vue'
 
-    export default {
+    export default defineComponent({
         components: {Button}
-    }
+    })
 </script>
 

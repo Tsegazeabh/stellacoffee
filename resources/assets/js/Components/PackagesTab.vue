@@ -4,8 +4,9 @@
 
 <script>
 import ProductCard from "./ProductCard";
+import {defineComponent} from 'vue'
 
-export default {
+export default defineComponent({
     name: "packages-tab",
     components: {ProductCard},
     data() {
@@ -47,23 +48,10 @@ export default {
                     description: 'Kicking Horse Dark Coffee is one of the best when it comes to the true taste.',
                     price: '$14.00'
                 },
-
-                {
-                    name: 'Melitta Coffee Classic Blend Ground Medium Roast',
-                    image: 'images/stella_coffee_logo.jpg',
-                    description: 'Melitta Coffee offers you all the coffee\'s flavor, providing a rich, full-bodied cup.',
-                    price: '$14.00'
-                },
-                {
-                    name: 'Teeccino Herbal Coffee Caffeine Free 11-Ounce Bags',
-                    image: 'images/stella_coffee_logo.jpg',
-                    description: 'Teeccino contains no coffee beans and has deliciously rich, full-bodied flavor.',
-                    price: '$14.00'
-                }
             ]
         }
     }
-}
+})
 </script>
 
 <style scoped>

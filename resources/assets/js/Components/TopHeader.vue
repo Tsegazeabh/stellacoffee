@@ -37,11 +37,13 @@
 </template>
 
 <script>
-    import Button from "@components/Button";
-export default {
+import Button from "@components/Button";
+import {defineComponent} from 'vue'
+
+export default defineComponent({
     name: "top-header",
     components: {Button},
-}
+})
 </script>
 
 <style scoped>

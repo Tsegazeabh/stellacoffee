@@ -61,11 +61,11 @@
 <script>
     import ContentsLayout from "@layouts/ContentsLayout";
     import moment from 'moment';
-    import Logo from "../../../../images/logo.jpg"
-
+    import Logo from "../../../../images/logo.jpg";
     import EEU_HISTORY_PHOTO from "../../../../images/logo.jpg";
+    import {defineComponent } from 'vue';
 
-    export default {
+    export default defineComponent({
         name: "history-index",
         layout: (h, page) => h(ContentsLayout, [page]), // if you want to use different persistence layout
         props: {
@@ -86,7 +86,7 @@
                 return moment(String(date)).format('MMM DD, YYYY')
             },
         }
-    }
+    })
 </script>
 
 <style scoped>

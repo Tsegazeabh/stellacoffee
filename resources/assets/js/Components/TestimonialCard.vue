@@ -24,7 +24,9 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
     name: "testimonial-card",
     props: {
         testimonial: {
@@ -32,7 +34,7 @@ export default {
             required: true
         }
     }
-}
+})
 </script>
 
 <style scoped>

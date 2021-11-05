@@ -78,15 +78,16 @@
 
 <script>
 import {getMenus} from "../Shared/Menu";
+import {defineComponent} from 'vue'
 
-export default {
+export default defineComponent({
     name: "site-footer",
     data() {
         return {
             menus: getMenus()
         }
     }
-}
+})
 </script>
 
 <style scoped>

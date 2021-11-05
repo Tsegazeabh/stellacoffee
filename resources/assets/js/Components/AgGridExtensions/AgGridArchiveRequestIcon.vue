@@ -6,7 +6,9 @@
 
 <script>
     import Button from "@components/Button";
-    export default {
+    import { defineComponent } from 'vue'
+
+    export default defineComponent({
         name: "ag-grid-archive-icon",
         components: {Button},
         data() { return {} },
@@ -16,7 +18,7 @@
                 this.params.context.componentParent.archiveRow(this.params.value, this.$toast)
             }
         }
-    }
+    })
 </script>
 
 <style scoped></style>

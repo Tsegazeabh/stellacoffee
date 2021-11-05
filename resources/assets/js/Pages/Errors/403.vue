@@ -8,9 +8,11 @@
 </template>
 
 <script>
-    export default {
-        name: "unauthorized-access"
-    }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "unauthorized-access"
+})
 </script>
 
 

@@ -3,9 +3,11 @@
 </template>
 
 <script>
-    export default {
-        name: "CertificationIndex"
-    }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+    name: "CertificationIndex"
+})
 </script>
 
 <style scoped>

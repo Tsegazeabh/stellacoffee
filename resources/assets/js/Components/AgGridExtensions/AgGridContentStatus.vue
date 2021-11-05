@@ -10,15 +10,17 @@
 </template>
 
 <script>
-    export default {
-        name: "ag-grid-content-status",
+import {defineComponent} from 'vue'
 
-        computed: {
-            published: function () {
-                return this.params  ? this.params.value : false;
-            }
-        },
-    }
+export default defineComponent({
+    name: "ag-grid-content-status",
+
+    computed: {
+        published: function () {
+            return this.params ? this.params.value : false;
+        }
+    },
+})
 </script>
 
 

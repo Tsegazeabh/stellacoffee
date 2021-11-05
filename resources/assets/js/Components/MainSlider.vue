@@ -27,8 +27,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
+import {defineComponent} from 'vue'
 
-export default {
+export default defineComponent({
     name: "MainSlider",
     components: {SliderCard, Swiper, SwiperSlide},
     setup() {
@@ -39,20 +40,20 @@ export default {
                 {
                     title: 'Elite Coffee Brands',
                     lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image:'http://127.0.0.1:8000/images/bg-image-3.jpg'
+                    image: 'http://127.0.0.1:8000/images/bg-image-3.jpg'
                 },
                 {
                     title: 'Get the Most Out of Your Favorite Coffee',
                     lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image:'http://127.0.0.1:8000/images/bg-image-4.jpg'
+                    image: 'http://127.0.0.1:8000/images/bg-image-4.jpg'
                 },
                 {
                     title: 'Get the Most Out of Your Favorite Coffee',
                     lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image:'http://127.0.0.1:8000/images/Ampersand-38.jpg'
+                    image: 'http://127.0.0.1:8000/images/Ampersand-38.jpg'
                 },
             ],
         };
     },
-}
+})
 </script>

@@ -17,58 +17,59 @@
 </template>
 
 <script>
-    import {getAllTags, createNewTag} from "@shared/TagsService"
-    import Multiselect from '@suadelabs/vue3-multiselect'
+import {getAllTags, createNewTag} from "@shared/TagsService"
+import Multiselect from '@suadelabs/vue3-multiselect'
+import {defineComponent} from 'vue'
 
-    export default {
-        name: "tags-selector",
+export default defineComponent({
+    name: "tags-selector",
 
-        props: {
-            selectedTags: {
-                type: Array,
-                default: []
-            }
-        },
+    props: {
+        selectedTags: {
+            type: Array,
+            default: []
+        }
+    },
 
-        data() {
-            return {
-                tags: [],
-                contentTags: []
-            }
-        },
+    data() {
+        return {
+            tags: [],
+            contentTags: []
+        }
+    },
 
-        components: {Multiselect},
+    components: {Multiselect},
 
-        mounted() {
-            this.fetchTags()
-        },
-        computed: {
-            model: {
-                set(value) {
-                    this.$emit('input', value);
-                },
-            }
-        },
-        methods: {
-
-            async fetchTags() {
-                this.tags = await getAllTags();
-                this.contentTags = this.tags.filter((t) => t.id == 57);
+    mounted() {
+        this.fetchTags()
+    },
+    computed: {
+        model: {
+            set(value) {
+                this.$emit('input', value);
             },
+        }
+    },
+    methods: {
 
-            async addTag(tag) {
-                tag = tag.trim();
-                let selectedTag = this.tags.filter((t) => t.name.toLowerCase() === tag.toLowerCase())
-                if (selectedTag == null || selectedTag.length == 0) {
-                    this.tags = await createNewTag(tag)
-                    selectedTag = this.tags.filter((t) => t.name.toLowerCase() === tag.toLowerCase())
-                    this.contentTags.push(selectedTag)
-                } else {
-                    this.contentTags.push(selectedTag)
-                }
+        async fetchTags() {
+            this.tags = await getAllTags();
+            this.contentTags = this.tags.filter((t) => t.id == 57);
+        },
+
+        async addTag(tag) {
+            tag = tag.trim();
+            let selectedTag = this.tags.filter((t) => t.name.toLowerCase() === tag.toLowerCase())
+            if (selectedTag == null || selectedTag.length == 0) {
+                this.tags = await createNewTag(tag)
+                selectedTag = this.tags.filter((t) => t.name.toLowerCase() === tag.toLowerCase())
+                this.contentTags.push(selectedTag)
+            } else {
+                this.contentTags.push(selectedTag)
             }
         }
     }
+})
 </script>
 
 <style src="@suadelabs/vue3-multiselect/dist/vue3-multiselect.css"></style>

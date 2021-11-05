@@ -5,20 +5,25 @@
 </template>
 
 <script>
-    import Button from "@components/Button";
-    export default {
-        name: "ag-grid-delete-icon",
-        components: {Button},
-        data() { return {} },
+import Button from "@components/Button";
+import {defineComponent} from 'vue'
 
-        mounted() { },
+export default defineComponent({
+    name: "ag-grid-delete-icon",
+    components: {Button},
+    data() {
+        return {}
+    },
 
-        methods: {
-            deleteRow() {
-                this.params.context.componentParent.deleteRow(this.params.value, this.$toast)
-            }
+    mounted() {
+    },
+
+    methods: {
+        deleteRow() {
+            this.params.context.componentParent.deleteRow(this.params.value, this.$toast)
         }
     }
+})
 </script>
 
 <style scoped>

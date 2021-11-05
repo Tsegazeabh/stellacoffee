@@ -1,4 +1,5 @@
 <template>
+    <inertia-head title="Stella Coffee | Home"></inertia-head>
     <main-slider></main-slider>
     <story></story>
     <roasting-tabs></roasting-tabs>

@@ -1,4 +1,5 @@
 <template>
+    <inertia-head title="Stella Coffee"></inertia-head>
     <top-header></top-header>
     <header-nav></header-nav>
     <main>

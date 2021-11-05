@@ -133,16 +133,12 @@ nav.main-navbar:hover {
 }
 
 .index-header {
-    @apply font-bold w-full mb-12 text-stella;
-    font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;;
-}
+    @apply flex flex-col w-max items-center font-bold mb-12 text-stella tracking-wider;
+    font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;
 
-.index-header:after {
-    @apply block relative text-center border-b-2 border-stella;
-    left: 45%;
-    bottom: 0;
-    content: '';
-    width: 10%;
+    > span:last-child {
+        @apply border-b-2 border-stella w-1/2 -mt-12;
+    }
 }
 
 .index-header.h1 {
@@ -170,7 +166,7 @@ nav.main-navbar:hover {
 }
 
 #story {
-    @apply p-3 md:px-16 md:py-12 bg-gray-200;
+    @apply p-3 md:px-20 md:py-20 bg-gray-200 gap-x-10;
     img {
         @apply object-contain h-full;
     }
@@ -194,6 +190,10 @@ nav.main-navbar:hover {
 
 #testimonial-slider {
     @apply p-20;
+    .slider-header {
+        @apply flex flex-col flex-wrap justify-center items-center;
+    }
+
     .testimonial-card {
         @apply flex flex-col items-stretch justify-start bg-white p-5;
 
@@ -229,29 +229,31 @@ nav.main-navbar:hover {
 
 #roasting-tabs {
 
-    @apply flex flex-row w-full flex-wrap bg-white py-6 my-10;
+    @apply w-full flex bg-white p-20 gap-x-20 justify-start items-stretch;
 
     .menu {
-        @apply flex flex-col w-max flex-grow-0 border-stella bg-stella;
+        @apply flex-grow-0 w-max;
 
         li {
-            @apply flex flex-wrap justify-start items-center text-base border-b border-gray-600 text-base text-white;
+            @apply flex flex-wrap text-white py-2;
             a {
-                @apply p-5 flex flex-wrap w-full h-full;
+                @apply p-5 w-full flex flex-wrap justify-center items-center shadow-lg opacity-90 rounded-full text-stella border;
+                strong {
+                    @apply flex-grow w-max;
+                }
             }
         }
 
-        li:last-child {
-            @apply border-0;
-        }
-
-        li.active a {
-            @apply bg-white text-stella font-black px-5;
+        li:hover, li.active {
+            a {
+                @apply font-black opacity-100 text-roast-dark text-center;
+                transform: scale(1.1);
+            }
         }
     }
 
     .tab-container {
-        @apply flex flex-col flex-grow  bg-white my-5;
+        @apply flex flex-wrap flex-grow justify-center items-start py-10;
     }
 }
 
@@ -303,5 +305,63 @@ footer {
                 @apply mr-5;
             }
         }
+    }
+}
+
+#product-tabs {
+    @apply bg-gray-100 p-20;
+    div.tab-headers-cont {
+        @apply flex w-full flex-wrap justify-center items-center;
+        .index-header {
+            @apply mx-10;
+        }
+    }
+}
+
+.products-container {
+    @apply grid grid-cols-4 gap-5;
+}
+
+.tab-headers-cont {
+    .index-header:not(.active) > span:last-child {
+        display: none;
+    }
+    .index-header.active{
+        @apply text-roast-light;
+    }
+}
+
+.product-card {
+
+    @apply col-span-1 flex flex-col flex-wrap items-stretch justify-items-stretch shadow-lg bg-white p-10;
+
+    .product-image img {
+        @apply object-fill;
+    }
+
+    .product-name {
+        @apply flex-grow-0 h-auto text-stella font-semibold text-center px-5 leading-relaxed mb-5;
+        font-size: 16px;
+    }
+
+    .product-description {
+        @apply flex-grow text-center px-5 leading-relaxed;
+    }
+
+    .product-price {
+        @apply flex-grow-0 h-auto text-center px-5 font-black leading-relaxed mt-10 text-stella;
+        font-size: 18px;
+    }
+}
+
+#find-us {
+    @apply flex flex-col items-center;
+}
+
+
+#partners-slider {
+    @apply p-20;
+    .slider-header {
+        @apply flex flex-col flex-wrap justify-center items-center;
     }
 }

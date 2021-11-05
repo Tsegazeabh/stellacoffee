@@ -1,12 +1,17 @@
 <template>
     <div id="partners-slider">
-        <h2 class="index-header h1 justify-center text-center">Our Partners</h2>
+        <div class="slider-header">
+            <index-header class="h2 justify-center text-center" title="Our Partners"></index-header>
+        </div>
     </div>
 </template>
 
 <script>
+import IndexHeader from "./IndexHeader";
+
 export default {
-    name: "partners"
+    name: "partners",
+    components: {IndexHeader}
 }
 </script>
 

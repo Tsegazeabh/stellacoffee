@@ -1,19 +1,43 @@
 <template>
-    <div id="product-tabs">
-        <div class="flex w-full flex-wrap">
-            <div class="flex w-1/2">
-                <h2 class="index-header h1 justify-center text-center">Packages</h2>
-            </div>
-            <div class="flex w-1/2">
-                <h2 class="index-header h1 justify-center text-center">Blends</h2>
+    <div id="product-tabs" class="">
+        <div class="tab-headers-cont">
+            <a href="#products-tab" class="index-header h2 justify-center text-center" :class="{'active':currentTab=='packages'}" @click.prevent.stop="currentTab = 'packages'">
+                <span>Packages</span>
+                <span>&nbsp;</span>
+            </a>
+            <a href="#products-tab" class="index-header h2 justify-center text-center" :class="{'active':currentTab=='blends'}" @click.prevent.stop="currentTab = 'blends'">
+                <span>Blends</span>
+                <span>&nbsp;</span>
+            </a>
+        </div>
+
+        <div id="products-tab">
+            <div class="products-container">
+                <component v-bind:is="currentTabComponent"></component>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import ProductCard from "./ProductCard";
+import IndexHeader from "./IndexHeader";
+import PackagesTab from "./PackagesTab";
+import BlendsTab from "./BlendsTab";
+
 export default {
-    name: "ProductsTab"
+    name: "ProductsTab",
+    components: {BlendsTab, PackagesTab, IndexHeader, ProductCard},
+    data() {
+        return {
+            currentTab:'packages'
+        }
+    },
+    computed:{
+        currentTabComponent(){
+            return this.currentTab + '-tab';
+        }
+    }
 }
 </script>
 

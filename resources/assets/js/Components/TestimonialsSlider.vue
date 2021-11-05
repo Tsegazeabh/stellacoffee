@@ -1,6 +1,8 @@
 <template>
     <div id="testimonial-slider">
-        <h2 class="index-header h1 justify-center text-center">Testimonials</h2>
+        <div class="slider-header">
+            <index-header class="h2 justify-center text-center" title="Testimonials"></index-header>
+        </div>
         <div class="swiper-container">
             <swiper
                 :modules="modules"
@@ -28,10 +30,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
+import IndexHeader from "./IndexHeader";
 
 export default {
     name: "testimonials-slider",
-    components: {TestimonialCard, Swiper, SwiperSlide},
+    components: {IndexHeader, TestimonialCard, Swiper, SwiperSlide},
     setup() {
         return {
             modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],

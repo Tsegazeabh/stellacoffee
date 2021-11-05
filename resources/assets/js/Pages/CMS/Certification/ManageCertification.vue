@@ -8,13 +8,13 @@
                 <li>
                     <inertia-link :href="route('dashboard')">{{_trans('menu.CMS')}}</inertia-link>
                 </li>
-                <li>{{_trans('label.shared.History')}}</li>
+                <li>{{_trans('label.shared.Certification')}}</li>
             </ul>
         </div>
         <div class="flex flex-wrap w-full justify-end">
-            <inertia-link type="button" :href="route('history-creation-page')"
+            <inertia-link type="button" :href="route('certification-creation-page')"
                           class="border text-gray-500 px-4 py-2 uppercase text-sm">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;{{_trans('label.shared.Create History')}}
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;{{_trans('label.shared.Create Certification')}}
             </inertia-link>
         </div>
         <form class="flex flex-wrap w-full py-8">
@@ -48,9 +48,6 @@
                  :defaultColDef="defaultColDef"
                  :animateRows="true"
                  :rowData="rowData">
-        <!--        :getRowHeight="getRowHeight"-->
-        <!--        @column-resized="onColumnResized"-->
-        <!--        @column-visible="onColumnVisible">-->
     </ag-grid-vue>
 </template>
 
@@ -74,7 +71,7 @@
     import AgGridRetoreIcon from "@components/AgGridExtensions/AgGridRetoreIcon";
 
     export default {
-        name: "manage-history",
+        name: "manage-certification",
         components: {
             Button,
             'ag-grid-vue': AgGridVue
@@ -168,7 +165,7 @@
                         // colId: 'params',
                         cellRenderer: 'previewIcon',
                         cellRendererParams: function (params) {
-                            return {previewRoute: params.node.data != null ? route('preview-history', params.node.data.id) : ''}
+                            return {previewRoute: params.node.data != null ? route('preview-certification', params.node.data.id) : ''}
                         },
                         // colId: 'id',
                         sortable: false
@@ -229,7 +226,7 @@
                                 return emptyCol;
                         },
                         cellRendererParams: function (params) {
-                            return {editRoute: params.node.data != null && params.node.data.contentable != null ? route('history-editor-page', params.node.data.contentable.id) : ''}
+                            return {editRoute: params.node.data != null && params.node.data.contentable != null ? route('certification-editor-page', params.node.data.contentable.id) : ''}
                         },
                         sortable: false
                     },
@@ -384,7 +381,7 @@
                         this.buildSearchModel(params);
 
                         // call a service to get list of users
-                        axios.post(route('fetch-history'), this.searchModel).then(res => {
+                        axios.post(route('fetch-certification'), this.searchModel).then(res => {
                             let result = res.data;
                             this.searchModel.currentPage = res.data.current_page;
                             params.successCallback((result && result.data) ? result.data : [], (result && result.total) ? result.total : 0);

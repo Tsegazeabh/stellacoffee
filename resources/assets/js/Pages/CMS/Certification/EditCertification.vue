@@ -8,39 +8,38 @@
                 <inertia-link :href="route('dashboard')">{{_trans('menu.CMS')}}</inertia-link>
             </li>
             <li>
-                <inertia-link :href="route('history-management-page')">{{_trans('label.shared.History')}}</inertia-link>
+                <inertia-link :href="route('history-management-page')">{{_trans('label.shared.Certification')}}</inertia-link>
             </li>
             <li>{{_trans('action.edit')}}</li>
         </ul>
     </div>
-    <history-form :history="history"
+    <CertificationForm :certification="certification"
                   :error-message="errorMessage"
                   :success-message="successMessage"
                   :errors="errors"
                   :method="'put'"
-                  :url="route('edit-history', history.id)">
-    </history-form>
+                  :url="route('edit-certification', certification.id)">
+    </CertificationForm>
 </template>
 
 <script>
     import CMSLayout from "@layouts/CMSLayout";
-    import HistoryForm from "@components/HistoryForm";
+    import CertificationForm from "@components/CertificationForm";
 
     export default {
         name: "edit-history",
         layout: (h, page) => h(CMSLayout, [page]), // if you want to use different persistence layout,
         components: {
-            HistoryForm
+            CertificationForm
         },
         props: {
-            history: {
+            certification: {
                 type: Object,
                 default: {
-                    from_date: '',
-                    to_date: '',
                     title: '',
+                    detail: '',
+                    video_link:'',
                     tags: [],
-                    detail: ''
                 },
                 required: true
             },

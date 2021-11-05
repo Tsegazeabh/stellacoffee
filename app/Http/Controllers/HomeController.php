@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         // Log::info(Crypt::encryptString('Admin@EEU_WP_P@56'));
-        return Inertia::render('Index', [
+        return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'nonce' => csp_nonce()
@@ -26,7 +26,7 @@ class HomeController extends Controller
 
     public function index2()
     {
-        return Inertia::render('Index', [
+        return Inertia::render('Index2', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register')
         ]);

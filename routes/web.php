@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
+use App\Http\Controllers\CMS\ContentsController;
 use App\Http\Controllers\CMS\HistoryController;
 use App\Http\Controllers\CMS\ProductBlendController;
 use App\Http\Controllers\CMS\ProductPackageController;
@@ -12,6 +13,8 @@ use App\Http\Controllers\CMS\RoastingProcessController;
 use App\Http\Controllers\CMS\RoastingServiceController;
 use App\Http\Controllers\CMS\StellaCoffeeOriginController;
 use App\Http\Controllers\CMS\SuccessStoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SEOController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +30,9 @@ use Inertia\Inertia;
 |
 */
 Route::feeds();
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [ContentsController::class, 'searchContents'])->name('search');
+Route::get('/sitemap', [SEOController::class, 'generateSitemap'])->name('sitemap');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

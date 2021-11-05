@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
-use App\Http\Controllers\CMS\ContentController;
+use App\Http\Controllers\CMS\ContentsController;
 use App\Http\Controllers\CMS\HistoryController;
 use App\Http\Controllers\CMS\ProductBlendController;
 use App\Http\Controllers\CMS\ProductPackageController;
@@ -228,11 +228,11 @@ Route::prefix(getSecureURL('cms'))->group(function () {
 //    });
 
     Route::prefix('content')->group(function () {
-        Route::put(getSecureURL(9).'/{id}', [ContentController::class, 'publish'])->name('publish-content');
-        Route::put(getSecureURL(10).'/{id}', [ContentController::class, 'unpublish'])->name('unpublish-content');
-        Route::put(getSecureURL(11).'/{id}', [ContentController::class, 'archive'])->name('archive-content');
-        Route::put(getSecureURL('restore').'/{id}', [ContentController::class, 'restore'])->name('restore-content');
-        Route::delete(getSecureURL(8).'/{id}', [ContentController::class, 'delete'])->name('delete-content');
+        Route::put(getSecureURL(9).'/{id}', [ContentsController::class, 'publish'])->name('publish-content');
+        Route::put(getSecureURL(10).'/{id}', [ContentsController::class, 'unpublish'])->name('unpublish-content');
+        Route::put(getSecureURL(11).'/{id}', [ContentsController::class, 'archive'])->name('archive-content');
+        Route::put(getSecureURL('restore').'/{id}', [ContentsController::class, 'restore'])->name('restore-content');
+        Route::delete(getSecureURL(8).'/{id}', [ContentsController::class, 'delete'])->name('delete-content');
     });
 
 //    Route::prefix('gallery')->group(function () {

@@ -8,7 +8,7 @@
                 <inertia-link :href="route('dashboard')">{{_trans('menu.CMS')}}</inertia-link>
             </li>
             <li>
-                <inertia-link :href="route('product-blend-management-page')">{{_trans('label.shared.ProductBlend')}}</inertia-link>
+                <inertia-link :href="route('product-blend-management-page')">{{_trans('label.shared.Product Blend')}}</inertia-link>
             </li>
             <li>{{_trans('action.create')}}</li>
         </ul>

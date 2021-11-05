@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\CMS\PrivacyPolicyController;
-use App\Http\Controllers\CMS\ServiceCharterController;
 use App\Models\BillComplaint;
 use App\Models\BillInformation;
 use App\Models\Billing;
@@ -21,22 +19,18 @@ use App\Models\DocumentType;
 use App\Models\EaseOfDoingBusiness;
 use App\Models\ElectricalTip;
 use App\Models\ElectricityTariff;
-use App\Models\Events;
 use App\Models\Faq;
 use App\Models\FaqGroup;
 use App\Models\GettingElectricity;
 use App\Models\ImportantLink;
 use App\Models\MainSlider;
 use App\Models\News;
-use App\Models\OrganizationalStructure;
 use App\Models\Partner;
 use App\Models\PaymentOption;
 use App\Models\PaymentType;
 use App\Models\PopupContent;
-use App\Models\Postpaid;
 use App\Models\PowerInterruption;
 use App\Models\Prepaid;
-use App\Models\PressRelease;
 use App\Models\PrivacyPolicy;
 use App\Models\ProductBlend;
 use App\Models\ProductPackage;
@@ -53,11 +47,8 @@ use App\Models\ServiceCharter;
 use App\Models\ServiceType;
 use App\Models\SocialResponsibility;
 use App\Models\Speech;
-use App\Models\AboutUs;
 use App\Models\Profile;
 use App\Models\History;
-use App\Models\CeoMessage;
-use App\Models\Innovation;
 use App\Models\StaffAnnouncement;
 use App\Models\StellaCoffeeOrigin;
 use App\Models\Subcity;
@@ -204,6 +195,9 @@ function getModelName($content_type)
         case 'stella-coffee-origin':
         case 'stellacoffeeorigin':
             return StellaCoffeeOrigin::class;
+        case 'contact-us-request':
+        case 'contactusrequest':
+            return ContactUsRequest::class;
         case 'success-story':
         case 'successstory':
             return SuccessStory::class;
@@ -215,110 +209,26 @@ function getModelName($content_type)
 function getTableName($content_type)
 {
     switch ($content_type) {  //TODO This requires slug operation in addition to lower case
-        case Events::class:
-            return (new Events)->getTable();
-        case PressRelease::class:
-            return (new PressRelease)->getTable();
-        case Speech::class:
-            return (new Speech)->getTable();
-        case AboutUs::class:
-            return (new AboutUs)->getTable();
+        case Certification::class:
+            return (new Certification)->getTable();
         case History::class:
             return (new History)->getTable();
-        case Profile::class:
-            return (new Profile)->getTable();
-        case CeoMessage::class:
-            return (new CeoMessage)->getTable();
-        case Innovation::class:
-            return (new Innovation)->getTable();
-        case OrganizationalStructure::class:
-            return (new OrganizationalStructure)->getTable();
-        case ServiceCharter::class:
-            return (new ServiceCharter)->getTable();
-        case Postpaid::class:
-            return (new Postpaid)->getTable();
-        case Prepaid::class:
-            return (new Prepaid)->getTable();
-        case BillInformation::class:
-            return (new BillInformation)->getTable();
-        case BillComplaint::class:
-            return (new BillComplaint)->getTable();
-        case ContactDetails::class:
-            return (new ContactDetails)->getTable();
-        case ContactUsRequest::class:
-            return (new ContactUsRequest)->getTable();
-        case PaymentType::class:
-            return (new PaymentType)->getTable();
-        case ServiceType::class:
-            return (new ServiceType)->getTable();
-        case Country::class:
-            return (new Country)->getTable();
-        case Region::class:
-            return (new Region)->getTable();
-        case Woreda::class:
-            return (new Woreda)->getTable();
-        case Zone::class:
-            return (new Zone)->getTable();
-        case City::class:
-            return (new City)->getTable();
-        case  CustomerServiceCenter::class:
-            return (new CustomerServiceCenter)->getTable();
-        case GettingElectricity::class:
-            return (new GettingElectricity)->getTable();
-        case PaymentOption::class:
-            return (new PaymentOption)->getTable();
-        case Billing::class:
-            return (new Billing)->getTable();
-        case PowerInterruption::class:
-            return (new PowerInterruption)->getTable();
-        case ElectricityTariff::class:
-            return (new ElectricityTariff)->getTable();
-        case ComplaintHandling::class:
-            return (new ComplaintHandling)->getTable();
-        case CustomerRightAndDuty::class:
-            return (new CustomerRightAndDuty)->getTable();
-        case ElectricalTip::class:
-            return (new ElectricalTip)->getTable();
-        case EaseOfDoingBusiness::class:
-            return (new EaseOfDoingBusiness)->getTable();
-        case ProjectAndProgram::class:
-            return (new ProjectAndProgram)->getTable();
-        case SocialResponsibility::class:
-            return (new SocialResponsibility)->getTable();
-        case Document::class:
-            return (new Document)->getTable();
-        case Publication::class:
-            return (new Publication)->getTable();
-        case CitizenEngagement::class:
-            return (new CitizenEngagement)->getTable();
-        case PublicationType::class:
-            return (new PublicationType)->getTable();
-        case DocumentType::class:
-            return (new DocumentType)->getTable();
-        case CustomerAnnouncement::class:
-            return (new CustomerAnnouncement)->getTable();
-        case StaffAnnouncement::class:
-            return (new StaffAnnouncement)->getTable();
-        case News::class:
-            return (new News)->getTable();
-        case Faq::class:
-            return (new Faq)->getTable();
-        case FaqGroup::class:
-            return (new FaqGroup)->getTable();
-        case Partner::class:
-            return (new Partner)->getTable();
-        case MainSlider::class:
-            return (new MainSlider)->getTable();
-        case Subcity::class:
-            return (new Subcity)->getTable();
-        case PrivacyPolicy::class:
-            return (new PrivacyPolicy)->getTable();
-        case TermAndCondition::class:
-            return (new TermAndCondition)->getTable();
-        case ImportantLink::class:
-            return (new ImportantLink)->getTable();
-        case PopupContent::class:
-            return (new PopupContent)->getTable();
+        case ProductBlend::class:
+            return (new ProductBlend)->getTable();
+        case ProductPackage::class:
+            return (new ProductPackage)->getTable();
+        case QualityControlProcess::class:
+            return (new QualityControlProcess)->getTable();
+        case RoastingGuide::class:
+            return (new RoastingGuide)->getTable();
+        case RoastingMachine::class:
+            return (new RoastingMachine)->getTable();
+        case RoastingProcess::class:
+            return (new RoastingProcess)->getTable();
+        case StellaCoffeeOrigin::class:
+            return (new StellaCoffeeOrigin)->getTable();
+        case SuccessStory::class:
+            return (new SuccessStory)->getTable();
         default:
             return (new Content())->getTable();
     }
@@ -327,74 +237,26 @@ function getTableName($content_type)
 function getContentIndexPageComponentName($content_type)
 {
     switch ($content_type) {
-        case Events::class:
-            return 'Public/Event/EventIndex';
-        case PressRelease::class:
-            return 'Public/PressRelease/PressReleaseIndex';
-        case Speech::class:
-            return 'Public/Speech/SpeechIndex';
-        case AboutUs::class:
-            return 'Public/AboutUs/AboutUsIndex';
-        case Profile::class:
-            return 'Public/Profile/ProfileIndex';
+        case Certification::class:
+            return 'Public/Certification/EventIndex';
         case History::class:
             return 'Public/History/HistoryIndex';
-        case CeoMessage::class:
-            return 'Public/CeoMessage/CeoMessageIndex';
-        case Innovation::class:
-            return 'Public/Innovation/InnovationIndex';
-        case OrganizationalStructure::class:
-            return 'Public/OrganizationalStructure/OrganizationalStructureIndex';
-        case ServiceCharter::class:
-            return 'Public/ServiceCharter/ServiceCharterIndex';
-        case Postpaid::class:
-            return 'Public/Postpaid/PostpaidIndex';
-        case Prepaid::class:
-            return 'Public/Prepaid/PrepaidIndex';
-        case BillInformation::class:
-            return 'Public/BillInformation/BillInformationIndex';
-        case BillComplaint::class:
-            return 'Public/BillComplaint/BillComplaintIndex';
-        case ContactDetails::class:
-            return 'Public/ContactDetails/ContactDetailsIndex';
-        case CustomerServiceCenter::class:
-            return 'Public/CustomerServiceCenter/CustomerServiceCenterIndex';
-        case GettingElectricity::class:
-            return 'Public/GettingElectricity/GettingElectricityIndex';
-        case PaymentOption::class:
-            return 'Public/PaymentOption/PaymentOptionIndex';
-        case Billing::class:
-            return 'Public/Billing/BillingIndex';
-        case PowerInterruption::class:
-            return 'Public/PowerInterruption/PowerInterruptionIndex';
-        case ElectricityTariff::class:
-            return 'Public/ElectricityTariff/ElectricityTariffIndex';
-        case ComplaintHandling::class:
-            return 'Public/ComplaintHandling/ComplaintHandlingIndex';
-        case CustomerRightAndDuty::class:
-            return 'Public/CustomerRightAndDuty/CustomerRightAndDutyIndex';
-        case ElectricalTip::class:
-            return 'Public/ElectricalTip/ElectricalTipIndex';
-        case EaseOfDoingBusiness::class:
-            return 'Public/EaseOfDoingBusiness/EaseOfDoingBusinessIndex';
-        case ProjectAndProgram::class:
-            return 'Public/ProjectAndProgram/ProjectAndProgramIndex';
-        case SocialResponsibility::class:
-            return 'Public/SocialResponsibility/SocialResponsibilityIndex';
-        case Document::class:
-            return 'Public/Document/DocumentIndex';
-        case Publication::class:
-            return 'Public/Publication/PublicationIndex';
-        case CitizenEngagement::class:
-            return 'Public/CitizenEngagement/CitizenEngagementIndex';
-        case CustomerAnnouncement::class:
-            return 'Public/CustomerAnnouncement/CustomerAnnouncementIndex';
-        case StaffAnnouncement::class:
-            return 'Public/StaffAnnouncement/StaffAnnouncementIndex';
-        case Vacancy::class:
-            return 'Public/Vacancy/VacancyIndex';
-        case Tender::class:
-            return 'Public/Tender/TenderIndex';
+        case ProductBlend::class:
+            return 'Public/ProductBlend/ProductBlendIndex';
+        case ProductPackage::class:
+            return 'Public/ProductPackage/ProductPackageIndex';
+        case QualityControlProcess::class:
+            return 'Public/QualityControlProcess/QualityControlProcessIndex';
+        case RoastingGuide::class:
+            return 'Public/RoastingGuide/RoastingGuideIndex';
+        case RoastingMachine::class:
+            return 'Public/RoastingMachine/RoastingMachineIndex';
+        case RoastingProcess::class:
+            return 'Public/RoastingProcess/RoastingProcessIndex';
+        case StellaCoffeeOrigin::class:
+            return 'Public/StellaCoffeeOrigin/StellaCoffeeOriginIndex';
+        case SuccessStory::class:
+            return 'Public/SuccessStory/SuccessStoryIndex';
         case Faq::class:
             return 'Public/Faq/FaqIndex';
         case MainSlider::class:
@@ -403,10 +265,6 @@ function getContentIndexPageComponentName($content_type)
             return 'Public/PrivacyPolicy/PrivacyPolicyIndex';
         case TermAndCondition::class:
             return 'Public/TermAndCondition/TermAndConditionIndex';
-        case ImportantLink::class:
-            return 'Public/ImportantLink/ImportantLinkIndex';
-        case PopupContent::class:
-            return 'Public/PopupContent/PopupContentIndex';
         default:
             return 'Public/News/NewsIndex';
     }
@@ -468,35 +326,17 @@ function getSearchableContentTypes()
 {
     return [
         News::class,
-        Events::class,
-        PressRelease::class,
-        Speech::class,
-        Profile::class,
-        ServiceCharter::class,
-        Innovation::class,
-        CeoMessage::class,
-        Postpaid::class,
-        Prepaid::class,
-        BillInformation::class,
-        BillComplaint::class,
-        PaymentOption::class,
-        Billing::class,
-        GettingElectricity::class,
-        CustomerAnnouncement::class,
-        ElectricityTariff::class,
-        ElectricalTip::class,
-        EaseOfDoingBusiness::class,
-        CustomerRightAndDuty::class,
-        ProjectAndProgram::class,
-        SocialResponsibility::class,
-        CitizenEngagement::class,
-        StaffAnnouncement::class,
-        ImportantLink::class,
-        PopupContent::class,
+        Certification::class,
+        History::class,
+        ProductBlend::class,
+        QualityControlProcess::class,
+        RoastingProcess::class,
+        RoastingMachine::class,
+        RoastingGuide::class,
+        StellaCoffeeOrigin::class,
+        SuccessStory::class,
 //        Vacancy::class,
 //        Tender::class,
-        Document::class,
-        Publication::class
     ];
 }
 
@@ -504,125 +344,45 @@ function getContentTypesForRSSFeeds()
 {
     return [
         News::class,
-        Events::class,
-        PressRelease::class,
-        Speech::class,
-        Profile::class,
-        ServiceCharter::class,
-        Innovation::class,
-        CeoMessage::class,
-        Postpaid::class,
-        Prepaid::class,
-        BillInformation::class,
-        BillComplaint::class,
-        PaymentOption::class,
-        Billing::class,
-        GettingElectricity::class,
-        CustomerAnnouncement::class,
-        ElectricityTariff::class,
-        ElectricalTip::class,
-        EaseOfDoingBusiness::class,
-        CustomerRightAndDuty::class,
-        ProjectAndProgram::class,
-        SocialResponsibility::class,
-        CitizenEngagement::class,
-        StaffAnnouncement::class,
-        ImportantLink::class,
-        PopupContent::class,
+        Certification::class,
+        History::class,
+        ProductBlend::class,
+        QualityControlProcess::class,
+        RoastingProcess::class,
+        RoastingMachine::class,
+        RoastingGuide::class,
+        StellaCoffeeOrigin::class,
+        SuccessStory::class,
 //        Vacancy::class,
 //        Tender::class,
-        Document::class,
-        Publication::class
     ];
 }
 
 function getModelShortName($model_type)
 {
     switch ($model_type) {
-        case Events::class:
-            return trans('models.Events');
-        case PressRelease::class:
-            return trans('models.PressRelease');
-        case Speech::class:
-            return trans('models.Speech');
-        case AboutUs::class:
-            return trans('models.AboutUs');
+        case Certification::class:
+            return trans('models.Certification');
         case History::class:
             return trans('models.History');
-        case Profile::class:
-            return trans('models.Profile');
-        case CeoMessage::class:
-            return trans('models.CeoMessage');
-        case Innovation::class:
-            return trans('models.Innovation');
-        case OrganizationalStructure::class:
-            return trans('models.OrganizationalStructure');
-        case ServiceCharter::class:
-            return trans('models.ServiceCharter');
-        case Postpaid::class:
-            return trans('models.Postpaid');
-        case Prepaid::class:
-            return trans('models.Prepaid');
-        case BillInformation::class:
-            return trans('models.BillInformation');
-        case BillComplaint::class:
-            return trans('models.BillComplaint');
-        case ContactDetails::class:
-            return trans('models.ContactDetails');
+        case ProductBlend::class:
+            return trans('models.ProductBlend');
+        case ProductPackage::class:
+            return trans('models.ProductPackage');
+        case QualityControlProcess::class:
+            return trans('models.QualityControlProcess');
+        case RoastingGuide::class:
+            return trans('models.RoastingGuide');
+        case RoastingMachine::class:
+            return trans('models.RoastingMachine');
+        case RoastingProcess::class:
+            return trans('models.RoastingProcess');
+        case StellaCoffeeOrigin::class:
+            return trans('models.StellaCoffeeOrigin');
+        case SuccessStory::class:
+            return trans('models.SuccessStory');
         case ContactUsRequest::class:
             return trans('models.ContactUsRequest');
-        case PaymentType::class:
-            return trans('models.PaymentType');
-        case ServiceType::class:
-            return trans('models.ServiceType');
-        case Country::class:
-            return trans('models.Country');
-        case Region::class:
-            return trans('models.Region');
-        case Woreda::class:
-            return trans('models.Woreda');
-        case Zone::class:
-            return trans('models.Zone');
-        case City::class:
-            return trans('models.City');
-        case  CustomerServiceCenter::class:
-            return trans('models.CustomerServiceCenter');
-        case GettingElectricity::class:
-            return trans('models.GettingElectricity');
-        case PaymentOption::class:
-            return trans('models.PaymentOption');
-        case Billing::class:
-            return trans('models.Billing');
-        case PowerInterruption::class:
-            return trans('models.PowerInterruption');
-        case ElectricityTariff::class:
-            return trans('models.ElectricityTariff');
-        case ComplaintHandling::class:
-            return trans('models.ComplaintHandling');
-        case CustomerRightAndDuty::class:
-            return trans('models.CustomerRightAndDuty');
-        case ElectricalTip::class:
-            return trans('models.ElectricalTip');
-        case EaseOfDoingBusiness::class:
-            return trans('models.EaseOfDoingBusiness');
-        case ProjectAndProgram::class:
-            return trans('models.ProjectAndProgram');
-        case SocialResponsibility::class:
-            return trans('models.SocialResponsibility');
-        case Document::class:
-            return trans('models.Document');
-        case Publication::class:
-            return trans('models.Publication');
-        case CitizenEngagement::class:
-            return trans('models.CitizenEngagement');
-        case PublicationType::class:
-            return trans('models.PublicationType');
-        case DocumentType::class:
-            return trans('models.DocumentType');
-        case CustomerAnnouncement::class:
-            return trans('models.CustomerAnnouncement');
-        case StaffAnnouncement::class:
-            return trans('models.StaffAnnouncement');
         case News::class:
             return trans('models.News');
         case Faq::class:
@@ -633,20 +393,11 @@ function getModelShortName($model_type)
             return trans('models.Partner');
         case MainSlider::class:
             return trans('models.MainSlider');
-        case Subcity::class:
-            return trans('models.Subcity');
         case PrivacyPolicy::class:
             return trans('models.PrivacyPolicy');
         case TermAndCondition::class:
             return trans('models.TermAndCondition');
-        case Vacancy::class:
-            return trans('models.Vacancy');
-        case Tender::class:
             return trans('models.Tender');
-        case ImportantLink::class:
-            return trans('models.ImportantLink');
-        case PopupContent::class:
-            return trans('models.PopupContent');
         default:
             return trans('models.Content');
     }

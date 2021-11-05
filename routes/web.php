@@ -119,4 +119,9 @@ Route::prefix('success-story')->group(function () {
     Route::get('latest-success-story', [SuccessStoryController::class, 'getLatestSuccessStory'])->name('latest-success-story');
     Route::get('detail/{contentId}', [SuccessStoryController::class, 'getDetail'])->name('success-story-detail');
 });
+Route::prefix('contents')->group(function () {
+    Route::get('{type}', [ContentsController::class, 'getContents'])->name('content-index-page');
+    Route::get('most-popular-contents/{limit}', [ContentsController::class, 'getPopularContents'])->name('most-popular-contents');
+    Route::post('{content_id}/related-contents', [ContentsController::class, 'getRelatedContents'])->name('related-contents');
+});
 

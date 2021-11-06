@@ -27,7 +27,7 @@
                     <slot name="summary-sect"></slot>
                 </div>
             </div>
-            <div class="col-span-1 bg-white p-10">
+            <div class="content-wrapper  col-span-1 bg-white p-10">
                 <slot></slot>
             </div>
         </div>
@@ -52,5 +52,11 @@ export default defineComponent({
     background-position: top left;
     background-size: cover;
     background-attachment: scroll;
+}
+
+.content-wrapper {
+
+    @apply overflow-auto;
+    max-height: 100vh;
 }
 </style>

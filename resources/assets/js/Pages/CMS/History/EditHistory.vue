@@ -14,13 +14,13 @@
             <li>{{ _trans('action.edit') }}</li>
         </ul>
     </div>
-    <history-form :history="history"
+    <HistoryForm :history="history"
                   :error-message="errorMessage"
                   :success-message="successMessage"
                   :errors="errors"
                   :method="'put'"
                   :url="route('edit-history', history.id)">
-    </history-form>
+    </HistoryForm>
 </template>
 
 <script>

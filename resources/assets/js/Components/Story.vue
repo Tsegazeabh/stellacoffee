@@ -7,9 +7,10 @@
         <div class="md:col-span-3 px-0 py-5 md:py-0 md:pl-3 flex flex-col flex-wrap items-start justify-between">
             <h2 class="leading-header flex-grow-0">Who we are?</h2>
             <h2 class="main-header flex-grow-0">Rich Taste, Great Aroma</h2>
-            <p class="summary flex-grow-1">
-                Free Wi-Fi, sockets near tables, friendly barista and a cozy atmosphere will help you in
-                your exciting work or evening relax..
+            <p class="summary flex-grow-1 text-justify">
+                AWDA Pvt. Ltd. Co. was established in 1997 G.C with the objective of procurement, processing and export of best
+                Ethiopian Arabica coffees to the entire world.  It is the continuation of the shareholders' effort, in the coffee sector
+                where he has been investing and expanding the realm of the company.
             </p>
             <button class="flex-grow-0">Learn more &raquo;</button>
         </div>

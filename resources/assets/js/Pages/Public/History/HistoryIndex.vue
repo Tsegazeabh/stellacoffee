@@ -5,7 +5,7 @@
                 <h1 class="text-center uppercase font-black text-2xl w-full md:w-1/2 mb-5">
                     {{ _trans('label.shared.Brief Historical Review Of Stella Coffee') }}
                 </h1>
-                <img class="w-full md:w-1/2 object-fit" :src="EEU_HISTORY_PHOTO"/>
+                <img class="w-full md:w-1/2 object-fit" :src="STELLA_COFFEE_LOGO"/>
             </div>
             <div v-for="content in history" class="card-container flex flex-col md:flex-row w-full" v-if="history">
                 <teleport to="head">
@@ -64,7 +64,7 @@ import ContentsLayout from "@layouts/ContentsLayout";
 import moment from 'moment';
 import Logo from "../../../../images/logo.jpg"
 
-import EEU_HISTORY_PHOTO from "../../../../images/logo.jpg";
+import STELLA_COFFEE_LOGO from "../../../../images/logo.jpg";
 import {defineComponent} from 'vue'
 
 export default defineComponent({
@@ -79,7 +79,7 @@ export default defineComponent({
 
     data() {
         return {
-            EEU_HISTORY_PHOTO: EEU_HISTORY_PHOTO
+            STELLA_COFFEE_LOGO: STELLA_COFFEE_LOGO
         }
     },
 
@@ -92,7 +92,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 .card-container .history-card .detail {
     @apply flex flex-col w-full flex-wrap shadow-md border px-8 py-4;
 }

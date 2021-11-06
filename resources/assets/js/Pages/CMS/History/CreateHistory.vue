@@ -14,13 +14,13 @@
             <li>{{ _trans('action.create') }}</li>
         </ul>
     </div>
-    <history-form :history="history"
+    <HistoryForm :history="history"
                   :error-message="errorMessage"
                   :success-message="successMessage"
                   :errors="errors"
                   :method="'post'"
                   :url="route('post-history')">
-    </history-form>
+    </HistoryForm>
 </template>
 
 <script>

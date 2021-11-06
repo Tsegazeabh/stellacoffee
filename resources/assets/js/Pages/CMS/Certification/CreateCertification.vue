@@ -23,13 +23,13 @@
 </template>
 
 <script>
-    import AdminLayout from "@layouts/CMSLayout"
+    import AdminLayout from "@layouts/AdminLayout"
     import CertificationForm from "@components/CertificationForm"
     import {defineComponent} from 'vue'
     export default defineComponent({
         name: "CreateCertification",
         components: {CertificationForm},
-        layout: (h, page) => h(CMSLayout, [page]), // if you want to use different persistence layout,
+        layout: (h, page) => h(AdminLayout, [page]), // if you want to use different persistence layout,
         props: {
             certification: {
                 type: Object,

@@ -2,6 +2,37 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.breadcrumb {
+    @apply w-full flex flex-wrap w-full border-0;
+}
+
+.breadcrumb ul {
+    @apply list-none flex flex-wrap w-full justify-center items-center my-10 ;
+}
+
+.breadcrumb ul li {
+    @apply mr-4 text-xs text-gray-100 uppercase;
+    font-size: 16px;
+}
+
+.breadcrumb ul li:not(:last-child)::after {
+    content: '/';
+    @apply ml-3 text-white;
+}
+
+.breadcrumb ul li:not(:last-child) {
+    a {
+        @apply text-green-200;
+    }
+}
+
+.breadcrumb ul li:last-child {
+    a {
+        @apply text-gray-500;
+    }
+}

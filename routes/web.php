@@ -34,15 +34,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [ContentsController::class, 'searchContents'])->name('search');
 Route::get('/sitemap', [SEOController::class, 'generateSitemap'])->name('sitemap');
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
 Route::prefix('error')->group(function () {
     Route::get('/403', function () {
         return Inertia::render('Errors/403');
@@ -87,7 +78,8 @@ Route::prefix('product-blend')->group(function () {
     Route::get('latest-product-blend', [ProductBlendController::class, 'getLatestProductBlend'])->name('latest-product-blend');
     Route::get('detail/{contentId}', [ProductBlendController::class, 'getDetail'])->name('product-blend-detail');
 });
-Route::prefix('product-package')->group(function () {
+Route::prefix('packages')->group(function () {
+    Route::get('/', [ProductPackageController::class, 'index'])->name('product-packages');
     Route::get('latest-product-package', [ProductPackageController::class, 'getLatestProductPackage'])->name('latest-product-package');
     Route::get('detail/{contentId}', [ProductPackageController::class, 'getDetail'])->name('product-package-detail');
 });

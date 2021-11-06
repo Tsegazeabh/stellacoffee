@@ -104,7 +104,8 @@ nav.main-navbar {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
+  --tw-bg-opacity: 1;
+  background-color: rgba(119, 55, 20, var(--tw-bg-opacity));
   opacity: 0.9;
 }
 
@@ -129,7 +130,7 @@ nav.main-navbar ul.menu {
 
 nav.main-navbar ul.menu > li.dropdown > ul {
   position: absolute;
-  top: 6rem;
+  top: 12rem;
   display: none;
 }
 
@@ -302,16 +303,13 @@ nav.main-navbar:hover > ul {
   -moz-column-gap: 2.5rem;
        column-gap: 2.5rem;
   --tw-bg-opacity: 1;
-  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
   padding: 0.75rem;
 }
 
 @media (min-width: 768px) {
   #story {
-    padding-left: 5rem;
-    padding-right: 5rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding: 5rem;
   }
 }
 
@@ -367,11 +365,13 @@ nav.main-navbar:hover > ul {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
-#testimonial-slider, #partners-slider {
+#testimonial-slider {
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
   padding: 5rem;
 }
 
-#testimonial-slider .slider-header, #partners-slider .slider-header {
+#testimonial-slider .slider-header {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -379,17 +379,15 @@ nav.main-navbar:hover > ul {
   justify-content: center;
 }
 
-#testimonial-slider .testimonial-card, #partners-slider .testimonial-card {
+#testimonial-slider .testimonial-card {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  --tw-bg-opacity: 1;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   padding: 1.25rem;
 }
 
-#testimonial-slider .testimonial-card .testimonial-info, #partners-slider .testimonial-card .testimonial-info {
+#testimonial-slider .testimonial-card .testimonial-info {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -400,7 +398,7 @@ nav.main-navbar:hover > ul {
   justify-content: flex-start;
 }
 
-#testimonial-slider .testimonial-card .testimonial-info .testimonial-picture, #partners-slider .testimonial-card .testimonial-info .testimonial-picture {
+#testimonial-slider .testimonial-card .testimonial-info .testimonial-picture {
   margin-right: 1.25rem;
   height: 6rem;
   width: 6rem;
@@ -408,25 +406,25 @@ nav.main-navbar:hover > ul {
   border-width: 1px;
 }
 
-#testimonial-slider .testimonial-card .testimonial-info .testimonial-profile, #partners-slider .testimonial-card .testimonial-info .testimonial-profile {
+#testimonial-slider .testimonial-card .testimonial-info .testimonial-profile {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-#testimonial-slider .testimonial-card .testimonial-info .testimonial-profile .testimonial-name, #partners-slider .testimonial-card .testimonial-info .testimonial-profile .testimonial-name {
+#testimonial-slider .testimonial-card .testimonial-info .testimonial-profile .testimonial-name {
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 900;
 }
 
-#testimonial-slider .testimonial-card .testimonial-info .testimonial-profile .testimonial-position, #partners-slider .testimonial-card .testimonial-info .testimonial-profile .testimonial-position {
+#testimonial-slider .testimonial-card .testimonial-info .testimonial-profile .testimonial-position {
   margin-top: 1rem;
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
-#testimonial-slider .testimonial-card .testimonial-quote, #partners-slider .testimonial-card .testimonial-quote {
+#testimonial-slider .testimonial-card .testimonial-quote {
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: flex;
@@ -439,7 +437,7 @@ nav.main-navbar:hover > ul {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-#testimonial-slider .testimonial-card .testimonial-quote .fa-angle-up, #partners-slider .testimonial-card .testimonial-quote .fa-angle-up {
+#testimonial-slider .testimonial-card .testimonial-quote .fa-angle-up {
   margin-top: -2.5rem;
 }
 

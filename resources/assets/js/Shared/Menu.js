@@ -23,7 +23,7 @@ export const getMenus = () => {
         {
             label: "Products", url: "", active: false,
             submenus: [
-                {label: "Packages", url: "", active: false},
+                {label: "Packages", url: route('product-packages'), active: false},
                 {label: "Blends", url: "", active: false},
             ]
         },

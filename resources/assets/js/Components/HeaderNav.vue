@@ -1,5 +1,5 @@
 <template>
-    <nav class="main-navbar absolute w-full px-12 z-50 bg-white">
+    <nav class="main-navbar w-full px-12 bg-white">
         <div class="brand">
             <a href="/" class="flex flex-wrap border w-32 my-3">
                 <img src="images/stella_coffee_logo.jpg" class="object-contain"/>
@@ -11,7 +11,7 @@
                 <template v-if="menu.submenus && menu.submenus.length>0">
                     <ul>
                         <li v-for="submenu in menu.submenus">
-                            <a class="py-3" href="/">{{ submenu.label }}</a>
+                            <a class="py-3" :href="submenu.url">{{ submenu.label }}</a>
                         </li>
                     </ul>
                 </template>

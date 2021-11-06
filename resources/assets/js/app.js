@@ -1,9 +1,10 @@
 require('./bootstrap');
 
 import {createApp, h} from 'vue';
-import {createInertiaApp, Link, Head } from '@inertiajs/inertia-vue3';
+import {createInertiaApp, Link, Head} from '@inertiajs/inertia-vue3';
 import {InertiaProgress} from '@inertiajs/progress';
 import Layout from "@layouts/Layout.vue";
+import {_trans} from "./shared/Localization.js";
 
 createInertiaApp({
     title: (title) => `${title}`,
@@ -19,7 +20,7 @@ createInertiaApp({
             .use(plugin)
             .component('InertiaLink', Link)
             .component('InertiaHead', Head)
-            .mixin({methods: {route}})
+            .mixin({methods: {route, _trans}})
             .mount(el);
     },
 });

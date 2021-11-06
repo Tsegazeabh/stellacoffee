@@ -11,9 +11,10 @@ use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductPackageController extends Controller
@@ -23,6 +24,15 @@ class ProductPackageController extends Controller
     {
     }
 
+    public function index()
+    {
+        try {
+            Log::info("Here");
+            return Inertia::render('Public/ProductPackage/ProductPackageIndex');
+        } catch (\Exception $ex) {
+            Log::info($ex);
+        }
+    }
     /**
      * @param Request $request
      * @return JsonResponse|\Illuminate\Http\RedirectResponse|\Inertia\Response

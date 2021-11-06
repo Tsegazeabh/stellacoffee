@@ -21,6 +21,8 @@ class HomeController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'nonce' => csp_nonce()
+
+
         ]);
     }
 

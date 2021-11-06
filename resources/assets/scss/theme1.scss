@@ -51,7 +51,7 @@ header {
 
 /* main nav bar */
 nav.main-navbar {
-    @apply flex flex-wrap justify-between items-center bg-transparent;
+    @apply flex flex-wrap justify-between items-center bg-roast-lightest;
     opacity: 0.9;
 
     .brand {
@@ -64,7 +64,7 @@ nav.main-navbar {
 
         > li.dropdown {
             > ul {
-                @apply absolute top-24;
+                @apply absolute top-48;
                 display: none;
             }
         }
@@ -166,7 +166,7 @@ nav.main-navbar:hover {
 }
 
 #story {
-    @apply p-3 md:px-20 md:py-20 bg-gray-200 gap-x-10;
+    @apply p-3 md:p-20 bg-gray-100 gap-x-10;
     img {
         @apply object-contain h-full;
     }
@@ -188,14 +188,14 @@ nav.main-navbar:hover {
     }
 }
 
-#testimonial-slider, #partners-slider {
-    @apply p-20;
+#testimonial-slider {
+    @apply p-20 bg-gray-50;
     .slider-header {
         @apply flex flex-col flex-wrap justify-center items-center;
     }
 
     .testimonial-card {
-        @apply flex flex-col items-stretch justify-start bg-white p-5;
+        @apply flex flex-col items-stretch justify-start p-5;
 
         .testimonial-info {
             @apply flex flex-wrap justify-start items-center;

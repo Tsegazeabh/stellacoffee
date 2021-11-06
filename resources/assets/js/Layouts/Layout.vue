@@ -23,3 +23,12 @@ export default defineComponent({
     }
 })
 </script>
+
+<style scoped>
+nav.main-navbar {
+    @apply absolute z-50 bg-transparent;
+}
+nav.main-navbar ul.menu > li.dropdown .ul{
+    @apply absolute top-24;
+}
+</style>

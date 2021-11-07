@@ -7,13 +7,12 @@
             {{ _trans('label.shared.Note') }}:
             {{ _trans('label.shared.Please fill the form and send us your message') }}
         </strong>
-
-        <span>
-            <inertia-link type="button" :href="route('faq-index')"
-                          class="no-underline hover:underline text-blue-500 text-lg">
-                {{ _trans('label.shared.FAQ') }}
-            </inertia-link>
-        </span>
+<!--        <span>-->
+<!--            <inertia-link type="button" :href="route('faq-index')"-->
+<!--                          class="no-underline hover:underline text-blue-500 text-lg">-->
+<!--                {{ _trans('label.shared.FAQ') }}-->
+<!--            </inertia-link>-->
+<!--        </span>-->
         <!--TODO -->
     </h2>
     <div class="w-full">

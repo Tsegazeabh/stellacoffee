@@ -238,7 +238,7 @@ function getContentIndexPageComponentName($content_type)
 {
     switch ($content_type) {
         case Certification::class:
-            return 'Public/Certification/EventIndex';
+            return 'Public/Certification/CertificationIndex';
         case History::class:
             return 'Public/History/HistoryIndex';
         case ProductBlend::class:

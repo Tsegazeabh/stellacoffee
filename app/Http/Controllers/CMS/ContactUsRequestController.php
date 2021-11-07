@@ -29,6 +29,7 @@ class ContactUsRequestController extends Controller
     protected function createGet()
     {
         try {
+            Log::info('It is coming to the contact us request');
             return Inertia::render('Public/ContactUsRequest/CreateContactUsRequest');
         } catch (AuthorizationException $ex) {
             abort(403);

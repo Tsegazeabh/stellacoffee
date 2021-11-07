@@ -206,11 +206,9 @@ class ContentsController extends Controller
                 ->withCount('content_hits')
                 ->orderBy('published_at', 'DESC')
                 ->paginate(getDefaultPagingSize());
-
             if ($result->total() > 0) {
                 event(new ContentVisited($result->items()[0], $request));
             }
-
             $data['result'] = $result;
             return Inertia::render(getContentIndexPageComponentName($contentable_type), $data);
         } catch (\Throwable $ex) {

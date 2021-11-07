@@ -12,10 +12,12 @@
 
         <!-- Scripts -->
         @routes()
-        <script src="{{ asset('js/app.min.js') }}" defer></script>
+{{--        <script src="{{ asset('js/app.min.js') }}" defer></script>--}}
     </head>
     <body class="font-sans antialiased">
-        @inertia
+    @inertia
+    <div id="fm"></div>
+    <script src="{{ mix('js/app.min.js') }}" defer></script>
 {{--        @env ('local')--}}
 {{--            <script src="http://localhost:8080/js/bundle.js"></script>--}}
 {{--        @endenv--}}

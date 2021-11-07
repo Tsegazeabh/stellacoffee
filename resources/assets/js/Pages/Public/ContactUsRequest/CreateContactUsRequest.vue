@@ -1,12 +1,12 @@
 <template>
-    <contact-us-request-form
+    <ContactUsRequestForm
         :contact_details="contact_details"
         :error-message="errorMessage"
         :success-message="successMessage"
         :errors="errors"
         :method="'post'"
         :url="route('post-contact-us-request')">
-    </contact-us-request-form>
+    </ContactUsRequestForm>
 </template>
 <script>
 import ContentsLayout from "@layouts/ContentsLayout"

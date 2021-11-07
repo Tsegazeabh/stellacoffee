@@ -1,26 +1,26 @@
 <template>
-    <teleport to="head" v-if="products && packages.total>0">
-        <title> {{content.contentable.title}} </title>
+    <teleport to="head" v-if="result && result.total>0">
+        <title> {{result.data[0].contentable.title}} </title>
         <meta property="og:site_name" content="Stella Coffee">
         <meta property="og:title" content="Stella Coffee Website">
-        <meta property="og:description" :content="products.data[0].contentable.lead_paragraph">
-        <meta property="og:image" :content="products.data[0].contentable.first_image['src']">
-        <meta property="og:url" :content="products.data[0].url">
+        <meta property="og:description" :content="result.data[0].contentable.lead_paragraph">
+        <meta property="og:image" :content="result.data[0].contentable.first_image['src']">
+        <meta property="og:url" :content="result.data[0].url">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@EEU_Officials">
         <meta name="twitter:creator" content="@EEU_Officials"/>
         <meta name="twitter:title" content="Ethiopian Electric Utility Portal">
-        <meta name="twitter:description" :content="products.data[0].contentable.detail">
-        <meta name="twitter:image" :content="products.data[0].contentable.first_image['src']">
-        <meta property="twitter:url" :content="products.data[0].url">
+        <meta name="twitter:description" :content="result.data[0].contentable.detail">
+        <meta name="twitter:image" :content="result.data[0].contentable.first_image['src']">
+        <meta property="twitter:url" :content="result.data[0].url">
     </teleport>
     <inertia-head title="Stella Coffee | Packages"></inertia-head>
 
     <div class="w-full">
         <div class="flex flex-wrap">
-            <div v-for="product in packages" class="card-container flex flex-col md:flex-row w-full">
+            <div v-for="product in result" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
                         <img :src="product.image" class="object-fill"/>
@@ -42,10 +42,10 @@ import moment from 'moment';
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-    name: "packages-index",
+    name: "result-index",
     layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
     props: {
-        products: {
+        result: {
             type: Array,
             required: true
         }
@@ -53,7 +53,7 @@ export default defineComponent({
 
     data() {
         return {
-            packages: [
+            result: [
                 {
                     name: 'Lavazza Crema e Gusto',
                     image: 'images/stella_coffee_logo.jpg',

@@ -16,7 +16,7 @@ class HomeController extends Controller
     }
     public function index()
     {
-        // Log::info(Crypt::encryptString('Admin@EEU_WP_P@56'));
+        //Log::info(Crypt::encryptString('Admin@stella'));
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),

@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    const HOME = 'news-management-page';
+    const HOME = 'history-management-page';
     const UNAUTHORIZED_EXCEPTION_PAGE_ROUTE = 'error_403';
 
     /**

@@ -13,7 +13,7 @@
         </ul>
         <ul class="right">
             <li>
-                <inertia-link class="nav-link" type="button" :href="route('history-management-page')">
+                <inertia-link class="nav-link" type="button" :href="route('login')">
                     Login
                 </inertia-link>
             </li>

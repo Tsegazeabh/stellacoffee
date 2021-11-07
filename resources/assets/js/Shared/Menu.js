@@ -25,6 +25,8 @@ export const getMenus = () => {
             submenus: [
                 {label: "Packages", route: route('content-index-page', 'product-package'), active: false},
                 {label: "Blends", route: route('content-index-page', 'product-blend'), active: false},
+                {label: "Packages", url: route('product-packages'), active: false},
+                {label: "Blends", url: "", active: false},
             ]
         },
         {
@@ -48,6 +50,5 @@ export const getMenus = () => {
             label: "News and Events", route: route('content-index-page', 'news-and-events'), active: false
         }
     ];
-
     return Menus;
 }

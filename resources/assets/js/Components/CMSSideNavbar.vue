@@ -68,10 +68,10 @@ export default defineComponent({
                     label: 'About Us', route: route("home"),
                     collapsed: true,
                     submenus: [
-                        {label: "History", url: "", active: false},
-                        {label: "Success Stories", url: "", active: false},
-                        {label: "Certifications", url: "", active: false},
-                        {label: "Stella Coffee Origins", url: "", active: false},
+                        {label: "History", route: route('history-management-page'), active: false},
+                        {label: "Success Stories", route: route('success-story-management-page'), active: false},
+                        {label: "Certifications", route: route('certification-management-page'), active: false},
+                        {label: "Stella Coffee Origins", route: route('stella-coffee-origin-management-page'), active: false},
                         {label: "Contact Us", url: "", active: false},
                     ]
                 },
@@ -79,39 +79,39 @@ export default defineComponent({
                     label: 'Roasting', route: route("home"),
                     collapsed: true,
                     submenus: [
-                        {label: "Roasting Process", url: "", active: false},
-                        {label: "Quality Control Process", url: "", active: false},
-                        {label: "Our Roasting Machine ", url: "", active: false},
-                        {label: "Roasting Guides", url: "", active: false},
-                        {label: "Roasting Services", url: "", active: false}
+                        {label: "Roasting Process", route: route('roasting-process-management-page'), active: false},
+                        {label: "Quality Control Process", route: route('quality-control-process-management-page'), active: false},
+                        {label: "Our Roasting Machine ", route: route('roasting-machine-management-page'), active: false},
+                        {label: "Roasting Guides", route: route('roasting-guide-management-page'), active: false},
+                        {label: "Roasting Services", route: route('roasting-service-management-page'), active: false}
                     ]
                 },
                 {
                     label: 'Products', route: route("home"),
                     collapsed: true,
                     submenus: [
-                        {label: "Packages", url: "", active: false},
-                        {label: "Blends", url: "", active: false},
+                        {label: "Packages", route: route('product-package-management-page'), active: false},
+                        {label: "Blends", route: route('product-blend-management-page'), active: false},
                     ]
                 },
                 {
                     label: 'Find Us', route: route("home"),
                     collapsed: true,
                     submenus: [
-                        {label: "Export Destinations", url: "", active: false},
-                        {label: "Locations", url: "", active: false},
-                        {label: "Duty Free Locations ", url: "", active: false},
-                        {label: "Shops", url: "", active: false},
-                        {label: "Factory Location", url: "", active: false},
-                        {label: "Export Processes", url: "", active: false},
+                        {label: "Export Destinations", route: route('export-destination-management-page'), active: false},
+                        {label: "Sales Locations", route: route('sales-location-management-page'), active: false},
+                        {label: "Duty Free Locations ", route: route('duty-free-location-management-page'), active: false},
+                        {label: "Our Stores", route: route('store-management-page'), active: false},
+                        {label: "Factory Location", route: route('factory-location-management-page'), active: false},
+                        {label: "Export Processes", route: route('export-process-management-page'), active: false},
                     ]
                 },
                 {
                     label: 'Cupping', route: route("home"),
                     collapsed: true,
                     submenus: [
-                        {label: "Cupping Procedures", url: "", active: false},
-                        {label: "Cupping Events", url: "", active: false}
+                        {label: "Cupping Procedures", route: route('cupping-procedure-management-page'), active: false},
+                        {label: "Cupping Events", route: route('cupping-event-management-page'), active: false}
                     ]
                 },
                 {

@@ -2,18 +2,18 @@
     <header>
         <ul class="left">
             <li>
-                <a><span class="fas fa-map-marker" aria-hidden="true"></span> Bole, Addis Ababa, Ethiopia</a>
+                <a><span class="fas fa-map-marker" aria-hidden="true"></span> Wolo Sefer, Addis Ababa, Ethiopia</a>
             </li>
             <li>
                 <a><span class="fas fa-calendar-week" aria-hidden="true"></span> Monday - Saturday</a>
             </li>
             <li>
-                <a><span class="fas fa-phone-alt" aria-hidden="true"></span> (+251) 11 545 8901</a>
+                <a><span class="fas fa-phone-alt" aria-hidden="true"></span> (+251) 911 213496</a>
             </li>
         </ul>
         <ul class="right">
             <li>
-                <inertia-link class="nav-link" type="button" :href="route('history-management-page')">
+                <inertia-link class="nav-link" type="button" :href="route('login')">
                     Login
                 </inertia-link>
             </li>

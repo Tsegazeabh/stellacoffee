@@ -50,7 +50,7 @@
                     </inertia-link>
                 </li>
                 <li>
-                    <inertia-link class="nav-link" type="button" :href="route('news-management-page')">
+                    <inertia-link class="nav-link" type="button" :href="route('history-management-page')">
                         {{ _trans('menu.CMS') }}
                     </inertia-link>
                 </li>

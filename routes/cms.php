@@ -15,7 +15,7 @@ use App\Http\Controllers\CMS\StellaCoffeeOriginController;
 use App\Http\Controllers\CMS\SuccessStoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix(getSecureURL('cms'))->group(function () {
+Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.changed'])->group(function () {
     Route::prefix('certification')->group(function () {
         Route::get(getSecureURL(1), [CertificationController::class, 'createGet'])->name('certification-creation-page');
         Route::post(getSecureURL(2), [CertificationController::class, 'createPost'])->name('post-certification');

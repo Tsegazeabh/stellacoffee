@@ -3,10 +3,10 @@
         <div class="breadcrump">
             <ul>
                 <li>
-                    <inertia-link :href="route('home')">{{ _trans('menu.Home') }}</inertia-link>
+                    <inertia-link :href="route('history-management-page')">{{ _trans('menu.Home') }}</inertia-link>
                 </li>
                 <li>
-                    <inertia-link :href="route('dashboard')">{{ _trans('menu.CMS') }}</inertia-link>
+                    <inertia-link :href="route('history-management-page')">{{ _trans('menu.CMS') }}</inertia-link>
                 </li>
                 <li>{{ _trans('label.shared.History') }}</li>
             </ul>
@@ -48,9 +48,6 @@
                  :defaultColDef="defaultColDef"
                  :animateRows="true"
                  :rowData="rowData">
-        <!--        :getRowHeight="getRowHeight"-->
-        <!--        @column-resized="onColumnResized"-->
-        <!--        @column-visible="onColumnVisible">-->
     </ag-grid-vue>
 </template>
 

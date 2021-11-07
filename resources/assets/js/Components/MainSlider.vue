@@ -38,7 +38,7 @@ export default defineComponent({
             parallaxSwiperWidth: 0,
             contents: [
                 {
-                    title: 'Elite Coffee Brands',
+                    title: 'Stella Coffee Brands',
                     lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
                     image: 'http://127.0.0.1:8000/images/bg-image-3.jpg'
                 },

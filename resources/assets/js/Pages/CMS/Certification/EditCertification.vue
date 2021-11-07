@@ -2,62 +2,59 @@
     <div class="breadcrump">
         <ul>
             <li>
-                <inertia-link :href="route('home')">{{ _trans('menu.Home') }}</inertia-link>
+                <inertia-link :href="route('home')">{{_trans('menu.Home')}}</inertia-link>
             </li>
             <li>
-                <inertia-link :href="route('dashboard')">{{ _trans('menu.CMS') }}</inertia-link>
+                <inertia-link :href="route('dashboard')">{{_trans('menu.CMS')}}</inertia-link>
             </li>
             <li>
-                <inertia-link :href="route('history-management-page')">{{ _trans('label.shared.History') }}
-                </inertia-link>
+                <inertia-link :href="route('history-management-page')">{{_trans('label.shared.Certification')}}</inertia-link>
             </li>
-            <li>{{ _trans('action.edit') }}</li>
+            <li>{{_trans('action.edit')}}</li>
         </ul>
     </div>
-    <history-form :history="history"
+    <CertificationForm :certification="certification"
                   :error-message="errorMessage"
                   :success-message="successMessage"
                   :errors="errors"
                   :method="'put'"
-                  :url="route('edit-history', history.id)">
-    </history-form>
+                  :url="route('edit-certification', certification.id)">
+    </CertificationForm>
 </template>
 
 <script>
-import AdminLayout from "@layouts/AdminLayout";
-import HistoryForm from "@components/HistoryForm";
-import {defineComponent} from 'vue'
+    import AdminLayout from "@layouts/AdminLayout";
+    import CertificationForm from "@components/CertificationForm";
 
-export default defineComponent({
-    name: "edit-history",
-    layout: (h, page) => h(AdminLayout, [page]), // if you want to use different persistence layout,
-    components: {
-        HistoryForm
-    },
-    props: {
-        history: {
-            type: Object,
-            default: {
-                from_date: '',
-                to_date: '',
-                title: '',
-                tags: [],
-                detail: ''
+    export default {
+        name: "edit-history",
+        layout: (h, page) => h(AdminLayout, [page]), // if you want to use different persistence layout,
+        components: {
+            CertificationForm
+        },
+        props: {
+            certification: {
+                type: Object,
+                default: {
+                    title: '',
+                    detail: '',
+                    video_link:'',
+                    tags: [],
+                },
+                required: true
             },
-            required: true
-        },
-        errors: {
-            type: Object,
-            default: {}
-        },
-        errorMessage: {
-            type: String,
-            default: ''
-        },
-        successMessage: {
-            type: String,
-            default: ''
+            errors: {
+                type: Object,
+                default: {}
+            },
+            errorMessage: {
+                type: String,
+                default: ''
+            },
+            successMessage: {
+                type: String,
+                default: ''
+            }
         }
     }
-})
 </script>

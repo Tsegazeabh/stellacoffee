@@ -51,7 +51,7 @@ header {
 
 /* main nav bar */
 nav.main-navbar {
-    @apply flex flex-wrap justify-between items-center bg-roast-lightest;
+    @apply flex flex-wrap justify-between items-center;
     opacity: 0.9;
 
     .brand {
@@ -64,15 +64,14 @@ nav.main-navbar {
 
         > li.dropdown {
             > ul {
-                @apply absolute top-48;
                 display: none;
             }
         }
 
         > li.dropdown:hover {
             > ul {
-                @apply absolute text-roast-lightest bg-white block z-20 w-max px-6 py-3 justify-start rounded-b-md rounded-tr-sm;
-                box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
+                @apply absolute text-roast-lightest bg-white block z-20 w-max px-6 justify-start rounded-b-md rounded-tr-sm;
+                box-shadow: 1px 1px 0px 1px rgb(0 0 0 / 15%);
 
                 li {
                     @apply my-3;
@@ -95,9 +94,30 @@ nav.main-navbar {
     }
 }
 
+nav.main-navbar.landing-page-menu {
+    @apply absolute z-50 bg-transparent;
+    ul.menu {
+        > li.dropdown {
+            > ul {
+                @apply top-24;
+            }
+        }
+    }
+}
+
+nav.main-navbar.content-layout-menu {
+    @apply  bg-roast-lightest;
+    ul.menu {
+        > li.dropdown {
+            > ul {
+                @apply top-48;
+            }
+        }
+    }
+}
+
 nav.main-navbar:hover {
     opacity: 1;
-
     > ul {
         @apply text-white;
     }

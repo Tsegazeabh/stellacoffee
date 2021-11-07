@@ -1,7 +1,7 @@
 <template>
     <inertia-head title="Stella Coffee"></inertia-head>
     <top-header></top-header>
-    <header-nav></header-nav>
+    <header-nav class="landing-page-menu"></header-nav>
     <main>
         <slot></slot>
     </main>
@@ -25,10 +25,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-nav.main-navbar {
-    @apply absolute z-50 bg-transparent;
-}
-nav.main-navbar ul.menu > li.dropdown .ul{
-    @apply absolute top-24;
-}
 </style>

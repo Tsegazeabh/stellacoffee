@@ -104,8 +104,6 @@ nav.main-navbar {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  --tw-bg-opacity: 1;
-  background-color: rgba(119, 55, 20, var(--tw-bg-opacity));
   opacity: 0.9;
 }
 
@@ -129,8 +127,6 @@ nav.main-navbar ul.menu {
 }
 
 nav.main-navbar ul.menu > li.dropdown > ul {
-  position: absolute;
-  top: 12rem;
   display: none;
 }
 
@@ -149,11 +145,9 @@ nav.main-navbar ul.menu > li.dropdown:hover > ul {
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
   --tw-text-opacity: 1;
   color: rgba(119, 55, 20, var(--tw-text-opacity));
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.15);
 }
 
 nav.main-navbar ul.menu > li.dropdown:hover > ul li {
@@ -179,6 +173,25 @@ nav.main-navbar ul.menu > li:hover {
 nav.main-navbar ul.menu > li:hover a {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+nav.main-navbar.landing-page-menu {
+  position: absolute;
+  z-index: 50;
+  background-color: transparent;
+}
+
+nav.main-navbar.landing-page-menu ul.menu > li.dropdown > ul {
+  top: 6rem;
+}
+
+nav.main-navbar.content-layout-menu {
+  --tw-bg-opacity: 1;
+  background-color: rgba(119, 55, 20, var(--tw-bg-opacity));
+}
+
+nav.main-navbar.content-layout-menu ul.menu > li.dropdown > ul {
+  top: 12rem;
 }
 
 nav.main-navbar:hover {

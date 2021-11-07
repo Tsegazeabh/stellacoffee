@@ -1,7 +1,7 @@
 <template>
     <inertia-head title="Stella Coffee"></inertia-head>
     <top-header></top-header>
-    <header-nav></header-nav>
+    <header-nav class="content-layout-menu"></header-nav>
     <main class="main">
         <div class="grid md:grid-cols-2">
             <div class="org-info">
@@ -46,7 +46,7 @@ export default defineComponent({
     components: {SiteFooter, HeaderNav, TopHeader}
 })
 </script>
-<style>
+<style scoped>
 .main {
     background-image: url("http://127.0.0.1:8000/images/bg-image-3.jpg");
     background-position: top left;

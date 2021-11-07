@@ -3,7 +3,7 @@
         <div class="breadcrump">
             <ul>
                 <li>
-                    <inertia-link :href="route('history-management-page')">{{ _trans('menu.Home') }}</inertia-link>
+                    <inertia-link :href="route('home')">{{ _trans('menu.Home') }}</inertia-link>
                 </li>
                 <li>
                     <inertia-link :href="route('history-management-page')">{{ _trans('menu.CMS') }}</inertia-link>

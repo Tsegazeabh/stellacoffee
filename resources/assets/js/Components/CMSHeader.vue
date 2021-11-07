@@ -3,9 +3,9 @@
         <div class="nav-brand-cont">
             <div class="nav-brand">
                 <a :href="route('home')">
-                    <img :src="logo" class="h-11" alt="EEU"/>
+                    <img :src="logo" class="h-11" alt="STELLA LOGO"/>
                 </a>
-                <h1 class="app-name">{{ _trans('titles.EEU CMS') }}</h1>
+                <h1 class="app-name">{{ _trans('titles.STELLA COFFEE CMS') }}</h1>
             </div>
             <div class="navbar-container">
                 <ul class="navbar">

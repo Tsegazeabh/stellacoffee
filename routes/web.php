@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
 use App\Http\Controllers\CMS\ContentsController;
@@ -53,12 +54,12 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//Route::prefix(getSecureURL('auth'))->group(function () {
+Route::prefix(getSecureURL('auth'))->group(function () {
     require __DIR__ . '/auth.php';
-//    Route::prefix('roles')->middleware('auth')->group(function () {
-//        Route::get('/', [RolesController::class, 'index'])->name('roles.index');
-//    });
-//});
+    Route::prefix('roles')->middleware('auth')->group(function () {
+        Route::get('/', [RolesController::class, 'index'])->name('roles.index');
+    });
+});
 
 require __DIR__ . '/cms.php';
 

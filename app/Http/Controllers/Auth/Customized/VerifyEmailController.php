@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth\Customized;
 
 use App\Http\Controllers\Controller;
-//use App\Http\Requests\Auth\EmailVerificationRequest;
 use Facade\FlareClient\Http\Exceptions\NotFound;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Requests\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

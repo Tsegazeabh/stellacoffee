@@ -1,5 +1,6 @@
 <template>
     <div class="slider-card w-full h-full">
+        <div class="filter">&nbsp;</div>
         <div class="card-image">
             <img :src="content.image" class="object-cover h-full w-full"/>
         </div>
@@ -24,3 +25,8 @@ export default defineComponent({
     }
 })
 </script>
+<style>
+.filter {
+    @apply absolute w-full h-full z-50 bg-roast-dark bg-opacity-30;
+}
+</style>

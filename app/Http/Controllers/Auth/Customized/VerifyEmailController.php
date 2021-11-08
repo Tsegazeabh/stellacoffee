@@ -7,8 +7,6 @@ use Facade\FlareClient\Http\Exceptions\NotFound;
 use App\Http\Requests\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class VerifyEmailController extends Controller

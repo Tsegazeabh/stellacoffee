@@ -61,7 +61,7 @@ export default defineComponent({
                         {label: 'Roles', route: route('roles.index')},
                         {label: 'Users', route: route('manage-accounts')},
                         {label: 'Role Permissions', route: route('role-permissions-page')},
-                        {label: 'Audit Trails', route: route('audits-index')},
+                        // {label: 'Audit Trails', route: route('audits-index')},
                     ]
                 },
                 {
@@ -94,55 +94,55 @@ export default defineComponent({
                         {label: "Blends", route: route('product-blend-management-page'), active: false},
                     ]
                 },
-                {
-                    label: 'Find Us', route: route("home"),
-                    collapsed: true,
-                    submenus: [
-                        {label: "Export Destinations", route: route('export-destination-management-page'), active: false},
-                        {label: "Sales Locations", route: route('sales-location-management-page'), active: false},
-                        {label: "Duty Free Locations ", route: route('duty-free-location-management-page'), active: false},
-                        {label: "Our Stores", route: route('store-management-page'), active: false},
-                        {label: "Factory Location", route: route('factory-location-management-page'), active: false},
-                        {label: "Export Processes", route: route('export-process-management-page'), active: false},
-                    ]
-                },
-                {
-                    label: 'Cupping', route: route("home"),
-                    collapsed: true,
-                    submenus: [
-                        {label: "Cupping Procedures", route: route('cupping-procedure-management-page'), active: false},
-                        {label: "Cupping Events", route: route('cupping-event-management-page'), active: false}
-                    ]
-                },
-                {
-                    label: 'News and Events', route: route("news-and-events-management-page"),
+                // {
+                //     label: 'Find Us', route: route("home"),
+                //     collapsed: true,
+                //     submenus: [
+                //         {label: "Export Destinations", route: route('export-destination-management-page'), active: false},
+                //         {label: "Sales Locations", route: route('sales-location-management-page'), active: false},
+                //         {label: "Duty Free Locations ", route: route('duty-free-location-management-page'), active: false},
+                //         {label: "Our Stores", route: route('store-management-page'), active: false},
+                //         {label: "Factory Location", route: route('factory-location-management-page'), active: false},
+                //         {label: "Export Processes", route: route('export-process-management-page'), active: false},
+                //     ]
+                // },
+                // {
+                //     label: 'Cupping', route: route("home"),
+                //     collapsed: true,
+                //     submenus: [
+                //         {label: "Cupping Procedures", route: route('cupping-procedure-management-page'), active: false},
+                //         {label: "Cupping Events", route: route('cupping-event-management-page'), active: false}
+                //     ]
+                // },
+                // {
+                //     label: 'News and Events', route: route("news-and-events-management-page"),
+                //
+                // },
 
-                },
+                // {
+                //     label: 'Other Contents', route: route('home'),
+                //     collapsed: true,
+                //     submenus: [
+                //         {label: 'Partners', route: route('partner-management-page')},
+                //         {label: 'FAQs', route: route('faq-management-page')},
+                //         {label: 'Main Sliders', route: route('main-slider-management-page')},
+                //         {label: 'Privacy Policy', route: route('privacy-policy-management-page')},
+                //         {label: 'Terms and Conditions', route: route('term-and-condition-management-page')},
+                //     ]
+                // },
 
-                {
-                    label: 'Other Contents', route: route('home'),
-                    collapsed: true,
-                    submenus: [
-                        {label: 'Partners', route: route('partner-management-page')},
-                        {label: 'FAQs', route: route('faq-management-page')},
-                        {label: 'Main Sliders', route: route('main-slider-management-page')},
-                        {label: 'Privacy Policy', route: route('privacy-policy-management-page')},
-                        {label: 'Terms and Conditions', route: route('term-and-condition-management-page')},
-                    ]
-                },
-
-                {
-                    label: 'Settings', route: route("home"),
-                    collapsed: true,
-                    submenus: [
-                        {label: 'FAQ Groups', route: route('faq-group-management-page')},
-                        {label: 'Country', route: route('country-management-page')},
-                        {label: 'Region', route: route('region-management-page')},
-                        {label: 'City', route: route('city-management-page')},
-                        {label: 'Subcity', route: route('subcity-management-page')},
-                        {label: 'Woreda', route: route('woreda-management-page')},
-                    ]
-                },
+                // {
+                //     label: 'Settings', route: route("home"),
+                //     collapsed: true,
+                //     submenus: [
+                //         {label: 'FAQ Groups', route: route('faq-group-management-page')},
+                //         {label: 'Country', route: route('country-management-page')},
+                //         {label: 'Region', route: route('region-management-page')},
+                //         {label: 'City', route: route('city-management-page')},
+                //         {label: 'Subcity', route: route('subcity-management-page')},
+                //         {label: 'Woreda', route: route('woreda-management-page')},
+                //     ]
+                // },
 
             ]
         }

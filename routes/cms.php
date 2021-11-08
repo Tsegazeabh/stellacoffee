@@ -140,6 +140,7 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::put(getSecureURL(7).'/{id}', [SuccessStoryController::class, 'editPost'])->name('edit-success-story');
         Route::get('preview/{id}', [SuccessStoryController::class, 'preview'])->name('preview-success-story');
     });
+
 //
 //    Route::prefix('country')->group(function () {
 //        Route::get(getSecureURL(1), [CountryController::class, 'createGet'])->name('country-creation-page');

@@ -17,7 +17,7 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      *
-     * @return \Illuminate\View\View
+     * @return \Inertia\Response
      */
     public function create()
     {
@@ -50,6 +50,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route(RouteServiceProvider::HOME));
     }
 }

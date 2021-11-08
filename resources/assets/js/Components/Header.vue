@@ -54,11 +54,11 @@
                         {{ _trans('menu.CMS') }}
                     </inertia-link>
                 </li>
-                <li>
-                    <inertia-link class="nav-link" type="button" :href="route('faq-index')">
-                        {{ _trans('menu.FAQ') }}
-                    </inertia-link>
-                </li>
+<!--                <li>-->
+<!--                    <inertia-link class="nav-link" type="button" :href="route('faq-index')">-->
+<!--                        {{ _trans('menu.FAQ') }}-->
+<!--                    </inertia-link>-->
+<!--                </li>-->
                 <li class="nav-item dropdown">
                     <button title="Language">
                         <span>

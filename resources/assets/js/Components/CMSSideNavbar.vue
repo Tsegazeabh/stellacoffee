@@ -1,5 +1,5 @@
 <template>
-    <aside class="cms-side-navbar" v-mobile-nav="hideOnClickOutside" v-show="!collapse">
+    <aside class="cms-side-navbar" v-show="!collapse"> <!--        v-mobile-nav="hideOnClickOutside"-->
         <ul class="navbar">
             <template v-for="(menu,index) in menus" :key="index">
                 <template v-if="!menu.submenus || menu.submenus.length==0">
@@ -36,6 +36,7 @@
 
 <script>
 import {defineComponent} from 'vue'
+import route from "ziggy-js/src/js";
 
 export default defineComponent({
     name: "cms-side-navbar",

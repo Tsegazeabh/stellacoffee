@@ -189,6 +189,9 @@ function getModelName($content_type)
         case 'roasting-machine':
         case 'roastingmachine':
             return RoastingMachine::class;
+        case 'roasting-service':
+        case 'roastingservice':
+            return RoastingService::class;
         case 'roasting-process':
         case 'roastingprocess':
             return RoastingProcess::class;
@@ -249,6 +252,8 @@ function getContentIndexPageComponentName($content_type)
             return 'Public/QualityControlProcess/QualityControlProcessIndex';
         case RoastingGuide::class:
             return 'Public/RoastingGuide/RoastingGuideIndex';
+        case RoastingService::class:
+            return 'Public/RoastingService/RoastingServiceIndex';
         case RoastingMachine::class:
             return 'Public/RoastingMachine/RoastingMachineIndex';
         case RoastingProcess::class:

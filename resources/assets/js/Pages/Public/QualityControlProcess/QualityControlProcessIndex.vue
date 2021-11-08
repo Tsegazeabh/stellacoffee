@@ -19,7 +19,7 @@
     <inertia-head title="Stella Coffee | Packages"></inertia-head>
 
     <div class="w-full">
-        <div class="flex flex-wrap">
+        <div v-if="result && result.total>0" class="flex flex-wrap">
             <div v-for="process in result" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
@@ -32,6 +32,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="pt-20" v-else>
+            <h1 class="text-red-500 text-3xl text-center">
+                {{_trans('messages.There is no published content yet')}}
+            </h1>
         </div>
     </div>
 </template>

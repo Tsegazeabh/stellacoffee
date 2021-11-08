@@ -19,7 +19,7 @@
     <inertia-head title="Stella Coffee | Packages"></inertia-head>
 
     <div class="w-full">
-        <div class="flex flex-wrap">
+        <div v-if="result && result.total>0" class="flex flex-wrap">
             <div v-for="blend in result" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
@@ -32,6 +32,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="pt-20" v-else>
+            <h1 class="text-red-500 text-3xl text-center">
+                {{_trans('messages.There is no published content yet')}}
+            </h1>
         </div>
     </div>
 </template>
@@ -53,27 +58,27 @@
 
         data() {
             return {
-                result: [
-                    {
-                        name: 'Lavazza Crema e Gusto',
-                        image: 'images/stella_coffee_logo.jpg',
-                        description: 'Lavazza Crema e Gusto Espresso is a special blend of Robusta and Arabica beans.',
-                        price: '$14.00'
-                    },
-                    {
-                        name: 'Maxwell House Original Roast Ground Coffee',
-                        image: 'images/stella_coffee_logo.jpg',
-                        description: 'Ground Coffee Having a very interesting history, this coffee is easily recognized all over the globe.',
-                        price: '$14.00'
-                    },
-                    {
-                        name: 'Douwe Egberts Filter Blend Ground Coffee Medium Roast',
-                        image: 'images/stella_coffee_logo.jpg',
-                        description: 'Douwe Egberts Real Coffee is a blend of the world’s finest quality beans.',
-                        price: '$14.00'
-                    },
-
-                ]
+                // result: [
+                //     {
+                //         name: 'Lavazza Crema e Gusto',
+                //         image: 'images/stella_coffee_logo.jpg',
+                //         description: 'Lavazza Crema e Gusto Espresso is a special blend of Robusta and Arabica beans.',
+                //         price: '$14.00'
+                //     },
+                //     {
+                //         name: 'Maxwell House Original Roast Ground Coffee',
+                //         image: 'images/stella_coffee_logo.jpg',
+                //         description: 'Ground Coffee Having a very interesting history, this coffee is easily recognized all over the globe.',
+                //         price: '$14.00'
+                //     },
+                //     {
+                //         name: 'Douwe Egberts Filter Blend Ground Coffee Medium Roast',
+                //         image: 'images/stella_coffee_logo.jpg',
+                //         description: 'Douwe Egberts Real Coffee is a blend of the world’s finest quality beans.',
+                //         price: '$14.00'
+                //     },
+                //
+                // ]
             }
         },
 

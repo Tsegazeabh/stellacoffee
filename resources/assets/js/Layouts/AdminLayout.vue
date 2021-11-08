@@ -7,8 +7,11 @@
     </slot>
     <main class="leading-relaxed bg-white w-full">
         <div class="flex w-full flex-wrap justify-start">
-            <cms-side-navbar :collapse="collapse" :breakpoint="breakpoint"
-                             @toggleCollapse="toggleCollapse($event)"></cms-side-navbar>
+            <cms-side-navbar :collapse="collapse"
+                             :breakpoint="breakpoint"
+                             @toggleCollapse="toggleCollapse($event)">
+
+            </cms-side-navbar>
             <div class="cms-main flex flex-col px-12 py-8">
                 <slot name="breadcrumb"></slot>
                 <slot name="default"></slot>

@@ -106,7 +106,7 @@ nav.main-navbar.landing-page-menu {
 }
 
 nav.main-navbar.content-layout-menu {
-    @apply  bg-roast-lightest;
+    @apply bg-roast-lightest;
     ul.menu {
         > li.dropdown {
             > ul {
@@ -118,6 +118,7 @@ nav.main-navbar.content-layout-menu {
 
 nav.main-navbar:hover {
     opacity: 1;
+
     > ul {
         @apply text-white;
     }
@@ -136,12 +137,12 @@ nav.main-navbar:hover {
         }
 
         .card-text {
-            @apply absolute top-1/3 left-32 text-white w-2/5 z-20;
+            @apply absolute top-1/3 left-12 text-white w-2/5 z-20 p-10 bg-roast-dark bg-opacity-30;
             font-family: "Roboto Mono", Monaco, Consolas, "Courier New", monospace;
             font-size: 20px;
 
             .title {
-                @apply font-black border-b mb-5 text-roast-dark;
+                @apply font-black border-b mb-5 text-white;
                 font-size: 42px;
             }
 
@@ -245,6 +246,7 @@ nav.main-navbar:hover {
             @apply -mt-10;
         }
     }
+
 }
 
 #roasting-tabs {
@@ -381,18 +383,80 @@ footer {
 
 #certificates-slider {
     @apply p-20 bg-white;
+
     .slider-header {
         @apply flex flex-col flex-wrap justify-center items-center;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        @apply top-auto bottom-0 bg-stella text-white px-6 py-0 bg-opacity-70 font-black left-auto;
+    }
+
+    .swiper-button-prev {
+        @apply right-16;
+    }
+
+    .swiper-button-next {
+        @apply right-2;
+    }
+
+    .swiper-button-prev:after {
+        content: '\f060' !important;
+        font-family: 'Font Awesome 5 Free' !important;
+        font-weight: 900 !important;
+    }
+
+    .swiper-button-next:after {
+        content: '\f061' !important;
+        font-family: 'Font Awesome 5 Free' !important;
+        font-weight: 900 !important;
+    }
+
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 14px !important;
     }
 }
 
 #partners-slider {
     @apply p-20 bg-gray-100;
+
+    .swiper-wrapper {
+        @apply pb-12;
+    }
+
     .slider-header {
         @apply flex flex-col flex-wrap justify-center items-center;
     }
 
     .partner-card {
         @apply border shadow-lg;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        @apply top-auto bottom-0 bg-stella text-white px-6 py-0 bg-opacity-70 font-black left-auto;
+    }
+
+    .swiper-button-prev {
+        @apply right-14;
+    }
+
+    .swiper-button-next {
+        @apply right-0;
+    }
+
+    .swiper-button-prev:after {
+        content: '\f060' !important;
+        font-family: 'Font Awesome 5 Free' !important;
+        font-weight: 900 !important;
+    }
+
+    .swiper-button-next:after {
+        content: '\f061' !important;
+        font-family: 'Font Awesome 5 Free' !important;
+        font-weight: 900 !important;
+    }
+
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 14px !important;
     }
 }

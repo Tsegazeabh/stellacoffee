@@ -9,8 +9,11 @@
                 :space-between="50"
                 autoplay
                 :breakpoints="swiperOptions.breakpoints"
-                :pagination="{ clickable: true }"
                 :parallax="true"
+                :pagination="{
+                    clickable:true,
+                    renderBullet: function (index, className) { return '<span>' + index + '</span>'; }
+                }"
                 :navigation="false">
                 <swiper-slide v-for="testimonial in testimonials">
                     <testimonial-card :testimonial="testimonial">
@@ -40,7 +43,15 @@ export default defineComponent({
         return {
             modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
             parallaxSwiperWidth: 0,
+
             swiperOptions: {
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + index + '</span>';
+                    },
+                },
                 breakpoints: {
                     799: {
                         slidesPerView: 1,

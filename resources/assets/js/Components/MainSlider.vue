@@ -8,7 +8,6 @@
             autoplay
             navigation
             :parallax="true"
-            :pagination="{ clickable: true }"
             :scrollbar="{ draggable: true }">
             <swiper-slide v-for="content in contents">
                 <slider-card :content="content">
@@ -19,7 +18,7 @@
 </template>
 
 <script>
-import {Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards} from 'swiper';
+import {Navigation, Scrollbar, A11y, Autoplay, Parallax, EffectCards} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import SliderCard from "@components/SliderCard";
 import 'swiper/css';
@@ -34,7 +33,7 @@ export default defineComponent({
     components: {SliderCard, Swiper, SwiperSlide},
     setup() {
         return {
-            modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
+            modules: [Navigation, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
             parallaxSwiperWidth: 0,
             contents: [
                 {
@@ -57,3 +56,37 @@ export default defineComponent({
     },
 })
 </script>
+
+<style>
+
+#main-slider .swiper-button-next, #main-slider .swiper-button-prev {
+    right: 0px !important;
+    left: auto !important;
+    @apply bg-stella text-white p-8 bg-opacity-70 font-black;
+
+}
+
+#main-slider .swiper-button-next {
+    top: 61% !important;
+}
+
+#main-slider .swiper-button-prev {
+    top: 70% !important;
+}
+
+#main-slider .swiper-button-prev:after {
+    content: '\f060' !important;
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 900 !important;
+}
+
+#main-slider .swiper-button-next:after {
+    content: '\f061' !important;
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 900 !important;
+}
+
+#main-slider .swiper-button-next:after, #main-slider .swiper-button-prev:after {
+    font-size: 18px !important;
+}
+</style>

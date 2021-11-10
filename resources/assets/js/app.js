@@ -21,9 +21,38 @@ createInertiaApp({
             .component('InertiaLink', Link)
             .component('InertiaHead', Head)
             .mixin({methods: {route, _trans}})
+            .directive('mobile-nav', {
+                beforeMount(el, binding, vnode) {
+                    el.clickOutsideEvent = function (event) {
+                        // here we check that click was outside the el and his children
+                        if (!(el == event.target || el.contains(event.target))) {
+                            binding.value()
+                        }
+                    }
+                    document.body.addEventListener('click', el.clickOutsideEvent)
+                },
+                unmounted(el) {
+                    document.body.removeEventListener('click', el.clickOutsideEvent)
+                }
+            })
+            .directive('accordion', {
+                beforeMount(el, binding, vnode) {
+                    el.clickOutsideEvent = function (event) {
+                        // here we check that click was outside the el and his children
+                        if (!(el == event.target || el.contains(event.target))) {
+                            binding.value()
+                        }
+                    }
+                    document.body.addEventListener('click', el.clickOutsideEvent)
+                },
+                unmounted(el) {
+                    document.body.removeEventListener('click', el.clickOutsideEvent)
+                }
+            })
             .mount(el);
     },
 });
 
 InertiaProgress.init({color: '#4B5563'});
+
 

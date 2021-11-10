@@ -1,5 +1,5 @@
 <template>
-    <aside class="cms-side-navbar" v-show="!collapse"> <!--        v-mobile-nav="hideOnClickOutside"-->
+    <aside class="cms-side-navbar" v-show="!collapse" v-mobile-nav="hideOnClickOutside">
         <ul class="navbar">
             <template v-for="(menu,index) in menus" :key="index">
                 <template v-if="!menu.submenus || menu.submenus.length==0">

@@ -24,9 +24,9 @@
 </template>
 
 <script>
+import {defineComponent} from 'vue'
 import AdminLayout from "@layouts/AdminLayout"
 import HistoryForm from "@components/HistoryForm"
-import {defineComponent} from 'vue'
 
 export default defineComponent({
     name: "CreateHistory",

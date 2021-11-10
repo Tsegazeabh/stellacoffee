@@ -132,8 +132,7 @@ Route::prefix('videos')->group(function () {
     Route::get('play/{videoId}', [YoutubeVideosController::class, 'getPlayer'])->name('video-player');
 });
 
-Route::prefix('eeu-file-manager')->group(function () {
+Route::prefix('file-manager')->group(function () {
     Route::get('/', [FileManagerController::class, 'index'])->name('lfm-index');
     Route::post('/upload-image', [FileManagerController::class, 'uploadImage'])->name('lfm-upload-image');
 });
-

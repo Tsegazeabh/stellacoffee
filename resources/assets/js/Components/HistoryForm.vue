@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="w-full my-5 px-5">
-                <label class="label required inline-block">{{ _trans('label.shared.Description') }}</label>
+             `   <label class="label required inline-block">{{ _trans('label.shared.Description') }}</label>
                 <ck-editor :editor="editor"
                            class="border border-gray-100"
                            v-model.lazy="form.detail"

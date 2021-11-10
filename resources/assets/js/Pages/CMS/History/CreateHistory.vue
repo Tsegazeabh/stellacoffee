@@ -11,7 +11,7 @@
                 <inertia-link :href="route('history-management-page')">{{ _trans('label.shared.History') }}
                 </inertia-link>
             </li>
-            <li>{{ _trans('action.create') }}</li>
+            <li>{{ _trans('action.Create') }}</li>
         </ul>
     </div>
     <HistoryForm :history="history"

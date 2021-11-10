@@ -9,17 +9,17 @@
                     <div class="breadcrumb">
                         <ul>
                             <li>
-                                <inertia-link :href="route('home')">{{ _trans('menu.Home') }}</inertia-link>
+                                <inertia-link :href="route('home')" >{{_trans('menu.Home')}}</inertia-link>
                             </li>
                             <li>
-                                <inertia-link :href="route('dashboard')">{{ _trans('menu.CMS') }}</inertia-link>
+                                <inertia-link :href="route('home')" >{{ _trans('menu.About') }}</inertia-link>
                             </li>
                             <li>
-                                <inertia-link :href="route('certification-management-page')">
-                                    {{ _trans('label.shared.Packages') }}
+                                <inertia-link :href="route('home')">
+                                    {{_trans('menu.History')}}
                                 </inertia-link>
                             </li>
-                            <li>{{ _trans('action.create') }}</li>
+                            <li>{{ _trans('action.Index') }}</li>
                         </ul>
                     </div>
                 </slot>
@@ -43,7 +43,13 @@ import {defineComponent} from "vue";
 
 export default defineComponent({
     name: "contents-layout2",
-    components: {SiteFooter, HeaderNav, TopHeader}
+    components: {SiteFooter, HeaderNav, TopHeader},
+    props: {
+        menu_name:String,
+        sub_menu_name:String,
+        route_name:String
+    },
+
 })
 </script>
 <style scoped>

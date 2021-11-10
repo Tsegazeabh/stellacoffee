@@ -53,9 +53,12 @@
             result: {
                 type: Array,
                 required: true
-            }
+            },
+            // menu_name:'About',
+            // sub_menu_name:'Certifications',
+            // route_name:'home'
+            // route_name: '\'content-index-page\', \'certification\''
         },
-
         data() {
             return {
                 result: [
@@ -78,7 +81,7 @@
                         price: '$14.00'
                     },
 
-                ]
+                ],
             }
         },
 

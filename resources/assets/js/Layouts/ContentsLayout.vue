@@ -1,5 +1,7 @@
 <template>
-    <nav-header></nav-header>
+    <inertia-head title="Stella Coffee"></inertia-head>
+    <top-header></top-header>
+    <header-nav class="content-layout-menu"></header-nav>
     <main class="main-wrapper">
         <div class="flex flex-wrap leading-relaxed content-detail mx-4 md:mx-12">
             <div class="w-full md:w-3/4 md:pr-12">
@@ -97,7 +99,8 @@
 </template>
 
 <script>
-import Header from "@components/Header";
+import TopHeader from "@components/TopHeader";
+import HeaderNav from "@components/HeaderNav";
 import SiteFooter from "@components/SiteFooter";
 import MostPopularContents from "@components/MostPopularContents";
 import axios from "axios"
@@ -108,8 +111,9 @@ export default defineComponent({
     name: "contents-layout",
     components: {
         'social-media-sharing-buttons': SocialMediaSharingButtons,
-        'nav-header': Header,
         'site-footer': SiteFooter,
+        'top-header':TopHeader,
+        'header-nav':HeaderNav,
         'most-popular-contents': MostPopularContents
     },
     data() {

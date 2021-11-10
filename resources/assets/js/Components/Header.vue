@@ -147,7 +147,7 @@
                 </div>
             </section>
 
-            <ul v-mobile-nav="hideOnClickOutside" v-show="!collapse">
+           <ul v-show="!collapse"> <!-- v-mobile-nav="hideOnClickOutside"-->
                 <li v-for="(menu,index) in menus" :key="index" class="nav-item"
                     :class="[{'dropdown': menu.submenus && menu.submenus.length>0}, {'hover-trigger':menu.submenus && menu.submenus.length},{'active':menu.active}, {'collapsed':menu.collapsed}]">
                     <template v-if="menu.submenus && menu.submenus.length>0">

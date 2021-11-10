@@ -460,3 +460,25 @@ footer {
         font-size: 14px !important;
     }
 }
+
+/**Main Wrapper**/
+.main-wrapper .header1, .main-wrapper .header2 {
+    @apply text-gray-700 font-semibold pb-3 mb-6;
+}
+
+.main-wrapper .header1 {
+    @apply text-xl border-b;
+}
+
+#most-popular-contents-container .header1 {
+    @apply mb-0;
+}
+
+.main-wrapper .header2 {
+    @apply text-base;
+}
+
+.main-wrapper .main {
+    @apply my-3 text-gray-600 text-sm;
+}
+

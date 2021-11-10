@@ -831,4 +831,38 @@ footer address ul.social-media-icons-list > li {
   font-size: 14px !important;
 }
 
+/**Main Wrapper**/
+
+.main-wrapper .header1, .main-wrapper .header2 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.main-wrapper .header1 {
+  border-bottom-width: 1px;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+#most-popular-contents-container .header1 {
+  margin-bottom: 0px;
+}
+
+.main-wrapper .header2 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.main-wrapper .main {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgba(75, 85, 99, var(--tw-text-opacity));
+}
+
 /* purgecss end ignore */

@@ -1,5 +1,6 @@
 <?php
 
+use \App\Http\Controllers\FileManagerController;
 use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
@@ -118,3 +119,7 @@ Route::prefix('contents')->group(function () {
     Route::post('{content_id}/related-contents', [ContentsController::class, 'getRelatedContents'])->name('related-contents');
 });
 
+Route::prefix('file-manager')->group(function () {
+    Route::get('/', [FileManagerController::class, 'index'])->name('lfm-index');
+    Route::post('/upload-image', [FileManagerController::class, 'uploadImage'])->name('lfm-upload-image');
+});

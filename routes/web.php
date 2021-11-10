@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\YoutubeVideosController;
 use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
@@ -14,8 +15,10 @@ use App\Http\Controllers\CMS\RoastingProcessController;
 use App\Http\Controllers\CMS\RoastingServiceController;
 use App\Http\Controllers\CMS\StellaCoffeeOriginController;
 use App\Http\Controllers\CMS\SuccessStoryController;
+use App\Http\Controllers\FileManagerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SEOController;
+use App\Http\Controllers\TagsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -62,6 +65,11 @@ Route::prefix(getSecureURL('auth'))->group(function () {
 });
 
 require __DIR__ . '/cms.php';
+
+Route::prefix('tags')->group(function () {
+    Route::get('/', [TagsController::class, 'getAllTags'])->name('fetch-tags');
+    Route::post('/', [TagsController::class, 'createTag'])->name('create-tag');
+});
 
 Route::prefix('certification')->group(function () {
     Route::get('latest-certification', [CertificationController::class, 'getLatestCertification'])->name('latest-certification');
@@ -116,5 +124,16 @@ Route::prefix('contents')->group(function () {
     Route::get('{type}', [ContentsController::class, 'getContents'])->name('content-index-page');
     Route::get('most-popular-contents/{limit}', [ContentsController::class, 'getPopularContents'])->name('most-popular-contents');
     Route::post('{content_id}/related-contents', [ContentsController::class, 'getRelatedContents'])->name('related-contents');
+});
+
+Route::prefix('videos')->group(function () {
+    Route::get('youtube', [YoutubeVideosController::class, 'getLatestYoutubeVideos'])->name('youtube-videos');
+    Route::post('eeu-tv', [YoutubeVideosController::class, 'getLatestStellaTVYoutubeVideos'])->name('stella-tv-videos');
+    Route::get('play/{videoId}', [YoutubeVideosController::class, 'getPlayer'])->name('video-player');
+});
+
+Route::prefix('eeu-file-manager')->group(function () {
+    Route::get('/', [FileManagerController::class, 'index'])->name('lfm-index');
+    Route::post('/upload-image', [FileManagerController::class, 'uploadImage'])->name('lfm-upload-image');
 });
 

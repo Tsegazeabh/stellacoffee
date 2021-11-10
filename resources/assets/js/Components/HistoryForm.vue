@@ -99,7 +99,6 @@ export default defineComponent({
         'date-picker': DatePicker
     },
     name: "history-form",
-
     props: {
         method: {type: String, default: 'post'},
         url: {type: String, required: true},

@@ -18,6 +18,32 @@
                 </div>
                 <div class="w-full md:w-1/2">
                     <div class="form-group w-full px-5">
+                        <label class="label required">{{ _trans('label.shared.Size') }}</label>
+                        <input type="text" v-model.trim.lazy="form.size"
+                               class="form-control w-full border border-gray-100 p-2 focus:outline-none"
+                               :class="(form.errors && form.errors['size'])?'error':''"
+                               :placeholder="_trans('label.shared.Size')" autocomplete="on" required/>
+                        <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['size']">
+                            {{ form.errors['size'] }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full flex flex-wrap">
+                <div class="w-full md:w-1/2">
+                    <div class="form-group w-full px-5">
+                        <label class="label required">{{ _trans('label.shared.Price') }}</label>
+                        <input type="text" v-model.trim.lazy="form.price"
+                               class="form-control w-full border border-gray-100 p-2 focus:outline-none"
+                               :class="(form.errors && form.errors['price'])?'error':''"
+                               :placeholder="_trans('label.shared.Price')" autocomplete="on" required/>
+                        <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['price']">
+                            {{ form.errors['price'] }}
+                        </span>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="form-group w-full px-5">
                         <label class="label">{{ _trans('label.shared.Tags') }}</label>
                         <tags-selector v-model="form.tags"></tags-selector>
                     </div>
@@ -85,6 +111,8 @@ export default defineComponent({
             type: Object,
             default: {
                 title: '',
+                size:'',
+                price:'',
                 detail: '',
                 video_link: '',
                 tags: [],
@@ -116,6 +144,8 @@ export default defineComponent({
             },
             form: useForm({
                 title: '',
+                size:'',
+                price:'',
                 detail: '',
                 video_link: '',
                 tags: [],
@@ -126,6 +156,8 @@ export default defineComponent({
     mounted() {
         if (this.product_package) {
             this.form.title = this.product_package.title
+            this.form.size = this.product_package.size
+            this.form.price = this.product_package.price
             this.form.video_link = this.product_package.video_link
         }
         if (this.product_package && this.product_package.content && this.product_package.content.tags) {

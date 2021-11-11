@@ -37,6 +37,8 @@ export default defineComponent({
             type: Object,
             default: {
                 title: '',
+                size:'',
+                price:'',
                 detail: '',
                 video_link: '',
                 tags: [],

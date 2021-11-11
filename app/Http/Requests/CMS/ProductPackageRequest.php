@@ -27,6 +27,8 @@ class ProductPackageRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
+            'price'=>'nullable|string',
+            'size'=>'nullable|string',
             'detail' => [
                 'required',
                 new XSSValidator()

@@ -23,7 +23,10 @@
             <div v-for="(story,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
-                        <img :src="story.contentable.first_image['src']" class="object-fill"/>
+                        <inertia-link :href="story.url">
+                            <img :src="story.contentable.first_image['src']" class="object-fill"/>
+                        </inertia-link>
+                        <p class="text-center">{{_trans('label.shared.Size')}}: {{story.contentable.size}} {{_trans('label.shared.Price')}}: ${{story.contentable.price}}</p>
                     </div>
                     <div class="col-span-2 px-10 flex flex-col justify-center items-start">
                         <h2 class="text-stella text-xl my-3">

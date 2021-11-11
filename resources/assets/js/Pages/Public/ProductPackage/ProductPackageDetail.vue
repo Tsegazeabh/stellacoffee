@@ -18,8 +18,15 @@
             <meta property="twitter:url" :content="content.url">
         </teleport>
         <div class="header1">{{ content.contentable.title }}</div>
-        <div v-html="content.contentable.detail"></div>
-
+        <div class="w-full">
+            <div class="md:w-1/4 my-4">
+                <img :src="content.contentable.first_image['src']" class="object-contain md:object-scale-down"/>
+                <p class="text-center">{{_trans('label.shared.Size')}}: {{content.contentable.size}} {{_trans('label.shared.Price')}}: ${{content.contentable.price}}</p>
+            </div>
+            <div class="md:w-full my-4">
+                <div v-html="content.contentable.detail"></div>
+            </div>
+        </div>
         <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">
             <div class="pr-2 font-bold">
                 {{ _trans('label.shared.Published at') }}: {{ formatDate(content.published_at) }}

@@ -9444,6 +9444,10 @@ select {
     width: 75%;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:w-max {
     width: -webkit-max-content;
     width: -moz-max-content;
@@ -9496,6 +9500,11 @@ select {
 
   .md\:border-l {
     border-left-width: 1px;
+  }
+
+  .md\:object-scale-down {
+    -o-object-fit: scale-down;
+       object-fit: scale-down;
   }
 
   .md\:px-3 {

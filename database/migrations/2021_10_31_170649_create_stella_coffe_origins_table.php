@@ -13,7 +13,7 @@ class CreateStellaCoffeOriginsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stella_coffe_origins', function (Blueprint $table) {
+        Schema::create('stella_coffee_origins', function (Blueprint $table) {
             $table->id();
             $table->string('title', 512);
             $table->mediumText('detail');
@@ -31,6 +31,6 @@ class CreateStellaCoffeOriginsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stella_coffe_origins');
+        Schema::dropIfExists('stella_coffee_origins');
     }
 }

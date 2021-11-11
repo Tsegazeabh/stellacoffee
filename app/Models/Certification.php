@@ -31,8 +31,8 @@ class Certification extends Authorizable implements HasMedia, Auditable
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('file-attachments')
-            ->useFallbackUrl('/images/logo.png')
-            ->useFallbackPath(public_path('/images/logo.png'))
+            ->useFallbackUrl('/images/logo.jpg')
+            ->useFallbackPath(public_path('/images/logo.jpg'))
             ->acceptsMimeTypes(validFileMimeTypes())
             ->registerMediaConversions(function (Media $media) {
                 $this

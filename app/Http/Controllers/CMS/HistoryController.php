@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -134,8 +135,10 @@ class HistoryController extends Controller
         try {
 
             $locale = Locale::where('short_code', getSessionLanguageShortCode())->first();
+            Log::info($locale);
             if ($locale != null) {
                 $content = array('locale_id' => $locale->id);
+                Log::info($content);
                 $history = Arr::except($request->all(), ['tags', 'xcsrf']);
                 $history = History::create($history);
                 $this->authorize('create', $history);
@@ -241,13 +244,12 @@ class HistoryController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     protected function getAllHistory(Request $request)
     {
         try {
-            $history =
-                Content::with('contentable')
+            $history = Content::with('contentable')
                     ->where('contentable_type', History::class)
                     ->whereHasMorph('contentable', [History::class])
                     ->publishedWithoutArchived()
@@ -255,6 +257,7 @@ class HistoryController extends Controller
                     ->sortBy('from_date', 'DESC', History::class)
                     ->get();
             $data['history'] = $history;
+            Log::info($history);
             return Inertia::render('Public/History/HistoryIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

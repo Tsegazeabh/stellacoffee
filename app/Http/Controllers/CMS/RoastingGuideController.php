@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CMS\RoastingServiceRequest;
+use App\Http\Requests\CMS\RoastingGuideRequest;
 use App\Models\Content;
 use App\Models\Locale;
-use App\Models\RoastingService;
 use App\Models\RoastingGuide;
 use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -28,7 +27,7 @@ class RoastingGuideController extends Controller
      * @param Request $request
      * @return JsonResponse|\Illuminate\Http\RedirectResponse|\Inertia\Response
      */
-    protected function manageRoastingService(Request $request)
+    protected function manageRoastingGuide(Request $request)
     {
         try {
             $content_status = $request->get('content_status');
@@ -46,12 +45,12 @@ class RoastingGuideController extends Controller
             $paging_size = getDefaultPagingSize();
 
             $searchResult = Content::withTrashed()->with('contentable', 'tags')->whereHas('contentable', function ($query) {
-                $query->where('contentable_type', RoastingService::class);
+                $query->where('contentable_type', RoastingGuide::class);
             })->orderBy($sort_by, $sorting_method)->paginate($paging_size);
 
             $data['searchResult'] = $searchResult;
 
-            return Inertia::render('CMS/RoastingService/ManageRoastingService', $data);
+            return Inertia::render('CMS/RoastingGuide/ManageRoastingGuide', $data);
 
         } catch (\Throwable $ex) {
             report($ex);
@@ -62,7 +61,7 @@ class RoastingGuideController extends Controller
         }
     }
 
-    protected function fetchRoastingService(Request $request)
+    protected function fetchRoastingGuide(Request $request)
     {
         try {
             $langId = getSessionLanguageId();
@@ -81,41 +80,41 @@ class RoastingGuideController extends Controller
             switch ($content_status) {
                 case 1: // unpublished
                     $result = Content::with(['contentable', 'tags'])
-                        ->whereHasMorph('contentable', [RoastingService::class])
+                        ->whereHasMorph('contentable', [RoastingGuide::class])
                         ->withTrashed()
                         ->unPublished()
                         ->ofLanguage($langId)
-                        ->search($searchKeyword, [RoastingService::class])
-                        ->sortBy($sortingColumn, $sortingDirection, RoastingService::class)
+                        ->search($searchKeyword, [RoastingGuide::class])
+                        ->sortBy($sortingColumn, $sortingDirection, RoastingGuide::class)
                         ->paginate($pageSize);
                     break;
                 case 2: //published
                     $result = Content::with(['contentable', 'tags'])
-                        ->whereHasMorph('contentable', [RoastingService::class])
+                        ->whereHasMorph('contentable', [RoastingGuide::class])
                         ->withTrashed()
                         ->publishedWithoutArchived()
                         ->ofLanguage($langId)
-                        ->search($searchKeyword, [RoastingService::class])
-                        ->sortBy($sortingColumn, $sortingDirection, RoastingService::class)
+                        ->search($searchKeyword, [RoastingGuide::class])
+                        ->sortBy($sortingColumn, $sortingDirection, RoastingGuide::class)
                         ->paginate($pageSize);
                     break;
                 case 3: //archived
                     $result = Content::with(['contentable', 'tags'])
-                        ->whereHasMorph('contentable', [RoastingService::class])
+                        ->whereHasMorph('contentable', [RoastingGuide::class])
                         ->withTrashed()
                         ->archived()
                         ->ofLanguage($langId)
-                        ->search($searchKeyword, [RoastingService::class])
-                        ->sortBy($sortingColumn, $sortingDirection, RoastingService::class)
+                        ->search($searchKeyword, [RoastingGuide::class])
+                        ->sortBy($sortingColumn, $sortingDirection, RoastingGuide::class)
                         ->paginate($pageSize);
                     break;
                 default: //any
                     $result = Content::with(['contentable', 'tags'])
-                        ->whereHasMorph('contentable', [RoastingService::class])
+                        ->whereHasMorph('contentable', [RoastingGuide::class])
                         ->withTrashed()
                         ->ofLanguage($langId)
-                        ->search($searchKeyword, [RoastingService::class])
-                        ->sortBy($sortingColumn, $sortingDirection, RoastingService::class)
+                        ->search($searchKeyword, [RoastingGuide::class])
+                        ->sortBy($sortingColumn, $sortingDirection, RoastingGuide::class)
                         ->paginate($pageSize);
                     break;
             }
@@ -131,8 +130,8 @@ class RoastingGuideController extends Controller
     protected function createGet()
     {
         try {
-            $this->authorize('create', new RoastingService);
-            return Inertia::render('CMS/RoastingService/CreateRoastingService');
+            $this->authorize('create', new RoastingGuide);
+            return Inertia::render('CMS/RoastingGuide/CreateRoastingGuide');
         } catch (AuthorizationException $ex) {
             abort(403);
         } catch (\Exception $ex) {
@@ -145,10 +144,10 @@ class RoastingGuideController extends Controller
     }
 
     /**
-     * @param CreateRoastingService $request
+     * @param CreateRoastingGuide $request
      * @return JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function createPost(RoastingServiceRequest $request)
+    protected function createPost(RoastingGuideRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -156,7 +155,7 @@ class RoastingGuideController extends Controller
             if ($locale != null) {
                 $content = array('locale_id' => $locale->id);
                 $roasting_guide = Arr::except($request->all(), ['tags', 'xcsrf']);
-                $roasting_guide = RoastingService::create($roasting_guide);
+                $roasting_guide = RoastingGuide::create($roasting_guide);
                 $this->authorize('create', $roasting_guide);
                 $content = $roasting_guide->content()->create($content);
                 $tags = $request->get('tags');
@@ -190,10 +189,10 @@ class RoastingGuideController extends Controller
     protected function editGet($roasting_guide_id)
     {
         try {
-            $roasting_guide = RoastingService::with(['content', 'content.tags'])->find($roasting_guide_id);
+            $roasting_guide = RoastingGuide::with(['content', 'content.tags'])->find($roasting_guide_id);
             $this->authorize('update', $roasting_guide);
             $data['roasting_guide'] = $roasting_guide;
-            return Inertia::render('CMS/RoastingService/EditRoastingService', $data);
+            return Inertia::render('CMS/RoastingGuide/EditRoastingGuide', $data);
         } catch (AuthorizationException $ex) {
             abort(403);
         } catch (\Exception $ex) {
@@ -210,11 +209,11 @@ class RoastingGuideController extends Controller
      * @param Request $request
      * @return JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function editPost($roasting_guide_id, RoastingServiceRequest $request)
+    protected function editPost($roasting_guide_id, RoastingGuideRequest $request)
     {
         DB::beginTransaction();
         try {
-            $roasting_guide = RoastingService::with('content')->find($roasting_guide_id);
+            $roasting_guide = RoastingGuide::with('content')->find($roasting_guide_id);
             $this->authorize('update', $roasting_guide);
             if ($roasting_guide != null) {
                 $roasting_guide->update(
@@ -247,21 +246,19 @@ class RoastingGuideController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    protected function getLatestRoastingService(Request $request)
+    protected function getLatestRoastingGuide(Request $request)
     {
         try {
             $langId = getSessionLanguageId();
-            $latestRoastingService = Content::with('contentable')->whereHas('contentable', function ($query) {
-                $query->where('contentable_type', RoastingService::class);
+            $latestRoastingGuide = Content::with('contentable')->whereHas('contentable', function ($query) {
+                $query->where('contentable_type', RoastingGuide::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
                 ->take(4)
                 ->get();
-
-            return response($latestRoastingService);
-
+            return response($latestRoastingGuide);
         } catch (\Throwable $ex) {
             logError($ex);
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
@@ -278,12 +275,10 @@ class RoastingGuideController extends Controller
         try
         {
             $content = Content::withTrashed()->with('contentable', 'tags')->whereHas('contentable', function ($query) {
-                $query->where('contentable_type', RoastingService::class);
+                $query->where('contentable_type', RoastingGuide::class);
             })->find($contentId);
-
             $data['content'] = $content;
-            return Inertia::render('Public/RoastingService/RoastingServiceDetail', $data);
-
+            return Inertia::render('Public/RoastingGuide/RoastingGuideDetail', $data);
         } catch (\Throwable $ex) {
             logError($ex);
             return back()->with('errorMessage', getGeneralAdminErrorMessage());
@@ -305,11 +300,11 @@ class RoastingGuideController extends Controller
                 ->with('contentable', 'tags')
                 ->withCount('content_hits')
                 ->whereHas('contentable', function ($query) {
-                    $query->where('contentable_type', RoastingService::class);
+                    $query->where('contentable_type', RoastingGuide::class);
                 })->find($contentId);
             if (!empty($content)) {
                 $data['content'] = $content;
-                return Inertia::render('Public/RoastingService/RoastingServiceDetail', $data);
+                return Inertia::render('Public/RoastingGuide/RoastingGuideDetail', $data);
             }else{
                 return abort(404);
             }

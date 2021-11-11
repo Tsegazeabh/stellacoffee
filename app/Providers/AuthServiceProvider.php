@@ -56,6 +56,7 @@ use App\Models\ServiceType;
 use App\Models\SocialResponsibility;
 use App\Models\Speech;
 use App\Models\StaffAnnouncement;
+use App\Models\StellaCoffeeOrigin;
 use App\Models\Tender;
 use App\Models\Vacancy;
 use App\Models\Woreda;
@@ -114,6 +115,7 @@ use App\Policies\ServiceTypePolicy;
 use App\Policies\SocialResponsibilityPolicy;
 use App\Policies\SpeechPolicy;
 use App\Policies\StaffAnnouncementPolicy;
+use App\Policies\StellaCoffeOriginPolicy;
 use App\Policies\TenderPolicy;
 use App\Policies\VacancyPolicy;
 use App\Policies\WoredaPolicy;
@@ -134,6 +136,7 @@ class AuthServiceProvider extends ServiceProvider
         History::class => HistoryPolicy::class,
         ProductBlend::class=>ProductBlendPolicy::class,
         ProductPackage::class=>ProductPackagePolicy::class,
+        StellaCoffeeOrigin::class=>StellaCoffeOriginPolicy::class,
         RoastingProcess::class=>RoastingProcessPolicy::class,
         RoastingMachine::class=>RoastingMachinePolicy::class,
         RoastingGuide::class=>RoastingGuidePolicy::class,

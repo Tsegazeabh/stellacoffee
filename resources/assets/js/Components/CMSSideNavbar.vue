@@ -73,7 +73,7 @@ export default defineComponent({
                         {label: "Success Stories", route: route('success-story-management-page'), active: false},
                         {label: "Certifications", route: route('certification-management-page'), active: false},
                         {label: "Stella Coffee Origins", route: route('stella-coffee-origin-management-page'), active: false},
-                        {label: "Contact Us", url: "", active: false},
+                        {label: "Contact Us", route: route('contact-us-request-management-page'), active: false},
                     ]
                 },
                 {

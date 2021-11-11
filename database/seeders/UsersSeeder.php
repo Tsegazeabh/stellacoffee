@@ -20,10 +20,9 @@ class UsersSeeder extends Seeder
     {
         $super_admin = array(
             'name' => 'Stella Admin',
-            'email' => 'admin@stellacoffe.com',
+            'email' => 'admin@stellacoffee.com',
             'email_verified_at' => Carbon::today(),
-            'password' => Hash::make(Crypt::decryptString('eyJpdiI6Im95MmNIUThKN1NBM0l6NzdrV0w4QUE9PSIsInZhbHVlIjoiMGVJWm5VczNqUjdQb0EwQkxOYjIzUT09IiwibWFjIjoiNjA1NzNlM2Y2ZTU4MTRmNTk1N2FiOTNjYjA5YzRjNTUxZjk3YzExMzgxMWE5Y2I4Yzk1ZjVkOTIzMmViZmIx
-NSIsInRhZyI6IiJ9')),
+            'password' => Hash::make(Crypt::decryptString('eyJpdiI6IlZvandzMTFCak1mNFhEVzRIKzRlZEE9PSIsInZhbHVlIjoiR0dRUzhaRWRHN0FTSm9QSXoyZHc5dz09IiwibWFjIjoiZTFjOWNiYmRhNWY1OTk4MzQxYmMzOGMyMGI0ZTQyMWQzMTQ2OTc4MWJjOTM4MzI4YWYyMWE2MzhhOWNmMzQ5MSIsInRhZyI6IiJ9')),
             'remember_token' => base64_encode(random_bytes(32)),
             'first_name' => 'Stella',
             'middle_name' => 'Plus',

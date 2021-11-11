@@ -119,36 +119,36 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="mb-4 w-full md:w-1/2">
-                            <div class="form-group w-full px-5">
-                                <label class="label block text-grey-darker text-sm font-bold mb-2">
-                                    {{ _trans('label.shared.Company Name') }}
-                                </label>
-                                <input type="text" v-model.trim.lazy="form.company_name"
-                                       class="form-control w-full border border-gray-100 p-1.5 focus:outline-none border rounded w-full py-2 px-3 text-grey-darker"
-                                       :class="(form.errors && form.errors['company_name'])?'error':''"
-                                       :placeholder="_trans('label.shared.Company Name')" autocomplete="on"/>
-                                <span class="text-red-500 font-semibold mt-3"
-                                      v-if="form.errors && form.errors['company_name']">
-                                    {{ form.errors['company_name'] }}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="mb-4 w-full md:w-1/2">
-                            <div class="form-group w-full px-5">
-                                <label class="label block text-grey-darker text-sm font-bold mb-2">
-                                    {{ _trans('label.shared.Professional Area') }}
-                                </label>
-                                <input type="text" v-model.trim.lazy="form.professional_area"
-                                       class="form-control w-full border border-gray-100 p-1.5 focus:outline-none border rounded w-full py-2 px-3 text-grey-darker"
-                                       :class="(form.errors && form.errors['professional_area'])?'error':''"
-                                       :placeholder="_trans('label.shared.Professional Area')" autocomplete="on"/>
-                                <span class="text-red-500 font-semibold mt-3"
-                                      v-if="form.errors && form.errors['professional_area']">
-                                    {{ form.errors['professional_area'] }}
-                                </span>
-                            </div>
-                        </div>
+<!--                        <div class="mb-4 w-full md:w-1/2">-->
+<!--                            <div class="form-group w-full px-5">-->
+<!--                                <label class="label block text-grey-darker text-sm font-bold mb-2">-->
+<!--                                    {{ _trans('label.shared.Company Name') }}-->
+<!--                                </label>-->
+<!--                                <input type="text" v-model.trim.lazy="form.company_name"-->
+<!--                                       class="form-control w-full border border-gray-100 p-1.5 focus:outline-none border rounded w-full py-2 px-3 text-grey-darker"-->
+<!--                                       :class="(form.errors && form.errors['company_name'])?'error':''"-->
+<!--                                       :placeholder="_trans('label.shared.Company Name')" autocomplete="on"/>-->
+<!--                                <span class="text-red-500 font-semibold mt-3"-->
+<!--                                      v-if="form.errors && form.errors['company_name']">-->
+<!--                                    {{ form.errors['company_name'] }}-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="mb-4 w-full md:w-1/2">-->
+<!--                            <div class="form-group w-full px-5">-->
+<!--                                <label class="label block text-grey-darker text-sm font-bold mb-2">-->
+<!--                                    {{ _trans('label.shared.Professional Area') }}-->
+<!--                                </label>-->
+<!--                                <input type="text" v-model.trim.lazy="form.professional_area"-->
+<!--                                       class="form-control w-full border border-gray-100 p-1.5 focus:outline-none border rounded w-full py-2 px-3 text-grey-darker"-->
+<!--                                       :class="(form.errors && form.errors['professional_area'])?'error':''"-->
+<!--                                       :placeholder="_trans('label.shared.Professional Area')" autocomplete="on"/>-->
+<!--                                <span class="text-red-500 font-semibold mt-3"-->
+<!--                                      v-if="form.errors && form.errors['professional_area']">-->
+<!--                                    {{ form.errors['professional_area'] }}-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="mb-4 w-full">
                             <div class="form-group w-full px-5">
                                 <label class="label required block text-grey-darker text-sm font-bold mb-2">
@@ -171,7 +171,7 @@
                             <input type="checkbox" :class="(form.errors && form.errors['receive_update'])?'error':''"
                                    v-model.lazy="form.receive_update" required>
                             <span class="required">
-                        &nbsp;      {{ _trans('label.shared.I understand and agree to the EEU') }}
+                        &nbsp;      {{ _trans('label.shared.I understand and agree to the Stella Plus Trading') }}
                                 <inertia-link class="no-underline hover:underline text-blue-500 text-lg"
                                               :href="route('privacy-policy-detail')"> {{ _trans('label.shared.Privacy Policy') }} </inertia-link>
                                 <span>&nbsp;{{ _trans('label.shared.And') }}&nbsp;</span>
@@ -222,8 +222,8 @@ export default defineComponent({
                 middle_name: '',
                 last_name: '',
                 email: '',
-                company_name: '',
-                professional_area: '',
+                // company_name: '',
+                // professional_area: '',
                 phone_number: '',
                 country_id: '',
                 detail: '',

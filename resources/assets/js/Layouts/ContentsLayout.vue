@@ -116,45 +116,6 @@ export default defineComponent({
         'header-nav':HeaderNav,
         'most-popular-contents': MostPopularContents
     },
-    data() {
-        return {
-            Tenders: [],
-            Vacancies: [],
-            importantLinks: []
-        }
-    },
-    mounted() {
-        this.loadLatestVacancies();
-        this.loadLatestTenders();
-        this.loadLatestImportantLinks();
-    },
-    methods: {
-        loadLatestTenders() {
-            axios.get(route('latest-tender-list')).then(response => {
-                this.Tenders = response.data;
-                this.loading = false;
-            }).catch(e => {
-                this.Tenders = [];
-            })
-        },
-        loadLatestVacancies() {
-            axios.get(route('latest-vacancy-list')).then(response => {
-                this.Vacancies = response.data;
-                this.loading = false;
-                console.log(this.Vacancies);
-            }).catch(e => {
-                this.Vacancies = [];
-            })
-        },
-        loadLatestImportantLinks() {
-            axios.get(route('latest-important-link')).then(response => {
-                this.importantLinks = response.data;
-                this.loading = false;
-            }).catch(e => {
-                this.importantLinks = [];
-            })
-        },
-    }
 });
 </script>
 

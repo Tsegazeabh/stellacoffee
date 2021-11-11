@@ -29,7 +29,7 @@ class ContactUsRequest extends Authorizable implements Auditable
         'company_name',
         'professional_area',
         'phone_number',
-        'country',
+        'country_id',
         'receive_update',
         'status',
         'email',
@@ -121,9 +121,13 @@ class ContactUsRequest extends Authorizable implements Auditable
             ->orWhereHas('country', function ($country) use ($keyword) {
                 return $country
                     ->where('name', 'like', '%' . $keyword . '%')
-                    ->where('name_lan', 'like', '%' . $keyword . '%')
+                    ->where('name_am', 'like', '%' . $keyword . '%')
+                    ->where('name_fr', 'like', '%' . $keyword . '%')
+                    ->where('name_it', 'like', '%' . $keyword . '%')
                     ->orWhere('description', 'like', '%' . $keyword . '%')
-                    ->where('description_lan', 'like', '%' . $keyword . '%');
+                    ->where('description_am', 'like', '%' . $keyword . '%')
+                    ->where('description_fr', 'like', '%' . $keyword . '%')
+                    ->where('description_it', 'like', '%' . $keyword . '%');
             })
             ->orWhere('email', 'like', '%' . $keyword . '%');
     }
@@ -134,8 +138,12 @@ class ContactUsRequest extends Authorizable implements Auditable
             case 'country':
                 if (getSessionLanguageShortCode() == 'en') {
                     return $query->join('countries as c', 'c.id', '=', $this->getTable() . '.country_id')->orderBy('c.name', $sorting_method)->select($this->getTable() . '*');
+                } else if((getSessionLanguageShortCode() == 'am')) {
+                    return $query->join('countries as c', 'c.id', '=', $this->getTable() . '.country_id')->orderBy('c.name_am', $sorting_method)->select($this->getTable() . '*');
+                } else if((getSessionLanguageShortCode() == 'fr')) {
+                    return $query->join('countries as c', 'c.id', '=', $this->getTable() . '.country_id')->orderBy('c.name_fr', $sorting_method)->select($this->getTable() . '*');
                 } else {
-                    return $query->join('countries as c', 'c.id', '=', $this->getTable() . '.country_id')->orderBy('c.name_lan', $sorting_method)->select($this->getTable() . '*');
+                    return $query->join('countries as c', 'c.id', '=', $this->getTable() . '.country_id')->orderBy('c.name_it', $sorting_method)->select($this->getTable() . '*');
                 }
                 break;
             default:

@@ -5,7 +5,9 @@ use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
 use App\Http\Controllers\CMS\ContentsController;
+use App\Http\Controllers\CMS\CountryController;
 use App\Http\Controllers\CMS\HistoryController;
+use App\Http\Controllers\CMS\PrivacyPolicyController;
 use App\Http\Controllers\CMS\ProductBlendController;
 use App\Http\Controllers\CMS\ProductPackageController;
 use App\Http\Controllers\CMS\QualityControlProcessController;
@@ -15,6 +17,7 @@ use App\Http\Controllers\CMS\RoastingProcessController;
 use App\Http\Controllers\CMS\RoastingServiceController;
 use App\Http\Controllers\CMS\StellaCoffeeOriginController;
 use App\Http\Controllers\CMS\SuccessStoryController;
+use App\Http\Controllers\CMS\TermAndConditionController;
 use App\Http\Controllers\FileManagerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SEOController;
@@ -76,6 +79,7 @@ Route::prefix('certification')->group(function () {
     Route::get('detail/{contentId}', [CertificationController::class, 'getDetail'])->name('certification-detail');
 });
 Route::prefix('history')->group(function () {
+    Route::get('/', [HistoryController::class, 'getAllHistory'])->name('history-index');
     Route::get('latest-history', [HistoryController::class, 'getLatestHistory'])->name('latest-history');
     Route::get('detail/{contentId}', [HistoryController::class, 'getDetail'])->name('history-detail');
 });
@@ -135,4 +139,16 @@ Route::prefix('videos')->group(function () {
 Route::prefix('file-manager')->group(function () {
     Route::get('/', [FileManagerController::class, 'index'])->name('lfm-index');
     Route::post('/upload-image', [FileManagerController::class, 'uploadImage'])->name('lfm-upload-image');
+});
+Route::prefix('privacy-policy')->group(function () {
+    Route::get('privacy-policy-index', [PrivacyPolicyController::class, 'getLatestPrivacyPolicy'])->name('privacy-policy-latest');
+    Route::get('detail', [PrivacyPolicyController::class, 'getDetail'])->name('privacy-policy-detail');
+});
+Route::prefix('term-and-condition')->group(function () {
+    //Route::get('term-and-condition-index', [TermAndConditionController::class, 'getLatestTermAndCondition'])->name('term-and-condition-index');
+    Route::get('detail', [TermAndConditionController::class, 'getDetail'])->name('term-and-condition-detail');
+});
+Route::prefix('country')->group(function () {
+    Route::post('get-countries', [CountryController::class, 'getCountries'])->name('get-countries');
+    Route::get('get-all-countries', [CountryController::class, 'getAllCountries'])->name('get-all-countries');
 });

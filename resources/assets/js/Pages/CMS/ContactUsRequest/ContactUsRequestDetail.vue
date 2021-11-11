@@ -30,16 +30,16 @@
                     <i class="fa fa-map-marker font-bold"></i> <span><strong>{{ _trans('label.user.email') }}: </strong></span>
                     <span class="underline"> {{ contact_us_request.email }} </span>
                 </div>
-                <div class="pr-2">
-                    <i class="fa fa-map-marker font-bold"></i>
-                    <span><strong>{{ _trans('label.shared.Company Name') }}: </strong></span>
-                    <span class="underline"> {{ contact_us_request.company_name }} </span>
-                </div>
-                <div class="pr-2">
-                    <i class="fa fa-map-marker font-bold"></i>
-                    <span><strong>{{ _trans('label.shared.Professional Area') }}: </strong></span>
-                    <span class="underline"> {{ contact_us_request.professional_area }} </span>
-                </div>
+<!--                <div class="pr-2">-->
+<!--                    <i class="fa fa-map-marker font-bold"></i>-->
+<!--                    <span><strong>{{ _trans('label.shared.Company Name') }}: </strong></span>-->
+<!--                    <span class="underline"> {{ contact_us_request.company_name }} </span>-->
+<!--                </div>-->
+<!--                <div class="pr-2">-->
+<!--                    <i class="fa fa-map-marker font-bold"></i>-->
+<!--                    <span><strong>{{ _trans('label.shared.Professional Area') }}: </strong></span>-->
+<!--                    <span class="underline"> {{ contact_us_request.professional_area }} </span>-->
+<!--                </div>-->
                 <div class="pr-2">
                     <i class="fa fa-map-marker font-bold"></i> <span><strong>{{ _trans('label.user.phone') }}: </strong> </span>
                     <span class="underline"> {{ contact_us_request.phone_number }} </span>

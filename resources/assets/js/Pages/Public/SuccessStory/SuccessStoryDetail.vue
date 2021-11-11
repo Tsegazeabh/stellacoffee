@@ -56,7 +56,7 @@ const RelatedContents = defineAsyncComponent({
     loadingComponent: RelatedContentsLoadingState
 });
 export default defineComponent({
-    name: "history-detail",
+    name: "success-story-detail",
     layout: (h, page) => h(ContentsLayout, [page]), // if you want to use different persistence layout
     props: {
         content: {

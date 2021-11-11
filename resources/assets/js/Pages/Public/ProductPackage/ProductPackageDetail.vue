@@ -57,7 +57,7 @@ const RelatedContents = defineAsyncComponent({
 });
 
 export default defineComponent({
-    name: "history-detail",
+    name: "product-package-detail",
     layout: (h, page) => h(ContentsLayout, [page]), // if you want to use different persistence layout
     props: {
         content: {

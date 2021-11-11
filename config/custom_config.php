@@ -11,7 +11,7 @@ return [
     'max_login_attempts' => 3,
     'max_login_failed_attempts_lockout_time' => 1, //in minutes
     'password_life_time' => 60, // in days: user will be forced to change his/her password after 60 days
-    'paging_size' => 15,
+    'paging_size' => 5,
     'related_contents_paging_size'=> 8,
     'default_sorting_method' => 'DESC',
     'default_content_sorting_col' => 'created_at',

@@ -195,10 +195,8 @@ class ContentsController extends Controller
     protected function getContents(Request $request, $type)
     {
         try {
-            Log::Info($request);
             $langId = getSessionLanguageId();
             $contentable_type = getModelName($type);
-            Log::Info( $contentable_type );
             $result = Content::publishedWithoutArchived()
                 ->ofType($contentable_type)
                 ->ofLanguage($langId)
@@ -206,6 +204,7 @@ class ContentsController extends Controller
                 ->withCount('content_hits')
                 ->orderBy('published_at', 'DESC')
                 ->paginate(getDefaultPagingSize());
+            Log::info($result);
             if ($result->total() > 0) {
                 event(new ContentVisited($result->items()[0], $request));
             }

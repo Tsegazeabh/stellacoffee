@@ -18,7 +18,7 @@ class CreateQualityControlProcessesTable extends Migration
             $table->string('title', 512);
             $table->mediumText('detail');
             $table->string('video_link')->nullable();
-            $table->unsignedInteger('stage')->nullable();
+            $table->string('stage')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
             $table->foreign('deleted_by')
                 ->references('id')->on('users');

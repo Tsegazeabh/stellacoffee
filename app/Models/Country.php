@@ -16,18 +16,12 @@ class Country extends Authorizable
     ];
     public static $actions = ['create', 'edit', 'delete'];
     protected $appends = ['display_name'];
-    public function customerServiceCenter()
+
+    public function city()
     {
-        return $this->hasMany(CustomerServiceCenter::class, 'country_id');
+        return $this->hasMany(City::class, 'country_id');
     }
-    public function region()
-    {
-        return $this->hasMany(Region::class, 'country_id');
-    }
-    public function contactDetail()
-    {
-        return $this->hasMany(ContactDetails::class, 'country_id');
-    }
+
     public function contactUsRequest()
     {
         return $this->hasMany(ContactUsRequest::class, 'country_id');

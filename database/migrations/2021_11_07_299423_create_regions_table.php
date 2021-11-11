@@ -17,6 +17,14 @@ class CreateRegionsTable extends Migration
             $table->id();
             $table->mediumText('name');
             $table->mediumText('description')->nullable();
+            $table->string('name_am');
+            $table->string('description_am')->nullable();
+            $table->string('name_fr')->nullable();
+            $table->string('description_fr')->nullable();
+            $table->string('name_it')->nullable();
+            $table->string('description_it')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->unsignedBigInteger('deleted_by')->nullable();
             $table->foreign('deleted_by')->references('id')->on('users');
             $table->unsignedBigInteger('created_by')->nullable();

@@ -20,10 +20,12 @@ class CreateContactUsRequestsTable extends Migration
             $table->mediumText('last_name');
             $table->string('phone_number');
             $table->string('email');
-            $table->mediumText('country');
             $table->mediumText('detail');
             $table->timestamps();
             $table->boolean('receive_update');
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')
+                ->references('id')->on('countries');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')
                 ->references('id')->on('users');

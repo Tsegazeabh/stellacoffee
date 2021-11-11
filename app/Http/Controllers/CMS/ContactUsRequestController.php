@@ -29,7 +29,6 @@ class ContactUsRequestController extends Controller
     protected function createGet()
     {
         try {
-            Log::info('It is coming to the contact us request');
             return Inertia::render('Public/ContactUsRequest/CreateContactUsRequest');
         } catch (AuthorizationException $ex) {
             abort(403);
@@ -98,6 +97,7 @@ class ContactUsRequestController extends Controller
             $content_status = $request->has('simpleFilters') ? $request->get('simpleFilters')['content_status'] : 0;
 
             $searchKeyword = $request->has('simpleFilters') ? $request->get('simpleFilters')['search_keyword'] : '';
+            Log::info($searchKeyword);
             switch ($content_status) {
                 case 1: // open
                     $result = ContactUsRequest::withTrashed()

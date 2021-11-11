@@ -165,7 +165,7 @@ class SuccessStoryController extends Controller
                 $content->tags()->sync($tags);
                 DB::commit();
             }
-            return redirect()->route('product-blend-management-page');
+            return redirect()->route('success-story-management-page');
 
         } catch (\Throwable $ex) {
             DB::rollback();
@@ -225,7 +225,7 @@ class SuccessStoryController extends Controller
                 });
                 $success_story->content->tags()->sync($tags);
                 DB::commit();
-                return redirect()->route('product-blend-management-page');
+                return redirect()->route('success-story-management-page');
             } else {
                 return bacK()->withErrors(['errorMessage'=> 'We can not find success story with the specified id!']);
             }

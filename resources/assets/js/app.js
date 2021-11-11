@@ -5,6 +5,8 @@ import {createInertiaApp, Link, Head} from '@inertiajs/inertia-vue3';
 import {InertiaProgress} from '@inertiajs/progress';
 import Layout from "@layouts/Layout.vue";
 import {_trans} from "./shared/Localization.js";
+import Toaster from "@meforma/vue-toaster";
+
 
 createInertiaApp({
     title: (title) => `${title}`,
@@ -18,6 +20,7 @@ createInertiaApp({
             render: () => h(app, props)
         })
             .use(plugin)
+            .use(Toaster, {position: "top", duration: 3000, dismissible: true})
             .component('InertiaLink', Link)
             .component('InertiaHead', Head)
             .mixin({methods: {route, _trans}})

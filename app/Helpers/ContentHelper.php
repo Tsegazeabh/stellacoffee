@@ -162,6 +162,16 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
+        case PrivacyPolicy::class:
+            return route('privacy-policy-detail', [
+                'contentId' => $content_id,
+                'lang' => $langCode
+            ]);
+        case TermAndCondition::class:
+            return route('term-and-condition-detail', [
+                'contentId' => $content_id,
+                'lang' => $langCode
+            ]);
         default:
             return route('home',['lang' => $langCode]);
     }
@@ -204,6 +214,12 @@ function getModelName($content_type)
         case 'success-story':
         case 'successstory':
             return SuccessStory::class;
+        case 'privacy-policy':
+        case 'privacypolicy':
+            return PrivacyPolicy::class;
+        case 'term-and-condition':
+        case 'termandcondition':
+            return TermAndCondition::class;
         default:
             return News::class;
     }
@@ -232,6 +248,10 @@ function getTableName($content_type)
             return (new StellaCoffeeOrigin)->getTable();
         case SuccessStory::class:
             return (new SuccessStory)->getTable();
+        case PrivacyPolicy::class:
+            return (new PrivacyPolicy)->getTable();
+        case TermAndCondition::class:
+            return (new TermAndCondition)->getTable();
         default:
             return (new Content())->getTable();
     }
@@ -303,7 +323,7 @@ function getFirstImageURL($rich_text_content, $content_type)
 function getDefaultAppImagePath()
 {
     return array(
-        'src' => asset('images/logo.png')
+        'src' => asset('images/logo.jpg')
     );
 }
 

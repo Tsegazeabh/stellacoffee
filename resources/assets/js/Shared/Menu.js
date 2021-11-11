@@ -3,7 +3,7 @@ export const getMenus = () => {
         {
             label: "About", url: "", active: true,
             submenus: [
-                {label: "History", url: route('content-index-page', 'history'), active: false},
+                {label: "History", url: route('history-index'), active: false},
                 {label: "Success Stories", url: route('content-index-page', 'success-story'), active: false},
                 {label: "Certifications", url: route('content-index-page', 'certification'), active: false},
                 {label: "Stella Coffee Origins", url: route('content-index-page', 'stella-coffee-origin'), active: false},

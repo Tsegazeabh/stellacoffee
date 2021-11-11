@@ -1,18 +1,23 @@
 <?php
 
 use App\Http\Controllers\CMS\CertificationController;
+use App\Http\Controllers\CMS\CityController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
 use App\Http\Controllers\CMS\ContentsController;
+use App\Http\Controllers\CMS\CountryController;
 use App\Http\Controllers\CMS\HistoryController;
+use App\Http\Controllers\CMS\PrivacyPolicyController;
 use App\Http\Controllers\CMS\ProductBlendController;
 use App\Http\Controllers\CMS\ProductPackageController;
 use App\Http\Controllers\CMS\QualityControlProcessController;
+use App\Http\Controllers\CMS\RegionController;
 use App\Http\Controllers\CMS\RoastingGuideController;
 use App\Http\Controllers\CMS\RoastingMachineController;
 use App\Http\Controllers\CMS\RoastingProcessController;
 use App\Http\Controllers\CMS\RoastingServiceController;
 use App\Http\Controllers\CMS\StellaCoffeeOriginController;
 use App\Http\Controllers\CMS\SuccessStoryController;
+use App\Http\Controllers\CMS\TermAndConditionController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.changed'])->group(function () {
@@ -140,31 +145,66 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::put(getSecureURL(7).'/{id}', [SuccessStoryController::class, 'editPost'])->name('edit-success-story');
         Route::get('preview/{id}', [SuccessStoryController::class, 'preview'])->name('preview-success-story');
     });
+    Route::prefix('privacy-policy')->group(function () {
+        Route::get(getSecureURL(1), [PrivacyPolicyController::class, 'createGet'])->name('privacy-policy-creation-page');
+        Route::post(getSecureURL(2), [PrivacyPolicyController::class, 'createPost'])->name('post-privacy-policy');
+        Route::get(getSecureURL(4), [PrivacyPolicyController::class, 'managePrivacyPolicy'])->name('privacy-policy-management-page');
+        Route::post('fetch-privacy-policy', [PrivacyPolicyController::class, 'fetchPrivacyPolicy'])->name('fetch-privacy-policy');
+        Route::post(getSecureURL(4), [PrivacyPolicyController::class, 'managePrivacyPolicy'])->name('search-privacy-policy');
+        Route::get(getSecureURL(6).'/{id}', [PrivacyPolicyController::class, 'editGet'])->name('privacy-policy-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [PrivacyPolicyController::class, 'editPost'])->name('edit-privacy-policy');
+        Route::delete(getSecureURL(8).'/{id}', [PrivacyPolicyController::class, 'delete'])->name('delete-privacy-policy');
+        Route::get('preview/{id}', [PrivacyPolicyController::class, 'preview'])->name('preview-privacy-policy');
+        //Route::post(getSecureURL(2), [PrivacyPolicyController::class, 'upload'])->name('upload-file-attachments');
+    });
 
-//
-//    Route::prefix('country')->group(function () {
-//        Route::get(getSecureURL(1), [CountryController::class, 'createGet'])->name('country-creation-page');
-//        Route::post(getSecureURL(2), [CountryController::class, 'createPost'])->name('post-country');
-//        Route::get(getSecureURL(4), [CountryController::class, 'manageCountry'])->name('country-management-page');
-//        Route::post('fetch-country', [CountryController::class, 'fetchCountry'])->name('fetch-country');
-//        Route::post(getSecureURL(4), [CountryController::class, 'manageCountry'])->name('search-country');
-//        Route::get(getSecureURL(6).'/{id}', [CountryController::class, 'editGet'])->name('country-editor-page');
-//        Route::put(getSecureURL(7).'/{id}', [CountryController::class, 'editPost'])->name('edit-country');
-//        Route::delete(getSecureURL(8).'/{id}', [CountryController::class, 'delete'])->name('delete-country');
-//        //Route::post(getSecureURL(2), [CountryController::class, 'upload'])->name('upload-file-attachments');
-//    });
-//    Route::prefix('city')->group(function () {
-//        Route::get(getSecureURL(1), [CityController::class, 'createGet'])->name('city-creation-page');
-//        Route::post(getSecureURL(2), [CityController::class, 'createPost'])->name('post-city');
-//        Route::get(getSecureURL(4), [CityController::class, 'manageCity'])->name('city-management-page');
-//        Route::post('fetch-city', [CityController::class, 'fetchCity'])->name('fetch-city');
-//        Route::post(getSecureURL(4), [CityController::class, 'manageCity'])->name('search-city');
-//        Route::get(getSecureURL(6).'/{id}', [CityController::class, 'editGet'])->name('city-editor-page');
-//        Route::put(getSecureURL(7).'/{id}', [CityController::class, 'editPost'])->name('edit-city');
-//        Route::delete(getSecureURL(8).'/{id}', [CityController::class, 'delete'])->name('delete-city');
-//        //Route::get('get-cities-by-region', [CityController::class, 'getCitiesByRegion'])->name('get-cities-by-region');
-//        //Route::post(getSecureURL(2), [CityController::class, 'upload'])->name('upload-file-attachments');
-//    });
+    Route::prefix('term-and-condition')->group(function () {
+        Route::get(getSecureURL(1), [TermAndConditionController::class, 'createGet'])->name('term-and-condition-creation-page');
+        Route::post(getSecureURL(2), [TermAndConditionController::class, 'createPost'])->name('post-term-and-condition');
+        Route::get(getSecureURL(4), [TermAndConditionController::class, 'manageTermAndCondition'])->name('term-and-condition-management-page');
+        Route::post('fetch-term-and-condition', [TermAndConditionController::class, 'fetchTermAndCondition'])->name('fetch-term-and-condition');
+        Route::post(getSecureURL(4), [TermAndConditionController::class, 'manageTermAndCondition'])->name('search-term-and-condition');
+        Route::get(getSecureURL(6).'/{id}', [TermAndConditionController::class, 'editGet'])->name('term-and-condition-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [TermAndConditionController::class, 'editPost'])->name('edit-term-and-condition');
+        Route::delete(getSecureURL(8).'/{id}', [TermAndConditionController::class, 'delete'])->name('delete-term-and-condition');
+        Route::get('preview/{id}', [TermAndConditionController::class, 'preview'])->name('preview-term-and-condition');
+        //Route::post(getSecureURL(2), [TermAndConditionController::class, 'upload'])->name('upload-file-attachments');
+    });
+    Route::prefix('region')->group(function () {
+        Route::get(getSecureURL(1), [RegionController::class, 'createGet'])->name('region-creation-page');
+        Route::post(getSecureURL(2), [RegionController::class, 'createPost'])->name('post-region');
+        Route::get(getSecureURL(4), [RegionController::class, 'manageRegion'])->name('region-management-page');
+        Route::post('fetch-region', [RegionController::class, 'fetchRegion'])->name('fetch-region');
+        Route::post(getSecureURL(4), [RegionController::class, 'manageRegion'])->name('search-region');
+        Route::get(getSecureURL(6).'/{id}', [RegionController::class, 'editGet'])->name('region-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [RegionController::class, 'editPost'])->name('edit-region');
+        Route::delete(getSecureURL(8).'/{id}', [RegionController::class, 'delete'])->name('delete-region');
+        //Route::post(getSecureURL(2), [RegionController::class, 'upload'])->name('upload-file-attachments');
+    });
+
+    Route::prefix('country')->group(function () {
+        Route::get(getSecureURL(1), [CountryController::class, 'createGet'])->name('country-creation-page');
+        Route::post(getSecureURL(2), [CountryController::class, 'createPost'])->name('post-country');
+        Route::get(getSecureURL(4), [CountryController::class, 'manageCountry'])->name('country-management-page');
+        Route::post('fetch-country', [CountryController::class, 'fetchCountry'])->name('fetch-country');
+        Route::post(getSecureURL(4), [CountryController::class, 'manageCountry'])->name('search-country');
+        Route::get(getSecureURL(6).'/{id}', [CountryController::class, 'editGet'])->name('country-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [CountryController::class, 'editPost'])->name('edit-country');
+        Route::delete(getSecureURL(8).'/{id}', [CountryController::class, 'delete'])->name('delete-country');
+        //Route::post(getSecureURL(2), [CountryController::class, 'upload'])->name('upload-file-attachments');
+    });
+    Route::prefix('city')->group(function () {
+        Route::get(getSecureURL(1), [CityController::class, 'createGet'])->name('city-creation-page');
+        Route::post(getSecureURL(2), [CityController::class, 'createPost'])->name('post-city');
+        Route::get(getSecureURL(4), [CityController::class, 'manageCity'])->name('city-management-page');
+        Route::post('fetch-city', [CityController::class, 'fetchCity'])->name('fetch-city');
+        Route::post(getSecureURL(4), [CityController::class, 'manageCity'])->name('search-city');
+        Route::get(getSecureURL(6).'/{id}', [CityController::class, 'editGet'])->name('city-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [CityController::class, 'editPost'])->name('edit-city');
+        Route::delete(getSecureURL(8).'/{id}', [CityController::class, 'delete'])->name('delete-city');
+        //Route::get('get-cities-by-region', [CityController::class, 'getCitiesByRegion'])->name('get-cities-by-region');
+        //Route::post(getSecureURL(2), [CityController::class, 'upload'])->name('upload-file-attachments');
+    });
 //
 //    Route::prefix('faq')->group(function () {
 //        Route::get(getSecureURL(1), [FaqController::class, 'createGet'])->name('faq-creation-page');
@@ -200,32 +240,6 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
 //        Route::post(getSecureURL(7).'/{id}', [MainSliderController::class, 'editPost'])->name('edit-main-slider');
 //        Route::get('preview/{id}', [MainSliderController::class, 'preview'])->name('preview-main-slider');
 //        //Route::post(getSecureURL(2), [MainSliderController::class, 'upload'])->name('upload-file-attachments');
-//    });
-//
-//    Route::prefix('privacy-policy')->group(function () {
-//        Route::get(getSecureURL(1), [PrivacyPolicyController::class, 'createGet'])->name('privacy-policy-creation-page');
-//        Route::post(getSecureURL(2), [PrivacyPolicyController::class, 'createPost'])->name('post-privacy-policy');
-//        Route::get(getSecureURL(4), [PrivacyPolicyController::class, 'managePrivacyPolicy'])->name('privacy-policy-management-page');
-//        Route::post('fetch-privacy-policy', [PrivacyPolicyController::class, 'fetchPrivacyPolicy'])->name('fetch-privacy-policy');
-//        Route::post(getSecureURL(4), [PrivacyPolicyController::class, 'managePrivacyPolicy'])->name('search-privacy-policy');
-//        Route::get(getSecureURL(6).'/{id}', [PrivacyPolicyController::class, 'editGet'])->name('privacy-policy-editor-page');
-//        Route::put(getSecureURL(7).'/{id}', [PrivacyPolicyController::class, 'editPost'])->name('edit-privacy-policy');
-//        Route::delete(getSecureURL(8).'/{id}', [PrivacyPolicyController::class, 'delete'])->name('delete-privacy-policy');
-//        Route::get('preview/{id}', [PrivacyPolicyController::class, 'preview'])->name('preview-privacy-policy');
-//        //Route::post(getSecureURL(2), [PrivacyPolicyController::class, 'upload'])->name('upload-file-attachments');
-//    });
-//
-//    Route::prefix('term-and-condition')->group(function () {
-//        Route::get(getSecureURL(1), [TermAndConditionController::class, 'createGet'])->name('term-and-condition-creation-page');
-//        Route::post(getSecureURL(2), [TermAndConditionController::class, 'createPost'])->name('post-term-and-condition');
-//        Route::get(getSecureURL(4), [TermAndConditionController::class, 'manageTermAndCondition'])->name('term-and-condition-management-page');
-//        Route::post('fetch-term-and-condition', [TermAndConditionController::class, 'fetchTermAndCondition'])->name('fetch-term-and-condition');
-//        Route::post(getSecureURL(4), [TermAndConditionController::class, 'manageTermAndCondition'])->name('search-term-and-condition');
-//        Route::get(getSecureURL(6).'/{id}', [TermAndConditionController::class, 'editGet'])->name('term-and-condition-editor-page');
-//        Route::put(getSecureURL(7).'/{id}', [TermAndConditionController::class, 'editPost'])->name('edit-term-and-condition');
-//        Route::delete(getSecureURL(8).'/{id}', [TermAndConditionController::class, 'delete'])->name('delete-term-and-condition');
-//        Route::get('preview/{id}', [TermAndConditionController::class, 'preview'])->name('preview-term-and-condition');
-//        //Route::post(getSecureURL(2), [TermAndConditionController::class, 'upload'])->name('upload-file-attachments');
 //    });
 
     Route::prefix('content')->group(function () {

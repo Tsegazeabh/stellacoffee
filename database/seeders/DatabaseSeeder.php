@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             UsersSeeder::class,
             LocaleSeeder::class,
+            CountrySeeder::class,
+            CitySeeder::class,
 //            CountrySeeder::class,
 //            RegionSeeder::class,
 //            ZoneSeeder::class,

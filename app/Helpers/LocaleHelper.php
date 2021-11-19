@@ -32,7 +32,7 @@ function translations($jsonTranslationFile)
 
     $translations= json_decode(file_get_contents($jsonTranslationFile), true);
 
-//    if(!empty($translations)) {
+    if(!empty($translations)) {
 //        if (getSessionLanguageShortCode() == 'en') {
 //            $documentTypes = DocumentType::get()->pluck('name', 'name')->toArray();
 //        } else {
@@ -48,7 +48,7 @@ function translations($jsonTranslationFile)
 //        $documentTypes = array_merge($documentTypes, $publicationTypes);
 //
 //        $translations = array_merge_recursive($translations, array("menu" => $documentTypes));
-//        return $translations;
-//    }
+        return $translations;
+    }
     return [];
 }

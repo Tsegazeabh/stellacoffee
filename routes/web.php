@@ -6,7 +6,15 @@ use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
 use App\Http\Controllers\CMS\ContentsController;
 use App\Http\Controllers\CMS\CountryController;
+use App\Http\Controllers\CMS\CuppingEventController;
+use App\Http\Controllers\CMS\CuppingProcedureController;
+use App\Http\Controllers\CMS\DutyFreeLocationController;
+use App\Http\Controllers\CMS\ExportDestinationController;
+use App\Http\Controllers\CMS\ExportProcessController;
+use App\Http\Controllers\CMS\FactoryLocationController;
 use App\Http\Controllers\CMS\HistoryController;
+use App\Http\Controllers\CMS\ShopController;
+use App\Http\Controllers\CMS\StoresController;
 use App\Http\Controllers\CMS\PrivacyPolicyController;
 use App\Http\Controllers\CMS\ProductBlendController;
 use App\Http\Controllers\CMS\ProductPackageController;
@@ -151,4 +159,44 @@ Route::prefix('term-and-condition')->group(function () {
 Route::prefix('country')->group(function () {
     Route::post('get-countries', [CountryController::class, 'getCountries'])->name('get-countries');
     Route::get('get-all-countries', [CountryController::class, 'getAllCountries'])->name('get-all-countries');
+});
+
+Route::prefix('export-process')->group(function () {
+    Route::get('/', [ExportProcessController::class, 'index'])->name('export-processes');
+    Route::get('detail/{id}', [ExportProcessController::class, 'getDetail'])->name('export-process-detail');
+});
+
+Route::prefix('export-destination')->group(function () {
+    Route::get('/', [ExportDestinationController::class, 'index'])->name('export-destinations');
+    Route::get('detail/{id}', [ExportDestinationController::class, 'getDetail'])->name('export-destination-detail');
+});
+
+Route::prefix('stores')->group(function () {
+    Route::get('/', [StoresController::class, 'index'])->name('stores');
+    Route::get('detail/{id}', [StoresController::class, 'getDetail'])->name('store-detail');
+});
+
+Route::prefix('duty-free-location')->group(function () {
+    Route::get('/', [DutyFreeLocationController::class, 'index'])->name('duty-free-locations');
+    Route::get('detail/{id}', [DutyFreeLocationController::class, 'getDetail'])->name('duty-free-location-detail');
+});
+
+Route::prefix('factory-location')->group(function () {
+    Route::get('/', [FactoryLocationController::class, 'index'])->name('factory-locations');
+    Route::get('detail/{id}', [FactoryLocationController::class, 'getDetail'])->name('factory-location-detail');
+});
+
+Route::prefix('shops')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shops');
+    Route::get('detail/{id}', [ShopController::class, 'getDetail'])->name('shop-detail');
+});
+
+Route::prefix('cupping-procedures')->group(function () {
+    Route::get('/', [CuppingProcedureController::class, 'index'])->name('cupping-procedures');
+    Route::get('detail/{id}', [CuppingProcedureController::class, 'getDetail'])->name('cupping-procedure-detail');
+});
+
+Route::prefix('cupping-events')->group(function () {
+    Route::get('/', [CuppingEventController::class, 'index'])->name('cupping-events');
+    Route::get('detail/{id}', [CuppingEventController::class, 'getDetail'])->name('cupping-event-detail');
 });

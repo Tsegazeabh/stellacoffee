@@ -482,3 +482,13 @@ footer {
     @apply my-3 text-gray-600 text-sm;
 }
 
+/**Form**/
+label.required::after, .label.required::after {
+    content: '\002A' !important;
+    @apply text-red-500 font-semibold mx-2;
+    font-size: 1.25rem;
+}
+
+.form-control.error {
+    border-color: rgba(229, 80, 20, 0.7);
+}

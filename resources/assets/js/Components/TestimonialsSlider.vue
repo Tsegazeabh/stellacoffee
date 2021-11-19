@@ -48,7 +48,7 @@ export default defineComponent({
                     clickable: true,
                     renderBullet: function (index, className) {
                         console.log(className);
-                        return '<span class="' + className + '">' + index + '</span>';
+                        return '<span class="fas fa-circle-notch ' + className + '"></span>';
                     },
                 },
                 breakpoints: {

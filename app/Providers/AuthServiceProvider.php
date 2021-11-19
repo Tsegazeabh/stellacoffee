@@ -14,15 +14,21 @@ use App\Models\ContactDetails;
 use App\Models\ContactUsRequest;
 use App\Models\Content;
 use App\Models\Country;
+use App\Models\CuppingEvent;
+use App\Models\CuppingProcedure;
 use App\Models\CustomerAnnouncement;
 use App\Models\CustomerRightAndDuty;
 use App\Models\CustomerServiceCenter;
 use App\Models\Document;
 use App\Models\DocumentType;
+use App\Models\DutyFreeLocation;
 use App\Models\EaseOfDoingBusiness;
 use App\Models\ElectricalTip;
 use App\Models\ElectricityTariff;
 use App\Models\Events;
+use App\Models\ExportDestination;
+use App\Models\ExportProcess;
+use App\Models\FactoryLocation;
 use App\Models\Faq;
 use App\Models\FaqGroup;
 use App\Models\GettingElectricity;
@@ -51,6 +57,8 @@ use App\Models\RoastingGuide;
 use App\Models\RoastingMachine;
 use App\Models\RoastingProcess;
 use App\Models\RoastingService;
+use App\Models\Shop;
+use App\Models\Store;
 use App\Models\ServiceCharter;
 use App\Models\ServiceType;
 use App\Models\SocialResponsibility;
@@ -73,15 +81,21 @@ use App\Policies\ContactDetailsPolicy;
 use App\Policies\ContactUsRequestPolicy;
 use App\Policies\ContentPolicy;
 use App\Policies\CountryPolicy;
+use App\Policies\CuppingEventPolicy;
+use App\Policies\CuppingProcedurePolicy;
 use App\Policies\CustomerAnnouncementPolicy;
 use App\Policies\CustomerRightAndDutyPolicy;
 use App\Policies\CustomerServiceCenterPolicy;
 use App\Policies\DocumentPolicy;
 use App\Policies\DocumentTypePolicy;
+use App\Policies\DutyFreeLocationPolicy;
 use App\Policies\EaseOfDoingBusinessPolicy;
 use App\Policies\ElectricalTipPolicy;
 use App\Policies\ElectricityTariffPolicy;
 use App\Policies\EventsPolicy;
+use App\Policies\ExportDestinationPolicy;
+use App\Policies\ExportProcessPolicy;
+use App\Policies\FactoryLocationPolicy;
 use App\Policies\FaqGroupPolicy;
 use App\Policies\FaqPolicy;
 use App\Policies\GettingElectricityPolicy;
@@ -110,6 +124,8 @@ use App\Policies\RoastingGuidePolicy;
 use App\Policies\RoastingMachinePolicy;
 use App\Policies\RoastingProcessPolicy;
 use App\Policies\RoastingServicePolicy;
+use App\Policies\ShopPolicy;
+use App\Policies\StorePolicy;
 use App\Policies\ServiceCharterPolicy;
 use App\Policies\ServiceTypePolicy;
 use App\Policies\SocialResponsibilityPolicy;
@@ -134,13 +150,21 @@ class AuthServiceProvider extends ServiceProvider
         Content::class => ContentPolicy::class,
         ContactUsRequest::class => ContactUsRequestPolicy::class,
         History::class => HistoryPolicy::class,
-        ProductBlend::class=>ProductBlendPolicy::class,
-        ProductPackage::class=>ProductPackagePolicy::class,
-        StellaCoffeeOrigin::class=>StellaCoffeOriginPolicy::class,
-        RoastingProcess::class=>RoastingProcessPolicy::class,
-        RoastingMachine::class=>RoastingMachinePolicy::class,
-        RoastingGuide::class=>RoastingGuidePolicy::class,
-        RoastingService::class=>RoastingServicePolicy::class
+        ProductBlend::class => ProductBlendPolicy::class,
+        ProductPackage::class => ProductPackagePolicy::class,
+        StellaCoffeeOrigin::class => StellaCoffeOriginPolicy::class,
+        RoastingProcess::class => RoastingProcessPolicy::class,
+        RoastingMachine::class => RoastingMachinePolicy::class,
+        RoastingGuide::class => RoastingGuidePolicy::class,
+        RoastingService::class => RoastingServicePolicy::class,
+        ExportDestination::class => ExportDestinationPolicy::class,
+        ExportProcess::class => ExportProcessPolicy::class,
+        Store::class => StorePolicy::class,
+        DutyFreeLocation::class => DutyFreeLocationPolicy::class,
+        FactoryLocation::class => FactoryLocationPolicy::class,
+        Shop::class => ShopPolicy::class,
+        CuppingEvent::class => CuppingEventPolicy::class,
+        CuppingProcedure::class => CuppingProcedurePolicy::class,
     ];
 
     /**

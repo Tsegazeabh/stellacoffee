@@ -32,12 +32,12 @@ export const getMenus = () => {
         {
             label: "Find Us", url: "", active: false,
             submenus: [
-                {label: "Export Destinations", url: route('content-index-page', 'export-destination'), active: false},
-                {label: "Sales Locations", url: route('content-index-page', 'sales-location'), active: false},
-                {label: "Our Stores", url: route('content-index-page', 'store'), active: false},
-                {label: "Duty Free Locations ", url: route('content-index-page', 'duty-free-location'), active: false},
-                {label: "Factory Location", url: route('content-index-page', 'factory-location'), active: false},
-                {label: "Export Processes", url: route('content-index-page', 'export-process'), active: false},
+                {label: "Export Destinations", url: route('export-destinations'), active: false},
+                {label: "Our Stores", url: route('stores'), active: false},
+                {label: "Our Shops", url: route('shops'), active: false},
+                {label: "Duty Free Locations ", url: route('duty-free-locations'), active: false},
+                {label: "Factory Locations", url: route('factory-locations'), active: false},
+                {label: "Export Processes", url: route('export-processes'), active: false},
             ]
         },
         {

@@ -865,4 +865,20 @@ footer address ul.social-media-icons-list > li {
   color: rgba(75, 85, 99, var(--tw-text-opacity));
 }
 
+/**Form**/
+
+label.required::after, .label.required::after {
+  content: "*" !important;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-text-opacity));
+  font-size: 1.25rem;
+}
+
+.form-control.error {
+  border-color: rgba(229, 80, 20, 0.7);
+}
+
 /* purgecss end ignore */

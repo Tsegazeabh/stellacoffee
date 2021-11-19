@@ -88,7 +88,7 @@ class CityController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Shop a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -223,15 +223,15 @@ class CityController extends Controller
         return response($cities);
     }
 
-//    protected function getCitiesByRegion(Request $request)
-//    {
-//        $langId = getSessionLanguageShortCode();
-//        if($langId =='en'){
-//            $regions = City::where('region_id', $request->get('region'))->orderBy('name', 'DESC')->distinct()->pluck('name','id');
-//        }
-//        else{
-//            $regions = City::where('region_id', $request->get('region'))->orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan','id');
-//        }
-//        return response($regions);
-//    }
+    protected function getCitiesByCountry(Request $request)
+    {
+        $langId = getSessionLanguageShortCode();
+        if($langId =='en'){
+            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name', 'DESC')->distinct()->pluck('name','id');
+        }
+        else{
+            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan','id');
+        }
+        return response($cities);
+    }
 }

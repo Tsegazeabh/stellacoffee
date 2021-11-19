@@ -73,7 +73,7 @@ class CountryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Shop a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -193,7 +193,7 @@ class CountryController extends Controller
         }
         return response($countries);
     }
-    protected function  getAllCountries(Request $request)
+    protected function getAllCountries(Request $request)
     {
         $langId = getSessionLanguageShortCode();
         if($langId =='en' || $langId =='EN')

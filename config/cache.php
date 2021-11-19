@@ -6,7 +6,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Cache Store
+    | Default Cache Shop
     |--------------------------------------------------------------------------
     |
     | This option controls the default cache connection that gets used while
@@ -19,7 +19,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Cache Stores
+    | Cache Shop
     |--------------------------------------------------------------------------
     |
     | Here you may define all of the cache "stores" for your application as

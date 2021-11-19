@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use League\Flysystem\Config;
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
                 return app()->getLocale();
             },
             'language' => function () {
+            Log::info(app()->getLocale());
                 return translations(
                     resource_path('lang/' . app()->getLocale() . '/vue-translations.json')
                 );

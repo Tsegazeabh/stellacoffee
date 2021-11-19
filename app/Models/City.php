@@ -23,10 +23,6 @@ class City extends Authorizable
         return $this->belongsTo(Country::class, 'country_id');
     }
 
-//    public function locale()
-//    {
-//        return $this->belongsTo(Locale::class, 'locale_id');
-//    }
     public function scopeOfLanguage($query, $culture_id)
     {
         return $query->where('locale_id', $culture_id);

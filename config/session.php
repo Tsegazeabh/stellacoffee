@@ -50,7 +50,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Session File Location
+    | Session File Shop
     |--------------------------------------------------------------------------
     |
     | When using the native session driver, we need a location where session
@@ -89,7 +89,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Session Cache Store
+    | Session Cache Shop
     |--------------------------------------------------------------------------
     |
     | While using one of the framework's cache driven session backends you may

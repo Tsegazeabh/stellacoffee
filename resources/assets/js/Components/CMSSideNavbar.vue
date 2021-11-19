@@ -95,42 +95,49 @@ export default defineComponent({
                         {label: "Blends", route: route('product-blend-management-page'), active: false},
                     ]
                 },
-                // {
-                //     label: 'Find Us', route: route("home"),
-                //     collapsed: true,
-                //     submenus: [
-                //         {label: "Export Destinations", route: route('export-destination-management-page'), active: false},
-                //         {label: "Sales Locations", route: route('sales-location-management-page'), active: false},
-                //         {label: "Duty Free Locations ", route: route('duty-free-location-management-page'), active: false},
-                //         {label: "Our Stores", route: route('store-management-page'), active: false},
-                //         {label: "Factory Location", route: route('factory-location-management-page'), active: false},
-                //         {label: "Export Processes", route: route('export-process-management-page'), active: false},
-                //     ]
-                // },
-                // {
-                //     label: 'Cupping', route: route("home"),
-                //     collapsed: true,
-                //     submenus: [
-                //         {label: "Cupping Procedures", route: route('cupping-procedure-management-page'), active: false},
-                //         {label: "Cupping Events", route: route('cupping-event-management-page'), active: false}
-                //     ]
-                // },
-                // {
-                //     label: 'News and Events', route: route("news-and-events-management-page"),
-                //
-                // },
+                {
+                    label: 'Find Us', route: route("home"),
+                    collapsed: true,
+                    submenus: [
+                        {label: "Export Destinations", route: route('export-destinations-management-page'), active: false},
+                        {label: "Export Processes", route: route('export-process-management-page'), active: false},
+                        {label: "Stores", route: route('stores-management-page'), active: false},
+                        {label: "Duty Free Location ", route: route('duty-free-locations-management-page'), active: false},
+                        {label: "Sales Locations", route: route('shops-management-page'), active: false},
+                        {label: "Factory Location", route: route('factory-locations-management-page'), active: false},
+                    ]
+                },
+                {
+                    label: 'Cupping', route: route("home"),
+                    collapsed: true,
+                    submenus: [
+                        {label: "Cupping Procedures", route: route('cupping-procedures-management-page'), active: false},
+                        {label: "Cupping Events", route: route('cupping-events-management-page'), active: false}
+                    ]
+                },
+                {
+                    label: 'News and Events', route: route("home"),
+                    collapsed: true,
+                    submenus: [
+                        {label: "News", route: route('news-management-page'), active: false},
+                        {label: "Events", route: route('events-management-page'), active: false}
+                    ]
+                },
 
-                // {
-                //     label: 'Other Contents', route: route('home'),
-                //     collapsed: true,
-                //     submenus: [
-                //         {label: 'Partners', route: route('partner-management-page')},
-                //         {label: 'FAQs', route: route('faq-management-page')},
-                //         {label: 'Main Sliders', route: route('main-slider-management-page')},
-                //         {label: 'Privacy Policy', route: route('privacy-policy-management-page')},
-                //         {label: 'Terms and Conditions', route: route('term-and-condition-management-page')},
-                //     ]
-                // },
+                {
+                    label: 'Other Contents', route: route('home'),
+                    collapsed: true,
+                    submenus: [
+                        {label: 'Partners', route: route('partners-management-page')},
+                        {label: 'Photo Gallery', route: route('manage-photo-gallery')},
+                        {label: 'Blogs', route: route('forum-topics-management-page')},
+                        {label: 'Testimonials', route: route('testimonials-management-page')},
+                        // {label: 'FAQs', route: route('faq-management-page')},
+                        // {label: 'Main Sliders', route: route('main-slider-management-page')},
+                        // {label: 'Privacy Policy', route: route('privacy-policy-management-page')},
+                        // {label: 'Terms and Conditions', route: route('term-and-condition-management-page')},
+                    ]
+                },
 
                 // {
                 //     label: 'Settings', route: route("home"),

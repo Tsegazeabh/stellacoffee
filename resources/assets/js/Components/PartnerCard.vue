@@ -1,6 +1,7 @@
 <template>
-    <a :href="partner.url" class="partner-card">
-        <img :src="partner.logo" class="object-fill"/>
+    <a :href="partner.contentable.link" class="partner-card">
+          <img :src="partner.contentable.first_media['base64svg']" :srcset="partner.contentable.src_sets.join(' ')"
+                 class="object-fill" :alt="partner.contentable.title"/>
     </a>
 </template>
 

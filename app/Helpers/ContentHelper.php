@@ -172,6 +172,11 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
+        case MainSlider::class:
+            return route('main-slider-detail', [
+                'contentId' => $content_id,
+                'lang' => $langCode
+            ]);
         default:
             return route('home',['lang' => $langCode]);
     }
@@ -220,6 +225,8 @@ function getModelName($content_type)
         case 'term-and-condition':
         case 'termandcondition':
             return TermAndCondition::class;
+        case 'mainslider':
+            return MainSlider::class;
         default:
             return News::class;
     }
@@ -252,6 +259,8 @@ function getTableName($content_type)
             return (new PrivacyPolicy)->getTable();
         case TermAndCondition::class:
             return (new TermAndCondition)->getTable();
+        case MainSlider::class:
+            return (new MainSlider)->getTable();
         default:
             return (new Content())->getTable();
     }
@@ -422,7 +431,6 @@ function getModelShortName($model_type)
             return trans('models.PrivacyPolicy');
         case TermAndCondition::class:
             return trans('models.TermAndCondition');
-            return trans('models.Tender');
         default:
             return trans('models.Content');
     }

@@ -204,7 +204,6 @@ class ContentsController extends Controller
                 ->withCount('content_hits')
                 ->orderBy('published_at', 'DESC')
                 ->paginate(getDefaultPagingSize());
-            Log::info($result);
             if ($result->total() > 0) {
                 event(new ContentVisited($result->items()[0], $request));
             }

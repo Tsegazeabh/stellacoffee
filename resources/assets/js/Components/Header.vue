@@ -82,6 +82,20 @@
                                 አማርኛ
                             </button>
                         </li>
+                        <li class="dropdown-item py-0 w-full">
+                            <button @click.stop="changeLanguage('fr')"
+                                    class="nav-link w-full p-0"
+                                    :class="lang=='en'?'active':''">
+                                French
+                            </button>
+                        </li>
+                        <li class="dropdown-item py-0 w-full">
+                            <button @click.stop="changeLanguage('it')"
+                                    class="nav-link w-full p-0"
+                                    :class="lang=='en'?'active':''">
+                                Italiano
+                            </button>
+                        </li>
                     </ul>
                 </li>
             </ul>

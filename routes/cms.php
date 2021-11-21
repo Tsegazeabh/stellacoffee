@@ -6,6 +6,8 @@ use App\Http\Controllers\CMS\ContactUsRequestController;
 use App\Http\Controllers\CMS\ContentsController;
 use App\Http\Controllers\CMS\CountryController;
 use App\Http\Controllers\CMS\HistoryController;
+use App\Http\Controllers\CMS\MainSliderController;
+use App\Http\Controllers\CMS\PartnerController;
 use App\Http\Controllers\CMS\PrivacyPolicyController;
 use App\Http\Controllers\CMS\ProductBlendController;
 use App\Http\Controllers\CMS\ProductPackageController;
@@ -336,10 +338,11 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
     Route::prefix('news')->group(function () {
         Route::get(getSecureURL(1), [NewsController::class, 'createGet'])->name('news-creation-page');
         Route::post(getSecureURL(2), [NewsController::class, 'createPost'])->name('post-news');
-        Route::get(getSecureURL(4), [NewsController::class, 'manage'])->name('news-management-page');
-        Route::post('search', [NewsController::class, 'fetch'])->name('fetch-news');
-        Route::get(getSecureURL(6) . '/{id}', [NewsController::class, 'editGet'])->name('news-editor-page');
-        Route::put(getSecureURL(7) . '/{id}', [NewsController::class, 'editPost'])->name('update-news');
+        Route::get(getSecureURL(4), [NewsController::class, 'manageNews'])->name('news-management-page');
+        Route::post('fetch-news', [NewsController::class, 'fetchNews'])->name('fetch-news');
+        Route::get(getSecureURL(6).'/{id}', [NewsController::class, 'editGet'])->name('news-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [NewsController::class, 'editPost'])->name('edit-news');
+        Route::get('preview/{id}', [NewsController::class, 'preview'])->name('preview-news');
     });
 
     Route::prefix('shops')->group(function () {
@@ -350,6 +353,17 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::get(getSecureURL(6) . '/{id}', [ShopController::class, 'editGet'])->name('shop-editor-page');
         Route::put(getSecureURL(7) . '/{id}', [ShopController::class, 'editPost'])->name('update-shop');
         Route::get('preview/{id}', [ShopController::class, 'preview'])->name('shop-preview');
+    });
+    Route::prefix('main-slider')->group(function () {
+        Route::get(getSecureURL(1), [MainSliderController::class, 'createGet'])->name('main-slider-creation-page');
+        Route::post(getSecureURL(2), [MainSliderController::class, 'createPost'])->name('post-main-slider');
+        Route::get(getSecureURL(4), [MainSliderController::class, 'manageMainSlider'])->name('main-slider-management-page');
+        Route::post('fetch-main-slider', [MainSliderController::class, 'fetchMainSlider'])->name('fetch-main-slider');
+        Route::post(getSecureURL(4), [MainSliderController::class, 'manageMainSlider'])->name('search-main-slider');
+        Route::get(getSecureURL(6).'/{id}', [MainSliderController::class, 'editGet'])->name('main-slider-editor-page');
+        Route::post(getSecureURL(7).'/{id}', [MainSliderController::class, 'editPost'])->name('edit-main-slider');
+        Route::get('preview/{id}', [MainSliderController::class, 'preview'])->name('preview-main-slider');
+        //Route::post(getSecureURL(2), [MainSliderController::class, 'upload'])->name('upload-file-attachments');
     });
 //
 //    Route::prefix('faq')->group(function () {
@@ -364,14 +378,16 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
 //        //Route::post(getSecureURL(2), [FaqController::class, 'upload'])->name('upload-file-attachments');
 //    });
 //
-    Route::prefix('partners')->group(function () {
-        Route::get(getSecureURL(1), [PartnersController::class, 'createGet'])->name('partner-creation-page');
-        Route::post(getSecureURL(2), [PartnersController::class, 'createPost'])->name('post-partner');
-        Route::get(getSecureURL(4), [PartnersController::class, 'manage'])->name('partners-management-page');
-        Route::post('search', [PartnersController::class, 'fetchPartner'])->name('fetch-partner');
-        Route::get(getSecureURL(6) . '/{id}', [PartnersController::class, 'editGet'])->name('partner-editor-page');
-        Route::post(getSecureURL(7) . '/{id}', [PartnersController::class, 'editPost'])->name('update-partner');
-//        Route::get('preview/{id}', [PartnersController::class, 'preview'])->name('preview-partner');
+    Route::prefix('partner')->group(function () {
+        Route::get(getSecureURL(1), [PartnerController::class, 'createGet'])->name('partner-creation-page');
+        Route::post(getSecureURL(2), [PartnerController::class, 'createPost'])->name('post-partner');
+        Route::get(getSecureURL(4), [PartnerController::class, 'managePartner'])->name('partner-management-page');
+        Route::post('fetch-partner', [PartnerController::class, 'fetchPartner'])->name('fetch-partner');
+        Route::post(getSecureURL(4), [PartnerController::class, 'managePartner'])->name('search-partner');
+        Route::get(getSecureURL(6).'/{id}', [PartnerController::class, 'editGet'])->name('partner-editor-page');
+        Route::post(getSecureURL(7).'/{id}', [PartnerController::class, 'editPost'])->name('edit-partner');
+        Route::get('preview/{id}', [PartnerController::class, 'preview'])->name('preview-partner');
+        //Route::post(getSecureURL(2), [PartnerController::class, 'upload'])->name('upload-file-attachments');
     });
 
     Route::prefix('photo-gallery')->group(function () {

@@ -1,5 +1,5 @@
 <template>
-    <div id="main-slider" class="swiper">
+    <div v-if="mainSliders.length > 0" id="main-slider" class="swiper">
         <swiper
             :modules="modules"
             :slides-per-view="1"
@@ -9,7 +9,7 @@
             navigation
             :parallax="true"
             :scrollbar="{ draggable: true }">
-            <swiper-slide v-for="content in contents">
+            <swiper-slide v-for="content in mainSliders">
                 <slider-card :content="content">
                 </slider-card>
             </swiper-slide>
@@ -26,34 +26,76 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
-import {defineComponent} from 'vue'
+import {defineComponent} from 'vue';
+import axios from "axios";
 
 export default defineComponent({
     name: "MainSlider",
     components: {SliderCard, Swiper, SwiperSlide},
-    setup() {
+    data() {
         return {
             modules: [Navigation, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
             parallaxSwiperWidth: 0,
-            contents: [
-                {
-                    title: 'Stella Coffee Brands',
-                    lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image: 'http://127.0.0.1:8000/images/bg-image-3.jpg'
-                },
-                {
-                    title: 'Get the Most Out of Your Favorite Coffee',
-                    lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image: 'http://127.0.0.1:8000/images/bg-image-4.jpg'
-                },
-                {
-                    title: 'Get the Most Out of Your Favorite Coffee',
-                    lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-                    image: 'http://127.0.0.1:8000/images/Ampersand-38.jpg'
-                },
-            ],
-        };
+            mainSliders: [],
+        }
     },
+    // setup() {
+    //     return {
+    //         modules: [Navigation, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
+    //         parallaxSwiperWidth: 0,
+            // contents: [
+            //     {
+            //         title: 'Stella Coffee Brands',
+            //         lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
+            //         image: 'http://127.0.0.1:8000/images/bg-image-3.jpg'
+            //     },
+            //     {
+            //         title: 'Get the Most Out of Your Favorite Coffee',
+            //         lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
+            //         image: 'http://127.0.0.1:8000/images/bg-image-4.jpg'
+            //     },
+            //     {
+            //         title: 'Get the Most Out of Your Favorite Coffee',
+            //         lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
+            //         image: 'http://127.0.0.1:8000/images/Ampersand-38.jpg'
+            //     },
+            // ],
+    //     };
+    // },
+    created() {
+        this.fetchMainSliders();
+    },
+    methods: {
+        fetchMainSliders() {
+            axios
+                .get(route('latest-main-slider'))
+                .then((res) => {
+
+                    this.mainSliders = res.data;
+
+                    this.mainSliders = this.mainSliders.map(p => {
+                        return p.contentable.src_sets.map(
+                            s => {
+                                return {
+                                    'id': p.id,
+                                    'srcset': s,
+                                    'title': p.contentable.title,
+                                    'description': p.contentable.lead_paragraph,
+                                    'first_media': p.contentable.first_media
+                                }
+                            })
+                    }).flat();
+
+                })
+                .catch(err => this.mainSliders = []);
+        }
+        // setControlledSwiper(swiper) {
+        //     this.controlledSwiper = swiper;
+        // },
+        // formatDate(date) {
+        //     return moment(String(date)).format('MMM DD, YYYY')
+        // },
+    }
 })
 </script>
 

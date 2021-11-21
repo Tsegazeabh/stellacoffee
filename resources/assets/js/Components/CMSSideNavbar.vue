@@ -128,14 +128,14 @@ export default defineComponent({
                     label: 'Other Contents', route: route('home'),
                     collapsed: true,
                     submenus: [
-                        {label: 'Partners', route: route('partners-management-page')},
+                        {label: 'Partners', route: route('partner-management-page')},
                         {label: 'Photo Gallery', route: route('manage-photo-gallery')},
                         {label: 'Blogs', route: route('forum-topics-management-page')},
                         {label: 'Testimonials', route: route('testimonials-management-page')},
                         // {label: 'FAQs', route: route('faq-management-page')},
-                        // {label: 'Main Sliders', route: route('main-slider-management-page')},
-                        // {label: 'Privacy Policy', route: route('privacy-policy-management-page')},
-                        // {label: 'Terms and Conditions', route: route('term-and-condition-management-page')},
+                        {label: 'Main Sliders', route: route('main-slider-management-page')},
+                        {label: 'Privacy Policy', route: route('privacy-policy-management-page')},
+                        {label: 'Terms and Conditions', route: route('term-and-condition-management-page')},
                     ]
                 },
 

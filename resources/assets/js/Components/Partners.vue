@@ -11,7 +11,7 @@
                 :breakpoints="swiperOptions.breakpoints"
                 :parallax="true"
                 :navigation="true">
-                <swiper-slide v-for="partner in partners">
+                <swiper-slide v-for="partner in latestPartnersContents">
                     <partner-card :partner="partner"></partner-card>
                 </swiper-slide>
             </swiper>
@@ -30,11 +30,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import PartnerCard from "./PartnerCard";
+import axios from "axios";
 
 export default defineComponent({
     name: "partners",
     components: {PartnerCard, IndexHeader, Swiper, SwiperSlide},
-    setup() {
+    data() {
         return {
             modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
             parallaxSwiperWidth: 0,
@@ -50,40 +51,74 @@ export default defineComponent({
                     }
                 }
             },
-            partners: [
-                {
-                    name: "ABC Coffee Roasters",
-                    logo: "images/stella_coffee_logo.jpg",
-                    url: "",
-                },
-                {
-                    name: "XYZ Coffee Roasters",
-                    logo: "images/stella_coffee_logo.jpg",
-                    url: "",
-                },
-                {
-                    name: "XYZ Coffee Roasters",
-                    logo: "images/stella_coffee_logo.jpg",
-                    url: "",
-                },
-                {
-                    name: "XYZ Coffee Roasters",
-                    logo: "images/stella_coffee_logo.jpg",
-                    url: "",
-                },
-                {
-                    name: "XYZ Coffee Roasters",
-                    logo: "images/stella_coffee_logo.jpg",
-                    url: "",
-                },
-                {
-                    name: "XYZ Coffee Roasters",
-                    logo: "images/stella_coffee_logo.jpg",
-                    url: "",
-                },
-            ]
+            latestPartnersContents: [],
         }
-    }
+    },
+    created() {
+        this.fetchLatestPartners();
+    },
+    methods: {
+        fetchLatestPartners() {
+            axios
+                .get(route('latest-partner'))
+                .then((res) => this.latestPartnersContents = res.data)
+                .catch(err => this.latestPartnersContents = []);
+        }
+        // formatDate(date) {
+        //     return moment(String(date)).format('MMM DD, YYYY')
+        // },
+    },
+
+    // setup() {
+    //     return {
+    //         modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
+    //         parallaxSwiperWidth: 0,
+    //         swiperOptions: {
+    //             breakpoints: {
+    //                 799: {
+    //                     slidesPerView: 3,
+    //                     spaceBetween: 10
+    //                 },
+    //                 800: {
+    //                     slidesPerView: 5,
+    //                     spaceBetween: 30
+    //                 }
+    //             }
+    //         },
+    //         partners: [
+    //             {
+    //                 name: "ABC Coffee Roasters",
+    //                 logo: "images/stella_coffee_logo.jpg",
+    //                 url: "",
+    //             },
+    //             {
+    //                 name: "XYZ Coffee Roasters",
+    //                 logo: "images/stella_coffee_logo.jpg",
+    //                 url: "",
+    //             },
+    //             {
+    //                 name: "XYZ Coffee Roasters",
+    //                 logo: "images/stella_coffee_logo.jpg",
+    //                 url: "",
+    //             },
+    //             {
+    //                 name: "XYZ Coffee Roasters",
+    //                 logo: "images/stella_coffee_logo.jpg",
+    //                 url: "",
+    //             },
+    //             {
+    //                 name: "XYZ Coffee Roasters",
+    //                 logo: "images/stella_coffee_logo.jpg",
+    //                 url: "",
+    //             },
+    //             {
+    //                 name: "XYZ Coffee Roasters",
+    //                 logo: "images/stella_coffee_logo.jpg",
+    //                 url: "",
+    //             },
+    //         ]
+    //     }
+    // }
 })
 </script>
 <style>

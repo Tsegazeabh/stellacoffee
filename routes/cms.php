@@ -283,6 +283,7 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::post('search', [CustomerTestimonialController::class, 'fetch'])->name('fetch-testimonials');
         Route::get(getSecureURL(6) . '/{id}', [CustomerTestimonialController::class, 'editGet'])->name('testimonial-editor-page');
         Route::put(getSecureURL(7) . '/{id}', [CustomerTestimonialController::class, 'editPost'])->name('update-testimonial');
+        Route::get('preview/{id}', [CustomerTestimonialController::class, 'preview'])->name('testimonial-preview');
     });
 
     Route::prefix('duty-free-locations')->group(function () {

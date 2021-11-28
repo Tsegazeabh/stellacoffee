@@ -8,6 +8,7 @@ use App\Http\Controllers\CMS\ContentsController;
 use App\Http\Controllers\CMS\CountryController;
 use App\Http\Controllers\CMS\CuppingEventController;
 use App\Http\Controllers\CMS\CuppingProcedureController;
+use App\Http\Controllers\CMS\CustomerTestimonialController;
 use App\Http\Controllers\CMS\DutyFreeLocationController;
 use App\Http\Controllers\CMS\ExportDestinationController;
 use App\Http\Controllers\CMS\ExportProcessController;
@@ -199,4 +200,9 @@ Route::prefix('cupping-procedures')->group(function () {
 Route::prefix('cupping-events')->group(function () {
     Route::get('/', [CuppingEventController::class, 'index'])->name('cupping-events');
     Route::get('detail/{id}', [CuppingEventController::class, 'getDetail'])->name('cupping-event-detail');
+});
+
+Route::prefix('testimonials')->group(function () {
+    Route::get('/', [CustomerTestimonialController::class, 'index'])->name('testimonials');
+    Route::get('detail/{id}', [CustomerTestimonialController::class, 'getDetail'])->name('testimonial-detail');
 });

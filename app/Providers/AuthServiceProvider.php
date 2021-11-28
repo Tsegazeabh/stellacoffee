@@ -19,6 +19,7 @@ use App\Models\CuppingProcedure;
 use App\Models\CustomerAnnouncement;
 use App\Models\CustomerRightAndDuty;
 use App\Models\CustomerServiceCenter;
+use App\Models\CustomerTestimonial;
 use App\Models\Document;
 use App\Models\DocumentType;
 use App\Models\DutyFreeLocation;
@@ -86,6 +87,7 @@ use App\Policies\CuppingProcedurePolicy;
 use App\Policies\CustomerAnnouncementPolicy;
 use App\Policies\CustomerRightAndDutyPolicy;
 use App\Policies\CustomerServiceCenterPolicy;
+use App\Policies\CustomerTestimonialPolicy;
 use App\Policies\DocumentPolicy;
 use App\Policies\DocumentTypePolicy;
 use App\Policies\DutyFreeLocationPolicy;
@@ -165,6 +167,7 @@ class AuthServiceProvider extends ServiceProvider
         Shop::class => ShopPolicy::class,
         CuppingEvent::class => CuppingEventPolicy::class,
         CuppingProcedure::class => CuppingProcedurePolicy::class,
+        CustomerTestimonial::class => CustomerTestimonialPolicy::class,
     ];
 
     /**

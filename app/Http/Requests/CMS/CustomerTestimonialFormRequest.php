@@ -26,14 +26,15 @@ class CustomerTestimonialFormRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "required|max:255",
-            "detail" => [
+            "testimonial_name" => "required|max:255",
+            "testimonial_organization" => "nullable|max:255",
+            "testimonial_position" => "nullable|max:255",
+            "testimonial_message" => [
                 "required",
                 new XSSValidator()
             ],
-            "event_place" => "nullable|max:512",
-            "video_link" => "nullable",
-            "event_date" => "nullable|date_format:Y-m-d"
+            "testimonial_date" => "nullable|date_format:Y-m-d",
+            "video_link" => "nullable"
         ];
     }
 }

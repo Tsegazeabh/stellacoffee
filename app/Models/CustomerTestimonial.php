@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class CustomerTestimonial extends Authorizable implements Auditable
+class CustomerTestimonial extends Authorizable implements Auditable, HasMedia
 {
-    use HasFactory, HasPermission, AuditableTrait;
+    use HasFactory, HasPermission, AuditableTrait, InteractsWithMedia;
 
     public $timestamps = false;
     protected $guarded = [];

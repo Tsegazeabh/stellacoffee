@@ -66,6 +66,7 @@
             </ul>
         </address>
         <div class="w-full flex flex-wrap border-t mt-5 pt-5">
+            <inertia-link :href="route('testimonials')"  class="mx-3">Testimonials</inertia-link>
             <a href="#" class="mx-3">Privacy policy</a>
             <a href="#" class="mx-3">Terms of use</a>
             <a href="#" class="mx-3">Contact us</a>

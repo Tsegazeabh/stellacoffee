@@ -4,10 +4,14 @@ namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CMS\CustomerTestimonialFormRequest;
+use App\Models\Content;
+use App\Models\CustomerTestimonial;
+use App\Models\Locale;
 use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -18,9 +22,76 @@ class CustomerTestimonialController extends Controller
     {
     }
 
+    protected function index(Request $request)
+    {
+        try {
+            $content = Content::withTrashed()
+                ->publishedWithoutArchived()
+                ->ofLanguage(getSessionLanguageId())
+                ->with('contentable')
+                ->withCount('content_hits')
+                ->whereHas('contentable', function ($query) {
+                    $query->where('contentable_type', CustomerTestimonial::class);
+                })->paginate(getDefaultPagingSize());
+            $data['contents'] = $content;
+            return Inertia::render('Public/Testimonials/TestimonialsIndex', $data);
+        } catch (\Throwable $ex) {
+            logError($ex);
+            return back()->with('errorMessage', getGeneralAdminErrorMessage());
+        }
+    }
+
+    protected function preview(Request $request, $contentId)
+    {
+        try {
+            $content = Content::withTrashed()
+                ->ofLanguage(getSessionLanguageId())
+                ->with('contentable', 'tags')
+                ->withCount('content_hits')
+                ->whereHas('contentable', function ($query) {
+                    $query->where('contentable_type', CustomerTestimonial::class);
+                })->find($contentId);
+
+            if (!empty($content)) {
+                $data['content'] = $content;
+                return Inertia::render('Public/Testimonials/TestimonialDetail', $data);
+            } else {
+                return abort(404);
+            }
+        } catch (\Throwable $ex) {
+            logError($ex);
+            return back()->with('errorMessage', getGeneralAdminErrorMessage());
+        }
+    }
+
+    protected function getDetail(Request $request, $contentId)
+    {
+        try {
+            $content = Content::withTrashed()
+                ->published()
+                ->ofLanguage(getSessionLanguageId())
+                ->with('contentable', 'tags')
+                ->withCount('content_hits')
+                ->whereHas('contentable', function ($query) {
+                    $query->where('contentable_type', CustomerTestimonial::class);
+                })->find($contentId);
+
+            if (!empty($content)) {
+                $data['content'] = $content;
+                return Inertia::render('Public/Testimonials/TestimonialDetail', $data);
+            } else {
+                return abort(404);
+            }
+        } catch (\Throwable $ex) {
+            logError($ex);
+            return back()->with('errorMessage', getGeneralAdminErrorMessage());
+        }
+    }
+
     protected function createGet()
     {
         try {
+            $this->authorize('create', new CustomerTestimonial());
             return Inertia::render('CMS/Testimonials/CreateTestimonial');
         } catch (\Throwable $ex) {
             logError($ex);
@@ -35,7 +106,23 @@ class CustomerTestimonialController extends Controller
     {
         try {
             DB::beginTransaction();
-            return redirect(route('testimonials-management-page'));
+            $this->authorize('create', new CustomerTestimonial());
+            $locale = Locale::where('short_code', getSessionLanguageShortCode())->first();
+            if ($locale != null) {
+                $content = array('locale_id' => $locale->id);
+                $customer_testimonial = Arr::except($request->all(), ['tags', 'xcsrf']);
+                $customer_testimonial = CustomerTestimonial::create($customer_testimonial);
+                $content = $customer_testimonial->content()->create($content);
+                $tags = $request->get('tags');
+                $tags = collect($tags)->map(function ($tag) {
+                    return $tag['id'];
+                });
+                $content->tags()->sync($tags);
+                DB::commit();
+                return redirect(route('testimonials-management-page'));
+            } else {
+                return back()->withErrors(['language' => 'Locale not found']);
+            }
         } catch (\Throwable $ex) {
             DB::rollback();
             logError($ex);
@@ -48,10 +135,17 @@ class CustomerTestimonialController extends Controller
         }
     }
 
-    protected function editGet()
+    protected function editGet($customer_testimonial_id)
     {
         try {
-            return Inertia::render('CMS/Testimonials/TestimonialEditor');
+            $customer_testimonial = CustomerTestimonial::with(['content', 'content.tags'])->find($customer_testimonial_id);
+            if (!is_null($customer_testimonial)) {
+                $this->authorize('update', $customer_testimonial);
+                $data['customer_testimonial'] = $customer_testimonial;
+                return Inertia::render('CMS/Testimonials/TestimonialEditor', $data);
+            } else {
+                abort(404);
+            }
         } catch (\Throwable $ex) {
             DB::rollback();
             logError($ex);
@@ -64,11 +158,28 @@ class CustomerTestimonialController extends Controller
         }
     }
 
-    protected function editPost(CustomerTestimonialFormRequest $request)
+    protected function editPost(CustomerTestimonialFormRequest $request, $id)
     {
         try {
             DB::beginTransaction();
-            return redirect(route('testimonials-management-page'));
+
+            $customer_testimonial = CustomerTestimonial::with('content')->find($id);
+            $this->authorize('update', $customer_testimonial);
+
+            if ($customer_testimonial != null) {
+                $customer_testimonial->update(
+                    Arr::except($request->all(), ['tags', 'csrf'])
+                );
+                $tags = $request->get('tags');
+                $tags = collect($tags)->map(function ($tag) {
+                    return $tag['id'];
+                });
+                $customer_testimonial->content->tags()->sync($tags);
+                DB::commit();
+                return redirect(route('testimonials-management-page'));
+            } else {
+                abort(404);
+            }
         } catch (\Throwable $ex) {
             DB::rollback();
             logError($ex);
@@ -112,7 +223,49 @@ class CustomerTestimonialController extends Controller
             }
             $content_status = $request->has('simpleFilters') ? $request->get('simpleFilters')['content_status'] : 0;
             $searchKeyword = $request->has('simpleFilters') ? $request->get('simpleFilters')['search_keyword'] : '';
-            return new JsonResponse();
+
+            switch ($content_status) {
+                case 1: // unpublished
+                    $result = Content::with(['contentable', 'tags'])
+                        ->whereHasMorph('contentable', [CustomerTestimonial::class])
+                        ->withTrashed()
+                        ->unPublished()
+                        ->ofLanguage($langId)
+                        ->searchTestimonials($searchKeyword, [CustomerTestimonial::class])
+                        ->sortBy($sortingColumn, $sortingDirection, CustomerTestimonial::class)
+                        ->paginate($pageSize);
+                    break;
+                case 2: //published
+                    $result = Content::with(['contentable', 'tags'])
+                        ->whereHasMorph('contentable', [CustomerTestimonial::class])
+                        ->withTrashed()
+                        ->publishedWithoutArchived()
+                        ->ofLanguage($langId)
+                        ->searchTestimonials($searchKeyword, [CustomerTestimonial::class])
+                        ->sortBy($sortingColumn, $sortingDirection, CustomerTestimonial::class)
+                        ->paginate($pageSize);
+                    break;
+                case 3: //archived
+                    $result = Content::with(['contentable','tags'])
+                        ->whereHasMorph('contentable', [CustomerTestimonial::class])
+                        ->withTrashed()
+                        ->archived()
+                        ->ofLanguage($langId)
+                        ->searchTestimonials($searchKeyword, [CustomerTestimonial::class])
+                        ->sortBy($sortingColumn, $sortingDirection, CustomerTestimonial::class)
+                        ->paginate($pageSize);
+                    break;
+                default: //any
+                    $result = Content::with(['contentable', 'tags'])
+                        ->whereHasMorph('contentable', [CustomerTestimonial::class])
+                        ->withTrashed()
+                        ->ofLanguage($langId)
+                        ->searchTestimonials($searchKeyword, [CustomerTestimonial::class])
+                        ->sortBy($sortingColumn, $sortingDirection, CustomerTestimonial::class)
+                        ->paginate($pageSize);
+                    break;
+            }
+            return new JsonResponse($result);
         }
         catch (\Throwable $ex){
             report($ex);

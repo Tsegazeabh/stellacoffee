@@ -87,7 +87,6 @@ class CuppingEventController extends Controller
         }
     }
 
-
     protected function createGet()
     {
         try {

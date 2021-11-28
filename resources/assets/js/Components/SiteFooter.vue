@@ -66,10 +66,10 @@
             </ul>
         </address>
         <div class="w-full flex flex-wrap border-t mt-5 pt-5">
+            <a :href="route('privacy-policy-detail')" class="mx-3">Privacy policy</a>
+            <a :href="route('term-and-condition-detail')" class="mx-3">Terms of use</a>
+            <a :href="route('contact-us-request-creation-page')" class="mx-3">Contact us</a>
             <inertia-link :href="route('testimonials')"  class="mx-3">Testimonials</inertia-link>
-            <a href="#" class="mx-3">Privacy policy</a>
-            <a href="#" class="mx-3">Terms of use</a>
-            <a href="#" class="mx-3">Contact us</a>
             <a href="#" class="mx-3">FAQ</a>
             <a href="#" class="mx-3">Archive</a>
             <span><i class="fa fa-copyright"></i> Stella Coffee. All Rights Reserved.</span>

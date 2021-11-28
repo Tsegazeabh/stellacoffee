@@ -14,6 +14,9 @@ use App\Http\Controllers\CMS\ExportDestinationController;
 use App\Http\Controllers\CMS\ExportProcessController;
 use App\Http\Controllers\CMS\FactoryLocationController;
 use App\Http\Controllers\CMS\HistoryController;
+use App\Http\Controllers\CMS\MainSliderController;
+use App\Http\Controllers\CMS\NewsController;
+use App\Http\Controllers\CMS\PartnerController;
 use App\Http\Controllers\CMS\ShopController;
 use App\Http\Controllers\CMS\StoresController;
 use App\Http\Controllers\CMS\PrivacyPolicyController;
@@ -200,6 +203,18 @@ Route::prefix('cupping-procedures')->group(function () {
 Route::prefix('cupping-events')->group(function () {
     Route::get('/', [CuppingEventController::class, 'index'])->name('cupping-events');
     Route::get('detail/{id}', [CuppingEventController::class, 'getDetail'])->name('cupping-event-detail');
+});
+Route::prefix('partner')->group(function () {
+    Route::get('latest-partner', [PartnerController::class, 'getLatestPartner'])->name('latest-partner');
+    Route::get('detail/{contentId}', [PartnerController::class, 'getDetail'])->name('partner-detail');
+});
+Route::prefix('main-slider')->group(function () {
+    Route::get('latest-main-slider', [MainSliderController::class, 'getLatestMainSlider'])->name('latest-main-slider');
+    Route::get('detail/{contentId}', [MainSliderController::class, 'getDetail'])->name('main-slider-detail');
+});
+Route::prefix('news')->group(function () {
+    Route::get('latest-news', [NewsController::class, 'getLatestNews'])->name('latest-news');
+    Route::get('detail/{contentId}', [NewsController::class, 'getDetail'])->name('news-detail');
 });
 
 Route::prefix('testimonials')->group(function () {

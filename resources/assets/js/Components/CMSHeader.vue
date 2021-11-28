@@ -28,7 +28,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item dropdown">
                         <button
                             class="inline-flex items-center py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
@@ -54,9 +53,22 @@
                                     አማርኛ
                                 </button>
                             </li>
+                            <li class="nav-item dropdown-item py-0 w-full">
+                                <button @click.stop="changeLanguage('fr')"
+                                        class="nav-link w-full"
+                                        :class="lang=='fr'?'active':''">
+                                    French
+                                </button>
+                            </li>
+                            <li class="nav-item dropdown-item py-0 w-full">
+                                <button @click.stop="changeLanguage('it')"
+                                        class="nav-link w-full"
+                                        :class="lang=='it'?'active':''">
+                                    Italiano
+                                </button>
+                            </li>
                         </ul>
                     </li>
-
                     <li class="nav-item flex md:hidden">
                         <button @click.stop.prevent="toggleCollapse">
                             <i class="fas fa-bars" v-show="collapse"></i>

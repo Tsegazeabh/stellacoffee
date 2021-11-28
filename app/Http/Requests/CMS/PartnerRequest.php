@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests\CMS;
 
+use App\Rules\ValidFileType;
+use App\Rules\ValidImageType;
 use App\Rules\XSSValidator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class PartnerFormRequest extends FormRequest
+class PartnerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +27,15 @@ class PartnerFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            "title" => "required|max:255",
-            "detail" => [
-                "required",
-                new XSSValidator()
-            ],
-            "event_place" => "nullable|max:512",
-            "video_link" => "nullable",
-            "event_date" => "nullable|date_format:Y-m-d"
-        ];
+            return [
+                'title' => 'required|string',
+                'attachments' => ['required', 'image', 'max:5242880', new ValidImageType()],
+                'link' => 'required|url',
+                'detail' => [
+                    'nullable',
+                    new XSSValidator()
+                ],
+//            'tags' => 'nullable|array',
+            ];
     }
 }

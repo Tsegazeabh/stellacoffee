@@ -61,5 +61,5 @@ return [
     'facebook_official_page'=>'https://www.facebook.com/EEUOfficial',
     'twitter_official_page'=>'https://twitter.com/eeuethiopia?s=11',
     'telegram_official_page'=>'https://t.me/eeuethiopia',
-    'youtube_official_page'=>'https://www.youtube.com/channel/UCV96qeHN0lvva6JcNJ0g-LQ',
+    'youtube_official_page'=>'https://www.youtube.com/channel/UCY_ASjgstwvI6HgEPn2dQGg',
 ];

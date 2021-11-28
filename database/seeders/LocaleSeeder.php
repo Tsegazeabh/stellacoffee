@@ -36,6 +36,26 @@ class LocaleSeeder extends Seeder
                 ]
             );
         }
+        if(!Locale::where('name', 'fr')->exists())
+        {
+            DB::table('locales')->insert(
+                [
+                    'name' => 'French',
+                    'short_code' => 'fr',
+                    'description' => 'French language'
+                ]
+            );
+        }
+        if(!Locale::where('name', 'it')->exists())
+        {
+            DB::table('locales')->insert(
+                [
+                    'name' => 'Italiano',
+                    'short_code' => 'it',
+                    'description' => 'Italian language'
+                ]
+            );
+        }
 
     }
 }

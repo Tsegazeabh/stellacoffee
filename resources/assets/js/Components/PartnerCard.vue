@@ -1,5 +1,5 @@
 <template>
-    <a :href="partner.contentable.link" class="partner-card">
+    <a :href="partner.contentable.link" class="partner-card" target="_blank" :title="partner.contentable.title">
           <img :src="partner.contentable.first_media['base64svg']" :srcset="partner.contentable.src_sets.join(' ')"
                  class="object-fill" :alt="partner.contentable.title"/>
     </a>

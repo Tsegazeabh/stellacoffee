@@ -10,11 +10,6 @@
         </ul>
         <ul class="right">
             <li>
-                <inertia-link class="nav-link" type="button" :href="route('login')">
-                    Login
-                </inertia-link>
-            </li>
-            <li>
                 <a href="#"><span class="fab fa-facebook-f" aria-hidden="true"></span></a>
             </li>
             <li>
@@ -29,16 +24,11 @@
             <li>
                 <a href="#"><span class="fab fa-youtube" aria-hidden="true"></span></a>
             </li>
-        </ul>
-        <ul class="navbar">
             <li class="nav-item dropdown">
-                <button
-                    class="inline-flex items-center py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                    title="Language">
-                        <span>
-<!--                                <i class="fa fa-language"></i> -->
-                            {{ _trans('locale.' + $page.props.locale) }}
-                        </span>
+                <button title="Language">
+                    <span>
+                        {{ _trans('locale.' + $page.props.locale) }}
+                    </span>
                     <i class="fa fa-angle-down ml-1"></i>
                 </button>
                 <ul class="dropdown-menu">
@@ -49,35 +39,40 @@
                             English
                         </button>
                     </li>
-                    <li class="nav-item dropdown-item py-0 w-full">
+                    <li class="dropdown-item">
                         <button @click.stop="changeLanguage('am')"
                                 class="nav-link w-full"
                                 :class="lang=='am'?'active':''">
                             አማርኛ
                         </button>
                     </li>
-                    <li class="nav-item dropdown-item py-0 w-full">
+                    <li class="dropdown-item">
                         <button @click.stop="changeLanguage('fr')"
                                 class="nav-link w-full"
                                 :class="lang=='fr'?'active':''">
                             French
                         </button>
                     </li>
-                    <li class="nav-item dropdown-item py-0 w-full">
+                    <li class="dropdown-item">
                         <button @click.stop="changeLanguage('it')"
-                                class="nav-link w-full"
+                                class="nav-link"
                                 :class="lang=='it'?'active':''">
                             Italiano
                         </button>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item flex md:hidden">
-                <button @click.stop.prevent="toggleCollapse">
-                    <i class="fas fa-bars" v-show="collapse"></i>
-                    <i class="fas fa-times" v-show="!collapse"></i> Menu
-                </button>
+            <li>
+                <inertia-link class="nav-link" type="button" :href="route('login')">
+                    Login
+                </inertia-link>
             </li>
+<!--            <li class="nav-item flex md:hidden">-->
+<!--                <button @click.stop.prevent="toggleCollapse">-->
+<!--                    <i class="fas fa-bars" v-show="collapse"></i>-->
+<!--                    <i class="fas fa-times" v-show="!collapse"></i> Menu-->
+<!--                </button>-->
+<!--            </li>-->
         </ul>
     </header>
 </template>

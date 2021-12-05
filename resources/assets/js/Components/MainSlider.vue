@@ -70,9 +70,7 @@ export default defineComponent({
             axios
                 .get(route('latest-main-slider'))
                 .then((res) => {
-
                     this.mainSliders = res.data;
-
                     this.mainSliders = this.mainSliders.map(p => {
                         return p.contentable.src_sets.map(
                             s => {
@@ -81,11 +79,12 @@ export default defineComponent({
                                     'srcset': s,
                                     'title': p.contentable.title,
                                     'description': p.contentable.lead_paragraph,
-                                    'first_media': p.contentable.first_media
+                                    'first_media': p.contentable.first_media,
+                                    'url':p.url
                                 }
                             })
                     }).flat();
-
+                    console.log(this.mainSliders);
                 })
                 .catch(err => this.mainSliders = []);
         }

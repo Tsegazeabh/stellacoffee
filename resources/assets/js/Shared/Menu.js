@@ -47,7 +47,10 @@ export const getMenus = () => {
             ]
         },
         {
-            label: "News and Events", url: route('content-index-page', 'news-and-events'), active: false
+            label: "News and Events", url: "", active: false,
+            submenus: [
+                {label: "News", url: route('content-index-page', 'news'), active: false},
+            ]
         }
     ];
     return Menus;

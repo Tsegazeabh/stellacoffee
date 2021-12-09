@@ -84,7 +84,6 @@ export default defineComponent({
                                 }
                             })
                     }).flat();
-                    console.log(this.mainSliders);
                 })
                 .catch(err => this.mainSliders = []);
         }

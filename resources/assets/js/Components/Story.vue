@@ -8,9 +8,11 @@
             <h2 class="leading-header flex-grow-0">Who we are?</h2>
             <h2 class="main-header flex-grow-0">Rich Taste, Great Aroma</h2>
             <p class="summary flex-grow-1 text-justify">
-                AWDA Pvt. Ltd. Co. was established in 1997 G.C with the objective of procurement, processing and export of best
-                Ethiopian Arabica coffees to the entire world.  It is the continuation of the shareholders' effort, in the coffee sector
-                where he has been investing and expanding the realm of the company.
+                “My day beginning with Stella Coffee exotic aroma is hilarious!”, Stella Coffee Owner.<br>
+                Stella Coffee was established in 2021 by an experienced coffee business woman who have a deep-rooted attachment with the coffee industry as a heritage from her father.
+                The owner of the Stella Coffee was born to a father who owned one of the best companies that had excelled in exporting and delivering the best Ethiopian coffee to the world.
+                As a coffee star, Stella Coffee strives to shine in the Global Coffee Roasting Industry and deliver the best coffee with a naturally exotic aroma to its customers’
+                satisfaction and this is its highest priority as a value that is never to be compromised.
             </p>
             <button class="flex-grow-0">Learn more &raquo;</button>
         </div>

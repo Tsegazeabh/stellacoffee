@@ -190,7 +190,7 @@ class RoastingServiceController extends Controller
         try {
             $roasting_service = RoastingService::with(['content', 'content.tags'])->find($roasting_service_id);
             $this->authorize('update', $roasting_service);
-            $data['$roasting_service'] = $roasting_service;
+            $data['roasting_service'] = $roasting_service;
             return Inertia::render('CMS/RoastingService/EditRoastingService', $data);
         } catch (AuthorizationException $ex) {
             abort(403);
@@ -255,7 +255,7 @@ class RoastingServiceController extends Controller
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
+                ->take(1)
                 ->get();
 
             return response($latestRoastingService);

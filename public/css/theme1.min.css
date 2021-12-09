@@ -71,14 +71,14 @@ header ul.right {
   font-size: 20px;
 }
 
-header ul.right li {
+header ul.right > li {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem;
 }
 
-header ul.right li a {
+header ul.right > li > a {
   margin-right: 0.5rem;
   display: flex;
   align-items: center;
@@ -86,7 +86,7 @@ header ul.right li a {
   text-align: center;
 }
 
-header ul.right li span {
+header ul.right > li > a > span {
   display: flex;
   height: 2.5rem;
   width: 2.5rem;
@@ -95,6 +95,65 @@ header ul.right li span {
   border-radius: 9999px;
   border-width: 1px;
   font-size: 20px;
+}
+
+header ul.right > li.dropdown:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 22, 24, var(--tw-border-opacity));
+}
+
+header ul.right > li.dropdown > button {
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1rem;
+}
+
+header ul.right > li.dropdown > button > span {
+  border-radius: 0px;
+  border-style: none;
+}
+
+header ul.right > li.dropdown ul.dropdown-menu {
+  position: absolute;
+  top: 4rem;
+  z-index: 50;
+  margin-top: 0.5rem;
+  display: none;
+  width: 10rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(39, 121, 117, var(--tw-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+}
+
+header ul.right > li.dropdown:hover > ul.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+header ul.right > li.dropdown ul.dropdown-menu > li.dropdown-item {
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+header ul.right > li.dropdown > ul.dropdown-menu > li.dropdown-item > .nav-link {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
 /* main nav bar */
@@ -236,7 +295,7 @@ nav.main-navbar:hover > ul {
   position: absolute;
   top: 33.333333%;
   left: 3rem;
-  z-index: 20;
+  z-index: 50;
   width: 40%;
   --tw-bg-opacity: 1;
   background-color: rgba(30, 22, 24, var(--tw-bg-opacity));
@@ -257,7 +316,7 @@ nav.main-navbar:hover > ul {
   font-size: 42px;
 }
 
-#main-slider .slider-card .card-text button {
+#main-slider .slider-card .card-text a {
   margin-top: 1rem;
   --tw-bg-opacity: 1;
   background-color: rgba(39, 121, 117, var(--tw-bg-opacity));

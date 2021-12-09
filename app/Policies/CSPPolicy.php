@@ -15,7 +15,7 @@ class CSPPolicy extends Policy
             ->addDirective(Directive::CONNECT, [Keyword::SELF, 'www.google-analytics.com'])
             ->addDirective(Directive::DEFAULT, Keyword::SELF)
             ->addDirective(Directive::FORM_ACTION, Keyword::SELF)
-            ->addDirective(Directive::IMG, [Keyword::SELF, 'data:', 'www.youtube.com', 'i.ytimg.com', 'stella.com', 'www.stella.com', 'localhost', 'www.facebook.com', 'www.google-analytics.com'])
+            ->addDirective(Directive::IMG, [Keyword::SELF, 'data:', 'www.youtube.com', 'i.ytimg.com', 'stella.com', 'www.stella.com', 'localhost', 'localhost:8000', 'www.facebook.com', 'www.google-analytics.com'])
             ->addDirective(Directive::MEDIA, Keyword::SELF)
             ->addDirective(Directive::OBJECT, Keyword::NONE)
             ->addDirective(Directive::SCRIPT, [Keyword::SELF, Keyword::UNSAFE_INLINE, 'localhost', 'www.youtube.com', 'www.youtube.com', 'connect.facebook.net', 'platform.twitter.com', 'www.googletagmanager.com', 'www.google-analytics.com'])

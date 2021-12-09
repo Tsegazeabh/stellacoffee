@@ -159,6 +159,19 @@ class Content extends BaseModel implements Feedable, Auditable
         });
     }
 
+    public function scopeSearchTestimonials($query, $keyword, $contentable_types)
+    {
+        return $query->whereHas('tags', function ($tags) use ($keyword) {
+            return $tags->where('name', 'like', '%' . $keyword . '%');
+        })->orWhereHasMorph('contentable', $contentable_types, function ($query) use ($keyword) {
+            return $query
+                ->where('testimonial_name', 'like', '%' . $keyword . '%')
+                ->where('testimonial_organization', 'like', '%' . $keyword . '%')
+                ->where('testimonial_position', 'like', '%' . $keyword . '%')
+                ->orWhere('testimonial_message', 'like', '%' . $keyword . '%');
+        });
+    }
+
     public function scopeSiteSearch($query, $keyword)
     {
         return $query

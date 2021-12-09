@@ -8,6 +8,7 @@ use App\Http\Controllers\CMS\ContentsController;
 use App\Http\Controllers\CMS\CountryController;
 use App\Http\Controllers\CMS\CuppingEventController;
 use App\Http\Controllers\CMS\CuppingProcedureController;
+use App\Http\Controllers\CMS\CustomerTestimonialController;
 use App\Http\Controllers\CMS\DutyFreeLocationController;
 use App\Http\Controllers\CMS\ExportDestinationController;
 use App\Http\Controllers\CMS\ExportProcessController;
@@ -214,4 +215,9 @@ Route::prefix('main-slider')->group(function () {
 Route::prefix('news')->group(function () {
     Route::get('latest-news', [NewsController::class, 'getLatestNews'])->name('latest-news');
     Route::get('detail/{contentId}', [NewsController::class, 'getDetail'])->name('news-detail');
+});
+
+Route::prefix('testimonials')->group(function () {
+    Route::get('/', [CustomerTestimonialController::class, 'index'])->name('testimonials');
+    Route::get('detail/{id}', [CustomerTestimonialController::class, 'getDetail'])->name('testimonial-detail');
 });

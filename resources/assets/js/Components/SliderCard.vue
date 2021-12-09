@@ -2,12 +2,12 @@
     <div class="slider-card w-full h-full">
         <div class="filter">&nbsp;</div>
         <div class="card-image">
-            <img :src="content.image" class="object-cover h-full w-full"/>
+            <img :src="content.first_media.base64svg" :srcset="content.srcset" class="object-cover h-full w-full"/>
         </div>
         <div class="card-text">
-            <h2 class="title">{{ content.title }}</h2>
-            <p>{{ content.lead_paragraph }}</p>
-            <button>Learn more &raquo;</button>
+            <h2 class="title">{{ content.title }} </h2>
+            <p class="pb-6">{{ content.description }}</p>
+            <inertia-link :href="content.url">Learn more &raquo;</inertia-link>
         </div>
     </div>
 </template>
@@ -27,6 +27,6 @@ export default defineComponent({
 </script>
 <style>
 .filter {
-    @apply absolute w-full h-full z-50 bg-roast-dark bg-opacity-30;
+    @apply absolute w-full h-full z-40 bg-roast-dark bg-opacity-30;
 }
 </style>

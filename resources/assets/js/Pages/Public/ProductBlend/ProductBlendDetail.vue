@@ -41,6 +41,7 @@ import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError
 import ContentsLayout from "@layouts/ContentsLayout";
 import Logo from "../../../../images/logo.jpg";
 import {defineComponent} from 'vue';
+import Embed from 'v-video-embed';
 
 const RelatedContents = defineAsyncComponent({
     // The factory function

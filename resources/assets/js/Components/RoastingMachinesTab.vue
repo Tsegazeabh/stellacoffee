@@ -41,7 +41,7 @@ export default defineComponent({
     methods: {
         fetchRoastingMachine() {
             axios
-                .get(route('latest-roasting-machine'))
+                .get(route('tab-roasting-machine'))
                 .then((res) => this.roastingMachines = res.data)
                 .catch(err => this.roastingMachines = []);
         }

@@ -41,7 +41,7 @@ export default defineComponent({
     methods: {
         fetchRoastingGuide() {
             axios
-                .get(route('latest-roasting-guide'))
+                .get(route('tab-roasting-guide'))
                 .then((res) => this.roastingGuides = res.data)
                 .catch(err => this.roastingGuides = []);
         }

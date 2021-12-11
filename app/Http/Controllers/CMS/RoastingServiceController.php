@@ -249,6 +249,26 @@ class RoastingServiceController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
+            $latestRoastingService = Content::with('contentable')->whereHas('contentable', function ($query) {
+                $query->where('contentable_type', RoastingService::class);
+            })
+                ->ofLanguage($langId)
+                ->publishedWithoutArchived()
+                ->orderBy('published_at', 'DESC')
+                ->paginate($pageSize);
+
+            return response($latestRoastingService);
+
+        } catch (\Throwable $ex) {
+            logError($ex);
+            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+        }
+    }
+    protected function getTabRoastingService(Request $request)
+    {
+        try {
+            $langId = getSessionLanguageId();
             $latestRoastingService = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', RoastingService::class);
             })

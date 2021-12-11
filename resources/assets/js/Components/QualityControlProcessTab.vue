@@ -41,7 +41,7 @@ export default defineComponent({
     methods: {
         fetchQualityControlProcess() {
             axios
-                .get(route('latest-quality-control-process'))
+                .get(route('tab-quality-control-process'))
                 .then((res) => this.qualityControlProcesses = res.data)
                 .catch(err => this.qualityControlProcesses = []);
         }

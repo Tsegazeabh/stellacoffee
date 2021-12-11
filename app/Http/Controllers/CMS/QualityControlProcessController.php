@@ -251,6 +251,25 @@ class QualityControlProcessController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
+            $latestQualityControlProcess = Content::with('contentable')->whereHas('contentable', function ($query) {
+                $query->where('contentable_type', QualityControlProcess::class);
+            })
+                ->ofLanguage($langId)
+                ->publishedWithoutArchived()
+                ->orderBy('published_at', 'DESC')
+                ->paginate($pageSize);
+            return response($latestQualityControlProcess);
+
+        } catch (\Throwable $ex) {
+            logError($ex);
+            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+        }
+    }
+    protected function getTabQualityControlProcess(Request $request)
+    {
+        try {
+            $langId = getSessionLanguageId();
             $latestQualityControlProcess = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', QualityControlProcess::class);
             })

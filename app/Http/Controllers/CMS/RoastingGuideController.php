@@ -251,6 +251,24 @@ class RoastingGuideController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
+            $latestRoastingGuide = Content::with('contentable')->whereHas('contentable', function ($query) {
+                $query->where('contentable_type', RoastingGuide::class);
+            })
+                ->ofLanguage($langId)
+                ->publishedWithoutArchived()
+                ->orderBy('published_at', 'DESC')
+                ->paginate($pageSize);
+            return response($latestRoastingGuide);
+        } catch (\Throwable $ex) {
+            logError($ex);
+            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+        }
+    }
+    protected function getTabRoastingGuide(Request $request)
+    {
+        try {
+            $langId = getSessionLanguageId();
             $latestRoastingGuide = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', RoastingGuide::class);
             })
@@ -265,7 +283,6 @@ class RoastingGuideController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
-
     /**
      * @param Request $request
      * @param $contentId

@@ -55,6 +55,7 @@
     import moment from 'moment';
     import {defineComponent} from 'vue';
     import ContentIndexPagination from "@components/ContentIndexPagination";
+    import Embed from 'v-video-embed';
 
     export default defineComponent({
         name: "product-blend-index",

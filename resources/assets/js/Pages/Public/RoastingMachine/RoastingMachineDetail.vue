@@ -19,7 +19,20 @@
         </teleport>
         <div class="header1">{{ content.contentable.title }}</div>
         <div v-html="content.contentable.detail"></div>
+        <template v-if="content.contentable.video_link">
+            <video-embed :src="content.contentable.video_link"></video-embed>
+            <!-- 21:9 aspect ratio -->
+            <video-embed css="embed-responsive-21by9" :src="content.contentable.video_link"></video-embed>
 
+            <!-- 16:9 aspect ratio: default -->
+            <video-embed css="embed-responsive-16by9" :src="content.contentable.video_link"></video-embed>
+
+            <!-- 4:3 aspect ratio -->
+            <video-embed css="embed-responsive-4by3" :src="content.contentable.video_link"></video-embed>
+
+            <!-- 1:1 aspect ratio -->
+            <video-embed css="embed-responsive-1by1" :src="content.contentable.video_link"></video-embed>
+        </template>
         <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">
             <div class="pr-2 font-bold">
                 {{ _trans('label.shared.Published at') }}: {{ formatDate(content.published_at) }}
@@ -40,6 +53,9 @@ import RelatedContentsLoadingState from '@components/RelatedContentsLoadingState
 import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError'
 import ContentsLayout from "@layouts/ContentsLayout"
 import Logo from "../../../../images/logo.jpg"
+import Embed from 'v-video-embed';
+// import Vue from 'vue';
+// Vue.use(Embed);
 
 const RelatedContents = defineAsyncComponent({
     // The factory function
@@ -71,7 +87,8 @@ export default defineComponent({
         provide('tags', props.content && props.content.tags ? props.content.tags.map(tag => tag.id) : [])
     },
     components: {
-        'related-contents': RelatedContents
+        'related-contents': RelatedContents,
+        Embed
     },
 
     methods: {

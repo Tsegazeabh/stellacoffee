@@ -444,7 +444,9 @@
             "Click For More Links": "Click For More Links",
             "The are no visited contents yet": "The are no visited contents yet",
             "The are no open vacancies published yet": "The are no open vacancies posted yet",
-            "The are no open tenders floated yet": "The are no open tenders floated yet"
+            "The are no open tenders floated yet": "The are no open tenders floated yet",
+            "Video Link": "Video Link"
+
         },
         "user": {
             "first name": "First Name",

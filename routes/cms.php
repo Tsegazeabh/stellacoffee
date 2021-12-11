@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CMS\CafeController;
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\CityController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\CMS\RoastingGuideController;
 use App\Http\Controllers\CMS\RoastingMachineController;
 use App\Http\Controllers\CMS\RoastingProcessController;
 use App\Http\Controllers\CMS\RoastingServiceController;
+use App\Http\Controllers\CMS\ServiceTypeController;
 use App\Http\Controllers\CMS\StellaCoffeeOriginController;
 use App\Http\Controllers\CMS\SuccessStoryController;
 use App\Http\Controllers\CMS\TermAndConditionController;
@@ -34,7 +36,6 @@ use App\Http\Controllers\CMS\ForumTopicController;
 use App\Http\Controllers\CMS\ForumTopicReplyController;
 use App\Http\Controllers\CMS\StoresController;
 use App\Http\Controllers\CMS\NewsController;
-use App\Http\Controllers\CMS\PartnersController;
 use App\Http\Controllers\CMS\PhotoGalleryController;
 use App\Http\Controllers\CMS\ShopController;
 
@@ -94,6 +95,16 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::get(getSecureURL(6) . '/{id}', [ProductPackageController::class, 'editGet'])->name('product-package-editor-page');
         Route::put(getSecureURL(7) . '/{id}', [ProductPackageController::class, 'editPost'])->name('edit-product-package');
         Route::get('preview/{id}', [ProductPackageController::class, 'preview'])->name('preview-product-package');
+    });
+    Route::prefix('cafe')->group(function () {
+        Route::get(getSecureURL(1), [CafeController::class, 'createGet'])->name('cafe-creation-page');
+        Route::post(getSecureURL(2), [CafeController::class, 'createPost'])->name('post-cafe');
+        Route::get(getSecureURL(4), [CafeController::class, 'manageCafe'])->name('cafe-management-page');
+        Route::post('fetch-cafe', [CafeController::class, 'fetchCafe'])->name('fetch-cafe');
+        Route::post(getSecureURL(4), [CafeController::class, 'manageCafe'])->name('search-cafe');
+        Route::get(getSecureURL(6) . '/{id}', [CafeController::class, 'editGet'])->name('cafe-editor-page');
+        Route::put(getSecureURL(7) . '/{id}', [CafeController::class, 'editPost'])->name('edit-cafe');
+        Route::get('preview/{id}', [CafeController::class, 'preview'])->name('preview-cafe');
     });
 
     Route::prefix('quality-control-process')->group(function () {
@@ -404,6 +415,16 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::put(getSecureURL(11) . '/{id}', [ContentsController::class, 'archive'])->name('archive-content');
         Route::put(getSecureURL('restore') . '/{id}', [ContentsController::class, 'restore'])->name('restore-content');
         Route::delete(getSecureURL(8) . '/{id}', [ContentsController::class, 'delete'])->name('delete-content');
+    });
+    Route::prefix('service-type')->group(function () {
+        Route::get(getSecureURL(1), [ServiceTypeController::class, 'createGet'])->name('service-type-creation-page');
+        Route::post(getSecureURL(2), [ServiceTypeController::class, 'createPost'])->name('post-service-type');
+        Route::get(getSecureURL(4), [ServiceTypeController::class, 'manageServiceType'])->name('service-type-management-page');
+        Route::post('fetch-service-type', [ServiceTypeController::class, 'fetchServiceType'])->name('fetch-service-type');
+        Route::post(getSecureURL(4), [ServiceTypeController::class, 'manageServiceType'])->name('search-service-type');
+        Route::get(getSecureURL(6).'/{id}', [ServiceTypeController::class, 'editGet'])->name('service-type-editor-page');
+        Route::put(getSecureURL(7).'/{id}', [ServiceTypeController::class, 'editPost'])->name('edit-service-type');
+        Route::delete(getSecureURL(8).'/{id}', [ServiceTypeController::class, 'delete'])->name('delete-service-type');
     });
 
 //

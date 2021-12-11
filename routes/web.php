@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\YoutubeVideosController;
 use App\Http\Controllers\Auth\RolesController;
+use App\Http\Controllers\CafeController;
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
 use App\Http\Controllers\CMS\ContentsController;
@@ -173,6 +174,11 @@ Route::prefix('country')->group(function () {
 Route::prefix('export-process')->group(function () {
     Route::get('/', [ExportProcessController::class, 'index'])->name('export-processes');
     Route::get('detail/{id}', [ExportProcessController::class, 'getDetail'])->name('export-process-detail');
+});
+Route::prefix('cafe-service')->group(function () {
+    Route::get('/', [CafeController::class, 'index'])->name('cafe-services');
+    Route::get('latest-product-package', [CafeController::class, 'getLatestProductPackage'])->name('latest-cafe-services');
+    Route::get('detail/{contentId}', [CafeController::class, 'getDetail'])->name('cafe-service-detail');
 });
 
 Route::prefix('export-destination')->group(function () {

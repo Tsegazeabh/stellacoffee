@@ -34,6 +34,8 @@ function getAuthorizableModels()
         \App\Models\StellaCoffeeOrigin::class=>\App\Models\StellaCoffeeOrigin::$actions,
         \App\Models\ContactUsRequest::class=>\App\Models\ContactUsRequest::$actions,
         \App\Models\ContactInfo::class=>\App\Models\ContactInfo::$actions,
+        \App\Models\Cafe::class=>\App\Models\Cafe::$actions,
+        \App\Models\ServiceType::class=>\App\Models\ServiceType::$actions,
     );
 }
 

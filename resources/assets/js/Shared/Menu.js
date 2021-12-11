@@ -32,6 +32,7 @@ export const getMenus = () => {
         {
             label: "Find Us", url: "", active: false,
             submenus: [
+                {label: "Our Cafe Services", url: route('cafe-services'), active: false},
                 {label: "Export Destinations", url: route('export-destinations'), active: false},
                 {label: "Our Stores", url: route('stores'), active: false},
                 {label: "Our Shops", url: route('shops'), active: false},

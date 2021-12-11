@@ -33,16 +33,16 @@
                         </h2>
                         <p class="text-justify">{{ service.contentable.lead_paragraph }}</p>
                         <div class="px-4 justify-center">
-                            <template v-if="service.serviceable.video_link">
-                                <video-embed :src="service.serviceable.video_link"></video-embed>
+                            <template v-if="service.contentable.video_link">
+                                <video-embed :src="service.contentable.video_link"></video-embed>
                                 <!-- 21:9 aspect ratio -->
-                                <video-embed css="embed-responsive-21by9" :src="service.serviceable.video_link"></video-embed>
+                                <video-embed css="embed-responsive-21by9" :src="service.contentable.video_link"></video-embed>
 
                                 <!-- 16:9 aspect ratio: default -->
-                                <video-embed css="embed-responsive-16by9" :src="service.serviceable.video_link"></video-embed>
+                                <video-embed css="embed-responsive-16by9" :src="service.contentable.video_link"></video-embed>
 
                                 <!-- 4:3 aspect ratio -->
-                                <video-embed css="embed-responsive-4by3" :src="service.serviceable.video_link"></video-embed>
+                                <video-embed css="embed-responsive-4by3" :src="service.contentable.video_link"></video-embed>
 
                                 <!-- 1:1 aspect ratio -->
                                 <video-embed css="embed-responsive-1by1" :src="service.contentable.video_link"></video-embed>

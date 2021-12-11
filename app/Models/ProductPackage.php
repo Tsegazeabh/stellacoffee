@@ -25,6 +25,8 @@ class ProductPackage extends Authorizable implements HasMedia, Auditable
     protected $auditInclude = [
         'title',
         'detail',
+        'size',
+        'price'
     ];
 
     public function getFirstImageAttribute()

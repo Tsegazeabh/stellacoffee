@@ -113,6 +113,24 @@ export default defineComponent({
                     wrapText: true
                 },
                 {
+                    headerName: 'Size', field: 'size', valueGetter: function (params) {
+                        return params != null && params.node.data != null && params.node.data.contentable != null ? params.node.data.contentable.size : 'N/A';
+                    },
+                    // colId: 'params',
+                    minWidth: 200,
+                    autoHeight: true,
+                    wrapText: true
+                },
+                {
+                    headerName: 'Price', field: 'price', valueGetter: function (params) {
+                        return params != null && params.node.data != null && params.node.data.contentable != null ? params.node.data.contentable.price : 'N/A';
+                    },
+                    // colId: 'params',
+                    minWidth: 200,
+                    autoHeight: true,
+                    wrapText: true
+                },
+                {
                     headerName: 'Detail', field: 'detail', valueGetter: function (params) {
                         return params != null && params.node.data != null && params.node.data.contentable != null ? params.node.data.contentable.cms_lead_paragraph : 'N/A';
                     },
@@ -121,6 +139,7 @@ export default defineComponent({
                     autoHeight: true,
                     wrapText: true
                 },
+
                 {
                     headerName: 'Video Link', field: 'video_link', valueGetter: function (params) {
                         return params != null && params.node.data != null ? params.node.data.contentable.video_link : 'N/A';

@@ -9,18 +9,19 @@
             </li>
             <li>
                 <inertia-link :href="route('cafe-management-page')">
-                    {{ _trans('label.shared.Product Package') }}
+                    {{ _trans('label.shared.Cafe Services') }}
                 </inertia-link>
             </li>
             <li>{{ _trans('action.create') }}</li>
         </ul>
     </div>
     <CafeForm :cafe="cafe"
-                        :error-message="errorMessage"
-                        :success-message="successMessage"
-                        :errors="errors"
-                        :method="'post'"
-                        :url="route('post-cafe')">
+                :error-message="errorMessage"
+                :success-message="successMessage"
+                :errors="errors"
+                :method="'post'"
+                :service_types="service_types"
+                :url="route('post-cafe')">
     </CafeForm>
 </template>
 <script>
@@ -37,13 +38,18 @@ export default defineComponent({
             type: Object,
             default: {
                 title: '',
+                service_type_id: '',
                 size: '',
                 price: '',
                 attachments:'',
                 detail: '',
                 video_link: '',
                 tags: [],
-            }
+            },
+        },
+        service_types:{
+            type: Object,
+            required:true
         },
         errors: {type: Object, default: {}},
         errorMessage: {type: String, default: ''},

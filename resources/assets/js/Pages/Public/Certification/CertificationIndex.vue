@@ -1,6 +1,6 @@
 <template>
     <teleport to="head" v-if="result && result.total>0">
-        <title> {{content.contentable.title}} </title>
+        <title> {{result.data[0].contentable.title}} </title>
         <meta property="og:site_name" content="Stella Coffee">
         <meta property="og:title" content="Stella Coffee Website">
         <meta property="og:description" :content="result.data[0].contentable.lead_paragraph">

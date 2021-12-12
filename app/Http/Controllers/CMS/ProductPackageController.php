@@ -27,7 +27,6 @@ class ProductPackageController extends Controller
     public function index()
     {
         try {
-            Log::info("Here");
             return Inertia::render('Public/ProductPackage/ProductPackageIndex');
         } catch (\Exception $ex) {
             Log::info($ex);
@@ -260,15 +259,14 @@ class ProductPackageController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestProductPackage = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', ProductPackage::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
-                ->get();
-
+                ->paginate($pageSize);
             return response($latestProductPackage);
 
         } catch (\Throwable $ex) {

@@ -6,25 +6,13 @@
             <div class="w-full flex flex-wrap">
                 <div class="w-full md:w-1/2">
                     <div class="form-group w-full px-5">
-                        <label class="label required">{{ _trans('label.shared.Title') }}</label>
+                        <label class="label required">{{ _trans('label.shared.Menu Item Name') }}</label>
                         <input type="text" v-model.trim.lazy="form.title"
                                class="form-control w-full border border-gray-100 p-2 focus:outline-none"
                                :class="(form.errors && form.errors['title'])?'error':''"
-                               :placeholder="_trans('label.shared.Title')" autocomplete="on" required/>
+                               :placeholder="_trans('label.shared.Item Name')" autocomplete="on" required/>
                         <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['title']">
                             {{ form.errors['title'] }}
-                        </span>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="form-group w-full px-5">
-                        <label class="label required">{{ _trans('label.shared.Size') }}</label>
-                        <input type="text" v-model.trim.lazy="form.size"
-                               class="form-control w-full border border-gray-100 p-2 focus:outline-none"
-                               :class="(form.errors && form.errors['size'])?'error':''"
-                               :placeholder="_trans('label.shared.Size')" autocomplete="on" required/>
-                        <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['size']">
-                            {{ form.errors['size'] }}
                         </span>
                     </div>
                 </div>
@@ -42,6 +30,18 @@
                         </select>
                         <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['service_type_id']">
                             {{form.errors['service_type_id']}}
+                        </span>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="form-group w-full px-5">
+                        <label class="label required">{{ _trans('label.shared.Size') }}</label>
+                        <input type="text" v-model.trim.lazy="form.size"
+                               class="form-control w-full border border-gray-100 p-2 focus:outline-none"
+                               :class="(form.errors && form.errors['size'])?'error':''"
+                               :placeholder="_trans('label.shared.Size')" autocomplete="on" required/>
+                        <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['size']">
+                            {{ form.errors['size'] }}
                         </span>
                     </div>
                 </div>
@@ -69,11 +69,11 @@
             <div class="w-full flex flex-wrap">
                 <div class="w-full md:w-1/2">
                     <div class="form-group w-full px-5">
-                        <label class="label required">{{_trans('label.shared.Service Image')}}</label>
+                        <label class="label required">{{_trans('label.shared.Item Image')}}</label>
                         <input type="file" @input="prepareForUpload"
                                class="form-control w-full border border-gray-100 p-1.5 focus:outline-none"
                                :class="(form.errors && form.errors['attachments'])?'error':''"
-                               :placeholder="_trans('label.shared.Service Image')"/>
+                               :placeholder="_trans('label.shared.Item Image')"/>
                         <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['attachments']">
                             {{form.errors['attachments']}}
                         </span>
@@ -85,7 +85,7 @@
                         <input type="text" v-model.trim.lazy="form.video_link"
                                class="form-control w-full border border-gray-100 p-2 focus:outline-none"
                                :class="(form.errors && form.errors['video_link'])?'error':''"
-                               :placeholder="_trans('label.shared.Video Link')" autocomplete="on"/>
+                               placeholder="https://www.youtube.com" autocomplete="on"/>
                         <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['video_link']">
                             {{ form.errors['video_link'] }}
                         </span>

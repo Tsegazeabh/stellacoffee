@@ -19,7 +19,7 @@ class CreateCafesTable extends Migration
             $table->mediumText('detail');
             $table->string('video_link')->nullable();
             $table->string('size')->nullable();
-            $table->unsignedInteger('price')->nullable();
+            $table->string('price')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
             $table->foreign('deleted_by')
                 ->references('id')->on('users');

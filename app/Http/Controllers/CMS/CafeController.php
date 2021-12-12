@@ -27,7 +27,6 @@ class CafeController extends Controller
     public function index()
     {
         try {
-            Log::info("Here");
             return Inertia::render('Public/Cafe/CafeIndex');
         } catch (\Exception $ex) {
             Log::info($ex);
@@ -141,7 +140,17 @@ class CafeController extends Controller
     {
         try {
             $this->authorize('create', new Cafe);
-            return Inertia::render('CMS/Cafe/CreateCafe');
+            if(getSessionLanguageShortCode() == 'am' || getSessionLanguageShortCode() == 'AM'){
+                $service_types = DB::table('service_types')->pluck('name_am', 'id');
+            }elseif (getSessionLanguageShortCode() == 'fr' || getSessionLanguageShortCode() == 'FR'){
+                $service_types = DB::table('service_types')->pluck('name_fr', 'id');
+            }elseif (getSessionLanguageShortCode() == 'it' || getSessionLanguageShortCode() == 'IT'){
+                $service_types = DB::table('service_types')->pluck('name_it', 'id');
+            }else{
+                $service_types = DB::table('service_types')->pluck('name', 'id');
+            }
+            $data['service_types'] = $service_types;
+            return Inertia::render('CMS/Cafe/CreateCafe',$data);
         } catch (AuthorizationException $ex) {
             abort(403);
         } catch (\Exception $ex) {
@@ -202,6 +211,16 @@ class CafeController extends Controller
             $cafe = Cafe::with(['content', 'content.tags'])->find($cafe_id);
             $this->authorize('update', $cafe);
             $data['cafe'] = $cafe;
+            if(getSessionLanguageShortCode() == 'am' || getSessionLanguageShortCode() == 'AM'){
+                $service_types = DB::table('service_types')->pluck('name_am', 'id');
+            }elseif (getSessionLanguageShortCode() == 'fr' || getSessionLanguageShortCode() == 'FR'){
+                $service_types = DB::table('service_types')->pluck('name_fr', 'id');
+            }elseif (getSessionLanguageShortCode() == 'it' || getSessionLanguageShortCode() == 'IT'){
+                $service_types = DB::table('service_types')->pluck('name_it', 'id');
+            }else{
+                $service_types = DB::table('service_types')->pluck('name', 'id');
+            }
+            $data['service_types'] = $service_types;
             return Inertia::render('CMS/Cafe/EditCafe', $data);
         } catch (AuthorizationException $ex) {
             abort(403);
@@ -260,17 +279,16 @@ class CafeController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestCafe = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', Cafe::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
-                ->get();
-
+                ->paginate($pageSize);
+            Log::info($latestCafe);
             return response($latestCafe);
-
         } catch (\Throwable $ex) {
             logError($ex);
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);

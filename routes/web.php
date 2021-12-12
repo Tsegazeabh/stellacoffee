@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Api\YoutubeVideosController;
 use App\Http\Controllers\Auth\RolesController;
-use App\Http\Controllers\CafeController;
+use App\Http\Controllers\CMS\CafeController;
 use App\Http\Controllers\CMS\CertificationController;
 use App\Http\Controllers\CMS\ContactUsRequestController;
 use App\Http\Controllers\CMS\ContentsController;
@@ -111,27 +111,27 @@ Route::prefix('packages')->group(function () {
 });
 Route::prefix('quality-control-process')->group(function () {
     Route::get('latest-quality-control-process', [QualityControlProcessController::class, 'getLatestQualityControlProcess'])->name('latest-quality-control-process');
-    Route::get('tab-quality-control-process', [QualityControlProcessController::class, 'getTabQualityControlProcess'])->name('tab-quality-control-process');
+//    Route::get('tab-quality-control-process', [QualityControlProcessController::class, 'getTabQualityControlProcess'])->name('tab-quality-control-process');
     Route::get('detail/{contentId}', [QualityControlProcessController::class, 'getDetail'])->name('quality-control-process-detail');
 });
 Route::prefix('roasting-guide')->group(function () {
     Route::get('latest-roasting-guide', [RoastingGuideController::class, 'getLatestRoastingGuide'])->name('latest-roasting-guide');
-    Route::get('tab-roasting-guide', [RoastingGuideController::class, 'getTabRoastingGuide'])->name('tab-roasting-guide');
+//    Route::get('tab-roasting-guide', [RoastingGuideController::class, 'getTabRoastingGuide'])->name('tab-roasting-guide');
     Route::get('detail/{contentId}', [RoastingGuideController::class, 'getDetail'])->name('roasting-guide-detail');
 });
 Route::prefix('roasting-machine')->group(function () {
     Route::get('latest-roasting-machine', [RoastingMachineController::class, 'getLatestRoastingMachine'])->name('latest-roasting-machine');
-    Route::get('tab-roasting-machine', [RoastingMachineController::class, 'getTabRoastingMachine'])->name('tab-roasting-machine');
+//    Route::get('tab-roasting-machine', [RoastingMachineController::class, 'getTabRoastingMachine'])->name('tab-roasting-machine');
     Route::get('detail/{contentId}', [RoastingMachineController::class, 'getDetail'])->name('roasting-machine-detail');
 });
 Route::prefix('roasting-process')->group(function () {
     Route::get('latest-roasting-process', [RoastingProcessController::class, 'getLatestRoastingProcess'])->name('latest-roasting-process');
-    Route::get('tab-roasting-process', [RoastingProcessController::class, 'getTabRoastingProcess'])->name('tab-roasting-process');
+//    Route::get('tab-roasting-process', [RoastingProcessController::class, 'getTabRoastingProcess'])->name('tab-roasting-process');
     Route::get('detail/{contentId}', [RoastingProcessController::class, 'getDetail'])->name('roasting-process-detail');
 });
 Route::prefix('roasting-service')->group(function () {
     Route::get('latest-roasting-service', [RoastingServiceController::class, 'getLatestRoastingService'])->name('latest-roasting-service');
-    Route::get('tab-roasting-service', [RoastingServiceController::class, 'getTabRoastingService'])->name('tab-roasting-service');
+//    Route::get('tab-roasting-service', [RoastingServiceController::class, 'getTabRoastingService'])->name('tab-roasting-service');
     Route::get('detail/{contentId}', [RoastingServiceController::class, 'getDetail'])->name('roasting-service-detail');
 });
 Route::prefix('stella-coffee-origin')->group(function () {
@@ -177,7 +177,7 @@ Route::prefix('export-process')->group(function () {
 });
 Route::prefix('cafe-service')->group(function () {
     Route::get('/', [CafeController::class, 'index'])->name('cafe-services');
-    Route::get('latest-product-package', [CafeController::class, 'getLatestProductPackage'])->name('latest-cafe-services');
+    Route::get('latest-cafe-service', [CafeController::class, 'getLatestCafe'])->name('latest-cafe-services');
     Route::get('detail/{contentId}', [CafeController::class, 'getDetail'])->name('cafe-service-detail');
 });
 

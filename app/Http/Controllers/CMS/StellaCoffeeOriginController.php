@@ -250,17 +250,15 @@ class StellaCoffeeOriginController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestStellaCoffeeOrigin = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', StellaCoffeeOrigin::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
-                ->get();
-
+                ->paginate($pageSize);
             return response($latestStellaCoffeeOrigin);
-
         } catch (\Throwable $ex) {
             logError($ex);
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);

@@ -120,8 +120,7 @@ export default defineComponent({
                     label: 'News and Events', route: route("home"),
                     collapsed: true,
                     submenus: [
-                        {label: "News", route: route('news-management-page'), active: false},
-                        {label: "Events", route: route('events-management-page'), active: false}
+                        {label: "News", route: route('news-management-page'), active: false}
                     ]
                 },
 

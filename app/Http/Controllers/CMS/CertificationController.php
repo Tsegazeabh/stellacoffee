@@ -268,12 +268,15 @@ class CertificationController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestCertification = Content::with('contentable', 'contentable.media')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', Certification::class);
-            })->ofLanguage($langId)->publishedWithoutArchived()->orderBy('published_at', 'DESC')->paginate(getDefaultPagingSize());
-
+            })
+                ->ofLanguage($langId)
+                ->publishedWithoutArchived()
+                ->orderBy('published_at', 'DESC')
+                ->paginate($pageSize);
             return response($latestCertification);
-
         } catch (\Throwable $ex) {
             logError($ex);
             return $request->wantsJson() ? new JsonResponse(getGeneralAdminErrorMessage(), 503) : back()->with('errorMessage', getGeneralAdminErrorMessage());

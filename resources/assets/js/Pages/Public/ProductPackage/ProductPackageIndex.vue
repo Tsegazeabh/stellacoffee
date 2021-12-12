@@ -26,7 +26,8 @@
                         <inertia-link :href="product.url">
                             <img :src="product.contentable.first_image['src']" class="object-fill"/>
                         </inertia-link>
-                        <p class="text-center">{{_trans('label.shared.Size')}}: {{product.contentable.size}} {{_trans('label.shared.Price')}}: ${{product.contentable.price}}</p>
+                        <p class="text-center font-bold">{{_trans('label.shared.Size')}}: {{product.contentable.size}}</p>
+                        <p class="text-center font-bold">{{_trans('label.shared.Price')}}: {{product.contentable.price}}</p>
                     </div>
                     <div class="col-span-2 px-10 flex flex-col justify-center items-start">
                         <h2 class="text-stella text-xl my-3">

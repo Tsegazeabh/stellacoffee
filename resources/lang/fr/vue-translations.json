@@ -432,7 +432,10 @@
             "The are no visited contents yet": "እስካሁን የተጎበኙ ይዘቶች የሉም",
             "The are no open vacancies published yet": "የተለጠፉ ክፍት የስራ ማስታወቅያዎች የሉም",
             "The are no open tenders floated yet": "የተለጠፉ ክፍት ጨረታዎች የሉም",
-            "Video Link": "Video Link"
+            "Video Link": "Video Link",
+            "Size": "Taille",
+            "Price": "Prix"
+
 
         },
         "user": {
@@ -497,7 +500,7 @@
     },
     "messages": {
         "No Related Contents Found": "ምንም ተዛማጅ ይዘቶች አልተገኙም!",
-        "There are no published content yet": "እስካሁን የታተመ ይዘት የለም!",
+        "There is no published content yet": "There is no published content yet!",
         "Get upto date information by subscribing to our RSS Channel": "በየጊዜው የምንለቃቸው መረጃዎች በጊዜው እንዲ ደርስዎት አሁንኑ ይመዝገቡ",
         "Address": "ፒያሳ, አዲስ አበባ, ኢትዮጵያ",
         "Empty Search Result": "በፍለጋው ምንም ይዘቶች አልተገኙም",

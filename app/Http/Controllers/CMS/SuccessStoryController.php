@@ -250,15 +250,14 @@ class SuccessStoryController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestSuccessStory = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', SuccessStory::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
-                ->get();
-
+                ->paginate($pageSize);
             return response($latestSuccessStory);
 
         } catch (\Throwable $ex) {

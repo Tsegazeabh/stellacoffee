@@ -20,26 +20,29 @@
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
-            <div v-for="(product,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
+            <div v-for="(cafe_service,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
-                        <inertia-link :href="product.url">
-                            <img :src="product.contentable.first_image['src']" class="object-fill"/>
+                        <inertia-link v-if="cafe_service.contentable.first_media" :href="cafe_service.url">
+                            <img :src="cafe_service.contentable.first_media.base64svg" :srcset="cafe_service.contentable.src_sets" class="object-fill"/>
                         </inertia-link>
-                        <p class="text-center">{{_trans('label.shared.Size')}}: {{product.contentable.size}} {{_trans('label.shared.Price')}}: ${{product.contentable.price}}</p>
+                        <inertia-link v-else :href="cafe_service.url">
+                            <img :src="cafe_service.contentable.first_image['src']" class="object-fill"/>
+                        </inertia-link>
+                        <p class="text-center">{{_trans('label.shared.Size')}}: {{cafe_service.contentable.size}} {{_trans('label.shared.Price')}}: ${{cafe_service.contentable.price}}</p>
                     </div>
                     <div class="col-span-2 px-10 flex flex-col justify-center items-start">
                         <h2 class="text-stella text-xl my-3">
-                            <inertia-link :href="product.url">
-                                {{product.contentable.title}}
+                            <inertia-link :href="cafe_service.url">
+                                {{cafe_service.contentable.title}}
                             </inertia-link>
                         </h2>
-                        <p class="text-justify">{{ product.contentable.lead_paragraph }}</p>
+                        <p class="text-justify">{{ cafe_service.contentable.lead_paragraph }}</p>
                         <div class="px-4 justify-center">
-                            <template v-if="product.contentable.video_link">
-                                <video-embed :src="product.contentable.video_link"></video-embed>
+                            <template v-if="cafe_service.contentable.video_link">
+                                <video-embed :src="cafe_service.contentable.video_link"></video-embed>
                             </template>
-                            <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="product.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
+                            <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="cafe_service.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -66,7 +69,7 @@ import Embed from 'v-video-embed';
 // Vue.use(Embed);
 
 export default defineComponent({
-    name: "product-package-index",
+    name: "cafe-index",
     components: {ContentIndexPagination,Embed},
     layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
     props: {

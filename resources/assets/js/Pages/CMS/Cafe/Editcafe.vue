@@ -20,6 +20,8 @@
                         :success-message="successMessage"
                         :errors="errors"
                         :method="'put'"
+                        :isEdit="true"
+                        :service_types="service_types"
                         :url="route('edit-cafe', cafe.id)">
     </CafeForm>
 </template>
@@ -40,6 +42,7 @@ export default defineComponent({
             type: Object,
             default: {
                 title: '',
+                service_type_id: '',
                 size:'',
                 price:'',
                 attachments:'',
@@ -48,6 +51,10 @@ export default defineComponent({
                 tags: [],
             },
             required: true
+        },
+        service_types:{
+            type: Object,
+            required:true
         },
         errors: {
             type: Object,

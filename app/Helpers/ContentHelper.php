@@ -145,7 +145,7 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
                 'lang' => $langCode
             ]);
         case Cafe::class:
-            return route('cafe-detail', [
+            return route('cafe-service-detail', [
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);

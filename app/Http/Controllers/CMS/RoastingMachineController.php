@@ -251,31 +251,13 @@ class RoastingMachineController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
-            $pageSize = $request->get('pageSize', getDefaultPagingSize());
+//            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestRoastingMachine = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', RoastingMachine::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->paginate($pageSize);
-            return response($latestRoastingMachine);
-        } catch (\Throwable $ex) {
-            logError($ex);
-            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
-        }
-    }
-    protected function getTabRoastingMachine(Request $request)
-    {
-        try {
-            $langId = getSessionLanguageId();
-            $latestRoastingMachine = Content::with('contentable')->whereHas('contentable', function ($query) {
-                $query->where('contentable_type', RoastingMachine::class);
-            })
-                ->ofLanguage($langId)
-                ->publishedWithoutArchived()
-                ->orderBy('published_at', 'DESC')
-                ->take(1)
                 ->get();
             return response($latestRoastingMachine);
         } catch (\Throwable $ex) {
@@ -283,6 +265,24 @@ class RoastingMachineController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+//    protected function getTabRoastingMachine(Request $request)
+//    {
+//        try {
+//            $langId = getSessionLanguageId();
+//            $latestRoastingMachine = Content::with('contentable')->whereHas('contentable', function ($query) {
+//                $query->where('contentable_type', RoastingMachine::class);
+//            })
+//                ->ofLanguage($langId)
+//                ->publishedWithoutArchived()
+//                ->orderBy('published_at', 'DESC')
+//                ->take(1)
+//                ->get();
+//            return response($latestRoastingMachine);
+//        } catch (\Throwable $ex) {
+//            logError($ex);
+//            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+//        }
+//    }
 
     /**
      * @param Request $request

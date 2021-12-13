@@ -33,6 +33,7 @@ import {defineComponent} from 'vue'
 export default defineComponent({
     name: "ProductsTab",
     components: {BlendsTab, PackagesTab, IndexHeader, ProductCard},
+
     data() {
         return {
             currentTab: 'packages'
@@ -45,7 +46,3 @@ export default defineComponent({
     }
 })
 </script>
-
-<style scoped>
-
-</style>

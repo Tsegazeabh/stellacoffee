@@ -123,6 +123,7 @@ class ProductBlendController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+
     /**
      * @return \Inertia\Response
      */
@@ -171,9 +172,7 @@ class ProductBlendController extends Controller
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
-            }
-
-            else if ($ex instanceof NotFound) {
+            } else if ($ex instanceof NotFound) {
                 abort(404);
             }
             return abort(503);
@@ -226,15 +225,14 @@ class ProductBlendController extends Controller
                 DB::commit();
                 return redirect()->route('product-blend-management-page');
             } else {
-                return bacK()->withErrors(['errorMessage'=> 'We can not find product blend with the specified id!']);
+                return bacK()->withErrors(['errorMessage' => 'We can not find product blend with the specified id!']);
             }
         } catch (\Throwable $ex) {
             DB::rollback();
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
-            }
-            else if ($ex instanceof NotFound) {
+            } else if ($ex instanceof NotFound) {
                 abort(404);
             }
             return abort(503);
@@ -243,20 +241,20 @@ class ProductBlendController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|\Illuminate\Http\Response
      */
     protected function getLatestProductBlend(Request $request)
     {
         try {
             $langId = getSessionLanguageId();
-            $pageSize = $request->get('pageSize', getDefaultPagingSize());
-            $latestProductBlend = Content::with('contentable')->whereHas('contentable', function ($query) {
-                $query->where('contentable_type', ProductBlend::class);
-            })
+            $latestProductBlend = Content::with('contentable')
+                ->whereHas('contentable', function ($query) {
+                    $query->where('contentable_type', ProductBlend::class);
+                })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
-                ->orderBy('published_at', 'DESC')
-                ->paginate($pageSize);
+                ->latest('published_at')
+                ->take(3)->get();
             return response($latestProductBlend);
 
         } catch (\Throwable $ex) {
@@ -272,8 +270,7 @@ class ProductBlendController extends Controller
      */
     protected function preview($contentId)
     {
-        try
-        {
+        try {
             $content = Content::withTrashed()->with('contentable', 'tags')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', ProductBlend::class);
             })->find($contentId);
@@ -294,8 +291,7 @@ class ProductBlendController extends Controller
      */
     protected function getDetail(Request $request, $contentId)
     {
-        try
-        {
+        try {
             $content = Content::withTrashed()
                 ->published()
                 ->ofLanguage(getSessionLanguageId())
@@ -307,7 +303,7 @@ class ProductBlendController extends Controller
             if (!empty($content)) {
                 $data['content'] = $content;
                 return Inertia::render('Public/ProductBlend/ProductBlendDetail', $data);
-            }else{
+            } else {
                 return abort(404);
             }
         } catch (\Throwable $ex) {

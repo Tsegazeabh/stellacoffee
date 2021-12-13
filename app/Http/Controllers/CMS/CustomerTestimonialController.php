@@ -211,7 +211,7 @@ class CustomerTestimonialController extends Controller
 
     protected function fetch(Request $request)
     {
-        try{
+        try {
             $langId = getSessionLanguageId();
             $request['page'] = $request->get('currentPage') + 1;
             $pageSize = $request->get('pageSize', getDefaultPagingSize());
@@ -246,7 +246,7 @@ class CustomerTestimonialController extends Controller
                         ->paginate($pageSize);
                     break;
                 case 3: //archived
-                    $result = Content::with(['contentable','tags'])
+                    $result = Content::with(['contentable', 'tags'])
                         ->whereHasMorph('contentable', [CustomerTestimonial::class])
                         ->withTrashed()
                         ->archived()
@@ -266,8 +266,32 @@ class CustomerTestimonialController extends Controller
                     break;
             }
             return new JsonResponse($result);
+        } catch (\Throwable $ex) {
+            report($ex);
+            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
-        catch (\Throwable $ex){
+    }
+
+    protected function fetchLatestTestimonials(Request $request)
+    {
+        try {
+            $langId = getSessionLanguageId();
+            if($request->route()->hasParameter('preview')){
+                $result = Content::with(['contentable', 'tags'])
+                    ->whereHasMorph('contentable', [CustomerTestimonial::class])
+                    ->withTrashed()
+                    ->ofLanguage($langId)
+                    ->latest('created_at')->take(6)->get();
+            }
+            else{
+                $result = Content::with(['contentable', 'tags'])
+                    ->whereHasMorph('contentable', [CustomerTestimonial::class])
+                    ->withTrashed()
+                    ->ofLanguage($langId)
+                    ->latest('published_at')->take(6)->get();
+            }
+            return new JsonResponse($result);
+        } catch (\Throwable $ex) {
             report($ex);
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }

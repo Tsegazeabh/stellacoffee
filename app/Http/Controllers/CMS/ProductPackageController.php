@@ -32,6 +32,7 @@ class ProductPackageController extends Controller
             Log::info($ex);
         }
     }
+
     /**
      * @param Request $request
      * @return JsonResponse|\Illuminate\Http\RedirectResponse|\Inertia\Response
@@ -133,6 +134,7 @@ class ProductPackageController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+
     /**
      * @return \Inertia\Response
      */
@@ -181,9 +183,7 @@ class ProductPackageController extends Controller
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
-            }
-
-            else if ($ex instanceof NotFound) {
+            } else if ($ex instanceof NotFound) {
                 abort(404);
             }
             return abort(503);
@@ -236,15 +236,14 @@ class ProductPackageController extends Controller
                 DB::commit();
                 return redirect()->route('product-package-management-page');
             } else {
-                return bacK()->withErrors(['errorMessage'=> 'We can not find product package with the specified id!']);
+                return bacK()->withErrors(['errorMessage' => 'We can not find product package with the specified id!']);
             }
         } catch (\Throwable $ex) {
             DB::rollback();
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
-            }
-            else if ($ex instanceof NotFound) {
+            } else if ($ex instanceof NotFound) {
                 abort(404);
             }
             return abort(503);
@@ -259,14 +258,14 @@ class ProductPackageController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
-            $pageSize = $request->get('pageSize', getDefaultPagingSize());
-            $latestProductPackage = Content::with('contentable')->whereHas('contentable', function ($query) {
-                $query->where('contentable_type', ProductPackage::class);
-            })
+            $latestProductPackage = Content::with('contentable')
+                ->whereHas('contentable', function ($query) {
+                    $query->where('contentable_type', ProductPackage::class);
+                })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
-                ->orderBy('published_at', 'DESC')
-                ->paginate($pageSize);
+                ->latest('published_at')
+                ->take(3)->get();
             return response($latestProductPackage);
 
         } catch (\Throwable $ex) {
@@ -282,8 +281,7 @@ class ProductPackageController extends Controller
      */
     protected function preview($contentId)
     {
-        try
-        {
+        try {
             $content = Content::withTrashed()->with('contentable', 'tags')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', ProductPackage::class);
             })->find($contentId);
@@ -304,8 +302,7 @@ class ProductPackageController extends Controller
      */
     protected function getDetail(Request $request, $contentId)
     {
-        try
-        {
+        try {
             $content = Content::withTrashed()
                 ->published()
                 ->ofLanguage(getSessionLanguageId())
@@ -317,7 +314,7 @@ class ProductPackageController extends Controller
             if (!empty($content)) {
                 $data['content'] = $content;
                 return Inertia::render('Public/ProductPackage/ProductPackageDetail', $data);
-            }else{
+            } else {
                 return abort(404);
             }
         } catch (\Throwable $ex) {

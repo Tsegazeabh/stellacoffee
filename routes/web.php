@@ -106,7 +106,7 @@ Route::prefix('product-blend')->group(function () {
 });
 Route::prefix('packages')->group(function () {
     Route::get('/', [ProductPackageController::class, 'index'])->name('product-packages');
-    Route::get('latest-product-package', [ProductPackageController::class, 'getLatestProductPackage'])->name('latest-product-package');
+    Route::get('latest-product-package', [ProductPackageController::class, 'getLatestProductPackage'])->name('latest-product-packages');
     Route::get('detail/{contentId}', [ProductPackageController::class, 'getDetail'])->name('product-package-detail');
 });
 Route::prefix('quality-control-process')->group(function () {
@@ -189,6 +189,7 @@ Route::prefix('export-destination')->group(function () {
 Route::prefix('stores')->group(function () {
     Route::get('/', [StoresController::class, 'index'])->name('stores');
     Route::get('detail/{id}', [StoresController::class, 'getDetail'])->name('store-detail');
+    Route::get('/fetch-all', [StoresController::class, 'fetchAllStores'])->name('fetch-all-stores');
 });
 
 Route::prefix('duty-free-location')->group(function () {
@@ -204,6 +205,7 @@ Route::prefix('factory-location')->group(function () {
 Route::prefix('shops')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shops');
     Route::get('detail/{id}', [ShopController::class, 'getDetail'])->name('shop-detail');
+    Route::get('/fetch-all', [ShopController::class, 'fetchAllShops'])->name('fetch-all-shops');
 });
 
 Route::prefix('cupping-procedures')->group(function () {
@@ -230,5 +232,6 @@ Route::prefix('news')->group(function () {
 
 Route::prefix('testimonials')->group(function () {
     Route::get('/', [CustomerTestimonialController::class, 'index'])->name('testimonials');
+    Route::get('/latest', [CustomerTestimonialController::class, 'fetchLatestTestimonials'])->name('latest-testimonials');
     Route::get('detail/{id}', [CustomerTestimonialController::class, 'getDetail'])->name('testimonial-detail');
 });

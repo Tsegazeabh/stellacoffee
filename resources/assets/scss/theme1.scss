@@ -368,10 +368,19 @@ footer {
             @apply mx-10;
         }
     }
+
+
 }
 
 .products-container {
     @apply grid grid-cols-3 gap-5;
+    .btn-container {
+        @apply flex flex-wrap col-span-3 justify-end;
+
+        a.btn {
+            @apply flex-grow-0 relative right-0 bottom-0 text-white p-5 mt-4 bg-stella items-baseline mt-5 rounded-full text-center;
+        }
+    }
 }
 
 .tab-headers-cont {

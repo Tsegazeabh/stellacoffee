@@ -19,12 +19,15 @@
                                 <div class="col-span-2 flex flex-col">
                                     <h3 class="text-xl text-stella font-black my-3">{{ certificate.name }}</h3>
                                     <p class="my-2">{{ certificate.description }}</p>
-                                    <div class="py-4 pr-20 flex flex-wrap justify-between items-center text-roast-dark font-semibold">
+                                    <div
+                                        class="py-4 pr-20 flex flex-wrap justify-between items-center text-roast-dark font-semibold">
                                         <span>Provided by: {{ certificate.provider }}</span>
                                         <span>Date: {{ certificate.date }} </span>
                                     </div>
                                     <div class="py-4">
-                                        <button class="border font-bold rounded p-3 bg-stella text-white">{{_trans('label.shared.Download')}}</button>
+                                        <button class="border font-bold rounded p-3 bg-stella text-white">
+                                            {{ _trans('label.shared.Download') }}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +58,7 @@
 </template>
 
 <script>
-import {defineComponent, ref} from 'vue'
+import {defineComponent, ref, onMounted} from 'vue'
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import {Navigation, Pagination, Scrollbar, Controller, A11y, Autoplay, Parallax, EffectCards} from 'swiper';
 import 'swiper/css';
@@ -65,15 +68,32 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import "swiper/css/free-mode"
 import IndexHeader from "./IndexHeader";
+import axios from "axios";
 
 export default defineComponent({
     name: "certifications",
     components: {IndexHeader, Swiper, SwiperSlide},
     setup() {
+        const certificates = ref([])
         const controlledSwiper = ref(null);
+
+        const fetchCertificates = () => {
+            axios.get(route('latest-certification')).then(
+                (res) => {
+                    certificates.value = res.data
+                },
+                (error) => {
+                    certificates.value = []
+                },
+            )
+        }
+
         const setControlledSwiper = (swiper) => {
             controlledSwiper.value = swiper;
         }
+
+        onMounted(fetchCertificates)
+
         return {
             Controller,
             modules: [Navigation, Pagination, Scrollbar, Controller, A11y, Autoplay, Parallax, EffectCards],

@@ -47,7 +47,7 @@ Route::prefix(getSecureURL('cms'))->middleware(['auth', 'verified', 'password.ch
         Route::post('fetch-certification', [CertificationController::class, 'fetchCertification'])->name('fetch-certification');
         Route::post(getSecureURL(4), [CertificationController::class, 'manageCertification'])->name('search-certification');
         Route::get(getSecureURL(6) . '/{id}', [CertificationController::class, 'editGet'])->name('certification-editor-page');
-        Route::put(getSecureURL(7) . '/{id}', [CertificationController::class, 'editPost'])->name('edit-certification');
+        Route::post(getSecureURL(7) . '/{id}', [CertificationController::class, 'editPost'])->name('edit-certification');
         Route::get('preview/{id}', [CertificationController::class, 'preview'])->name('preview-certification');
     });
 

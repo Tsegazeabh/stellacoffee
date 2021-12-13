@@ -250,7 +250,6 @@ class PartnerController extends Controller
             ->ofLanguage($langId)
             ->orderBy('published_at', 'DESC')
             ->get();
-            Log::info($latestPartner);
             return response($latestPartner);
 
         } catch (\Throwable $ex) {

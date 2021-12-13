@@ -35,7 +35,6 @@ class ExportDestinationController extends Controller
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', ExportDestination::class);
                 })->paginate(getDefaultPagingSize());
-            Log::info($content);
 //                event(new ContentVisited($content->data[0], $request));
             $data['contents'] = $content;
             return Inertia::render('Public/ExportDestinations/ExportDestinationIndex', $data);

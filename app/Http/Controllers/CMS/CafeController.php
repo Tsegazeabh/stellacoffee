@@ -287,7 +287,6 @@ class CafeController extends Controller
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
                 ->paginate($pageSize);
-            Log::info($latestCafe);
             return response($latestCafe);
         } catch (\Throwable $ex) {
             logError($ex);

@@ -17,7 +17,7 @@
                   :error-message="errorMessage"
                   :success-message="successMessage"
                   :errors="errors"
-                  :method="'put'"
+                  :method="'post'"
                   :url="route('edit-certification', certification.id)">
     </CertificationForm>
 </template>

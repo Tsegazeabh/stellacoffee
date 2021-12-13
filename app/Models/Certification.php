@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\HasPermission;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -21,25 +22,29 @@ class Certification extends Authorizable implements HasMedia, Auditable
         'deleted_at', 'deleted_by'
     ];
 
-    protected $appends = ['lead_paragraph', 'cms_lead_paragraph','first_image'];
+    protected $appends = ['lead_paragraph', 'cms_lead_paragraph', 'first_image', 'thumb_url'];
 
     protected $auditInclude = [
         'title',
         'detail',
     ];
 
-    public function registerMediaCollections(): void
+    public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaCollection('file-attachments')
-            ->useFallbackUrl('/images/logo.jpg')
-            ->useFallbackPath(public_path('/images/logo.jpg'))
-            ->acceptsMimeTypes(validFileMimeTypes())
-            ->registerMediaConversions(function (Media $media) {
-                $this
-                    ->addMediaConversion('thumb')
-                    ->width(100)
-                    ->height(100);
-            });
+        $this
+            ->addMediaConversion('thumb')
+            ->performOnCollections('certificates')
+            ->nonQueued()
+            ->width(368)
+            ->height(232);
+    }
+
+    public function getThumbUrlAttribute()
+    {
+        if($this->hasMedia('certificates')) {
+            return $this->getFirstMedia('certificates')->getUrl('thumb');
+        }
+        return null;
     }
 
     public function getFirstImageAttribute()

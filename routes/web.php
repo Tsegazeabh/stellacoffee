@@ -178,6 +178,7 @@ Route::prefix('export-destination')->group(function () {
 Route::prefix('stores')->group(function () {
     Route::get('/', [StoresController::class, 'index'])->name('stores');
     Route::get('detail/{id}', [StoresController::class, 'getDetail'])->name('store-detail');
+    Route::get('/fetch-all', [StoresController::class, 'fetchAllStores'])->name('fetch-all-stores');
 });
 
 Route::prefix('duty-free-location')->group(function () {
@@ -219,5 +220,6 @@ Route::prefix('news')->group(function () {
 
 Route::prefix('testimonials')->group(function () {
     Route::get('/', [CustomerTestimonialController::class, 'index'])->name('testimonials');
+    Route::get('/latest', [CustomerTestimonialController::class, 'fetchLatestTestimonials'])->name('latest-testimonials');
     Route::get('detail/{id}', [CustomerTestimonialController::class, 'getDetail'])->name('testimonial-detail');
 });

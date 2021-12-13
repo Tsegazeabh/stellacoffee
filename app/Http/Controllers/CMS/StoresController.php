@@ -270,4 +270,26 @@ class StoresController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+
+    protected function fetchAllStores(Request $request)
+    {
+        try {
+
+            $langId = getSessionLanguageId();
+
+            $stores = Content::with(['contentable'])
+                ->whereHasMorph('contentable', [Store::class])
+                ->withTrashed()
+                ->publishedWithoutArchived()
+                ->ofLanguage($langId)
+                ->latest('published_at')
+                ->get();
+
+            return new JsonResponse($stores);
+
+        } catch (\Throwable $ex) {
+            report($ex);
+            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+        }
+    }
 }

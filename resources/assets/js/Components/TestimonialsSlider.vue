@@ -25,20 +25,38 @@
 <script>
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import {Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards} from 'swiper';
-import TestimonialCard from "@components/TestimonialCard";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import IndexHeader from "./IndexHeader";
-import {defineComponent} from 'vue'
+import {defineComponent, ref, onMounted} from 'vue'
+import axios from 'axios';
+import TestimonialCard from "./TestimonialCard";
 
 export default defineComponent({
     name: "testimonials-slider",
     components: {IndexHeader, TestimonialCard, Swiper, SwiperSlide},
     setup() {
+
+        const testimonials = ref([])
+
+        const fetchLatestTestimonials = () => {
+            axios.get(route('latest-testimonials')).then(
+                (res) => {
+                    testimonials.value = res.data
+                },
+                (error) => {
+                    testimonials.value = []
+                },
+            );
+        }
+
+        onMounted(fetchLatestTestimonials)
+
         return {
+            testimonials,
             modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
             parallaxSwiperWidth: 0,
             swiperOptions: {
@@ -62,23 +80,23 @@ export default defineComponent({
                     }
                 }
             },
-            testimonials: [
-                {
-                    testimonial_name: 'Kate Anderson',
-                    testimonial_position: 'Artist',
-                    testimonial_quote: 'I dropped by to have a cappuccino and honestly, after 30 days here we did not have high expectations. But if this cappuccino was served in Rome, I would be just as satisfied! Great place with perfectly normal prices that I recommend!',
-                },
-                {
-                    testimonial_name: 'Kate Anderson',
-                    testimonial_position: 'Artist',
-                    testimonial_quote: 'I dropped by to have a cappuccino and honestly, after 30 days here we did not have high expectations. But if this cappuccino was served in Rome, I would be just as satisfied! Great place with perfectly normal prices that I recommend!',
-                },
-                {
-                    testimonial_name: 'Kate Anderson',
-                    testimonial_position: 'Artist',
-                    testimonial_quote: 'I dropped by to have a cappuccino and honestly, after 30 days here we did not have high expectations. But if this cappuccino was served in Rome, I would be just as satisfied! Great place with perfectly normal prices that I recommend!',
-                },
-            ]
+            // testimonials: [
+            //     {
+            //         testimonial_name: 'Kate Anderson',
+            //         testimonial_position: 'Artist',
+            //         testimonial_quote: 'I dropped by to have a cappuccino and honestly, after 30 days here we did not have high expectations. But if this cappuccino was served in Rome, I would be just as satisfied! Great place with perfectly normal prices that I recommend!',
+            //     },
+            //     {
+            //         testimonial_name: 'Kate Anderson',
+            //         testimonial_position: 'Artist',
+            //         testimonial_quote: 'I dropped by to have a cappuccino and honestly, after 30 days here we did not have high expectations. But if this cappuccino was served in Rome, I would be just as satisfied! Great place with perfectly normal prices that I recommend!',
+            //     },
+            //     {
+            //         testimonial_name: 'Kate Anderson',
+            //         testimonial_position: 'Artist',
+            //         testimonial_quote: 'I dropped by to have a cappuccino and honestly, after 30 days here we did not have high expectations. But if this cappuccino was served in Rome, I would be just as satisfied! Great place with perfectly normal prices that I recommend!',
+            //     },
+            // ]
         }
     }
 })

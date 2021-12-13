@@ -4,10 +4,10 @@
             <div class="testimonial-picture">&nbsp;</div>
             <div class="testimonial-profile">
                 <p class="testimonial-name">
-                    {{ testimonial.testimonial_name }}
+                    {{ testimonial.contentable.testimonial_name }}
                 </p>
                 <p class="testimonial-position">
-                    {{ testimonial.testimonial_position }}
+                    {{ testimonial.contentable.testimonial_position }}
                 </p>
             </div>
         </div>
@@ -16,9 +16,7 @@
             <p class="my-4">
                 <i class="fas fa-quote-left"></i>
             </p>
-            <p>
-                {{ testimonial.testimonial_quote }}
-            </p>
+            <div v-html="testimonial.contentable.testimonial_message"></div>
         </blockquote>
     </div>
 </template>

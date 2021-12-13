@@ -17,24 +17,24 @@ export default defineComponent({
     setup() {
 
         const mapRef = ref(null);
-        const stores = ref([])
+        const shops = ref([])
 
-        const fetchStores = () => {
-            axios.get(route('fetch-all-stores')).then(
+        const fetchShops = () => {
+            axios.get(route('fetch-all-shops')).then(
                 (res) => {
-                    stores.value = res.data
-                    stores.value.forEach(function (store) {
+                    shops.value = res.data
+                    shops.value.forEach(function (store) {
                         addMarker(map, store)
                     });
                 })
         }
 
-        const addMarker = (map, store) => {
-            let location = [store.contentable.latitude, store.contentable.longitude];
+        const addMarker = (map, shop) => {
+            let location = [shop.contentable.latitude, shop.contentable.longitude];
             let popupOffset = 25;
 
             let marker = new tt.Marker().setLngLat(location).addTo(map);
-            let popup = new tt.Popup({offset: popupOffset}).setHTML(store.contentable.title);
+            let popup = new tt.Popup({offset: popupOffset}).setHTML(shop.contentable.title);
             marker.setPopup(popup).togglePopup();
         }
 
@@ -52,12 +52,12 @@ export default defineComponent({
 
             map.addControl(new tt.FullscreenControl());
             map.addControl(new tt.NavigationControl());
-            await fetchStores()
+            await fetchShops()
         })
 
         return {
             mapRef,
-            stores
+            shops
         };
     }
 })

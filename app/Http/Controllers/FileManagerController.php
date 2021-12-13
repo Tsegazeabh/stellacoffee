@@ -4,19 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Inertia\Inertia;
 use Image;
+use function PHPUnit\Framework\directoryExists;
 
 class FileManagerController extends Controller
 {
     //
     function __construct()
     {
-    }
-
-    protected function index()
-    {
-        return Inertia::render('EEUFileManager');
     }
 
     protected function uploadImage(Request $request)
@@ -28,8 +23,8 @@ class FileManagerController extends Controller
             $imagename = time() . '.' . $image->extension();
             $destinationPath = public_path($root_path_thumbnail);
 
-            if(!file_exists($destinationPath)){
-                mkdir($root_path, 0777, true);
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
             }
 
             $img = Image::make($image->path());

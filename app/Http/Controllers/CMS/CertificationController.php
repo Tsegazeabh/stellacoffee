@@ -268,14 +268,15 @@ class CertificationController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
-            $pageSize = $request->get('pageSize', getDefaultPagingSize());
-            $latestCertification = Content::with('contentable', 'contentable.media')->whereHas('contentable', function ($query) {
-                $query->where('contentable_type', Certification::class);
-            })
+            $latestCertification = Content::with('contentable', 'contentable.media')
+                ->whereHas('contentable', function ($query) {
+                    $query->where('contentable_type', Certification::class);
+                })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
-                ->orderBy('published_at', 'DESC')
-                ->paginate($pageSize);
+                ->latest('published_at')
+                ->take(10)
+                ->get();
             return response($latestCertification);
         } catch (\Throwable $ex) {
             logError($ex);

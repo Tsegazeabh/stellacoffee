@@ -270,4 +270,26 @@ class ShopController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+
+    protected function fetchAllShops(Request $request)
+    {
+        try {
+
+            $langId = getSessionLanguageId();
+
+            $stores = Content::with(['contentable'])
+                ->whereHasMorph('contentable', [Shop::class])
+                ->withTrashed()
+                ->publishedWithoutArchived()
+                ->ofLanguage($langId)
+                ->latest('published_at')
+                ->get();
+
+            return new JsonResponse($stores);
+
+        } catch (\Throwable $ex) {
+            report($ex);
+            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+        }
+    }
 }

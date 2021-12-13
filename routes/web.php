@@ -106,7 +106,7 @@ Route::prefix('product-blend')->group(function () {
 });
 Route::prefix('packages')->group(function () {
     Route::get('/', [ProductPackageController::class, 'index'])->name('product-packages');
-    Route::get('latest-product-package', [ProductPackageController::class, 'getLatestProductPackage'])->name('latest-product-package');
+    Route::get('latest-product-package', [ProductPackageController::class, 'getLatestProductPackage'])->name('latest-product-packages');
     Route::get('detail/{contentId}', [ProductPackageController::class, 'getDetail'])->name('product-package-detail');
 });
 Route::prefix('quality-control-process')->group(function () {
@@ -205,6 +205,7 @@ Route::prefix('factory-location')->group(function () {
 Route::prefix('shops')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shops');
     Route::get('detail/{id}', [ShopController::class, 'getDetail'])->name('shop-detail');
+    Route::get('/fetch-all', [ShopController::class, 'fetchAllShops'])->name('fetch-all-shops');
 });
 
 Route::prefix('cupping-procedures')->group(function () {

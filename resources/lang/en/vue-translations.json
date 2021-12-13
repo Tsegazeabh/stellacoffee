@@ -115,9 +115,14 @@
         "Important Links": "Important Links",
         "Vacancies": "Vacancies",
         "Related Contents": "Related Contents",
-        "Ethiopian Electric Utility": "Ethiopian Electric Utility",
+        "Stella Coffee": "Stella Coffee",
         "Copyright": "Copyright",
-        "EEU CMS": "EEU Content Management System"
+        "Stella Coffee CMS": "Stella Coffee Content Management System",
+        "Roasting Machines": "Roasting Machines",
+        "Quality Control Process": "Quality Control Process",
+        "Roasting Process": "Roasting Process",
+        "Roasting Guides": "Roasting Guides",
+        "Roasting Services": "Roasting Services"
     },
     "label": {
         "shared": {
@@ -439,7 +444,11 @@
             "Click For More Links": "Click For More Links",
             "The are no visited contents yet": "The are no visited contents yet",
             "The are no open vacancies published yet": "The are no open vacancies posted yet",
-            "The are no open tenders floated yet": "The are no open tenders floated yet"
+            "The are no open tenders floated yet": "The are no open tenders floated yet",
+            "Video Link": "Video Link",
+            "Size": "Size",
+            "Price": "Price"
+
         },
         "user": {
             "first name": "First Name",
@@ -496,7 +505,7 @@
     },
     "messages": {
         "No Related Contents Found": "No Related Contents Found!",
-        "There are no published content yet": "There is no published content yet!",
+        "There are is published content yet": "There is no published content yet!",
         "Get upto date information by subscribing to our RSS Channel": "Get upto date information by subscribing to our RSS Channel",
         "Address": "Piazza, Addis Ababa, Ethiopia",
         "Empty Search Result": "NO MATCHES FOUND",

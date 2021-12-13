@@ -72,7 +72,7 @@
                     <li class="nav-item flex md:hidden">
                         <button @click.stop.prevent="toggleCollapse">
                             <i class="fas fa-bars" v-show="collapse"></i>
-                            <i class="fas fa-times" v-show="!collapse"></i> Menu
+                            <i class="fas fa-times" v-show="!collapse"></i> {{_trans('label.shared.Menu')}}
                         </button>
                     </li>
                 </ul>

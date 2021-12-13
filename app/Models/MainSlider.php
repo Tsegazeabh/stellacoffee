@@ -92,18 +92,18 @@ class MainSlider extends Authorizable implements HasMedia
     {
         switch ($sorting_column) {
             case 'created_at':
-                return $query->where('contentable_type', Partner::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.created_at', $sorting_method);
+                return $query->where('contentable_type', MainSlider::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.created_at', $sorting_method);
                 break;
             case 'published_at':
-                return $query->where('contentable_type', Partner::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.published_at', $sorting_method);
+                return $query->where('contentable_type', MainSlider::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.published_at', $sorting_method);
                 break;
             case 'author':
-                return $query->where('contentable_type', Partner::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.created_by_id', $sorting_method);
+                return $query->where('contentable_type', MainSlider::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.created_by_id', $sorting_method);
                 break;
             case 'archived_date':
                 break;
             case 'content_status':
-                return $query->where('contentable_type', Partner::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.is_published', $sorting_method)->orderBy('deleted_at', $sorting_method);
+                return $query->where('contentable_type', MainSlider::class)->join('Contents as c', 'c.contentable_id', '=', $this->getTable() . '.id')->orderBy('c.is_published', $sorting_method)->orderBy('deleted_at', $sorting_method);
                 break;
             default:
                 return $query->orderBy($sorting_column, $sorting_method);

@@ -24,7 +24,7 @@
                                         <span>Date: {{ certificate.date }} </span>
                                     </div>
                                     <div class="py-4">
-                                        <button class="border font-bold rounded p-3 bg-stella text-white">Download</button>
+                                        <button class="border font-bold rounded p-3 bg-stella text-white">{{_trans('label.shared.Download')}}</button>
                                     </div>
                                 </div>
                             </div>

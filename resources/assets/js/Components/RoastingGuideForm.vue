@@ -81,7 +81,7 @@ export default defineComponent({
     props: {
         method: {type: String, default: 'post'},
         url: {type: String, required: true},
-        product_package: {
+        roasting_guide: {
             type: Object,
             default: {
                 title: '',
@@ -124,13 +124,13 @@ export default defineComponent({
     },
 
     mounted() {
-        if (this.product_package) {
-            this.form.title = this.product_package.title
-            this.form.video_link = this.product_package.video_link
+        if (this.roasting_guide) {
+            this.form.title = this.roasting_guide.title
+            this.form.video_link = this.roasting_guide.video_link
         }
-        if (this.product_package && this.product_package.content && this.product_package.content.tags) {
-            this.form.tags = this.product_package.content.tags
-        } else if (this.product_package && this.product_package.content) {
+        if (this.roasting_guide && this.roasting_guide.content && this.roasting_guide.content.tags) {
+            this.form.tags = this.roasting_guide.content.tags
+        } else if (this.roasting_guide && this.roasting_guide.content) {
             this.form.tags = []
         }
     },
@@ -140,8 +140,8 @@ export default defineComponent({
                 editor.ui.view.toolbar.element,
                 editor.ui.getEditableElement()
             );
-            if (this.product_package) {
-                this.form.detail = this.product_package.detail
+            if (this.roasting_guide) {
+                this.form.detail = this.roasting_guide.detail
             }
         },
         save() {

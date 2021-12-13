@@ -99,6 +99,7 @@ export default defineComponent({
                     label: 'Find Us', route: route("home"),
                     collapsed: true,
                     submenus: [
+                        {label: "Our Cafe Services", route: route('cafe-management-page'), active: false},
                         {label: "Export Destinations", route: route('export-destinations-management-page'), active: false},
                         {label: "Export Processes", route: route('export-process-management-page'), active: false},
                         {label: "Stores", route: route('stores-management-page'), active: false},
@@ -119,8 +120,7 @@ export default defineComponent({
                     label: 'News and Events', route: route("home"),
                     collapsed: true,
                     submenus: [
-                        {label: "News", route: route('news-management-page'), active: false},
-                        {label: "Events", route: route('events-management-page'), active: false}
+                        {label: "News", route: route('news-management-page'), active: false}
                     ]
                 },
 
@@ -139,18 +139,18 @@ export default defineComponent({
                     ]
                 },
 
-                // {
-                //     label: 'Settings', route: route("home"),
-                //     collapsed: true,
-                //     submenus: [
-                //         {label: 'FAQ Groups', route: route('faq-group-management-page')},
-                //         {label: 'Country', route: route('country-management-page')},
-                //         {label: 'Region', route: route('region-management-page')},
-                //         {label: 'City', route: route('city-management-page')},
-                //         {label: 'Subcity', route: route('subcity-management-page')},
-                //         {label: 'Woreda', route: route('woreda-management-page')},
-                //     ]
-                // },
+                {
+                    label: 'Settings', route: route("home"),
+                    collapsed: true,
+                    submenus: [
+                        {label: 'Service Types', route: route('service-type-management-page')},
+                        {label: 'Countries', route: route('country-management-page')},
+                        {label: 'Regions', route: route('region-management-page')},
+                        {label: 'Cities', route: route('city-management-page')}
+                        // {label: 'Subcity', route: route('subcity-management-page')},
+                        // {label: 'Woreda', route: route('woreda-management-page')},
+                    ]
+                },
 
             ]
         }

@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -250,22 +251,38 @@ class RoastingMachineController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+//            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestRoastingMachine = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', RoastingMachine::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
                 ->get();
-
             return response($latestRoastingMachine);
-
         } catch (\Throwable $ex) {
             logError($ex);
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+//    protected function getTabRoastingMachine(Request $request)
+//    {
+//        try {
+//            $langId = getSessionLanguageId();
+//            $latestRoastingMachine = Content::with('contentable')->whereHas('contentable', function ($query) {
+//                $query->where('contentable_type', RoastingMachine::class);
+//            })
+//                ->ofLanguage($langId)
+//                ->publishedWithoutArchived()
+//                ->orderBy('published_at', 'DESC')
+//                ->take(1)
+//                ->get();
+//            return response($latestRoastingMachine);
+//        } catch (\Throwable $ex) {
+//            logError($ex);
+//            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+//        }
+//    }
 
     /**
      * @param Request $request

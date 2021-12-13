@@ -47,6 +47,9 @@ import RelatedContentsLoadingState from '@components/RelatedContentsLoadingState
 import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError'
 import ContentsLayout from "@layouts/ContentsLayout"
 import Logo from "../../../../images/logo.jpg";
+import Embed from 'v-video-embed';
+// import Vue from 'vue';
+// Vue.use(Embed);
 
 const RelatedContents = defineAsyncComponent({
     // The factory function
@@ -78,7 +81,8 @@ export default defineComponent({
         provide('tags', props.content && props.content.tags ? props.content.tags.map(tag => tag.id) : [])
     },
     components: {
-        'related-contents': RelatedContents
+        'related-contents': RelatedContents,
+        Embed
     },
 
     methods: {

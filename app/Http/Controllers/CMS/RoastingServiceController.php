@@ -190,7 +190,7 @@ class RoastingServiceController extends Controller
         try {
             $roasting_service = RoastingService::with(['content', 'content.tags'])->find($roasting_service_id);
             $this->authorize('update', $roasting_service);
-            $data['$roasting_service'] = $roasting_service;
+            $data['roasting_service'] = $roasting_service;
             return Inertia::render('CMS/RoastingService/EditRoastingService', $data);
         } catch (AuthorizationException $ex) {
             abort(403);
@@ -249,22 +249,40 @@ class RoastingServiceController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+//            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestRoastingService = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', RoastingService::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
                 ->get();
-
             return response($latestRoastingService);
-
         } catch (\Throwable $ex) {
             logError($ex);
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+//    protected function getTabRoastingService(Request $request)
+//    {
+//        try {
+//            $langId = getSessionLanguageId();
+//            $latestRoastingService = Content::with('contentable')->whereHas('contentable', function ($query) {
+//                $query->where('contentable_type', RoastingService::class);
+//            })
+//                ->ofLanguage($langId)
+//                ->publishedWithoutArchived()
+//                ->orderBy('published_at', 'DESC')
+//                ->take(1)
+//                ->get();
+//
+//            return response($latestRoastingService);
+//
+//        } catch (\Throwable $ex) {
+//            logError($ex);
+//            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+//        }
+//    }
 
     /**
      * @param Request $request

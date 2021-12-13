@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -250,13 +251,13 @@ class RoastingGuideController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
+//            $pageSize = $request->get('pageSize', getDefaultPagingSize());
             $latestRoastingGuide = Content::with('contentable')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', RoastingGuide::class);
             })
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
-                ->take(4)
                 ->get();
             return response($latestRoastingGuide);
         } catch (\Throwable $ex) {
@@ -264,7 +265,24 @@ class RoastingGuideController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
-
+//    protected function getTabRoastingGuide(Request $request)
+//    {
+//        try {
+//            $langId = getSessionLanguageId();
+//            $latestRoastingGuide = Content::with('contentable')->whereHas('contentable', function ($query) {
+//                $query->where('contentable_type', RoastingGuide::class);
+//            })
+//                ->ofLanguage($langId)
+//                ->publishedWithoutArchived()
+//                ->orderBy('published_at', 'DESC')
+//                ->take(1)
+//                ->get();
+//            return response($latestRoastingGuide);
+//        } catch (\Throwable $ex) {
+//            logError($ex);
+//            return new JsonResponse(getGeneralAdminErrorMessage(), 503);
+//        }
+//    }
     /**
      * @param Request $request
      * @param $contentId

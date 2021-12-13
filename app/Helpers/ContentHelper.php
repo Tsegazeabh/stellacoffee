@@ -1,63 +1,30 @@
 <?php
 
-use App\Models\BillComplaint;
-use App\Models\BillInformation;
-use App\Models\Billing;
+use App\Models\Cafe;
 use App\Models\Certification;
-use App\Models\CitizenEngagement;
 use App\Models\City;
-use App\Models\ComplaintHandling;
-use App\Models\ContactDetails;
 use App\Models\ContactUsRequest;
 use App\Models\Content;
 use App\Models\Country;
-use App\Models\CustomerAnnouncement;
-use App\Models\CustomerRightAndDuty;
-use App\Models\CustomerServiceCenter;
-use App\Models\Document;
-use App\Models\DocumentType;
-use App\Models\EaseOfDoingBusiness;
-use App\Models\ElectricalTip;
-use App\Models\ElectricityTariff;
 use App\Models\Faq;
 use App\Models\FaqGroup;
-use App\Models\GettingElectricity;
-use App\Models\ImportantLink;
 use App\Models\MainSlider;
 use App\Models\News;
 use App\Models\Partner;
-use App\Models\PaymentOption;
-use App\Models\PaymentType;
-use App\Models\PopupContent;
-use App\Models\PowerInterruption;
-use App\Models\Prepaid;
 use App\Models\PrivacyPolicy;
 use App\Models\ProductBlend;
 use App\Models\ProductPackage;
-use App\Models\ProjectAndProgram;
-use App\Models\Publication;
-use App\Models\PublicationType;
 use App\Models\QualityControlProcess;
 use App\Models\Region;
 use App\Models\RoastingGuide;
 use App\Models\RoastingMachine;
 use App\Models\RoastingProcess;
 use App\Models\RoastingService;
-use App\Models\ServiceCharter;
-use App\Models\ServiceType;
-use App\Models\SocialResponsibility;
-use App\Models\Speech;
-use App\Models\Profile;
 use App\Models\History;
-use App\Models\StaffAnnouncement;
+use App\Models\ServiceType;
 use App\Models\StellaCoffeeOrigin;
-use App\Models\Subcity;
 use App\Models\SuccessStory;
-use App\Models\Tender;
 use App\Models\TermAndCondition;
-use App\Models\Vacancy;
-use App\Models\Woreda;
-use App\Models\Zone;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 
@@ -177,6 +144,11 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
+        case Cafe::class:
+            return route('cafe-service-detail', [
+                'contentId' => $content_id,
+                'lang' => $langCode
+            ]);
         default:
             return route('home',['lang' => $langCode]);
     }
@@ -227,6 +199,11 @@ function getModelName($content_type)
             return TermAndCondition::class;
         case 'mainslider':
             return MainSlider::class;
+        case 'cafe':
+            return Cafe::class;
+        case 'service-type':
+        case 'servicetype':
+            return ServiceType::class;
         default:
             return News::class;
     }
@@ -261,6 +238,10 @@ function getTableName($content_type)
             return (new TermAndCondition)->getTable();
         case MainSlider::class:
             return (new MainSlider)->getTable();
+        case Cafe::class:
+            return (new Cafe)->getTable();
+        case ServiceType::class:
+            return (new ServiceType)->getTable();
         default:
             return (new Content())->getTable();
     }
@@ -299,6 +280,8 @@ function getContentIndexPageComponentName($content_type)
             return 'Public/PrivacyPolicy/PrivacyPolicyIndex';
         case TermAndCondition::class:
             return 'Public/TermAndCondition/TermAndConditionIndex';
+        case Cafe::class:
+            return 'Public/Cafe/CafeIndex';
         default:
             return 'Public/News/NewsIndex';
     }
@@ -369,6 +352,8 @@ function getSearchableContentTypes()
         RoastingGuide::class,
         StellaCoffeeOrigin::class,
         SuccessStory::class,
+        Cafe::class,
+        ServiceType::class,
 //        Vacancy::class,
 //        Tender::class,
     ];
@@ -387,6 +372,7 @@ function getContentTypesForRSSFeeds()
         RoastingGuide::class,
         StellaCoffeeOrigin::class,
         SuccessStory::class,
+        Cafe::class
 //        Vacancy::class,
 //        Tender::class,
     ];
@@ -431,6 +417,10 @@ function getModelShortName($model_type)
             return trans('models.PrivacyPolicy');
         case TermAndCondition::class:
             return trans('models.TermAndCondition');
+        case Cafe::class:
+            return trans('models.Cafe');
+        case ServiceType::class:
+            return trans('models.ServiceType');
         default:
             return trans('models.Content');
     }

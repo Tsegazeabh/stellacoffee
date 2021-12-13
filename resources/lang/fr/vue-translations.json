@@ -106,7 +106,12 @@
         "Related Contents": "ተዛማጅ ይዘቶች",
         "Ethiopian Electric Utility": "የኢትዮጵያ ኤሌክትሪክ አገልግሎት",
         "Copyright": "የቅጂ መብት",
-        "EEU CMS": "የኢትዮጵያ ኤሌክትሪክ አገልግሎት ውሂብ አስተዳደር"
+        "Stella Coffee CMS": "Stella Coffee Content Management System",
+        "Roasting Machines": "Roasting Machines",
+        "Quality Control Process": "Quality Control Process",
+        "Roasting Process": "Roasting Process",
+        "Roasting Guides": "Roasting Guides",
+        "Roasting Services": "Roasting Services"
     },
     "label": {
         "shared": {
@@ -426,7 +431,11 @@
             "Click For More Links": "ለተጨማሪ መልህቆች ይጫኑት",
             "The are no visited contents yet": "እስካሁን የተጎበኙ ይዘቶች የሉም",
             "The are no open vacancies published yet": "የተለጠፉ ክፍት የስራ ማስታወቅያዎች የሉም",
-            "The are no open tenders floated yet": "የተለጠፉ ክፍት ጨረታዎች የሉም"
+            "The are no open tenders floated yet": "የተለጠፉ ክፍት ጨረታዎች የሉም",
+            "Video Link": "Video Link",
+            "Size": "Taille",
+            "Price": "Prix"
+
 
         },
         "user": {
@@ -491,7 +500,7 @@
     },
     "messages": {
         "No Related Contents Found": "ምንም ተዛማጅ ይዘቶች አልተገኙም!",
-        "There are no published content yet": "እስካሁን የታተመ ይዘት የለም!",
+        "There is no published content yet": "There is no published content yet!",
         "Get upto date information by subscribing to our RSS Channel": "በየጊዜው የምንለቃቸው መረጃዎች በጊዜው እንዲ ደርስዎት አሁንኑ ይመዝገቡ",
         "Address": "ፒያሳ, አዲስ አበባ, ኢትዮጵያ",
         "Empty Search Result": "በፍለጋው ምንም ይዘቶች አልተገኙም",

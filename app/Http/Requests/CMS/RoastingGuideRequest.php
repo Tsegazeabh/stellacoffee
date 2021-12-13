@@ -31,6 +31,7 @@ class RoastingGuideRequest extends FormRequest
                 'required',
                 new XSSValidator()
             ],
+            'video_link' => 'nullable|url',
 //            'tags' => 'nullable|array',
         ];
     }

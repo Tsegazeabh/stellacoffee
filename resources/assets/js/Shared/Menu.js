@@ -32,6 +32,7 @@ export const getMenus = () => {
         {
             label: "Find Us", url: "", active: false,
             submenus: [
+                {label: "Our Cafe Services", url: route('content-index-page','cafe'), active: false},
                 {label: "Export Destinations", url: route('export-destinations'), active: false},
                 {label: "Our Stores", url: route('stores'), active: false},
                 {label: "Our Shops", url: route('shops'), active: false},
@@ -47,7 +48,10 @@ export const getMenus = () => {
             ]
         },
         {
-            label: "News and Events", url: route('content-index-page', 'news-and-events'), active: false
+            label: "News and Events", url: "", active: false,
+            submenus: [
+                {label: "News", url: route('content-index-page', 'news'), active: false},
+            ]
         }
     ];
     return Menus;

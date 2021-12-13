@@ -92,7 +92,7 @@ export default defineComponent({
     props: {
         method: {type: String, default: 'post'},
         url: {type: String, required: true},
-        product_package: {
+        quality_control_process: {
             type: Object,
             default: {
                 title: '',
@@ -137,14 +137,14 @@ export default defineComponent({
     },
 
     mounted() {
-        if (this.product_package) {
-            this.form.title = this.product_package.title
-            this.form.video_link = this.product_package.video_link
-            this.form.stage = this.product_package.stage
+        if (this.quality_control_process) {
+            this.form.title = this.quality_control_process.title
+            this.form.video_link = this.quality_control_process.video_link
+            this.form.stage = this.quality_control_process.stage
         }
-        if (this.product_package && this.product_package.content && this.product_package.content.tags) {
-            this.form.tags = this.product_package.content.tags
-        } else if (this.product_package && this.product_package.content) {
+        if (this.quality_control_process && this.quality_control_process.content && this.quality_control_process.content.tags) {
+            this.form.tags = this.quality_control_process.content.tags
+        } else if (this.quality_control_process && this.quality_control_process.content) {
             this.form.tags = []
         }
     },
@@ -154,8 +154,8 @@ export default defineComponent({
                 editor.ui.view.toolbar.element,
                 editor.ui.getEditableElement()
             );
-            if (this.product_package) {
-                this.form.detail = this.product_package.detail
+            if (this.quality_control_process) {
+                this.form.detail = this.quality_control_process.detail
             }
         },
         save() {

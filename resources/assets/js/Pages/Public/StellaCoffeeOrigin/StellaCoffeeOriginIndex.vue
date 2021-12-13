@@ -64,7 +64,9 @@
             result: {
                 type: Object,
                 required: true
-            }
+            },
+            menu_name:'menu.About',
+            sub_menu_name:'menu.Stella Coffee Origins',
         },
 
         data() {

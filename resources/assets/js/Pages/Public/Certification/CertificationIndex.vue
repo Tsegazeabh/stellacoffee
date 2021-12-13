@@ -63,11 +63,9 @@
             result: {
                 type: Object,
                 required: true
-            }
-            // menu_name:'About',
-            // sub_menu_name:'Certifications',
-            // route_name:'home'
-            // route_name: '\'content-index-page\', \'certification\''
+            },
+            menu_name:'menu.About',
+            sub_menu_name:'menu.Certifications',
         },
         data() {
             return {

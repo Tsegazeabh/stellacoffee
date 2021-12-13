@@ -29,7 +29,8 @@
                         <inertia-link v-else :href="cafe_service.url">
                             <img :src="cafe_service.contentable.first_image['src']" class="object-fill"/>
                         </inertia-link>
-                        <p class="text-center">{{_trans('label.shared.Size')}}: {{cafe_service.contentable.size}} {{_trans('label.shared.Price')}}: ${{cafe_service.contentable.price}}</p>
+                        <p class="text-center font-bold">{{_trans('label.shared.Size')}}: {{cafe_service.contentable.size}} </p>
+                        <p class="text-center font-bold">{{_trans('label.shared.Price')}}: {{cafe_service.contentable.price}}</p>
                     </div>
                     <div class="col-span-2 px-10 flex flex-col justify-center items-start">
                         <h2 class="text-stella text-xl my-3">
@@ -76,7 +77,10 @@ export default defineComponent({
         result: {
             type: Object,
             required: true
-        }
+        },
+        menu_name:String,
+        sub_menu_name:String,
+        action_name:String
     },
 
     data() {

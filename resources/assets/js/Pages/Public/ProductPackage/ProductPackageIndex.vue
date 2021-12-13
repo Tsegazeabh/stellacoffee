@@ -74,7 +74,9 @@ export default defineComponent({
         result: {
             type: Object,
             required: true
-        }
+        },
+        menu_name:'menu.Products',
+        sub_menu_name:'menu.Packages',
     },
 
     data() {

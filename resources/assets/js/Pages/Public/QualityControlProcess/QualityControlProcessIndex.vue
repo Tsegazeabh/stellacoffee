@@ -70,7 +70,9 @@
             result: {
                 type: Object,
                 required: true
-            }
+            },
+            menu_name:'menu.Roasting',
+            sub_menu_name:'menu.Quality Control Process',
         },
 
         data() {

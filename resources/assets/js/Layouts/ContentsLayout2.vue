@@ -47,7 +47,6 @@ export default defineComponent({
     props: {
         menu_name:String,
         sub_menu_name:String,
-        route_name:String
     },
 
 })

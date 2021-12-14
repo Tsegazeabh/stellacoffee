@@ -86,7 +86,6 @@ class ServiceTypeController extends Controller
             $service_type = $request->all();
             ServiceType::create($service_type);
             DB::commit();
-            Log::info($service_type);
             return redirect()->route('service-type-management-page');
         } catch (\Throwable $ex) {
             DB::rollback();

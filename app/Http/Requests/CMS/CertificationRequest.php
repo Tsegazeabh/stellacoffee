@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\CMS;
 
+use App\Rules\ValidFileType;
 use App\Rules\XSSValidator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ class CertificationRequest extends FormRequest
                 'required',
                 new XSSValidator()
             ],
+            'attachment' => ['required', 'max:5242880', new ValidFileType()],
 //            'tags' => 'nullable|array',
         ];
     }

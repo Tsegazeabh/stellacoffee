@@ -21,7 +21,6 @@ class AppServiceProvider extends ServiceProvider
                 return app()->getLocale();
             },
             'language' => function () {
-            Log::info(app()->getLocale());
                 return translations(
                     resource_path('lang/' . app()->getLocale() . '/vue-translations.json')
                 );

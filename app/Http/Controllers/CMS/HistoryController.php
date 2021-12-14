@@ -135,10 +135,8 @@ class HistoryController extends Controller
         try {
 
             $locale = Locale::where('short_code', getSessionLanguageShortCode())->first();
-            Log::info($locale);
             if ($locale != null) {
                 $content = array('locale_id' => $locale->id);
-                Log::info($content);
                 $history = Arr::except($request->all(), ['tags', 'xcsrf']);
                 $history = History::create($history);
                 $this->authorize('create', $history);
@@ -257,7 +255,6 @@ class HistoryController extends Controller
                     ->sortBy('from_date', 'DESC', History::class)
                     ->get();
             $data['history'] = $history;
-            Log::info($history);
             return Inertia::render('Public/History/HistoryIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

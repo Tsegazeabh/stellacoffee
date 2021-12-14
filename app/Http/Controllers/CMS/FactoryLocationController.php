@@ -265,7 +265,6 @@ class FactoryLocationController extends Controller
                     break;
             }
 
-            Log::info($result);
             return new JsonResponse($result);
         } catch (\Throwable $ex) {
             report($ex);

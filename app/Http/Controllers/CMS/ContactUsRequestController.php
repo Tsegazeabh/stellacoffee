@@ -97,7 +97,6 @@ class ContactUsRequestController extends Controller
             $content_status = $request->has('simpleFilters') ? $request->get('simpleFilters')['content_status'] : 0;
 
             $searchKeyword = $request->has('simpleFilters') ? $request->get('simpleFilters')['search_keyword'] : '';
-            Log::info($searchKeyword);
             switch ($content_status) {
                 case 1: // open
                     $result = ContactUsRequest::withTrashed()
@@ -126,7 +125,6 @@ class ContactUsRequestController extends Controller
                         ->paginate($pageSize);
                     break;
             }
-            Log::info('Result: '.$result);
             return new JsonResponse($result);
         } catch (\Throwable $ex) {
             report($ex);

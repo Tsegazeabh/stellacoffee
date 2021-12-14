@@ -143,33 +143,18 @@ class CertificationController extends Controller
                 $tags = collect($tags)->map(function ($tag) {
                     return $tag['id'];
                 });
-                $attachments = $request->file('attachments');
-                if ($attachments != null) {
-                    $number_of_files = count($attachments);
-                } else {
-                    $number_of_files = 0;
-                }
-                $number_of_files_uploaded = 0;
-
                 $certification = Certification::create($certification);
                 $this->authorize('create', $certification);
-                if ($number_of_files != 0) {
-                    foreach ($attachments as $attachment) {
-                        $certification->addMedia($attachment)->toMediaCollection('file-attachments');
-                        $number_of_files_uploaded++;
-                    }
-                    if ($number_of_files != $number_of_files_uploaded) {
-                        return $request->wantsJson() ? new JsonResponse('NB: All files are not uploaded. Please consult your administrator.', 503) : back()->with(['errorMessage' => 'NB: All files are not uploaded. Please consult your administrator.']);
-                    }
+                $attachment = $request->file('attachment');
+                if ($attachment != null) {
+                    $certification->addMedia($attachment)->toMediaCollection('certificates');
                 }
-
                 $content = $certification->content()->create($content);
                 $content->tags()->sync($tags);
                 DB::commit();
                 return redirect()->route('certification-management-page');
             }
-        } catch
-        (\Throwable $ex) {
+        } catch (\Throwable $ex) {
             DB::rollback();
             logError($ex);
             if ($ex instanceof AuthorizationException) {
@@ -216,15 +201,6 @@ class CertificationController extends Controller
         try {
             $certification = Certification::with('content', 'media')->find($id);
             $this->authorize('update', $certification);
-            $attachments = $request->file('attachments');
-
-            if ($attachments != null) {
-                $number_of_files = count($attachments);
-            } else {
-                $number_of_files = 0;
-            }
-            $number_of_files_uploaded = 0;
-
             if ($certification != null) {
                 $certification->update(
                     Arr::except($request->all(), ['tags', 'attachments', 'csrf'])
@@ -235,16 +211,12 @@ class CertificationController extends Controller
                 });
                 $certification->content->tags()->sync($tags);
 
-                if ($number_of_files != 0) {
-                    $certification->clearMediaCollection('file-attachments');
-                    foreach ($attachments as $attachment) {
-                        $certification->addMedia($attachment)->toMediaCollection('file-attachments');
-                        $number_of_files_uploaded++;
-                    }
-                    if ($number_of_files != $number_of_files_uploaded) {
-                        return $request->wantsJson() ? new JsonResponse('NB: All files are not uploaded. Please consult your administrator.', 503) : back()->with(['errorMessage' => 'NB: All files are not uploaded. Please consult your administrator.']);
-                    }
+                $attachment = $request->file('attachment');
+                if ($attachment != null) {
+                    $certification->clearMediaCollection('certificates');
+                    $certification->addMedia($attachment)->toMediaCollection('certificates');
                 }
+
                 DB::commit();
                 return redirect()->route('certification-management-page');
             }

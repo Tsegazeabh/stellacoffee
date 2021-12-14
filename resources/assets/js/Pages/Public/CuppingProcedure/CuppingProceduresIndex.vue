@@ -15,8 +15,10 @@ export default defineComponent({
             required: true,
             default: {}
         },
-        menu_name:'menu.Cupping',
-        sub_menu_name:'menu.Cupping Procedures',
-    }
+    },
+    provide: {
+        menu_name:'Cupping',
+        sub_menu_name:'Cupping Procedures',
+    },
 })
 </script>

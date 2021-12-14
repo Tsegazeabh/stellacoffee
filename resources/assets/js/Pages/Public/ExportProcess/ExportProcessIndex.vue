@@ -15,8 +15,10 @@ export default defineComponent({
             required: true,
             default: {}
         },
-        menu_name:'menu.Find Us',
-        sub_menu_name:'menu.Export Processes',
-    }
+    },
+    provide: {
+        menu_name:'Find Us',
+        sub_menu_name:'Export Processes',
+    },
 })
 </script>

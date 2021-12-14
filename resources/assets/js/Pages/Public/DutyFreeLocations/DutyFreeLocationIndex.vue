@@ -15,8 +15,10 @@ export default defineComponent({
             required: true,
             default: {}
         },
-        menu_name:'menu.Fin Us',
-        sub_menu_name:'menu.Duty Free Locations',
-    }
+    },
+    provide: {
+        menu_name:'Find Us',
+        sub_menu_name:'Duty Free Locations',
+    },
 })
 </script>

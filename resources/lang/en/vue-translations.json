@@ -31,6 +31,12 @@
         "Cupping": "Cupping",
         "Cupping Procedures": "Cupping Procedures",
         "News and Events": "News and Events",
+        "Cupping Events": "Cupping Events",
+        "Countries": "Countries",
+        "Cities": "Cities",
+        "Regions": "Regions",
+        "Blogs": "Blogs",
+        "Testimonials": "Testimonials",
 
         "History": "History",
         "Contact Us": "Contact Us",
@@ -364,9 +370,7 @@
             "Item Image": "Item Image",
             "Download": "Download",
             "Menu": "Menu",
-            "I understand and agree to the Stella Plus Trading": "I understand and agree to the Stella Plus Trading",
-            "": ""
-
+            "I understand and agree to the Stella Plus Trading": "I understand and agree to the Stella Plus Trading"
         },
         "user": {
             "first name": "First Name",

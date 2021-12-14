@@ -64,35 +64,13 @@
                 type: Object,
                 required: true
             },
-            menu_name:'menu.About',
-            sub_menu_name:'menu.Certifications',
+            // menu_name:'About',
+            // sub_menu_name:'Certifications',
         },
-        data() {
-            return {
-                // result: [
-                //     {
-                //         name: 'Lavazza Crema e Gusto',
-                //         image: 'images/stella_coffee_logo.jpg',
-                //         description: 'Lavazza Crema e Gusto Espresso is a special blend of Robusta and Arabica beans.',
-                //         price: '$14.00'
-                //     },
-                //     {
-                //         name: 'Maxwell House Original Roast Ground Coffee',
-                //         image: 'images/stella_coffee_logo.jpg',
-                //         description: 'Ground Coffee Having a very interesting history, this coffee is easily recognized all over the globe.',
-                //         price: '$14.00'
-                //     },
-                //     {
-                //         name: 'Douwe Egberts Filter Blend Ground Coffee Medium Roast',
-                //         image: 'images/stella_coffee_logo.jpg',
-                //         description: 'Douwe Egberts Real Coffee is a blend of the world’s finest quality beans.',
-                //         price: '$14.00'
-                //     },
-                //
-                // ],
-            }
+        provide: {
+            menu_name:'About',
+            sub_menu_name:'Certifications',
         },
-
         methods: {
             formatDate(date) {
                 return moment(String(date)).format('MMM DD, YYYY')

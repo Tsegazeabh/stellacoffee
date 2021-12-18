@@ -27,7 +27,7 @@
                     <slot name="summary-sect"></slot>
                 </div>
             </div>
-            <div class="content-wrapper  col-span-1 bg-white p-10">
+            <div class="content-wrapper col-span-1 bg-white p-10">
                 <slot></slot>
             </div>
         </div>

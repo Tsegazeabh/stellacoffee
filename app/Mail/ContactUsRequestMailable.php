@@ -35,7 +35,7 @@ class ContactUsRequestMailable extends Mailable
             ->from(config('mail.feedback.from_address'))
             ->cc($this->contact_us_request->email)
             ->replyTo($this->contact_us_request->email)
-            ->subject('Your '.env('APP_NAME').' Contact Us Request')
+            ->subject('Your Contact Us Request To '.env('APP_NAME'))
             ->view('Emails/ContactUsRequestMailBody')
             ->with([
 

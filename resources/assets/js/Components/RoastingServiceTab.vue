@@ -10,7 +10,7 @@
             </p>
             <div class="text-right m-3">
                 <inertia-link
-                    :href="route('roasting-service-detail', item.id)"
+                    :href="route('content-index-page', 'roasting-service')"
                     type="button"
                     class="btn">
                     {{_trans('action.Read more')}} &raquo;

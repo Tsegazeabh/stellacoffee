@@ -19,7 +19,17 @@
         </teleport>
         <div class="header1">{{ content.contentable.title }}</div>
         <div v-html="content.contentable.detail"></div>
-
+        <template v-if="content.contentable.video_link">
+            <youtube-player class="w-100 h-100"
+                ref="youtube"
+                :videoid="_youTubeGetID(content.contentable.video_link)"
+                :loop="loop"
+                @ended="onEnded"
+                @paused="onPaused"
+                @played="onPlayed"
+                :autoplay="false">
+            </youtube-player>
+        </template>
         <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">
             <div class="pr-2 font-bold">
                 {{ _trans('label.shared.Published at') }}: {{ formatDate(content.published_at) }}
@@ -39,6 +49,7 @@ import moment from 'moment'
 import RelatedContentsLoadingState from '@components/RelatedContentsLoadingState'
 import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError'
 import ContentsLayout from "@layouts/ContentsLayout"
+import {YoutubeVue3} from 'youtube-vue3';
 import Logo from "../../../../images/logo.jpg"
 
 const RelatedContents = defineAsyncComponent({
@@ -70,7 +81,8 @@ export default defineComponent({
         provide('tags', props.content && props.content.tags ? props.content.tags.map(tag => tag.id) : [])
     },
     components: {
-        'related-contents': RelatedContents
+        'related-contents': RelatedContents,
+        'youtube-player': YoutubeVue3
     },
 
     methods: {

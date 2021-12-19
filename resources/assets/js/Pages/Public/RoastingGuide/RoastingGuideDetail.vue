@@ -20,18 +20,15 @@
         <div class="header1">{{ content.contentable.title }}</div>
         <div v-html="content.contentable.detail"></div>
         <template v-if="content.contentable.video_link">
-            <video-embed :src="content.contentable.video_link"></video-embed>
-            <!-- 21:9 aspect ratio -->
-            <video-embed css="embed-responsive-21by9" :src="content.contentable.video_link"></video-embed>
-
-            <!-- 16:9 aspect ratio: default -->
-            <video-embed css="embed-responsive-16by9" :src="content.contentable.video_link"></video-embed>
-
-            <!-- 4:3 aspect ratio -->
-            <video-embed css="embed-responsive-4by3" :src="content.contentable.video_link"></video-embed>
-
-            <!-- 1:1 aspect ratio -->
-            <video-embed css="embed-responsive-1by1" :src="content.contentable.video_link"></video-embed>
+            <youtube-player class="w-100 h-100"
+                ref="youtube"
+                :videoid="_youTubeGetID(content.contentable.video_link)"
+                :loop="loop"
+                @ended="onEnded"
+                @paused="onPaused"
+                @played="onPlayed"
+                :autoplay="false">
+            </youtube-player>
         </template>
 
         <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">
@@ -54,7 +51,7 @@ import RelatedContentsLoadingState from '@components/RelatedContentsLoadingState
 import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError'
 import ContentsLayout from "@layouts/ContentsLayout"
 import Logo from "../../../../images/logo.jpg"
-import Embed from 'v-video-embed';
+import {YoutubeVue3} from 'youtube-vue3';
 // import Vue from 'vue';
 // Vue.use(Embed);
 
@@ -89,7 +86,7 @@ export default defineComponent({
     },
     components: {
         'related-contents': RelatedContents,
-        Embed
+        'youtube-player': YoutubeVue3
     },
 
     methods: {

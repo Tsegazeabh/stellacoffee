@@ -54,7 +54,7 @@
         "style-loader": "^3.0.0",
         "swiper": "^7.2.0",
         "v-calendar": "^3.0.0-alpha.6",
-        "v-video-embed": "^1.0.8",
+        "v-YouTube": "^1.0.8",
         "vue-class-component": "^8.0.0-rc.1",
         "vue-mediaelement": "^1.0.0",
         "vue-monthly-picker": "^0.2.8",

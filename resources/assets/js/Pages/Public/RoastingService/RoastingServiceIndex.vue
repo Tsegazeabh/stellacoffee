@@ -34,18 +34,15 @@
                         <p class="text-justify">{{ service.contentable.lead_paragraph }}</p>
                         <div class="px-4 justify-center">
                             <template v-if="service.contentable.video_link">
-                                <video-embed :src="service.contentable.video_link"></video-embed>
-                                <!-- 21:9 aspect ratio -->
-                                <video-embed css="embed-responsive-21by9" :src="service.contentable.video_link"></video-embed>
-
-                                <!-- 16:9 aspect ratio: default -->
-                                <video-embed css="embed-responsive-16by9" :src="service.contentable.video_link"></video-embed>
-
-                                <!-- 4:3 aspect ratio -->
-                                <video-embed css="embed-responsive-4by3" :src="service.contentable.video_link"></video-embed>
-
-                                <!-- 1:1 aspect ratio -->
-                                <video-embed css="embed-responsive-1by1" :src="service.contentable.video_link"></video-embed>
+                                <youtube-player class="w-100 h-100"
+                                    ref="youtube"
+                                    :videoid="_youTubeGetID(service.contentable.video_link)"
+                                    :loop="loop"
+                                    @ended="onEnded"
+                                    @paused="onPaused"
+                                    @played="onPlayed"
+                                    :autoplay="false">
+                                </youtube-player>
                             </template>
                             <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="service.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
                         </div>
@@ -69,13 +66,13 @@
     import moment from 'moment';
     import {defineComponent} from 'vue';
     import ContentIndexPagination from "@components/ContentIndexPagination";
-    import Embed from 'v-video-embed';
+    import {YoutubeVue3} from 'youtube-vue3';
     // import Vue from 'vue';
     // Vue.use(Embed);
 
     export default defineComponent({
         name: "roasting-service-index",
-        components: {ContentIndexPagination, Embed},
+        components: {ContentIndexPagination, 'youtube-player': YoutubeVue3},
         layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
         props: {
             result: {

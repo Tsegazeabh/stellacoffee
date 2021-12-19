@@ -34,7 +34,15 @@
                         <p class="text-justify">{{ process.contentable.lead_paragraph }}</p>
                         <div class="px-4 justify-center">
                             <template v-if="process.contentable.video_link">
-                                <video-embed :src="process.contentable.video_link"></video-embed>
+                                <youtube-player class="w-100 h-100"
+                                    ref="youtube"
+                                    :videoid="_youTubeGetID(process.contentable.video_link)"
+                                    :loop="loop"
+                                    @ended="onEnded"
+                                    @paused="onPaused"
+                                    @played="onPlayed"
+                                    :autoplay="false">
+                                </youtube-player>
                             </template>
                             <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="process.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
                         </div>
@@ -58,13 +66,13 @@
     import moment from 'moment';
     import {defineComponent} from 'vue';
     import ContentIndexPagination from "@components/ContentIndexPagination";
-    import Embed from 'v-video-embed';
+    import {YoutubeVue3} from 'youtube-vue3';
     // import Vue from 'vue';
     // Vue.use(Embed);
 
     export default defineComponent({
         name: "roasting-process-index",
-        components: {ContentIndexPagination, Embed},
+        components: {ContentIndexPagination, 'youtube-player': YoutubeVue3},
         layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
         props: {
             result: {

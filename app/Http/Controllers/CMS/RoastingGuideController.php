@@ -258,6 +258,7 @@ class RoastingGuideController extends Controller
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
+                ->take(1)
                 ->get();
             return response($latestRoastingGuide);
         } catch (\Throwable $ex) {

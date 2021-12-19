@@ -18,6 +18,7 @@
     <div id="fm"></div>
 {{--    <script  src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.64.0/maps/maps-web.min.js"></script>--}}
 {{--    <script  src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.64.0/services/services-web.min.js"></script>--}}
+{{--    <script src="dist/youtube-vue3.umd.min.js"></script>--}}
     <script src="{{ mix('js/app.min.js') }}" defer></script>
 {{--        @env ('local')--}}
 {{--            <script src="http://localhost:8080/js/bundle.js"></script>--}}

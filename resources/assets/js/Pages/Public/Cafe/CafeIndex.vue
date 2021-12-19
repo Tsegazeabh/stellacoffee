@@ -20,7 +20,7 @@
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
-            <div v-for="(cafe_service,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
+            <div v-for="(cafe_service,index) in result.data" :key="cafe_service.id" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
                         <inertia-link v-if="cafe_service.contentable.first_media" :href="cafe_service.url">

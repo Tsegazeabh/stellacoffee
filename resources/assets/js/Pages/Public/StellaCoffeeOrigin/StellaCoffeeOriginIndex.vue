@@ -20,7 +20,7 @@
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
-            <div v-for="(origin,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
+            <div v-for="(origin,index) in result.data" :key="origin.id" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
                         <img :src="origin.contentable.first_image['src']" class="object-fill"/>
@@ -70,7 +70,7 @@
 
     export default defineComponent({
         name: "stella-coffee-origin-index",
-        components: {ContentIndexPagination},
+        components: {ContentIndexPagination,'youtube-player':YoutubeVue3},
         layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
         props: {
             result: {

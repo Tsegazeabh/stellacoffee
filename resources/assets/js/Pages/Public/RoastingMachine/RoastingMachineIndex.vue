@@ -20,7 +20,7 @@
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
-            <div v-for="(machine,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
+            <div v-for="(machine,index) in result.data" :key="machine.id" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
                         <img :src="machine.contentable.first_image['src']" class="object-fill"/>

@@ -8,6 +8,17 @@
             <p  class="text-xl summary flex-grow-1 text-justify">
                 {{item.contentable.lead_paragraph}}
             </p>
+            <template v-if="item.contentable.video_link">
+                <youtube-player class="w-100 h-100"
+                                ref="youtube"
+                                :videoid="_youTubeGetID(item.contentable.video_link)"
+                                :loop="loop"
+                                @ended="onEnded"
+                                @paused="onPaused"
+                                @played="onPlayed"
+                                :autoplay="false">
+                </youtube-player>
+            </template>
             <div class="text-right m-3">
                 <inertia-link
                     :href="route('content-index-page', 'roasting-service')"
@@ -29,11 +40,13 @@
 import {defineComponent} from "vue";
 import IndexHeader from "./IndexHeader";
 import axios from "axios";
+import {YoutubeVue3} from 'youtube-vue3';
 
 export default defineComponent({
     name: "roasting-service-tab",
     components: {
-        IndexHeader
+        IndexHeader,
+        'youtube-player':YoutubeVue3
     },
     data() {
         return {

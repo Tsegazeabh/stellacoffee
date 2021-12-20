@@ -362,7 +362,7 @@
             "The are no open vacancies published yet": "The are no open vacancies posted yet",
             "The are no open tenders floated yet": "The are no open tenders floated yet",
 
-            "Video Link": "Video Link",
+            "Video Link": "Open In YouTube",
             "Size": "Size",
             "Price": "Price",
             "Menu Item Name": "Menu Item Name",
@@ -370,7 +370,8 @@
             "Item Image": "Item Image",
             "Download": "Download",
             "Menu": "Menu",
-            "I understand and agree to the Stella Plus Trading": "I understand and agree to the Stella Plus Trading"
+            "I understand and agree to the Stella Plus Trading": "I understand and agree to the Stella Plus Trading",
+            "Brief Historical Review Of Stella Coffee": "Brief Historical Review Of Stella Coffee"
         },
         "user": {
             "first name": "First Name",

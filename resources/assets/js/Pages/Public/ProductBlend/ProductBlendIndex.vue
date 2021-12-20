@@ -32,20 +32,20 @@
                             </inertia-link>
                         </h2>
                         <p class="text-justify">{{ blend.contentable.lead_paragraph }}</p>
-                        <div class="px-4 justify-center">
-                            <template v-if="blend.contentable.video_link">
-                                <youtube-player class="w-100 h-100"
-                                    ref="youtube"
-                                    :videoid="_youTubeGetID(blend.contentable.video_link)"
-                                    :loop="loop"
-                                    @ended="onEnded"
-                                    @paused="onPaused"
-                                    @played="onPlayed"
-                                    :autoplay="false">
-                                </youtube-player>
-                            </template>
+                    </div>
+                    <div class="px-4 py-2 justify-center">
+                        <template v-if="blend.contentable.video_link">
+                            <youtube-player class="w-100 h-100"
+                                            ref="youtube"
+                                            :videoid="_youTubeGetID(blend.contentable.video_link)"
+                                            :loop="loop"
+                                            @ended="onEnded"
+                                            @paused="onPaused"
+                                            @played="onPlayed"
+                                            :autoplay="false">
+                            </youtube-player>
                             <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="blend.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 type: Object,
                 required: true
             },
-        },
+            },
         provide: {
             menu_name:'Products',
             sub_menu_name:'Blends',

@@ -32,22 +32,21 @@
                             </inertia-link>
                         </h2>
                         <p class="text-justify">{{ story.contentable.lead_paragraph }}</p>
-                        <div class="px-4 justify-center">
-                            <template v-if="story.contentable.video_link">
-                                <youtube-player class="w-100 h-100"
-                                    ref="youtube"
-                                    :videoid="_youTubeGetID(story.contentable.video_link)"
-                                    :loop="loop"
-                                    @ended="onEnded"
-                                    @paused="onPaused"
-                                    @played="onPlayed"
-                                    :autoplay="false">
-                                </youtube-player>
-                            </template>
-                            <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="story.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
-                        </div>
                     </div>
-
+                    <div class="px-4 py-2 justify-center">
+                        <template v-if="story.contentable.video_link">
+                            <youtube-player class="w-100 h-100"
+                                            ref="youtube"
+                                            :videoid="_youTubeGetID(story.contentable.video_link)"
+                                            :loop="loop"
+                                            @ended="onEnded"
+                                            @paused="onPaused"
+                                            @played="onPlayed"
+                                            :autoplay="false">
+                            </youtube-player>
+                            <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="story.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
+                        </template>
+                    </div>
                 </div>
             </div>
             <div class="m-4">

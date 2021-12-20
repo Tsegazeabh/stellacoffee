@@ -20,21 +20,35 @@
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
-            <div v-for="(story,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
+            <div v-for="(news,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
-                        <img :src="story.contentable.first_image['src']" class="object-fill"/>
+                        <img :src="news.contentable.first_image['src']" class="object-fill"/>
                     </div>
                     <div class="col-span-2 px-10 flex flex-col justify-center items-start">
                         <h2 class="text-stella text-xl my-3">
-                            <inertia-link :href="story.url">
-                                {{story.contentable.title}}
+                            <inertia-link :href="news.url">
+                                {{news.contentable.title}}
                             </inertia-link>
                         </h2>
-                        <p class="text-justify">{{ story.contentable.lead_paragraph }}</p>
-                        <div class="px-4 justify-center">
-                            <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="story.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
-                        </div>
+                        <p class="text-justify">{{ news.contentable.lead_paragraph }}</p>
+                    </div>
+                    <div class=" px-4 py-2 justify-center">
+                        <template v-if="news.contentable.video_link">
+                            <youtube-player class="w-100 h-100"
+                                            ref="youtube"
+                                            :videoid="_youTubeGetID(news.contentable.video_link)"
+                                            :loop="loop"
+                                            @ended="onEnded"
+                                            @paused="onPaused"
+                                            @played="onPlayed"
+                                            :autoplay="false">
+                                <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0">
+                                    <a :href="news.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a>
+                                </p>
+                            </youtube-player>
+                        </template>
+                        <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="news.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
                     </div>
                 </div>
             </div>
@@ -55,10 +69,11 @@
     import moment from 'moment';
     import {defineComponent} from 'vue';
     import ContentIndexPagination from "@components/ContentIndexPagination";
+    import {YoutubeVue3} from 'youtube-vue3';
 
     export default defineComponent({
         name: "news-index",
-        components: {ContentIndexPagination},
+        components: {ContentIndexPagination,'youtube-player': YoutubeVue3},
         layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
         props: {
             result: {

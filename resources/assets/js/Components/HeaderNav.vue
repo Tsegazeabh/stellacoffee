@@ -32,7 +32,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        console.log(this.menus)
+        // console.log(this.menus)
     }
 })
 </script>

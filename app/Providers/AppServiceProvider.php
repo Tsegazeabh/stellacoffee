@@ -29,7 +29,9 @@ class AppServiceProvider extends ServiceProvider
             'facebook_official_page' => config('custom_config.facebook_official_page'),
             'twitter_official_page' => config('custom_config.twitter_official_page'),
             'telegram_official_page' => config('custom_config.telegram_official_page'),
-            'youtube_official_page' => config('custom_config.youtube_official_page')
+            'youtube_official_page' => config('custom_config.youtube_official_page'),
+            'linkedin_official_page' => config('custom_config.linkedin_official_page'),
+            'instagram_official_page' => config('custom_config.instagram_official_page')
         ]);
     }
 

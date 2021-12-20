@@ -33,8 +33,8 @@
                         </h2>
                         <p class="text-justify">{{ origin.contentable.lead_paragraph }}</p>
                     </div>
-                    <div class="px-4 py-2 justify-center" v-if="origin.contentable.video_link">
-                        <template>
+                    <div class="px-4 py-2 justify-center">
+                        <template v-if="origin.contentable.video_link">
                             <youtube-player class="w-100 h-100"
                                             ref="youtube"
                                             :videoid="_youTubeGetID(origin.contentable.video_link)"

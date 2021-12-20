@@ -58,8 +58,10 @@ return [
     'archievable_content_types' => [],
 
     'free_call_center'=>'906',
-    'facebook_official_page'=>'https://www.facebook.com/EEUOfficial',
-    'twitter_official_page'=>'https://twitter.com/eeuethiopia?s=11',
-    'telegram_official_page'=>'https://t.me/eeuethiopia',
+    'facebook_official_page'=>'https://www.facebook.com/stellacoffee',
+    'twitter_official_page'=>'https://twitter.com/stellacoffee?s=11',
+    'telegram_official_page'=>'https://t.me/stellacoffee',
     'youtube_official_page'=>'https://www.youtube.com/channel/UCY_ASjgstwvI6HgEPn2dQGg',
+    'linkedin_official_page'=>'https://www.linkedin.com/stellacoffee',
+    'instagram_official_page'=>'https://www.instagram.com/stellacoffee'
 ];

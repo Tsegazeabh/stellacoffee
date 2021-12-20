@@ -10,19 +10,22 @@
         </ul>
         <ul class="right">
             <li>
-                <a href="#"><span class="fab fa-facebook-f" aria-hidden="true"></span></a>
+                <a :href="$page.props.facebook_official_page" target="_blank"><span class="fab fa-facebook-f" aria-hidden="true"></span></a>
             </li>
             <li>
-                <a href="#"><span class="fab fa-twitter" aria-hidden="true"></span></a>
+                <a :href="$page.props.twitter_official_page" target="_blank"><span class="fab fa-twitter" aria-hidden="true"></span></a>
             </li>
             <li>
-                <a><span class="fab fa-linkedin" aria-hidden="true"></span></a>
+                <a :href="$page.props.linkedin_official_page" target="_blank"><span class="fab fa-linkedin" aria-hidden="true"></span></a>
             </li>
             <li>
-                <a href="#"><span class="fab fa-instagram" aria-hidden="true"></span></a>
+                <a :href="$page.props.instagram_official_page" target="_blank"><span class="fab fa-instagram" aria-hidden="true"></span></a>
             </li>
             <li>
-                <a href="#"><span class="fab fa-youtube" aria-hidden="true"></span></a>
+                <a :href="$page.props.youtube_official_page" target="_blank"><span class="fab fa-youtube" aria-hidden="true"></span></a>
+            </li>
+            <li>
+                <a :href="$page.props.telegram_official_page" target="_blank"><span class="fab fa-telegram" aria-hidden="true"></span></a>
             </li>
             <li class="nav-item dropdown">
                 <button title="Language">

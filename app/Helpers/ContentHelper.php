@@ -149,6 +149,11 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
                 'contentId' => $content_id,
                 'lang' => $langCode
             ]);
+        case News::class:
+            return route('news-detail', [
+                'contentId' => $content_id,
+                'lang' => $langCode
+            ]);
         default:
             return route('home',['lang' => $langCode]);
     }

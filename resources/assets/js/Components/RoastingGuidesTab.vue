@@ -2,14 +2,14 @@
     <index-header class="h2 justify-center text-center" :title="_trans('titles.Roasting Guides')"></index-header>
     <template v-if="roastingGuides.length>0">
         <div v-for="item in roastingGuides" class="px-0 py-5 md:py-0 md:pl-3 flex flex-col flex-wrap items-start justify-between">
-            <h3 class="text-2xl font-bold">
+            <h3 class="text-2xl font-bold pb-2">
                 {{item.contentable.title}}
             </h3>
             <p  class="text-xl summary flex-grow-1 text-justify">
                 {{item.contentable.lead_paragraph}}
             </p>
             <template v-if="item.contentable.video_link">
-                <youtube-player class="w-100 h-100"
+                <youtube-player class="w-100 h-100 p-2"
                                 ref="youtube"
                                 :videoid="_youTubeGetID(item.contentable.video_link)"
                                 :loop="loop"

@@ -20,6 +20,7 @@
         "autoprefixer": "^10.3.7",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
+        "vue3-portal": "^1.0.3",
         "lodash": "^4.17.19",
         "postcss": "^8.3.11",
         "postcss-import": "^14.0.2",

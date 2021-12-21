@@ -16,7 +16,7 @@
         <meta name="twitter:image" :content="result.data[0].contentable.first_image['src']">
         <meta property="twitter:url" :content="result.data[0].url">
     </teleport>
-    <inertia-head title="Stella Coffee | Packages"></inertia-head>
+    <inertia-head title="Stella Coffee | News"></inertia-head>
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">

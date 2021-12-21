@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -32,7 +33,7 @@ class CuppingEventController extends Controller
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', CuppingEvent::class);
                 })->paginate(getDefaultPagingSize());
-            $data['contents'] = $content;
+            $data['result'] = $content;
             return Inertia::render('Public/CuppingEvents/CuppingEventsIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

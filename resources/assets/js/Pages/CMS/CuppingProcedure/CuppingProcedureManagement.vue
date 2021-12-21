@@ -93,6 +93,7 @@ export default defineComponent({
             infiniteInitialRowCount: this.pagingSize,
             maxConcurrentDatasourceRequests: 2,
             gridOptions: {
+                rowHeight: 80,
                 cacheBlockSize: this.pagingSize,
                 paginationPageSize: this.pagingSize,
                 rowModelType: 'infinite',
@@ -108,25 +109,23 @@ export default defineComponent({
                     headerName: 'Name', field: 'title', valueGetter: function (params) {
                         return params != null && params.node.data != null && params.node.data.contentable != null ? params.node.data.contentable.title : 'N/A';
                     },
-                    // colId: 'params',
-                    minWidth: 200,
-                    autoHeight: true,
-                    wrapText: true
+                    width: 300,
+                    wrapText: true,
+                    autoHeight: true
                 },
                 {
                     headerName: 'Detail', field: 'detail', valueGetter: function (params) {
                         return params != null && params.node.data != null && params.node.data.contentable != null ? params.node.data.contentable.cms_lead_paragraph : 'N/A';
                     },
-                    // colId: 'params',
-                    minWidth: 300,
-                    autoHeight: true,
-                    wrapText: true
+                    width: 300,
+                    wrapText: true,
+                    autoHeight: true
                 },
                 {
                     headerName: 'Tags', field: 'tags', valueGetter: function (params) {
                         return params != null && params.node.data != null && params.node.data.tags != null ? params.node.data.tags.map(tag => tag.name).join(', ') : 'N/A';
                     },
-                    // colId: 'params',
+                    width: 200,
                     autoHeight: true,
                     sortable: false
                 },
@@ -134,30 +133,26 @@ export default defineComponent({
                     headerName: 'Created Date', field: 'created_at', valueFormatter: function (params) {
                         return params != null && params.node.data != null ? moment(String(params.node.data.created_at)).format('MMM DD, YYYY') : 'N/A';
                     },
-                    minWidth: 120,
-                    // colId: 'params'
+                    width: 130,
+                    wrapText: true
                 },
                 {
                     headerName: 'Published',
                     field: 'is_published',
-                    // colId: 'params',
                     cellRenderer: 'contentStatusIcon'
                 },
                 {
                     headerName: '',
                     field: 'id',
-                    // colId: 'params',
                     cellRenderer: 'previewIcon',
                     cellRendererParams: function (params) {
                         return {previewRoute: params.node.data != null ? route('cupping-procedure-preview', params.node.data.id) : ''}
                     },
-                    // colId: 'id',
                     sortable: false
                 },
                 {
                     headerName: '',
                     field: 'id',
-                    // colId: 'params',
                     cellRendererSelector: function (params) {
                         let publishBtn = {
                             component: 'publishIcon'
@@ -183,7 +178,6 @@ export default defineComponent({
                 {
                     headerName: '',
                     field: 'id',
-                    // colId: 'params',
                     cellRendererSelector: function (params) {
                         let editBtn = {
                             component: 'editIcon'
@@ -219,14 +213,12 @@ export default defineComponent({
                 {
                     headerName: '',
                     field: 'id',
-                    // colId: 'params',
                     cellRenderer: 'deleteIcon',
                     sortable: false
                 }
             ],
             defaultColDef: {
-                flex: 1,
-                minWidth: 70,
+                width: 80,
                 resizable: true,
                 sortable: true,
                 filter: false,

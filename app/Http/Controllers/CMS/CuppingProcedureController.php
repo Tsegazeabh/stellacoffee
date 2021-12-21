@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -32,8 +33,8 @@ class CuppingProcedureController extends Controller
                 ->withCount('content_hits')
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', CuppingProcedure::class);
-                })->paginate(getDefaultPagingSize());
-            $data['contents'] = $content;
+                })->paginate(1);
+            $data['result'] = $content;
             return Inertia::render('Public/CuppingProcedure/CuppingProceduresIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

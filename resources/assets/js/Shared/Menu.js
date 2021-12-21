@@ -41,8 +41,8 @@ export const getMenus = () => {
         },
         {
             label: "Cupping", url: "", active: false, submenus: [
-                {label: "Cupping Procedures", url: route('content-index-page', 'cupping-procedure'), active: false},
-                {label: "Cupping Events", url: route('content-index-page', 'cupping-event'), active: false}
+                {label: "Cupping Procedures", url: route('cupping-procedures'), active: false},
+                {label: "Cupping Events", url: route('cupping-events'), active: false}
             ]
         },
         {

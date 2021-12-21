@@ -6,6 +6,8 @@ use App\Models\City;
 use App\Models\ContactUsRequest;
 use App\Models\Content;
 use App\Models\Country;
+use App\Models\CuppingEvent;
+use App\Models\CuppingProcedure;
 use App\Models\Faq;
 use App\Models\FaqGroup;
 use App\Models\MainSlider;
@@ -152,6 +154,16 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
         case News::class:
             return route('news-detail', [
                 'contentId' => $content_id,
+                'lang' => $langCode
+            ]);
+        case CuppingProcedure::class:
+            return route('cupping-procedure-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case CuppingEvent::class:
+            return route('cupping-event-detail', [
+                'id' => $content_id,
                 'lang' => $langCode
             ]);
         default:

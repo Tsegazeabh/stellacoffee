@@ -265,7 +265,7 @@ class ProductPackageController extends Controller
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->latest('published_at')
-                ->take(3)->get();
+                ->get();
             return response($latestProductPackage);
 
         } catch (\Throwable $ex) {

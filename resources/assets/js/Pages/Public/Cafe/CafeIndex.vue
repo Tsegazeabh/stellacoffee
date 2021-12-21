@@ -20,7 +20,7 @@
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
-            <div v-for="(cafe_service,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
+            <div v-for="(cafe_service,index) in result.data" :key="cafe_service.id" class="card-container flex flex-col md:flex-row w-full">
                 <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
                     <div class="col-span-1">
                         <inertia-link v-if="cafe_service.contentable.first_media" :href="cafe_service.url">
@@ -29,7 +29,8 @@
                         <inertia-link v-else :href="cafe_service.url">
                             <img :src="cafe_service.contentable.first_image['src']" class="object-fill"/>
                         </inertia-link>
-                        <p class="text-center">{{_trans('label.shared.Size')}}: {{cafe_service.contentable.size}} {{_trans('label.shared.Price')}}: ${{cafe_service.contentable.price}}</p>
+                        <p class="text-center font-bold">{{_trans('label.shared.Size')}}: {{cafe_service.contentable.size}} </p>
+                        <p class="text-center font-bold">{{_trans('label.shared.Price')}}: {{cafe_service.contentable.price}}</p>
                     </div>
                     <div class="col-span-2 px-10 flex flex-col justify-center items-start">
                         <h2 class="text-stella text-xl my-3">
@@ -38,12 +39,20 @@
                             </inertia-link>
                         </h2>
                         <p class="text-justify">{{ cafe_service.contentable.lead_paragraph }}</p>
-                        <div class="px-4 justify-center">
-                            <template v-if="cafe_service.contentable.video_link">
-                                <video-embed :src="cafe_service.contentable.video_link"></video-embed>
-                            </template>
+                    </div>
+                    <div class="px-4 py-2 justify-center">
+                        <template v-if="cafe_service.contentable.video_link">
+                            <youtube-player class="w-100 h-100"
+                                            ref="youtube"
+                                            :videoid="_youTubeGetID(cafe_service.contentable.video_link)"
+                                            :loop="loop"
+                                            @ended="onEnded"
+                                            @paused="onPaused"
+                                            @played="onPlayed"
+                                            :autoplay="false">
+                            </youtube-player>
                             <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="cafe_service.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -64,47 +73,24 @@ import ContentsLayout2 from "@layouts/ContentsLayout2";
 import moment from 'moment';
 import {defineComponent} from 'vue';
 import ContentIndexPagination from "@components/ContentIndexPagination";
-import Embed from 'v-video-embed';
+import {YoutubeVue3} from 'youtube-vue3';
 // import Vue from 'vue';
 // Vue.use(Embed);
 
 export default defineComponent({
     name: "cafe-index",
-    components: {ContentIndexPagination,Embed},
-    layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
+    components: {ContentIndexPagination,'youtube-player': YoutubeVue3},
+    layout: (h, page) => h(ContentsLayout2,  [page]), // if you want to use different persistence layout
     props: {
         result: {
             type: Object,
             required: true
-        }
+        },
     },
-
-    data() {
-        return {
-            // result: [
-            //     {
-            //         name: 'Lavazza Crema e Gusto',
-            //         image: 'images/stella_coffee_logo.jpg',
-            //         description: 'Lavazza Crema e Gusto Espresso is a special blend of Robusta and Arabica beans.',
-            //         price: '$14.00'
-            //     },
-            //     {
-            //         name: 'Maxwell House Original Roast Ground Coffee',
-            //         image: 'images/stella_coffee_logo.jpg',
-            //         description: 'Ground Coffee Having a very interesting history, this coffee is easily recognized all over the globe.',
-            //         price: '$14.00'
-            //     },
-            //     {
-            //         name: 'Douwe Egberts Filter Blend Ground Coffee Medium Roast',
-            //         image: 'images/stella_coffee_logo.jpg',
-            //         description: 'Douwe Egberts Real Coffee is a blend of the world’s finest quality beans.',
-            //         price: '$14.00'
-            //     },
-            //
-            // ]
-        }
+    provide: {
+        menu_name:'Find Us',
+        sub_menu_name:'Cafe Services',
     },
-
     methods: {
         formatDate(date) {
             return moment(String(date)).format('MMM DD, YYYY')

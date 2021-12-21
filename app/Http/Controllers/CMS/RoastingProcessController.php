@@ -257,6 +257,7 @@ class RoastingProcessController extends Controller
                 ->ofLanguage($langId)
                 ->publishedWithoutArchived()
                 ->orderBy('published_at', 'DESC')
+                ->take(1)
                 ->get();
             return response($latestRoastingProcess);
 

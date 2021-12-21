@@ -5,6 +5,7 @@ import {createInertiaApp, Link, Head} from '@inertiajs/inertia-vue3';
 import {InertiaProgress} from '@inertiajs/progress';
 import Layout from "@layouts/Layout.vue";
 import {_trans} from "./shared/Localization.js";
+import {_youTubeGetID} from "./shared/YoutubeID.js";
 import Toaster from "@meforma/vue-toaster";
 
 
@@ -28,6 +29,7 @@ createInertiaApp({
                         // @ts-ignore
                         route,
                         _trans,
+                        _youTubeGetID,
                         // @ts-ignore
                         changeLanguage(lang) {
                             let url = '';

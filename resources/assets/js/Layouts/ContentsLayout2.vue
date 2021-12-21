@@ -13,11 +13,11 @@
                                 <inertia-link :href="route('home')">{{ _trans('menu.Home') }}</inertia-link>
                             </li>
                             <li>
-                                <inertia-link :href="route('home')">{{ _trans('menu.About') }}</inertia-link>
+                                <inertia-link :href="route('home')" >{{_trans(menuValue)}}</inertia-link>
                             </li>
                             <li>
                                 <inertia-link :href="route('home')">
-                                    {{ _trans('menu.History') }}
+                                    {{_trans(subMenuValue)}}
                                 </inertia-link>
                             </li>
                             <li>{{ _trans('action.Index') }}</li>
@@ -46,12 +46,21 @@ import {defineComponent} from "vue";
 export default defineComponent({
     name: "contents-layout2",
     components: {SiteFooter, HeaderNav, TopHeader},
-    props: {
-        menu_name: String,
-        sub_menu_name: String,
-        route_name: String
+    inject: ['menu_name','sub_menu_name'],
+    data(){
+        return{
+          menu:'menu.',
+          subMenu:'menu.'
+        }
     },
-
+    computed:{
+        menuValue(){
+            return this.menu + this.menu_name;
+        },
+        subMenuValue(){
+            return this.subMenu + this.sub_menu_name;
+        }
+    }
 })
 </script>
 <style scoped>

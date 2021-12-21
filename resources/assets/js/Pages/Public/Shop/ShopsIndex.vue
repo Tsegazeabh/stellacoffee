@@ -26,7 +26,13 @@ export default defineComponent({
             type: Object,
             required: true,
             default: {}
-        }
-    }
+        },
+        // menu_name:'Find Us',
+        // sub_menu_name:'Our Shops',
+    },
+    provide: {
+        menu_name:'Find Us',
+        sub_menu_name:'Our Shops',
+    },
 })
 </script>

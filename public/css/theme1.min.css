@@ -702,6 +702,30 @@ footer address ul.social-media-icons-list > li {
   gap: 1.25rem;
 }
 
+.products-container .btn-container {
+  grid-column: span 3 / span 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.products-container .btn-container a.btn {
+  position: relative;
+  right: 0px;
+  bottom: 0px;
+  margin-top: 1rem;
+  margin-top: 1.25rem;
+  flex-grow: 0;
+  align-items: baseline;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgba(39, 121, 117, var(--tw-bg-opacity));
+  padding: 1.25rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
 .tab-headers-cont .index-header:not(.active) > span:last-child {
   display: none;
 }

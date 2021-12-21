@@ -49,19 +49,22 @@
             </ul>
             <ul class="social-media-icons-list">
                 <li>
-                    <a href="#"><span class="fab fa-facebook-f" aria-hidden="true"></span></a>
+                    <a :href="$page.props.facebook_official_page" target="_blank"><span class="fab fa-facebook-f" aria-hidden="true"></span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="fab fa-twitter" aria-hidden="true"></span></a>
+                    <a :href="$page.props.twitter_official_page" target="_blank"><span class="fab fa-twitter" aria-hidden="true"></span></a>
                 </li>
                 <li>
-                    <a><span class="fab fa-linkedin" aria-hidden="true"></span></a>
+                    <a :href="$page.props.linkedin_official_page" target="_blank"><span class="fab fa-linkedin" aria-hidden="true"></span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="fab fa-instagram" aria-hidden="true"></span></a>
+                    <a :href="$page.props.instagram_official_page" target="_blank"><span class="fab fa-instagram" aria-hidden="true"></span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="fab fa-youtube" aria-hidden="true"></span></a>
+                    <a :href="$page.props.youtube_official_page" target="_blank"><span class="fab fa-youtube" aria-hidden="true"></span></a>
+                </li>
+                <li>
+                    <a :href="$page.props.telegram_official_page" target="_blank"><span class="fab fa-telegram" aria-hidden="true"></span></a>
                 </li>
             </ul>
         </address>
@@ -72,7 +75,7 @@
             <inertia-link :href="route('testimonials')"  class="mx-3">Testimonials</inertia-link>
             <a href="#" class="mx-3">FAQ</a>
             <a href="#" class="mx-3">Archive</a>
-            <span><i class="fa fa-copyright"></i> Stella Coffee. All Rights Reserved.</span>
+            <span><i class="fa fa-copyright"></i> {{year}} - {{_trans('titles.Stella Coffee')}}</span>
         </div>
     </footer>
 </template>
@@ -85,7 +88,8 @@ export default defineComponent({
     name: "site-footer",
     data() {
         return {
-            menus: getMenus()
+            menus: getMenus(),
+            year: new Date().getFullYear(),
         }
     }
 })

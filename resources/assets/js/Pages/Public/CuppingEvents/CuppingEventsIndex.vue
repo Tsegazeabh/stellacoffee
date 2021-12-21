@@ -14,7 +14,9 @@ export default defineComponent({
             type: Object,
             required: true,
             default: {}
-        }
+        },
+        // menu_name:'Cupping',
+        // sub_menu_name:'Cupping Events',
     }
 })
 </script>

@@ -14,7 +14,11 @@ export default defineComponent({
             type: Object,
             required: true,
             default: {}
-        }
-    }
+        },
+    },
+    provide: {
+        menu_name:'Find Us',
+        sub_menu_name:'Export Destinations',
+    },
 })
 </script>

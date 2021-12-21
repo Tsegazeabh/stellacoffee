@@ -21,11 +21,23 @@
         <div class="w-full">
             <div class="md:w-1/4 my-4">
                 <img :src="content.contentable.first_image['src']" class="object-contain md:object-scale-down"/>
-                <p class="text-center">{{_trans('label.shared.Size')}}: {{content.contentable.size}} {{_trans('label.shared.Price')}}: ${{content.contentable.price}}</p>
+                <p class="text-center font-bold">{{_trans('label.shared.Size')}}: {{content.contentable.size}}</p>
+                <p class="text-center font-bold">{{_trans('label.shared.Price')}}: {{content.contentable.price}}</p>
             </div>
             <div class="md:w-full my-4">
                 <div v-html="content.contentable.detail"></div>
             </div>
+            <template v-if="content.contentable.video_link">
+                <youtube-player class="w-100 h-100"
+                    ref="youtube"
+                    :videoid="_youTubeGetID(content.contentable.video_link)"
+                    :loop="loop"
+                    @ended="onEnded"
+                    @paused="onPaused"
+                    @played="onPlayed"
+                    :autoplay="false">
+                </youtube-player>
+            </template>
         </div>
         <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">
             <div class="pr-2 font-bold">
@@ -47,7 +59,7 @@ import RelatedContentsLoadingState from '@components/RelatedContentsLoadingState
 import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError'
 import ContentsLayout from "@layouts/ContentsLayout"
 import Logo from "../../../../images/logo.jpg";
-import Embed from 'v-video-embed';
+import {YoutubeVue3} from 'youtube-vue3';
 // import Vue from 'vue';
 // Vue.use(Embed);
 
@@ -82,7 +94,7 @@ export default defineComponent({
     },
     components: {
         'related-contents': RelatedContents,
-        Embed
+        'youtube-player': YoutubeVue3
     },
 
     methods: {

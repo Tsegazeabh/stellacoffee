@@ -139,6 +139,7 @@ Route::prefix('stella-coffee-origin')->group(function () {
     Route::get('detail/{contentId}', [StellaCoffeeOriginController::class, 'getDetail'])->name('stella-coffee-origin-detail');
 });
 Route::prefix('success-story')->group(function () {
+    Route::get('/', [SuccessStoryController::class, 'getSuccessStories'])->name('success-stories');
     Route::get('latest-success-story', [SuccessStoryController::class, 'getLatestSuccessStory'])->name('latest-success-story');
     Route::get('detail/{contentId}', [SuccessStoryController::class, 'getDetail'])->name('success-story-detail');
 });

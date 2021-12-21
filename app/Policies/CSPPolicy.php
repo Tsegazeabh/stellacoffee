@@ -12,7 +12,7 @@ class CSPPolicy extends Policy
     {
         $this
             ->addDirective(Directive::BASE, Keyword::SELF)
-            ->addDirective(Directive::CONNECT, [Keyword::SELF, 'www.google-analytics.com', 'api.tomtom.com', 'b.api.tomtom.com', 'a.api.tomtom.com', 'blob:', 'tomtom:'])
+            ->addDirective(Directive::CONNECT, [Keyword::SELF, 'www.google-analytics.com', 'api.tomtom.com', 'b.api.tomtom.com', 'a.api.tomtom.com', 'blob:', 'tomtom:', '*.api.tomtom.com'])
             ->addDirective(Directive::DEFAULT, Keyword::SELF)
             ->addDirective(Directive::FORM_ACTION, Keyword::SELF)
             ->addDirective(Directive::IMG, [Keyword::SELF, 'data:', 'www.youtube.com', 'i.ytimg.com', 'stella.com', 'www.stella.com', 'localhost', 'localhost:8000', 'www.facebook.com', 'www.google-analytics.com'])

@@ -65,7 +65,6 @@ export default defineComponent({
                     el: '.testimonial-pagination',
                     clickable: true,
                     renderBullet: function (index, className) {
-                        console.log(className);
                         return '<span class="fas fa-circle-notch ' + className + '"></span>';
                     },
                 },

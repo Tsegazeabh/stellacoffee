@@ -124,6 +124,7 @@ class SuccessStoryController extends Controller
             return new JsonResponse(getGeneralAdminErrorMessage(), 503);
         }
     }
+
     /**
      * @return \Inertia\Response
      */
@@ -172,15 +173,12 @@ class SuccessStoryController extends Controller
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
-            }
-
-            else if ($ex instanceof NotFound) {
+            } else if ($ex instanceof NotFound) {
                 abort(404);
             }
             return abort(503);
         }
     }
-
 
     /**
      * @param $success_story_id
@@ -227,15 +225,14 @@ class SuccessStoryController extends Controller
                 DB::commit();
                 return redirect()->route('success-story-management-page');
             } else {
-                return bacK()->withErrors(['errorMessage'=> 'We can not find success story with the specified id!']);
+                return bacK()->withErrors(['errorMessage' => 'We can not find success story with the specified id!']);
             }
         } catch (\Throwable $ex) {
             DB::rollback();
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
-            }
-            else if ($ex instanceof NotFound) {
+            } else if ($ex instanceof NotFound) {
                 abort(404);
             }
             return abort(503);
@@ -246,7 +243,7 @@ class SuccessStoryController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    protected function getLatestSuccessStory(Request $request)
+    protected function getSuccessStories(Request $request)
     {
         try {
             $langId = getSessionLanguageId();
@@ -273,8 +270,7 @@ class SuccessStoryController extends Controller
      */
     protected function preview($contentId)
     {
-        try
-        {
+        try {
             $content = Content::withTrashed()->with('contentable', 'tags')->whereHas('contentable', function ($query) {
                 $query->where('contentable_type', SuccessStory::class);
             })->find($contentId);
@@ -295,8 +291,7 @@ class SuccessStoryController extends Controller
      */
     protected function getDetail(Request $request, $contentId)
     {
-        try
-        {
+        try {
             $content = Content::withTrashed()
                 ->published()
                 ->ofLanguage(getSessionLanguageId())
@@ -308,9 +303,34 @@ class SuccessStoryController extends Controller
             if (!empty($content)) {
                 $data['content'] = $content;
                 return Inertia::render('Public/SuccessStory/SuccessStoryDetail', $data);
-            }else{
+            } else {
                 return abort(404);
             }
+        } catch (\Throwable $ex) {
+            logError($ex);
+            if ($ex instanceof NotFound) {
+                abort(404);
+            }
+            return abort(503);
+        }
+    }
+
+    protected function getLatestSuccessStory()
+    {
+        try {
+            $successStory = Content::withTrashed()
+                ->publishedWithoutArchived()
+                ->ofLanguage(getSessionLanguageId())
+                ->with('contentable', 'tags')
+                ->withCount('content_hits')
+                ->whereHas('contentable', function ($query) {
+                    $query->where('contentable_type', SuccessStory::class);
+                })
+                ->latest('published_at')
+                ->take(1)
+                ->get()
+                ->first();
+            return new JsonResponse($successStory);
         } catch (\Throwable $ex) {
             logError($ex);
             if ($ex instanceof NotFound) {

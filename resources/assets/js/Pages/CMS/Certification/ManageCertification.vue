@@ -125,15 +125,15 @@ export default defineComponent({
                     autoHeight: true,
                 },
                 {
-                    headerName: 'From', field: 'from_date', valueGetter: function (params) {
-                        return params != null && params.node.data != null ? moment(String(params.node.data.contentable.from_date)).format('MMM DD, YYYY') : 'N/A';
+                    headerName: 'Certification Date', field: 'provided_date', valueGetter: function (params) {
+                        return params != null && params.node.data != null ? moment(String(params.node.data.contentable.provided_date)).format('MMM DD, YYYY') : 'N/A';
                     },
                     width: 130,
                     wrapText: true
                 },
                 {
-                    headerName: 'To', field: 'to_date', valueGetter: function (params) {
-                        return params != null && params.node.data != null ? moment(String(params.node.data.contentable.to_date)).format('MMM DD, YYYY') : 'N/A';
+                    headerName: 'Provider', field: 'provider', valueGetter: function (params) {
+                        return params != null && params.node.data != null ? params.node.data.contentable.provider : 'N/A';
                     },
                     width: 130,
                     wrapText: true

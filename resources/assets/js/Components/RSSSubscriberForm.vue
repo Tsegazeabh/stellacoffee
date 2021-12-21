@@ -1,19 +1,15 @@
 <template>
-    <div class="flex text-gray-100 bg-gray-600 justify-center items-center w-full h-full p-8">
-        <form @submit.prevent.stop="subscribe()">
-            <p class="w-full text-2xl mb-4">
-                {{ _trans('messages.Get upto date information by subscribing to our RSS Channel') }}</p>
-            <input
-                class="bg-white w-full border border-black p-2 focus:outline-none text-black"
-                type="email"
-                v-model.lazy="email"
-                :placeholder="_trans('label.user.email')"/>
-            <button type="submit"
-                    class="bg-yellow-600 text-white w-full rounded-full text-2xl px-12 py-3 my-4">
+    <div class="flex flex-col justify-start items-start w-full h-full py-4">
+        <h3 class="text-base mb-3">{{ _trans('messages.Get upto date information by subscribing to our RSS Channel') }}</h3>
+        <form @submit.prevent.stop="subscribe" class="flex flex-row flex-wrap w-full">
+            <input type="email"
+                   v-model.lazy="email"
+                   :placeholder="_trans('label.user.email')"
+                   class="form-control border border-blue-500  border-radius-0 flex-grow">
+            <button type="submit" class="border bg-blue-700 text-white flex-grow-0 w-max p-3">
                 {{ _trans('action.Subscribe') }}
             </button>
         </form>
-
     </div>
 </template>
 

@@ -35,8 +35,8 @@ class Certification extends Authorizable implements HasMedia, Auditable
             ->addMediaConversion('thumb')
             ->performOnCollections('certificates')
             ->nonQueued()
-            ->width(368)
-            ->height(232);
+            ->width(100)
+            ->height(100);
     }
 
     public function getThumbUrlAttribute()

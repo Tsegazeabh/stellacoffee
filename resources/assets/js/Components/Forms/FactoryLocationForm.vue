@@ -69,6 +69,7 @@
                     <div class="form-group w-full px-5">
                         <label class="label">{{ _trans('label.shared.Longitude') }}</label>
                         <input type="number"
+                               step="0.000000000000001"
                                v-model.trim.lazy="form.longitude"
                                class="form-control w-full border border-gray-100 p-2 focus:outline-none"
                                :class="(form.errors && form.errors['longitude'])?'error':''"
@@ -84,6 +85,7 @@
                     <div class="form-group w-full px-5">
                         <label class="label">{{ _trans('label.shared.Latitude') }}</label>
                         <input type="number"
+                               step="0.000000000000001"
                                v-model.trim.lazy="form.latitude"
                                class="form-control w-full border border-gray-100 p-2 focus:outline-none"
                                :class="(form.errors && form.errors['latitude'])?'error':''"

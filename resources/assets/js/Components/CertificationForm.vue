@@ -18,6 +18,43 @@
                 </div>
                 <div class="w-full md:w-1/2">
                     <div class="form-group w-full px-5">
+                        <label class="label required">{{ _trans('label.shared.Certificate Provider') }}</label>
+                        <input type="text" v-model.trim.lazy="form.provider"
+                               class="form-control w-full border border-gray-100 p-2 focus:outline-none"
+                               :class="(form.errors && form.errors['provider'])?'error':''"
+                               :placeholder="_trans('label.shared.Certificate Provider')" autocomplete="on" required/>
+                        <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['provider']">
+                            {{ form.errors['provider'] }}
+                        </span>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="form-group w-full px-5">
+                        <label class="label required">{{ _trans('label.shared.Certification Date') }}</label>
+                        <date-picker class="w-full"
+                                     v-model="form.provided_date"
+                                     mode="date"
+                                     :model-config="dateTimePickerConfig"
+                                     :is-required="true">
+                            <template v-slot="{ inputValue, inputEvents }">
+                                <input
+                                    class="form-control w-full border border-gray-100 p-2 focus:outline-none"
+                                    :class="(form.errors && form.errors['provided_date'])?'error':''"
+                                    :placeholder="_trans('label.shared.Certification Date')"
+                                    :value="inputValue"
+                                    v-on="inputEvents"
+                                    required
+                                />
+                            </template>
+                        </date-picker>
+                        <span class="text-red-500 font-semibold mt-3"
+                              v-if="form.errors && form.errors['provided_date']">
+                            {{ form.errors['provided_date'] }}
+                        </span>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="form-group w-full px-5">
                         <label class="label">{{ _trans('label.shared.Tags') }}</label>
                         <tags-selector v-model="form.tags"></tags-selector>
                     </div>
@@ -101,6 +138,8 @@ export default {
             default: {
                 title: '',
                 detail: '',
+                provided_date: '',
+                provider: '',
                 video_link: '',
                 tags: [],
             }
@@ -129,9 +168,15 @@ export default {
                 height: '500px',
 
             },
+            dateTimePickerConfig: {
+                type: 'string',
+                mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+            },
             form: useForm({
                 title: '',
                 detail: '',
+                provided_date: '',
+                provider: '',
                 video_link: '',
                 attachment: null,
                 tags: [],
@@ -143,6 +188,8 @@ export default {
         if (this.certification) {
             this.form.title = this.certification.title
             this.form.video_link = this.certification.video_link
+            this.form.provided_date = this.certification.provided_date
+            this.form.provider = this.certification.provider
         }
         if (this.certification && this.certification.content && this.certification.content.tags) {
             this.form.tags = this.certification.content.tags

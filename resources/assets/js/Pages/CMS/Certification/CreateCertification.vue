@@ -36,6 +36,8 @@
                 default: {
                     title: '',
                     detail: '',
+                    provided_date: '',
+                    provider: '',
                     video_link:'',
                     tags: [],
                 }

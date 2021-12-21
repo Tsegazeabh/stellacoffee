@@ -2,7 +2,7 @@
     <nav class="main-navbar w-full px-12 bg-white">
         <div class="brand">
             <a href="/" class="flex flex-wrap border w-32 my-3">
-                <img src="images/stella_coffee_logo.jpg" class="object-contain"/>
+                <img src="/images/stella_coffee_logo.jpg" class="object-contain"/>
             </a>
         </div>
         <ul class="menu list-none flex justify-center">
@@ -32,7 +32,6 @@ export default defineComponent({
         }
     },
     mounted() {
-        console.log(this.menus)
     }
 })
 </script>

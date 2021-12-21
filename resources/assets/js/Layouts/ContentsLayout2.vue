@@ -3,31 +3,33 @@
     <top-header></top-header>
     <header-nav class="content-layout-menu"></header-nav>
     <main class="main">
-        <div class="grid md:grid-cols-2">
-            <div class="org-info">
-                <slot name="breadcrumb">
+        <div class="grid md:grid-cols-3">
+            <div class="org-info md:col-span-1">
+                <div id="breadcrumb">
+                    <!--                <slot name="breadcrumb">-->
                     <div class="breadcrumb">
                         <ul>
                             <li>
-                                <inertia-link :href="route('home')" >{{_trans('menu.Home')}}</inertia-link>
+                                <inertia-link :href="route('home')">{{ _trans('menu.Home') }}</inertia-link>
                             </li>
                             <li>
-                                <inertia-link :href="route('home')" >{{ _trans('menu.About') }}</inertia-link>
+                                <inertia-link :href="route('home')">{{ _trans('menu.About') }}</inertia-link>
                             </li>
                             <li>
                                 <inertia-link :href="route('home')">
-                                    {{_trans('menu.History')}}
+                                    {{ _trans('menu.History') }}
                                 </inertia-link>
                             </li>
                             <li>{{ _trans('action.Index') }}</li>
                         </ul>
                     </div>
-                </slot>
+                    <!--                </slot>-->
+                </div>
                 <div class="max-h-screen overflow-y-auto bg-black">
                     <slot name="summary-sect"></slot>
                 </div>
             </div>
-            <div class="content-wrapper  col-span-1 bg-white p-10">
+            <div class="content-wrapper col-span-1 bg-white p-10 md:col-span-2">
                 <slot></slot>
             </div>
         </div>
@@ -45,9 +47,9 @@ export default defineComponent({
     name: "contents-layout2",
     components: {SiteFooter, HeaderNav, TopHeader},
     props: {
-        menu_name:String,
-        sub_menu_name:String,
-        route_name:String
+        menu_name: String,
+        sub_menu_name: String,
+        route_name: String
     },
 
 })

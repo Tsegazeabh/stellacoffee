@@ -36,20 +36,20 @@
                             </inertia-link>
                         </h2>
                         <p class="text-justify">{{ product.contentable.lead_paragraph }}</p>
-                    </div>
-                    <div class="px-4 py-2 justify-center">
-                        <template v-if="product.contentable.video_link">
-                            <youtube-player class="w-100 h-100"
-                                            ref="youtube"
-                                            :videoid="_youTubeGetID(product.contentable.video_link)"
-                                            :loop="loop"
-                                            @ended="onEnded"
-                                            @paused="onPaused"
-                                            @played="onPlayed"
-                                            :autoplay="false">
-                            </youtube-player>
-                            <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="product.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
-                        </template>
+                        <div class="py-2 justify-center">
+                            <template v-if="product.contentable.video_link">
+                                <youtube-player class="w-100 h-100"
+                                                ref="youtube"
+                                                :videoid="_youTubeGetID(product.contentable.video_link)"
+                                                :loop="loop"
+                                                @ended="onEnded"
+                                                @paused="onPaused"
+                                                @played="onPlayed"
+                                                :autoplay="false">
+                                </youtube-player>
+                                <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="product.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
+                            </template>
+                        </div>
                     </div>
                 </div>
             </div>

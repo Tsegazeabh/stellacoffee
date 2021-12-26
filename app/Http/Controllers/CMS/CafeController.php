@@ -173,30 +173,30 @@ class CafeController extends Controller
             $locale = Locale::where('short_code', getSessionLanguageShortCode())->first();
             if ($locale != null) {
                 $content = array('locale_id' => $locale->id);
-                $cafe = Arr::except($request->all(), ['tags', 'xcsrf']);
-                $cafe = Cafe::create($cafe);
-                $this->authorize('create', $cafe);
-                $content = $cafe->content()->create($content);
+                $cafe = Arr::except($request->all(), ['tags', 'attachments', 'xcsrf']);
                 $tags = $request->get('tags');
                 $tags = collect($tags)->map(function ($tag) {
                     return $tag['id'];
                 });
+                $attachments = $request->file('attachments');
+                $cafe = Cafe::create($cafe);
+                $this->authorize('create', $cafe);
+                if ($attachments != null) {
+                    $cafe->addMedia($attachments)->toMediaCollection('file-attachments');
+                }
+                $content = $cafe->content()->create($content);
                 $content->tags()->sync($tags);
                 DB::commit();
+                return redirect()->route('cafe-management-page');
             }
-            return redirect()->route('cafe-management-page');
-
-        } catch (\Throwable $ex) {
+        } catch
+        (\Throwable $ex) {
             DB::rollback();
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
             }
-
-            else if ($ex instanceof NotFound) {
-                abort(404);
-            }
-            return abort(503);
+            return back(503)->withErrors(['errorMessage' => getGeneralAdminErrorMessage()]);
         }
     }
 
@@ -260,7 +260,7 @@ class CafeController extends Controller
                     $cafe->addMedia($attachments)->toMediaCollection('file-attachments');
                 }
                 DB::commit();
-                return redirect()->route('main-slider-management-page');
+                return redirect()->route('cafe-management-page');
             }
         } catch (\Throwable $ex) {
             DB::rollback();

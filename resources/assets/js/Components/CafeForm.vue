@@ -138,13 +138,13 @@ export default defineComponent({
         cafe: {
             type: Object,
             default: {
-                title: '',
-                service_type_id: '',
+                title:'',
+                service_type_id:'',
                 size:'',
                 price:'',
                 attachments:'',
-                detail: '',
-                video_link: '',
+                detail:'',
+                video_link:'',
                 tags: [],
             }
         },
@@ -180,13 +180,13 @@ export default defineComponent({
 
             },
             form: useForm({
-                title: '',
-                service_type_id: '',
+                title:'',
+                service_type_id:'',
                 size:'',
                 price:'',
                 attachments:'',
-                detail: '',
-                video_link: '',
+                detail:'',
+                video_link:'',
                 tags: [],
             }),
         }

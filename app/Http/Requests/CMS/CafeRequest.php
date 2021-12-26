@@ -27,7 +27,7 @@ class CafeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
+            'title' => 'required|string|max:255',
             'price'=>'nullable|string',
             'size'=>'nullable|string',
             'attachments' => ['required', 'image', 'max:5242880', new ValidImageType()],

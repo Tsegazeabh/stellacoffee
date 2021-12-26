@@ -52,11 +52,11 @@
             <div class="w-full flex flex-wrap">
                 <div class="w-full md:w-1/2">
                     <div class="form-group w-full px-5">
-                        <label class="label">{{ _trans('label.shared.Video Link') }}</label>
+                        <label class="label">{{ _trans('label.shared.Youtube URL') }}</label>
                         <input type="text" v-model.trim.lazy="form.video_link"
                                class="form-control w-full border border-gray-100 p-2 focus:outline-none"
                                :class="(form.errors && form.errors['video_link'])?'error':''"
-                               :placeholder="_trans('label.shared.Video Link')" autocomplete="on"/>
+                               :placeholder="_trans('label.shared.Youtube URL')" autocomplete="on"/>
                         <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['video_link']">
                             {{ form.errors['video_link'] }}
                         </span>

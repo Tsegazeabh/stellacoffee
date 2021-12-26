@@ -242,21 +242,25 @@ class CafeController extends Controller
     {
         DB::beginTransaction();
         try {
-            $cafe = Cafe::with('content')->find($cafe_id);
+            $cafe = Cafe::with('content', 'media')->find($cafe_id);
             $this->authorize('update', $cafe);
+            $attachments = $request->file('attachments');
             if ($cafe != null) {
                 $cafe->update(
-                    Arr::except($request->all(), ['tags', 'csrf'])
+                    Arr::except($request->all(), ['tags', 'attachments', 'csrf'])
                 );
                 $tags = $request->get('tags');
                 $tags = collect($tags)->map(function ($tag) {
                     return $tag['id'];
                 });
                 $cafe->content->tags()->sync($tags);
+
+                if ($attachments != null) {
+                    $cafe->clearMediaCollection('file-attachments');
+                    $cafe->addMedia($attachments)->toMediaCollection('file-attachments');
+                }
                 DB::commit();
-                return redirect()->route('cafe-management-page');
-            } else {
-                return bacK()->withErrors(['errorMessage'=> 'We can not find cafe with the specified id!']);
+                return redirect()->route('main-slider-management-page');
             }
         } catch (\Throwable $ex) {
             DB::rollback();
@@ -264,10 +268,7 @@ class CafeController extends Controller
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
             }
-            else if ($ex instanceof NotFound) {
-                abort(404);
-            }
-            return abort(503);
+            return back()->withErrors(['errorMessage' => getGeneralAdminErrorMessage()]);
         }
     }
 

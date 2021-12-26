@@ -48,7 +48,8 @@
                                                 @ended="onEnded"
                                                 @paused="onPaused"
                                                 @played="onPlayed"
-                                                :autoplay="false">
+                                                :autoplay="false"
+                                                host="https://www.youtube.com">
                                 </youtube-player>
                                 <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="cafe_service.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
                             </template>

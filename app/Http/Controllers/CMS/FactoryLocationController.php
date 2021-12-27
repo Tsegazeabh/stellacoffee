@@ -33,7 +33,7 @@ class FactoryLocationController extends Controller
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', FactoryLocation::class);
                 })->paginate(getDefaultPagingSize());
-            $data['contents'] = $content;
+            $data['result'] = $content;
             return Inertia::render('Public/FactoryLocations/FactoryLocationsIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

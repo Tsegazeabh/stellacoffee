@@ -33,7 +33,7 @@ class StoresController extends Controller
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', Store::class);
                 })->paginate(getDefaultPagingSize());
-            $data['contents'] = $content;
+            $data['result'] = $content;
             return Inertia::render('Public/Store/StoresIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

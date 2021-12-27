@@ -8,6 +8,11 @@ use App\Models\Content;
 use App\Models\Country;
 use App\Models\CuppingEvent;
 use App\Models\CuppingProcedure;
+use App\Models\CustomerTestimonial;
+use App\Models\DutyFreeLocation;
+use App\Models\ExportDestination;
+use App\Models\ExportProcess;
+use App\Models\FactoryLocation;
 use App\Models\Faq;
 use App\Models\FaqGroup;
 use App\Models\MainSlider;
@@ -24,7 +29,9 @@ use App\Models\RoastingProcess;
 use App\Models\RoastingService;
 use App\Models\History;
 use App\Models\ServiceType;
+use App\Models\Shop;
 use App\Models\StellaCoffeeOrigin;
+use App\Models\Store;
 use App\Models\SuccessStory;
 use App\Models\TermAndCondition;
 use Illuminate\Support\Facades\Config;
@@ -163,6 +170,41 @@ function getContentDetailUrl($content_type, $content_id, $langCode='en')
             ]);
         case CuppingEvent::class:
             return route('cupping-event-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case CustomerTestimonial::class:
+            return route('testimonial-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case DutyFreeLocation::class:
+            return route('duty-free-location-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case ExportDestination::class:
+            return route('export-destination-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case Store::class:
+            return route('store-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case FactoryLocation::class:
+            return route('factory-location-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case Shop::class:
+            return route('shop-detail', [
+                'id' => $content_id,
+                'lang' => $langCode
+            ]);
+        case ExportProcess::class:
+            return route('export-process-detail', [
                 'id' => $content_id,
                 'lang' => $langCode
             ]);

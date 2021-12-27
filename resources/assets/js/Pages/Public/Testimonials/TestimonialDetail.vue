@@ -17,16 +17,45 @@
             <meta name="twitter:image" :content="content.contentable.first_image['src']">
             <meta property="twitter:url" :content="content.url">
         </teleport>
-        <div class="header1">{{ content.contentable.title }}</div>
-        <div v-html="content.contentable.detail"></div>
-
-        <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">
-            <div class="pr-2 font-bold">
-                {{ _trans('label.shared.Published at') }}: {{ formatDate(content.published_at) }}
+        <div class="flex flex-row w-full justify-start items-start border-b py-5 gap-5">
+            <div class="flex w-14 h-14 rounded-full border justify-center items-center">
+                <i class="fa fa-user fa-2x text-stella"></i>
             </div>
-            <div class="ml-6">
-                <span class="font-bold pr-2">{{ _trans('label.shared.Readers') }}:</span>
-                <span class="underline">{{ content.content_hits_count }}</span>
+            <div class="flex flex-row flex-wrap justify-start items-start px-3">
+                <div class="flex-col">
+                    <h6 class="text-stella text-xl mb-3 font-bold text-xl">
+                        {{ content.contentable.testimonial_name }}
+                    </h6>
+
+                    <div class="flex flex-row flex-wrap w-full font-bold my-3">
+                        <div class="flex flex-wrap w-max pr-3">
+                            <strong>
+                                {{
+                                    _trans('label.shared.Testimonial Organization')
+                                }}:
+                            </strong>&nbsp;
+                            <span>{{ content.contentable.testimonial_organization }}</span>
+                        </div>
+                        <div class="flex flex-wrap w-max pr-3">
+                            <strong>
+                                {{
+                                    _trans('label.shared.Testimonial Position')
+                                }}:
+                            </strong>&nbsp;
+                            <span>{{ content.contentable.testimonial_position }}</span>
+                        </div>
+                        <div class="flex flex-wrap w-max pr-3">
+                            <strong>
+                                {{
+                                    _trans('label.shared.Testimonial Date')
+                                }}:
+                            </strong>&nbsp;
+                            <span>{{ formatDate(content.contentable.testimonial_date) }}</span>
+                        </div>
+                    </div>
+
+                    <div class="text-justify" v-html="content.contentable.testimonial_message"></div>
+                </div>
             </div>
         </div>
         <related-contents></related-contents>

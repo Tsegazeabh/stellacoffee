@@ -3,7 +3,7 @@
         <ul class="left">
             <li>
                 <a href="/" class="flex flex-wrap border w-32 my-3">
-                    <img src="images/stella_coffee_logo.jpg" class="object-contain"/>
+                    <img src="/images/stella_coffee_logo.jpg" class="object-contain"/>
                 </a>
             </li>
             <li>

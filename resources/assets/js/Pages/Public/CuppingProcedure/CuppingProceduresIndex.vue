@@ -21,18 +21,17 @@
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
             <div v-for="(procedure,index) in result.data" class="card-container flex flex-col md:flex-row w-full">
-                <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
+                <div class="grid grid-cols-3 justify-center items-stretch border-b my-4 pb-5">
                     <div class="col-span-1">
                         <img :src="procedure.contentable.first_image['src']" class="object-fill"/>
                     </div>
-                    <div class="col-span-2 px-10 flex flex-col justify-center items-start">
+                    <inertia-link :href="procedure.url"
+                                  class="col-span-2 px-10 flex flex-col justify-center items-start hover:bg-gray-200">
                         <h2 class="text-stella text-xl my-3">
-                            <inertia-link :href="procedure.url">
-                                {{procedure.contentable.title}}
-                            </inertia-link>
+                            {{ procedure.contentable.title }}
                         </h2>
                         <p class="text-justify">{{ procedure.contentable.lead_paragraph }}</p>
-                    </div>
+                    </inertia-link>
                 </div>
             </div>
             <div class="m-4 w-full">
@@ -41,7 +40,7 @@
         </div>
         <div class="pt-20" v-else>
             <h1 class="text-red-500 text-3xl text-center">
-                {{_trans('messages.There is no published content yet')}}
+                {{ _trans('messages.There is no published content yet') }}
             </h1>
         </div>
     </div>
@@ -64,8 +63,8 @@ export default defineComponent({
         },
     },
     provide: {
-        menu_name:'Cupping',
-        sub_menu_name:'Cupping Procedures',
+        menu_name: 'Cupping',
+        sub_menu_name: 'Cupping Procedures',
     },
 })
 </script>

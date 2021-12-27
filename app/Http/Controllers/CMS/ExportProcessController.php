@@ -33,7 +33,7 @@ class ExportProcessController extends Controller
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', ExportProcess::class);
                 })->paginate(getDefaultPagingSize());
-            $data['contents'] = $content;
+            $data['result'] = $content;
             return Inertia::render('Public/ExportProcess/ExportProcessIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

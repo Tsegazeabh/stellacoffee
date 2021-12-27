@@ -32,7 +32,7 @@
                             </inertia-link>
                         </h2>
                         <p class="text-justify">{{ certificate.contentable.lead_paragraph }}</p>
-                        <div class="px-4 py-2 justify-center">
+                        <div class="py-2 justify-center">
                             <template v-if="certificate.contentable.video_link">
                                 <youtube-player class="w-100 h-100"
                                     ref="youtube"

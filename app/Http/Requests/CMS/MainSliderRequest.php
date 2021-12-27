@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\CMS;
 
-use App\Rules\ValidFileType;
 use App\Rules\ValidImageType;
 use App\Rules\XSSValidator;
 use Illuminate\Foundation\Http\FormRequest;

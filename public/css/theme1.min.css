@@ -303,7 +303,6 @@ nav.main-navbar:hover > ul {
   padding: 2.5rem;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
-  font-family: "Roboto Mono", Monaco, Consolas, "Courier New", monospace;
   font-size: 20px;
 }
 
@@ -313,7 +312,7 @@ nav.main-navbar:hover > ul {
   font-weight: 900;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
-  font-size: 42px;
+  font-size: 36px;
 }
 
 #main-slider .slider-card .card-text a {
@@ -417,14 +416,13 @@ nav.main-navbar:hover > ul {
 }
 
 #story p {
-  font-family: robot, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1.25rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;
   color: rgba(30, 22, 24, var(--tw-text-opacity));
 }
 
-#story button {
+#story .button {
   position: relative;
   bottom: 0px;
   margin-top: 1rem;
@@ -792,8 +790,24 @@ footer address ul.social-media-icons-list > li {
 
 #find-us {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2.5rem;
+  min-height: 90vh;
+}
+
+#find-us .header {
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgba(30, 22, 24, var(--tw-border-opacity));
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgba(30, 22, 24, var(--tw-text-opacity));
 }
 
 #certificates-slider {
@@ -962,6 +976,12 @@ label.required::after, .label.required::after {
 
 .form-control.error {
   border-color: rgba(229, 80, 20, 0.7);
+}
+
+.border-radius-0 {
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
 }
 
 /* purgecss end ignore */

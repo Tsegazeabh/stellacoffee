@@ -173,30 +173,30 @@ class CafeController extends Controller
             $locale = Locale::where('short_code', getSessionLanguageShortCode())->first();
             if ($locale != null) {
                 $content = array('locale_id' => $locale->id);
-                $cafe = Arr::except($request->all(), ['tags', 'xcsrf']);
-                $cafe = Cafe::create($cafe);
-                $this->authorize('create', $cafe);
-                $content = $cafe->content()->create($content);
+                $cafe = Arr::except($request->all(), ['tags', 'attachments', 'xcsrf']);
                 $tags = $request->get('tags');
                 $tags = collect($tags)->map(function ($tag) {
                     return $tag['id'];
                 });
+                $attachments = $request->file('attachments');
+                $cafe = Cafe::create($cafe);
+                $this->authorize('create', $cafe);
+                if ($attachments != null) {
+                    $cafe->addMedia($attachments)->toMediaCollection('file-attachments');
+                }
+                $content = $cafe->content()->create($content);
                 $content->tags()->sync($tags);
                 DB::commit();
+                return redirect()->route('cafe-management-page');
             }
-            return redirect()->route('cafe-management-page');
-
-        } catch (\Throwable $ex) {
+        } catch
+        (\Throwable $ex) {
             DB::rollback();
             logError($ex);
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
             }
-
-            else if ($ex instanceof NotFound) {
-                abort(404);
-            }
-            return abort(503);
+            return back(503)->withErrors(['errorMessage' => getGeneralAdminErrorMessage()]);
         }
     }
 
@@ -242,21 +242,25 @@ class CafeController extends Controller
     {
         DB::beginTransaction();
         try {
-            $cafe = Cafe::with('content')->find($cafe_id);
+            $cafe = Cafe::with('content', 'media')->find($cafe_id);
             $this->authorize('update', $cafe);
+            $attachments = $request->file('attachments');
             if ($cafe != null) {
                 $cafe->update(
-                    Arr::except($request->all(), ['tags', 'csrf'])
+                    Arr::except($request->all(), ['tags', 'attachments', 'csrf'])
                 );
                 $tags = $request->get('tags');
                 $tags = collect($tags)->map(function ($tag) {
                     return $tag['id'];
                 });
                 $cafe->content->tags()->sync($tags);
+
+                if ($attachments != null) {
+                    $cafe->clearMediaCollection('file-attachments');
+                    $cafe->addMedia($attachments)->toMediaCollection('file-attachments');
+                }
                 DB::commit();
                 return redirect()->route('cafe-management-page');
-            } else {
-                return bacK()->withErrors(['errorMessage'=> 'We can not find cafe with the specified id!']);
             }
         } catch (\Throwable $ex) {
             DB::rollback();
@@ -264,10 +268,7 @@ class CafeController extends Controller
             if ($ex instanceof AuthorizationException) {
                 abort(403, getUnAuthorizedAccessMessage());
             }
-            else if ($ex instanceof NotFound) {
-                abort(404);
-            }
-            return abort(503);
+            return back()->withErrors(['errorMessage' => getGeneralAdminErrorMessage()]);
         }
     }
 

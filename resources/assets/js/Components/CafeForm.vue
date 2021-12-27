@@ -81,11 +81,11 @@
                 </div>
                 <div class="w-full md:w-1/2">
                     <div class="form-group w-full px-5">
-                        <label class="label">{{ _trans('label.shared.Video Link') }}</label>
+                        <label class="label">{{ _trans('label.shared.Youtube URL') }}</label>
                         <input type="text" v-model.trim.lazy="form.video_link"
                                class="form-control w-full border border-gray-100 p-2 focus:outline-none"
                                :class="(form.errors && form.errors['video_link'])?'error':''"
-                               placeholder="https://www.youtube.com" autocomplete="on"/>
+                               :placeholder="_trans('label.shared.Youtube URL')" autocomplete="on"/>
                         <span class="text-red-500 font-semibold mt-3" v-if="form.errors && form.errors['video_link']">
                             {{ form.errors['video_link'] }}
                         </span>
@@ -138,13 +138,13 @@ export default defineComponent({
         cafe: {
             type: Object,
             default: {
-                title: '',
-                service_type_id: '',
+                title:'',
+                service_type_id:'',
                 size:'',
                 price:'',
                 attachments:'',
-                detail: '',
-                video_link: '',
+                detail:'',
+                video_link:'',
                 tags: [],
             }
         },
@@ -180,13 +180,13 @@ export default defineComponent({
 
             },
             form: useForm({
-                title: '',
-                service_type_id: '',
+                title:'',
+                service_type_id:'',
                 size:'',
                 price:'',
                 attachments:'',
-                detail: '',
-                video_link: '',
+                detail:'',
+                video_link:'',
                 tags: [],
             }),
         }
@@ -198,6 +198,7 @@ export default defineComponent({
             this.form.size = this.cafe.size
             this.form.price = this.cafe.price
             this.form.video_link = this.cafe.video_link
+            this.form.service_type_id = this.cafe.service_type_id
         }
         if (this.cafe && this.cafe.content && this.cafe.content.tags) {
             this.form.tags = this.cafe.content.tags

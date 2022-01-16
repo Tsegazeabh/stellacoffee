@@ -33,7 +33,7 @@ class CustomerTestimonialController extends Controller
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', CustomerTestimonial::class);
                 })->paginate(getDefaultPagingSize());
-            $data['contents'] = $content;
+            $data['result'] = $content;
             return Inertia::render('Public/Testimonials/TestimonialsIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);
@@ -276,17 +276,17 @@ class CustomerTestimonialController extends Controller
     {
         try {
             $langId = getSessionLanguageId();
-            if($request->route()->hasParameter('preview')){
+            if ($request->route()->hasParameter('preview')) {
                 $result = Content::with(['contentable', 'tags'])
                     ->whereHasMorph('contentable', [CustomerTestimonial::class])
                     ->withTrashed()
                     ->ofLanguage($langId)
                     ->latest('created_at')->take(6)->get();
-            }
-            else{
+            } else {
                 $result = Content::with(['contentable', 'tags'])
                     ->whereHasMorph('contentable', [CustomerTestimonial::class])
                     ->withTrashed()
+                    ->publishedWithoutArchived()
                     ->ofLanguage($langId)
                     ->latest('published_at')->take(6)->get();
             }

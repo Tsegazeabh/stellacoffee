@@ -33,7 +33,7 @@ class CuppingProcedureController extends Controller
                 ->withCount('content_hits')
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', CuppingProcedure::class);
-                })->paginate(1);
+                })->paginate(getDefaultPagingSize());
             $data['result'] = $content;
             return Inertia::render('Public/CuppingProcedure/CuppingProceduresIndex', $data);
         } catch (\Throwable $ex) {

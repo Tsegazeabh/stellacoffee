@@ -20,19 +20,26 @@
 
     <div class="w-full">
         <div v-if="result && result.total>0" class="flex flex-wrap">
-            <div v-for="(product,index) in result.data" :key="product.id" class="card-container flex flex-col md:flex-row w-full">
-                <div class="grid grid-cols-3 justify-center items-center border-b my-4 pb-5">
-                    <div class="col-span-1">
+            <div v-for="(product,index) in result.data" :key="product.id"
+                 class="card-container flex flex-col md:flex-row w-full">
+                <div class="grid grid-cols-1 md:grid-cols-3 justify-center items-center border-b my-4 pb-5">
+                    <div class="md:col-span-1">
                         <inertia-link :href="product.url">
                             <img :src="product.contentable.first_image['src']" class="object-fill"/>
                         </inertia-link>
-                        <p class="text-center font-bold">{{_trans('label.shared.Size')}}: {{product.contentable.size}}</p>
-                        <p class="text-center font-bold">{{_trans('label.shared.Price')}}: {{product.contentable.price}}</p>
+                        <div class="flex flex-row flex-wrap gap-4 justify-center">
+                            <span class="text-center font-bold">
+                                <strong>{{ _trans('label.shared.Size') }}:</strong> <span>{{ product.contentable.size }}</span>
+                            </span>
+                            <span class="text-center font-bold">
+                                <strong>{{ _trans('label.shared.Price') }}:</strong> <span>{{ product.contentable.price }}</span>
+                            </span>
+                        </div>
                     </div>
-                    <div class="col-span-2 px-10 flex flex-col justify-center items-start">
+                    <div class="md:col-span-2 px-10 flex flex-col justify-center items-start">
                         <h2 class="text-stella text-xl my-3">
                             <inertia-link :href="product.url">
-                                {{product.contentable.title}}
+                                {{ product.contentable.title }}
                             </inertia-link>
                         </h2>
                         <p class="text-justify">{{ product.contentable.lead_paragraph }}</p>
@@ -59,7 +66,7 @@
         </div>
         <div class="pt-20" v-else>
             <h1 class="text-red-500 text-3xl text-center">
-                {{_trans('messages.There is no published content yet')}}
+                {{ _trans('messages.There is no published content yet') }}
             </h1>
         </div>
     </div>
@@ -76,7 +83,7 @@ import {YoutubeVue3} from 'youtube-vue3';
 
 export default defineComponent({
     name: "product-package-index",
-    components: {ContentIndexPagination,'youtube-player': YoutubeVue3},
+    components: {ContentIndexPagination, 'youtube-player': YoutubeVue3},
     layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
     props: {
         result: {
@@ -85,8 +92,8 @@ export default defineComponent({
         },
     },
     provide: {
-        menu_name:'Products',
-        sub_menu_name:'Packages',
+        menu_name: 'Products',
+        sub_menu_name: 'Packages',
     },
     methods: {
         formatDate(date) {

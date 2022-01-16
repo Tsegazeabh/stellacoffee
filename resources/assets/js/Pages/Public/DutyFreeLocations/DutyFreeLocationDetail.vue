@@ -17,18 +17,14 @@
             <meta name="twitter:image" :content="content.contentable.first_image['src']">
             <meta property="twitter:url" :content="content.url">
         </teleport>
-        <div class="header1">{{ content.contentable.title }}</div>
-        <div v-html="content.contentable.detail"></div>
+        <inertia-head :title="'Stella Coffee | '+ content.contentable.title "></inertia-head>
+        <h2 class="text-stella text-2xl font-black my-3">{{ content.contentable.title }}</h2>
 
-        <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">
-            <div class="pr-2 font-bold">
-                {{ _trans('label.shared.Published at') }}: {{ formatDate(content.published_at) }}
-            </div>
-            <div class="ml-6">
-                <span class="font-bold pr-2">{{ _trans('label.shared.Readers') }}:</span>
-                <span class="underline">{{ content.content_hits_count }}</span>
-            </div>
+        <div class="flex flex-col flex-wrap my-4">
+            <span class="py-2"><strong>{{_trans('label.shared.Airport Name')}}:</strong>&nbsp;{{content.contentable.airport_name}}</span>
+            <span><strong>{{_trans('label.shared.Duty Free Location Address')}}:</strong>&nbsp;{{content.contentable.shop_address}}</span>
         </div>
+        <div v-html="content.contentable.detail"></div>
         <related-contents></related-contents>
     </div>
 </template>
@@ -38,7 +34,7 @@ import {defineAsyncComponent, defineComponent, provide} from "vue";
 import RelatedContentsLoadingState from '@components/RelatedContentsLoadingState'
 import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError';
 import moment from "moment";
-import ContentsLayout2 from "@layouts/ContentsLayout2";
+import ContentsLayout2 from "../../../Layouts/ContentsLayout2";
 
 const RelatedContents = defineAsyncComponent({
     // The factory function
@@ -79,3 +75,4 @@ export default defineComponent({
     }
 })
 </script>
+

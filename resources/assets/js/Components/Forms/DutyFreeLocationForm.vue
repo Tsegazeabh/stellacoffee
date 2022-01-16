@@ -35,7 +35,7 @@
                 </div>
                 <div class="w-full md:w-1/2">
                     <div class="form-group w-full px-5">
-                        <label class="label required">{{ _trans('label.shared.Shop Address') }}</label>
+                        <label class="label required">{{ _trans('label.shared.Duty Free Location Address') }}</label>
                         <input type="text" v-model.trim.lazy="form.shop_address"
                                class="form-control w-full border border-gray-100 p-2 focus:outline-none"
                                :class="(form.errors && form.errors['shop_address'])?'error':''"

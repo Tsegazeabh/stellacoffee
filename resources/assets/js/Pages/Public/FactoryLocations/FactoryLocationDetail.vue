@@ -17,7 +17,8 @@
             <meta name="twitter:image" :content="content.contentable.first_image['src']">
             <meta property="twitter:url" :content="content.url">
         </teleport>
-        <div class="header1">{{ content.contentable.title }}</div>
+        <inertia-head :title="'Stella Coffee | '+ content.contentable.title "></inertia-head>
+        <h2 class="text-stella text-2xl font-black my-3">{{ content.contentable.title }}</h2>
         <div v-html="content.contentable.detail"></div>
 
         <div class="flex flex-wrap justify-end items-center content-info text-gray-600 text-base pt-3 mt-3 text-right">

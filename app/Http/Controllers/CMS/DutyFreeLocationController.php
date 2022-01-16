@@ -33,7 +33,7 @@ class DutyFreeLocationController extends Controller
                 ->whereHas('contentable', function ($query) {
                     $query->where('contentable_type', DutyFreeLocation::class);
                 })->paginate(getDefaultPagingSize());
-            $data['contents'] = $content;
+            $data['result'] = $content;
             return Inertia::render('Public/DutyFreeLocations/DutyFreeLocationIndex', $data);
         } catch (\Throwable $ex) {
             logError($ex);

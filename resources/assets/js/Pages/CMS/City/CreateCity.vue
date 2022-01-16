@@ -1,0 +1,52 @@
+<template>
+    <div class="breadcrump">
+        <ul>
+            <li>
+                <inertia-link :href="route('home')">{{_trans('menu.Home')}}</inertia-link>
+            </li>
+            <li>
+                <inertia-link :href="route('dashboard')">{{_trans('menu.CMS')}}</inertia-link>
+            </li>
+            <li>
+                <inertia-link :href="route('city-management-page')">{{_trans('label.shared.City')}}</inertia-link>
+            </li>
+            <li>{{_trans('action.create')}}</li>
+        </ul>
+    </div>
+    <city-form :city="city"
+               :error-message="errorMessage"
+               :success-message="successMessage"
+               :errors="errors"
+               :method="'post'"
+               :url="route('post-city')">
+    </city-form>
+</template>
+
+<script>
+    import AdminLayout from "@layouts/AdminLayout"
+    import CityForm from "@components/CityForm"
+
+    export default {
+        name: "CreateCity",
+        components: {CityForm},
+        layout: (h, page) => h(AdminLayout, [page]), // if you want to use different persistence layout,
+        props: {
+            city: {type: Object, default:
+                {
+                    name: '',
+                    country_id:'',
+                    description: '',
+                    name_am: '',
+                    description_am: '',
+                    name_fr: '',
+                    description_fr: '',
+                    name_it: '',
+                    description_it: ''
+                }},
+            errors: {type: Object, default: {}},
+            errorMessage: {type: String, default: ''},
+            successMessage: {type: String, default: ''}
+        },
+    }
+</script>
+

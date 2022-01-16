@@ -21,6 +21,10 @@ class Country extends Authorizable
     {
         return $this->hasMany(City::class, 'country_id');
     }
+    public function region()
+    {
+        return $this->hasMany(Region::class, 'country_id');
+    }
 
     public function contactUsRequest()
     {

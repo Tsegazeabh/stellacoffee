@@ -189,10 +189,17 @@ class RegionController extends Controller
     protected function getRegions(Request $request)
     {
         $langId = getSessionLanguageShortCode();
-        if ($langId == 'en' || $langId == 'EN') {
+        if ($langId == 'am' || $langId == 'AM') {
+            $regions = Region::orderBy('name_am', 'DESC')->distinct()->pluck('name_am', 'id');
+        }
+        elseif ($langId == 'fr' || $langId == 'FR') {
+            $regions = Region::orderBy('name_fr', 'DESC')->distinct()->pluck('name_fr', 'id');
+        }
+        elseif ($langId == 'it' || $langId == 'IT') {
+            $regions = Region::orderBy('name_it', 'DESC')->distinct()->pluck('name_it', 'id');
+        }
+        else {
             $regions = Region::orderBy('name', 'DESC')->distinct()->pluck('name', 'id');
-        } else {
-            $regions = Region::orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan', 'id');
         }
         return response($regions);
     }
@@ -200,10 +207,17 @@ class RegionController extends Controller
     protected function getRegionsByCountry(Request $request)
     {
         $langId = getSessionLanguageShortCode();
-        if ($langId == 'en' || $langId == 'EN') {
+        if ($langId == 'am' || $langId == 'AM') {
+            $regions = Region::where('country_id', $request->get('country'))->orderBy('name_am', 'DESC')->distinct()->pluck('name_am', 'id');
+        }
+        elseif ($langId == 'fr' || $langId == 'FR') {
+            $regions = Region::where('country_id', $request->get('country'))->orderBy('name_fr', 'DESC')->distinct()->pluck('name_fr', 'id');
+        }
+        elseif ($langId == 'it' || $langId == 'IT') {
+            $regions = Region::where('country_id', $request->get('country'))->orderBy('name_it', 'DESC')->distinct()->pluck('name_it', 'id');
+        }
+        else {
             $regions = Region::where('country_id', $request->get('country'))->orderBy('name', 'DESC')->distinct()->pluck('name', 'id');
-        } else {
-            $regions = Region::where('country_id', $request->get('country'))->orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan', 'id');
         }
         return response($regions);
     }

@@ -96,6 +96,7 @@
                 infiniteInitialRowCount: this.pagingSize,
                 maxConcurrentDatasourceRequests: 2,
                 gridOptions: {
+                    rowHeight: 80,
                     cacheBlockSize: this.pagingSize,
                     paginationPageSize: this.pagingSize,
                     rowModelType: 'infinite',

@@ -45,7 +45,7 @@ class CityController extends Controller
 
             $paging_size = getDefaultPagingSize();
 
-            $searchResult = City::with('region', 'woreda', 'zone')->orderBy($sort_by, $sorting_method)->paginate($paging_size);
+            $searchResult = City::orderBy($sort_by, $sorting_method)->paginate($paging_size);
 
             $data['searchResult'] = $searchResult;
 
@@ -70,11 +70,7 @@ class CityController extends Controller
         try {
             $this->authorize('create', new City);
             $countries = DB::table('countries')->pluck('name', 'id');
-            $woredas = DB::table('woredas')->pluck('name', 'id');
-            $zones = DB::table('zones')->pluck('name', 'id');
             $data['countries'] = $countries;
-            $data['woredas'] = $woredas;
-            $data['zones'] = $zones;
             return Inertia::render('CMS/City/CreateCity', $data);
         } catch (AuthorizationException $ex) {
             abort(403);
@@ -123,13 +119,9 @@ class CityController extends Controller
         try {
             $city = City::find($city_id);
             $countries = DB::table('countries')->pluck('name', 'id');
-            $woredas = DB::table('woredas')->pluck('name', 'id');
-            $zones = DB::table('zones')->pluck('name', 'id');
             $this->authorize('update', $city);
             $data['city'] = $city;
             $data['countries'] = $countries;
-            $data['woredas'] = $woredas;
-            $data['zones'] = $zones;
             return Inertia::render('CMS/City/EditCity', $data);
         } catch (AuthorizationException $ex) {
             abort(403);
@@ -204,10 +196,16 @@ class CityController extends Controller
     protected function getCities(Request $request)
     {
         $langId = getSessionLanguageShortCode();
-        if ($langId == 'en' || $langId == 'EN') {
-            $cities = City::where('region_id', $request->get('region'))->orderBy('name', 'DESC')->distinct()->pluck('name', 'id');
-        } else {
-            $cities = City::where('region_id', $request->get('region'))->orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan', 'id');
+        if ($langId == 'fr' || $langId == 'FR') {
+            $cities = City::orderBy('name_fr', 'DESC')->distinct()->pluck('name_fr', 'id');
+        }
+        elseif ($langId == 'am' || $langId == 'AM') {
+            $cities = City::orderBy('name_am', 'DESC')->distinct()->pluck('name_am', 'id');
+        }
+        elseif ($langId == 'it' || $langId == 'IT') {
+            $cities = City::orderBy('name_it', 'DESC')->distinct()->pluck('name_it', 'id');
+        }else {
+            $cities = City::orderBy('name', 'DESC')->distinct()->pluck('name', 'id');
         }
         return response($cities);
     }
@@ -215,10 +213,16 @@ class CityController extends Controller
     protected function getAllCities(Request $request)
     {
         $langId = getSessionLanguageShortCode();
-        if ($langId == 'en' || $langId == 'EN') {
+        if ($langId == 'fr' || $langId == 'FR') {
+            $cities = City::orderBy('name_fr', 'DESC')->distinct()->pluck('name_fr', 'id');
+        }
+        elseif ($langId == 'am' || $langId == 'AM') {
+            $cities = City::orderBy('name_am', 'DESC')->distinct()->pluck('name_am', 'id');
+        }
+        elseif ($langId == 'it' || $langId == 'IT') {
+            $cities = City::orderBy('name_it', 'DESC')->distinct()->pluck('name_it', 'id');
+        }else {
             $cities = City::orderBy('name', 'DESC')->distinct()->pluck('name', 'id');
-        } else {
-            $cities = City::orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan', 'id');
         }
         return response($cities);
     }
@@ -226,11 +230,17 @@ class CityController extends Controller
     protected function getCitiesByCountry(Request $request)
     {
         $langId = getSessionLanguageShortCode();
-        if($langId =='en'){
-            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name', 'DESC')->distinct()->pluck('name','id');
+        if($langId =='am' || $langId =='AM'){
+            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name_am', 'DESC')->distinct()->pluck('name_am','id');
+        }
+        elseif($langId =='it' || $langId =='IT'){
+            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name_it', 'DESC')->distinct()->pluck('name_it','id');
+        }
+        elseif($langId =='fr' || $langId =='FR'){
+            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name_fr', 'DESC')->distinct()->pluck('name_fr','id');
         }
         else{
-            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan','id');
+            $cities = City::where('country_id', $request->get('country_id'))->orderBy('name', 'DESC')->distinct()->pluck('name','id');
         }
         return response($cities);
     }

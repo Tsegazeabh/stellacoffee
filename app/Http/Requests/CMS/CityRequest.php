@@ -27,31 +27,40 @@ class CityRequest extends FormRequest
         $method_name =$this->route()->getActionMethod();
         if($method_name ==='createPost'){
             return [
+                'country_id' => 'required|numeric',
                 'name' => ['required', 'string', 'max:255', 'unique:cities'],
-                'name_lan' => 'required|string|max:255',
-                'region_id' => 'required|numeric',
-                'zone_id' => 'nullable|numeric',
+                'name_am' => 'required|string',
+                'name_fr' => 'nullable|string',
+                'name_it' => 'nullable|string',
                 'description' => 'nullable|string',
-                'description_lan' => 'nullable|string'
+                'description_am' => 'nullable|string',
+                'description_fr' => 'nullable|string',
+                'description_it' => 'nullable|string'
             ];
         }else if($method_name ==='editPost'){
             $city_id=$this->route()->parameters()['id'];
             return [
+                'country_id' => 'required|numeric',
                 'name' => ['required', 'string', 'max:255', 'unique:cities,name,'.$city_id],
-                'name_lan' => 'required|string|max:255',
-                'region_id' => 'required|numeric',
-                'zone_id' => 'nullable|numeric',
+                'name_am' => 'required|string',
+                'name_fr' => 'nullable|string',
+                'name_it' => 'nullable|string',
                 'description' => 'nullable|string',
-                'description_lan' => 'nullable|string'
+                'description_am' => 'nullable|string',
+                'description_fr' => 'nullable|string',
+                'description_it' => 'nullable|string'
             ];
         }else{
             return [
+                'country_id' => 'required|numeric',
                 'name' => 'required|string|max:255',
-                'name_lan' => 'required|string|max:255',
-                'region_id' => 'required|numeric',
-                'zone_id' => 'nullable|numeric',
+                'name_am' => 'required|string',
+                'name_fr' => 'nullable|string',
+                'name_it' => 'nullable|string',
                 'description' => 'nullable|string',
-                'description_lan' => 'nullable|string'
+                'description_am' => 'nullable|string',
+                'description_fr' => 'nullable|string',
+                'description_it' => 'nullable|string'
             ];
         }
     }

@@ -30,24 +30,36 @@ class CountryRequest extends FormRequest
         if($method_name ==='createPost'){
             return [
                 'name' => ['required', 'string', 'max:255', 'unique:countries'],
-                'name_lan' => 'required|string|max:255',
+                'name_am' => 'required|string',
+                'name_fr' => 'nullable|string',
+                'name_it' => 'nullable|string',
                 'description' => 'nullable|string',
-                'description_lan' => 'nullable|string'
+                'description_am' => 'nullable|string',
+                'description_fr' => 'nullable|string',
+                'description_it' => 'nullable|string'
             ];
         }else if($method_name ==='editPost'){
             $country_id=$this->route()->parameters()['id'];
             return [
                 'name' => ['required', 'string', 'max:255', 'unique:countries,name,'.$country_id],
-                'name_lan' => 'required|string|max:255',
+                'name_am' => 'required|string',
+                'name_fr' => 'nullable|string',
+                'name_it' => 'nullable|string',
                 'description' => 'nullable|string',
-                'description_lan' => 'nullable|string'
+                'description_am' => 'nullable|string',
+                'description_fr' => 'nullable|string',
+                'description_it' => 'nullable|string'
             ];
         }else{
             return [
                 'name' => 'required|string|max:255',
-                'name_lan' => 'required|string|max:255',
+                'name_am' => 'required|string',
+                'name_fr' => 'nullable|string',
+                'name_it' => 'nullable|string',
                 'description' => 'nullable|string',
-                'description_lan' => 'nullable|string'
+                'description_am' => 'nullable|string',
+                'description_fr' => 'nullable|string',
+                'description_it' => 'nullable|string'
             ];
         }
 

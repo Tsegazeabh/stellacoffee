@@ -184,24 +184,40 @@ class CountryController extends Controller
     protected function  getCountries(Request $request)
     {
         $langId = getSessionLanguageShortCode();
-        if($langId =='en' || $langId =='EN')
+        if($langId =='am' || $langId =='AM')
         {
-            $countries = Country::orderBy('name', 'DESC')->distinct()->pluck('name','id');
+            $countries = Country::orderBy('name_am', 'DESC')->distinct()->pluck('name_am','id');
+        }
+        elseif($langId =='fr' || $langId =='FR')
+        {
+            $countries = Country::orderBy('name_fr', 'DESC')->distinct()->pluck('name_fr','id');
+        }
+        elseif($langId =='it' || $langId =='IT')
+        {
+            $countries = Country::orderBy('name_it', 'DESC')->distinct()->pluck('name_it','id');
         }
         else {
-            $countries = Country::orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan','id');
+            $countries = Country::orderBy('name', 'DESC')->distinct()->pluck('name','id');
         }
         return response($countries);
     }
     protected function getAllCountries(Request $request)
     {
         $langId = getSessionLanguageShortCode();
-        if($langId =='en' || $langId =='EN')
+        if($langId =='am' || $langId =='AM')
         {
-            $countries = Country::orderBy('name', 'DESC')->distinct()->pluck('name','id');
+            $countries = Country::orderBy('name_am', 'DESC')->distinct()->pluck('name_am','id');
+        }
+        elseif($langId =='fr' || $langId =='FR')
+        {
+            $countries = Country::orderBy('name_fr', 'DESC')->distinct()->pluck('name_fr','id');
+        }
+        elseif($langId =='it' || $langId =='IT')
+        {
+            $countries = Country::orderBy('name_it', 'DESC')->distinct()->pluck('name_it','id');
         }
         else {
-            $countries = Country::orderBy('name_lan', 'DESC')->distinct()->pluck('name_lan','id');
+            $countries = Country::orderBy('name', 'DESC')->distinct()->pluck('name','id');
         }
         return response($countries);
     }

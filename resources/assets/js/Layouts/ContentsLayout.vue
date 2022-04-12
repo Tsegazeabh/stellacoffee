@@ -87,7 +87,7 @@
                                     <span
                                         class="text-green-500 font-black text-xl">&nbsp;{{ $page.props.free_call_center }}</span>
                                 </span>
-                        <span class="flex flex-wrap w-full mt-3 text-orange font-black text-base">ነፃ የጥሪ ማዕከል</span>
+                        <span class="flex flex-wrap w-full mt-3 text-orange font-black text-base">{{ _trans('label.shared.Call Us')}}</span>
                     </div>
                 </div>
             </div>

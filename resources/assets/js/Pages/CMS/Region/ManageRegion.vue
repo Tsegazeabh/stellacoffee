@@ -33,8 +33,8 @@
             <th class="text-left p-3">#</th>
             <th class="text-left p-3">Region(EN)</th>
             <th class="text-left p-3">ክልል(አማ)</th>
-            <th class="text-left p-3">Description(EN)</th>
-            <th class="text-left p-3">መገለጫ(አማ)</th>
+            <th class="text-left p-3">Région(Fr)</th>
+            <th class="text-left p-3">Regione(IT)</th>
             <th class="text-left p-3">{{_trans('label.shared.Created At')}}</th>
             <th class="text-left p-3">{{_trans('label.shared.Created By')}}</th>
             <th class="text-left p-3" colspan="2"></th>
@@ -45,8 +45,8 @@
             <td class="text-left px-3 py-1">{{(searchResult.current_page-1)*searchResult.per_page + index + 1}}</td>
             <td class="text-left px-3 py-1">{{content.name}}</td>
             <td class="text-left px-3 py-1">{{content.name_am}}</td>
-            <td class="text-left px-3 py-1">{{content.description}}</td>
-            <td class="text-left px-3 py-1">{{content.description_am}}</td>
+            <td class="text-left px-3 py-1">{{content.name_fr}}</td>
+            <td class="text-left px-3 py-1">{{content.name_it}}</td>
             <td class="text-left px-3 py-1">{{content ? formatDate(content.created_at):'N/A'}}</td>
             <td class="text-left px-3 py-1">{{content.created_by}}</td>
             <td class="text-right">

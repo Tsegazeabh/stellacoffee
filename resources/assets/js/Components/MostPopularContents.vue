@@ -9,7 +9,7 @@
             </inertia-link>
         </template>
         <div v-else>
-            <p>{{ _trans('label.shared.The are no visited contents yet') }}</p>
+            <p>{{ _trans('label.shared.There are no visited contents yet') }}</p>
         </div>
     </div>
 </template>

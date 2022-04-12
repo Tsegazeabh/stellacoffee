@@ -42,7 +42,7 @@
     import moment from 'moment'
     import RelatedContentsLoadingState from '@components/RelatedContentsLoadingState'
     import RelatedContentsLoadingError from '@components/RelatedContentsLoadingError'
-    import ContentsLayout2 from "../../../Layouts/ContentsLayout2";
+    import ContentsLayout from "../../../Layouts/ContentsLayout";
     import Logo from "../../../../images/logo.jpg"
 
     const RelatedContents = defineAsyncComponent({
@@ -62,7 +62,7 @@
 
     export default {
         name: "main-slider-detail",
-        layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout
+        layout: (h, page) => h(ContentsLayout, [page]), // if you want to use different persistence layout
         props: {
             content: {
                 type: Object,

@@ -7,7 +7,6 @@
         "Company": "ስለ ድርጅታችን",
         "About Us": "ስለ እኛ",
         "About": "ስለ እኛ",
-
         "Success Stories": "Success Stories",
         "Certifications": "Certifications",
         "Stella Coffee Origins": "Stella Coffee Origins",
@@ -402,7 +401,8 @@
             "The are no open tenders floated yet": "የተለጠፉ ክፍት ጨረታዎች የሉም",
             "Video Link": "ቪዲዮ ይክፈቱ",
             "Size": "መጠን",
-            "Price": "ዋጋ"
+            "Price": "ዋጋ",
+            "Call Us":"በዚ ይደዉልሉን"
 
         },
         "user": {

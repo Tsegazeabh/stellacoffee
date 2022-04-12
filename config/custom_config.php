@@ -57,7 +57,7 @@ return [
     'rss_feed_target_content_types' => [],
     'archievable_content_types' => [],
 
-    'free_call_center'=>'906',
+    'free_call_center'=>'+251911213496',
     'facebook_official_page'=>'https://www.facebook.com/stellacoffee',
     'twitter_official_page'=>'https://twitter.com/stellacoffee?s=11',
     'telegram_official_page'=>'https://t.me/stellacoffee',

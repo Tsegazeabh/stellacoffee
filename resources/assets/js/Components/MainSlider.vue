@@ -39,29 +39,6 @@ export default defineComponent({
             mainSliders: [],
         }
     },
-    // setup() {
-    //     return {
-    //         modules: [Navigation, Scrollbar, A11y, Autoplay, Parallax, EffectCards],
-    //         parallaxSwiperWidth: 0,
-            // contents: [
-            //     {
-            //         title: 'Stella Coffee Brands',
-            //         lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-            //         image: 'http://127.0.0.1:8000/images/bg-image-3.jpg'
-            //     },
-            //     {
-            //         title: 'Get the Most Out of Your Favorite Coffee',
-            //         lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-            //         image: 'http://127.0.0.1:8000/images/bg-image-4.jpg'
-            //     },
-            //     {
-            //         title: 'Get the Most Out of Your Favorite Coffee',
-            //         lead_paragraph: 'Coffee Shop is the place where you can get flavorful coffee strains from global elite brands and roasters at very affordable price.',
-            //         image: 'http://127.0.0.1:8000/images/Ampersand-38.jpg'
-            //     },
-            // ],
-    //     };
-    // },
     created() {
         this.fetchMainSliders();
     },
@@ -87,12 +64,6 @@ export default defineComponent({
                 })
                 .catch(err => this.mainSliders = []);
         }
-        // setControlledSwiper(swiper) {
-        //     this.controlledSwiper = swiper;
-        // },
-        // formatDate(date) {
-        //     return moment(String(date)).format('MMM DD, YYYY')
-        // },
     }
 })
 </script>

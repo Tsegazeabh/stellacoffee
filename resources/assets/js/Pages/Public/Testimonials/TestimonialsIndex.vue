@@ -31,7 +31,7 @@
                             <h6 class="text-stella text-xl mb-3 font-bold text-xl">
                                 {{ content.contentable.testimonial_name }}
                             </h6>
-                            <div class="flex flex-row flex-wrap w-full font-bold my-3">
+                            <div class="flex flex-col flex-wrap w-full font-bold my-3">
                                 <div class="flex flex-wrap w-max pr-3">
                                     <strong>
                                         {{

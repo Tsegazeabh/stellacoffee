@@ -2,7 +2,7 @@
     <product-card v-for="pkg of packages" :product="pkg"></product-card>
     <div class="btn-container" v-if="packages && packages.length>0">
         <inertia-link :href="route('content-index-page', 'product-package')" class="btn">
-            View all packages &raquo;
+            {{_trans("label.shared.View all packages")}} &raquo;
         </inertia-link>
     </div>
 </template>

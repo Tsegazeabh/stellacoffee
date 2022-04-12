@@ -2,7 +2,7 @@
     <product-card v-for="blend of blends" :product="blend"></product-card>
     <div class="btn-container" v-if="blends && blends.length>0">
         <inertia-link :href="route('content-index-page', 'product-blend')" class="btn">
-            View all blends &raquo;
+            {{_trans("label.shared.View all blends")}} &raquo;
         </inertia-link>
     </div>
 </template>

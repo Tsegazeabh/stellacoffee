@@ -11,7 +11,7 @@
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@EEU_Officials">
         <meta name="twitter:creator" content="@EEU_Officials"/>
-        <meta name="twitter:title" content="Ethiopian Electric Utility Portal">
+        <meta name="twitter:title" content="Stella Coffee Portal">
         <meta name="twitter:description" :content="result.data[0].contentable.detail">
         <meta name="twitter:image" :content="result.data[0].contentable.first_image['src']">
         <meta property="twitter:url" :content="result.data[0].url">
@@ -31,6 +31,20 @@
                             {{ procedure.contentable.title }}
                         </h2>
                         <p class="text-justify">{{ procedure.contentable.lead_paragraph }}</p>
+                        <div class="py-2 justify-center">
+                           <template v-if="procedure.contentable.video_link">
+                               <youtube-player class="w-100 h-100"
+                                                ref="youtube"
+                                                :videoid="_youTubeGetID(procedure.contentable.video_link)"
+                                                :loop="loop"
+                                                @ended="onEnded"
+                                                @paused="onPaused"
+                                                @played="onPlayed"
+                                                :autoplay="false">
+                               </youtube-player>
+                               <p class="text-stella text-lg my-3 font-bold text-right bottom-0 right-0"><a :href="procedure.contentable.video_link" target="_blank">{{_trans('label.shared.Video Link')}}</a></p>
+                            </template>
+                        </div>
                     </inertia-link>
                 </div>
             </div>
@@ -50,10 +64,11 @@
 import {defineComponent} from "vue";
 import ContentsLayout2 from "../../../Layouts/ContentsLayout2";
 import ContentIndexPagination from "../../../Components/ContentIndexPagination";
+import {YoutubeVue3} from 'youtube-vue3';
 
 export default defineComponent({
     name: "cupping-procedures-index",
-    components: {ContentIndexPagination},
+    components: {ContentIndexPagination, 'youtube-player': YoutubeVue3},
     layout: (h, page) => h(ContentsLayout2, [page]), // if you want to use different persistence layout,
     props: {
         result: {
